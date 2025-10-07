@@ -11,7 +11,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { MobileNav } from './mobile-nav';
 import { Logo } from '../logo';
 
-function Navbar({ className }: { className?: string }) {
+function Navbar({ className, isDarkMode }: { className?: string, isDarkMode?: boolean }) {
   const [active, setActive] = useState<string | null>(null);
 
   const services = [
@@ -82,20 +82,23 @@ function Navbar({ className }: { className?: string }) {
 
   return (
     <div
-      className={cn('fixed top-10 inset-x-0 max-w-2xl mx-auto z-50', className)}
+      className={cn('fixed top-10 inset-x-0 max-w-3xl mx-auto z-50', className)}
     >
-      <Menu setActive={setActive}>
-        <HoveredLink href="/">Home</HoveredLink>
-        <MenuItem setActive={setActive} active={active} item="Services">
+      <Menu setActive={setActive} isDarkMode={isDarkMode}>
+        <div className="flex-shrink-0">
+          <Logo isDarkMode={isDarkMode} />
+        </div>
+        <HoveredLink href="/" isDarkMode={isDarkMode}>Home</HoveredLink>
+        <MenuItem setActive={setActive} active={active} item="Services" isDarkMode={isDarkMode}>
           <div className="flex flex-col space-y-4 text-sm">
             {services.map((service) => (
-              <HoveredLink key={service.title} href={service.href}>
+              <HoveredLink key={service.title} href={service.href} isDarkMode={isDarkMode}>
                 {service.title}
               </HoveredLink>
             ))}
           </div>
         </MenuItem>
-        <MenuItem setActive={setActive} active={active} item="Products">
+        <MenuItem setActive={setActive} active={active} item="Products" isDarkMode={isDarkMode}>
           <div className="text-sm grid grid-cols-2 gap-10 p-4">
             {products.map((product) =>
               product.src ? (
@@ -106,27 +109,39 @@ function Navbar({ className }: { className?: string }) {
                   src={product.src}
                   description={product.description}
                   data-ai-hint={product['data-ai-hint']}
+                  isDarkMode={isDarkMode}
                 />
               ) : null
             )}
           </div>
         </MenuItem>
-        <HoveredLink href="/events">Events</HoveredLink>
-        <HoveredLink href="/about">About</HoveredLink>
-        <HoveredLink href="/contact">Contact</HoveredLink>
+        <HoveredLink href="/events" isDarkMode={isDarkMode}>Events</HoveredLink>
+        <HoveredLink href="/about" isDarkMode={isDarkMode}>About</HoveredLink>
+        <HoveredLink href="/contact" isDarkMode={isDarkMode}>Contact</HoveredLink>
       </Menu>
     </div>
   );
 }
+
 export function SiteHeader() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent md:bg-transparent">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
         <div className="md:hidden container flex h-16 items-center justify-between bg-background/80 shadow-md backdrop-blur-sm">
             <Logo />
             <MobileNav />
         </div>
         <div className="hidden md:block">
-            <Navbar />
+            <Navbar isDarkMode={!isScrolled} />
         </div>
     </header>
   );
