@@ -23,7 +23,7 @@ function FloatingPaths({ position }: { position: number }) {
     return (
         <div className="absolute inset-0 pointer-events-none">
             <svg
-                className="w-full h-full text-slate-950 dark:text-white"
+                className="w-full h-full text-primary"
                 viewBox="0 0 696 316"
                 fill="none"
             >
@@ -61,7 +61,7 @@ export function BackgroundPaths({
     const words = title.split(" ");
 
     return (
-        <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-white dark:bg-neutral-950">
+        <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black">
             <div className="absolute inset-0">
                 <FloatingPaths position={1} />
                 <FloatingPaths position={-1} />
@@ -94,7 +94,7 @@ export function BackgroundPaths({
                                             damping: 25,
                                         }}
                                         className="inline-block text-transparent bg-clip-text 
-                                        bg-gradient-to-r from-primary to-accent"
+                                        bg-gradient-to-r from-white to-white/80"
                                     >
                                         {letter}
                                     </motion.span>
@@ -102,7 +102,7 @@ export function BackgroundPaths({
                             </span>
                         ))}
                     </h1>
-                     <p className="text-lg md:text-xl text-foreground/80 mb-8">
+                     <p className="text-lg md:text-xl text-slate-300/80 mb-8">
                         Your one-stop destination for cutting-edge services, innovative
                         products, and engaging events.
                     </p>
@@ -113,7 +113,7 @@ export function BackgroundPaths({
                             Learn More <ArrowRight className="ml-2 h-5 w-5" />
                         </Link>
                         </Button>
-                        <Button asChild variant="outline" size="lg">
+                        <Button asChild variant="outline" size="lg" className="text-white border-white/50 bg-transparent hover:bg-white hover:text-black">
                         <Link href="/contact">Contact Us</Link>
                         </Button>
                     </div>
