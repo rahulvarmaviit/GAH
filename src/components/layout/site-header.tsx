@@ -11,9 +11,11 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { MobileNav } from './mobile-nav';
 import { Logo } from '../logo';
 import Link from 'next/link';
+import { useScrollSection } from '@/hooks/use-scroll-section';
 
 function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
+  const theme = useScrollSection();
 
   const services = [
     {
@@ -47,7 +49,8 @@ function Navbar({ className }: { className?: string }) {
       title: 'Quantum Drone',
       href: '/products',
       src: PlaceHolderImages.find((img) => img.id === 'product-1')?.imageUrl,
-      'data-ai-hint': PlaceHolderImages.find((img) => img.id === 'product-1')?.imageHint,
+      'data-ai-hint': PlaceHolderImages.find((img) => img.id === 'product-1')
+        ?.imageHint,
       description:
         'An autonomous drone with AI-powered flight and cinematic capabilities.',
     },
@@ -55,7 +58,8 @@ function Navbar({ className }: { className?: string }) {
       title: 'HoloWatch',
       href: '/products',
       src: PlaceHolderImages.find((img) => img.id === 'product-2')?.imageUrl,
-      'data-ai-hint': PlaceHolderImages.find((img) => img.id === 'product-2')?.imageHint,
+      'data-ai-hint': PlaceHolderImages.find((img) => img.id === 'product-2')
+        ?.imageHint,
       description:
         'A revolutionary smartwatch featuring a holographic interface and advanced biometrics.',
     },
@@ -63,7 +67,8 @@ function Navbar({ className }: { className?: string }) {
       title: 'NeuroLink VR',
       href: '/products',
       src: PlaceHolderImages.find((img) => img.id === 'product-3')?.imageUrl,
-      'data-ai-hint': PlaceHolderImages.find((img) => img.id === 'product-3')?.imageHint,
+      'data-ai-hint': PlaceHolderImages.find((img) => img.id === 'product-3')
+        ?.imageHint,
       description:
         'Immersive virtual reality headset with neural feedback for unparalleled realism.',
     },
@@ -71,7 +76,8 @@ function Navbar({ className }: { className?: string }) {
       title: 'Aura Home Hub',
       href: '/products',
       src: PlaceHolderImages.find((img) => img.id === 'product-4')?.imageUrl,
-      'data-ai-hint': PlaceHolderImages.find((img) => img.id === 'product-4')?.imageHint,
+      'data-ai-hint': PlaceHolderImages.find((img) => img.id === 'product-4')
+        ?.imageHint,
       description:
         'A central smart home hub that learns and adapts to your lifestyle.',
     },
@@ -81,7 +87,7 @@ function Navbar({ className }: { className?: string }) {
     <div
       className={cn('fixed top-10 inset-x-0 max-w-2xl mx-auto z-50', className)}
     >
-      <Menu setActive={setActive}>
+      <Menu setActive={setActive} theme={theme}>
         <HoveredLink href="/">Home</HoveredLink>
         <MenuItem setActive={setActive} active={active} item="Services">
           <div className="flex flex-col space-y-4 text-sm">
