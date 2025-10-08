@@ -57,7 +57,9 @@ export const MenuItem = ({
                 layoutId="active" // layoutId ensures smooth animation
                 className={cn(
                   "backdrop-blur-sm rounded-2xl overflow-hidden border shadow-xl",
-                  "bg-white/90 border-black/10"
+                  isDarkMode
+                    ? "bg-black/50 border-white/10"
+                    : "bg-white/90 border-black/10"
                 )}
               >
                 <motion.div
@@ -90,7 +92,7 @@ export const Menu = ({
     <nav
       onMouseLeave={() => setActive(null)} // resets the state
       className={cn(
-        "relative rounded-full border grid grid-cols-3 items-center justify-between px-8 py-4 shadow-input",
+        "relative rounded-full border grid grid-cols-[1fr,auto] items-center justify-between px-8 py-4 shadow-input",
         isDarkMode
           ? "bg-black/10 border-white/10 backdrop-blur-3xl"
           : "bg-white/10 border-black/10 backdrop-blur-2xl",
