@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { MobileNav } from './mobile-nav';
 import { Logo } from '../logo';
+import Link from 'next/link';
 
 function Navbar({ className, isDarkMode }: { className?: string, isDarkMode?: boolean }) {
   const [active, setActive] = useState<string | null>(null);
@@ -85,10 +86,12 @@ function Navbar({ className, isDarkMode }: { className?: string, isDarkMode?: bo
       className={cn('fixed top-10 inset-x-0 max-w-4xl mx-auto z-50', className)}
     >
       <Menu setActive={setActive} isDarkMode={isDarkMode}>
-        <Logo isDarkMode={isDarkMode} />
-        <div className="flex items-center space-x-8">
+        <div className='flex items-center justify-start'>
+            <Logo isDarkMode={isDarkMode} />
+        </div>
+        <div className="flex items-center justify-center space-x-8">
             <HoveredLink href="/" isDarkMode={isDarkMode}>Home</HoveredLink>
-            <MenuItem setActive={setActive} active={active} item="Services" isDarkMode={isDarkMode}>
+            <MenuItem setActive={setActive} active={active} item="Services" isDarkMode={isDarkMode} href="/services">
             <div className="flex flex-col space-y-4 text-sm">
                 {services.map((service) => (
                 <HoveredLink key={service.title} href={service.href}>
@@ -97,7 +100,7 @@ function Navbar({ className, isDarkMode }: { className?: string, isDarkMode?: bo
                 ))}
             </div>
             </MenuItem>
-            <MenuItem setActive={setActive} active={active} item="Products" isDarkMode={isDarkMode}>
+            <MenuItem setActive={setActive} active={active} item="Products" isDarkMode={isDarkMode} href="/products">
             <div className="text-sm grid grid-cols-2 gap-10 p-4">
                 {products.map((product) =>
                 product.src ? (

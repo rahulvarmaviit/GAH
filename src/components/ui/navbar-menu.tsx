@@ -20,24 +20,30 @@ export const MenuItem = ({
   item,
   children,
   isDarkMode,
+  href,
 }: {
   setActive: (item: string) => void;
   active: string | null;
   item: string;
   children?: React.ReactNode;
   isDarkMode?: boolean;
+  href?: string;
 }) => {
+  const content = (
+    <motion.p
+      transition={{ duration: 0.3 }}
+      className={cn(
+        "cursor-pointer hover:opacity-[0.9]",
+        isDarkMode ? "text-white" : "text-black"
+      )}
+    >
+      {item}
+    </motion.p>
+  );
+
   return (
     <div onMouseEnter={() => setActive(item)} className="relative ">
-      <motion.p
-        transition={{ duration: 0.3 }}
-        className={cn(
-            "cursor-pointer hover:opacity-[0.9]",
-            isDarkMode ? "text-white" : "text-black"
-          )}
-      >
-        {item}
-      </motion.p>
+      {href ? <Link href={href}>{content}</Link> : content}
       {active !== null && (
         <motion.div
           initial={{ opacity: 0, scale: 0.85, y: 10 }}
@@ -50,9 +56,9 @@ export const MenuItem = ({
                 transition={transition}
                 layoutId="active" // layoutId ensures smooth animation
                 className={cn(
-                    "backdrop-blur-sm rounded-2xl overflow-hidden border shadow-xl",
-                    "bg-white/90 border-black/10"
-                  )}
+                  "backdrop-blur-sm rounded-2xl overflow-hidden border shadow-xl",
+                  "bg-white/90 border-black/10"
+                )}
               >
                 <motion.div
                   layout // layout ensures smooth animation
@@ -84,10 +90,10 @@ export const Menu = ({
     <nav
       onMouseLeave={() => setActive(null)} // resets the state
       className={cn(
-        "relative rounded-full border flex items-center justify-between px-8 py-4 shadow-input",
+        "relative rounded-full border grid grid-cols-3 items-center justify-between px-8 py-4 shadow-input",
         isDarkMode
-          ? "bg-black/20 border-white/10 backdrop-blur-3xl"
-          : "bg-white/50 border-black/10 backdrop-blur-3xl",
+          ? "bg-black/10 border-white/10 backdrop-blur-3xl"
+          : "bg-white/10 border-black/10 backdrop-blur-2xl",
         className
       )}
     >
@@ -122,10 +128,10 @@ export const ProductItem = ({
         data-ai-hint={dataAiHint}
       />
       <div>
-        <h4 className={cn("text-xl font-bold mb-1", "text-black")}>
+        <h4 className={cn("text-xl font-bold mb-1", "text-primary dark:text-purple-300")}>
           {title}
         </h4>
-        <p className={cn("text-sm max-w-[10rem]", "text-primary/90")}>
+        <p className={cn("text-sm max-w-[10rem]", "text-primary/90 dark:text-purple-200/90")}>
           {description}
         </p>
       </div>
@@ -138,7 +144,7 @@ export const HoveredLink = ({ children, isDarkMode, ...rest }: any) => {
     <Link
       {...rest}
       className={cn(
-        "text-primary dark:text-neutral-200 hover:text-black dark:hover:text-white",
+        "text-primary dark:text-purple-300 hover:text-black dark:hover:text-white",
         isDarkMode ? "dark:text-neutral-200" : ""
       )}
     >
