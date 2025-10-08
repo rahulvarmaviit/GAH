@@ -95,7 +95,7 @@ export const Menu = ({
         "relative rounded-full border grid grid-cols-[1fr,auto] items-center justify-between px-8 py-4 shadow-input",
         isDarkMode
           ? "bg-black/10 border-white/10 backdrop-blur-3xl"
-          : "bg-white/10 border-black/10 backdrop-blur-2xl",
+          : "bg-white/10 border-black/10 backdrop-blur-3xl",
         className
       )}
     >

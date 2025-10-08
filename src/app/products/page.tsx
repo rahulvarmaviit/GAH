@@ -1,99 +1,47 @@
-import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+'use client';
+import React from 'react';
+import Component from '@/components/ui/stacking-card';
 
-const products = [
+const projects = [
   {
-    name: 'Quantum Drone',
-    description: 'An autonomous drone with AI-powered flight and cinematic capabilities.',
-    image: PlaceHolderImages.find((img) => img.id === 'product-1'),
+    title: 'Quantum Drone',
+    description:
+      'An autonomous drone with AI-powered flight and cinematic capabilities.',
+    link: 'https://images.unsplash.com/photo-1579721840641-7d0e67f1204e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxzbWFydCUyMHdhdGNofGVufDB8fHx8MTc1OTc0MDkyOHww&ixlib=rb-4.1.0&q=80&w=1080',
+    color: '#5196fd',
   },
   {
-    name: 'HoloWatch',
-    description: 'A revolutionary smartwatch featuring a holographic interface and advanced biometrics.',
-    image: PlaceHolderImages.find((img) => img.id === 'product-2'),
+    title: 'HoloWatch',
+    description:
+      'A revolutionary smartwatch featuring a holographic interface and advanced biometrics.',
+    link: 'https://images.unsplash.com/photo-1617802690992-15d93263d3a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx2aXJ0dWFsJTIwcmVhbGl0eXxlbnwwfHx8fDE3NTk3NTY4OTB8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    color: '#8f89ff',
   },
   {
-    name: 'NeuroLink VR',
-    description: 'Immersive virtual reality headset with neural feedback for unparalleled realism.',
-    image: PlaceHolderImages.find((img) => img.id === 'product-3'),
+    title: 'NeuroLink VR',
+    description:
+      'Immersive virtual reality headset with neural feedback for unparalleled realism.',
+    link: 'https://images.unsplash.com/photo-1615829386703-e2bb66a7cb7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxlbGVjdHJpYyUyMGNhcnxlbnwwfHx8fDE3NTk3NzY2MzV8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    color: '#13006c',
   },
   {
-    name: 'Aura Home Hub',
-    description: 'A central smart home hub that learns and adapts to your lifestyle.',
-    image: PlaceHolderImages.find((img) => img.id === 'product-4'),
+    title: 'Aura Home Hub',
+    description:
+      'A central smart home hub that learns and adapts to your lifestyle.',
+    link: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NTk3NzQzNDd8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    color: '#ed649e',
   },
   {
-    name: 'Atlas Companion Bot',
-    description: 'A personal robotic assistant designed to help with daily tasks and organization.',
-    image: PlaceHolderImages.find((img) => img.id === 'product-5'),
-  },
-  {
-    name: 'Volt-X EV',
-    description: 'A sleek, all-electric concept car with self-driving technology and a 500-mile range.',
-    image: PlaceHolderImages.find((img) => img.id === 'product-6'),
+    title: 'Atlas Companion Bot',
+    description:
+      'A personal robotic assistant designed to help with daily tasks and organization.',
+    link: 'https://images.unsplash.com/photo-1534723328310-e82dad3ee43f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlfGVufDB8fHx8MTc1OTcyMjIzMXww&ixlib=rb-4.1.0&q=80&w=1080',
+    color: '#fd521a',
   },
 ];
 
 export default function ProductsPage() {
   return (
-    <div className="flex flex-col">
-      <header className="pt-24 pb-12 bg-background">
-        <div className="container text-center">
-          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-primary">
-            Our Products
-          </h1>
-          <p className="mx-auto max-w-[700px] text-foreground/80 md:text-xl mt-4">
-            Explore our suite of innovative products designed to shape the
-            future.
-          </p>
-        </div>
-      </header>
-
-      <main className="flex-1 bg-slate-900 py-12 md:py-24 lg:py-32">
-        <div className="container">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {products.map((product) => (
-              <Card
-                key={product.name}
-                className="flex flex-col overflow-hidden bg-slate-800/50 border-slate-700 text-slate-100 transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-2 hover:scale-105"
-              >
-                 {product.image && (
-                    <Image
-                        src={product.image.imageUrl}
-                        alt={product.image.description}
-                        width={600}
-                        height={400}
-                        className="w-full object-cover aspect-video"
-                        data-ai-hint={product.image.imageHint}
-                    />
-                 )}
-                <CardHeader>
-                  <CardTitle className="text-2xl text-accent">{product.name}</CardTitle>
-                  <CardDescription className="text-slate-300">
-                    {product.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="flex-grow"></CardContent>
-                <CardFooter>
-                  <Button variant="outline" className="border-accent text-accent bg-transparent hover:bg-accent hover:text-accent-foreground">
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </main>
-    </div>
+    <Component projects={projects} />
   );
 }
