@@ -4,7 +4,7 @@ import { Logo } from '../logo';
 
 export function SiteFooter() {
   return (
-    <footer className="w-full bg-slate-900 text-slate-200">
+    <footer className="w-full bg-black text-slate-200">
       <div className="container py-12">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="flex flex-col gap-4 md:col-span-2">
