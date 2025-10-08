@@ -120,7 +120,7 @@ export const TestimonialsColumn = (props: {
 
 export function Testimonials() {
   return (
-    <section className="bg-white dark:bg-slate-900/50 my-20 relative py-20">
+    <section className="bg-white dark:bg-slate-900/50 py-20 relative">
 
       <div className="container z-10 mx-auto">
         <motion.div

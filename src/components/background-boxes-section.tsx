@@ -9,7 +9,7 @@ import { ArrowRight } from "lucide-react";
 export function BackgroundBoxesSection() {
   return (
     <section className="w-full">
-      <div className="min-h-[40rem] lg:min-h-[50rem] relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center">
+      <div className="min-h-[30rem] relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center">
         <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)]" />
 
         <Boxes />
