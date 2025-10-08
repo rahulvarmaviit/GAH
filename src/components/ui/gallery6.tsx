@@ -11,6 +11,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
 
 interface GalleryItem {
   id: string;
@@ -113,7 +114,7 @@ const Gallery6 = ({
                 carouselApi?.scrollPrev();
               }}
               disabled={!canScrollPrev}
-              className="disabled:pointer-events-auto"
+              className={cn("disabled:pointer-events-auto text-white border-white/50 bg-transparent hover:bg-white hover:text-black")}
             >
               <ArrowLeft className="size-5" />
             </Button>
@@ -124,7 +125,7 @@ const Gallery6 = ({
                 carouselApi?.scrollNext();
               }}
               disabled={!canScrollNext}
-              className="disabled:pointer-events-auto"
+              className={cn("disabled:pointer-events-auto text-white border-white/50 bg-transparent hover:bg-white hover:text-black")}
             >
               <ArrowRight className="size-5" />
             </Button>
