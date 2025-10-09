@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
+import { ArrowRight } from "lucide-react";
 
 export const HoverEffect = ({
   items,
@@ -29,14 +30,14 @@ export const HoverEffect = ({
         <Link
           href={item?.link}
           key={`${item.title}-${idx}`}
-          className="relative group  block p-2 h-full w-full"
+          className="relative group block p-2 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0 h-full w-full bg-primary/40 block  rounded-3xl"
+                className="absolute inset-0 h-full w-full bg-primary/40 block rounded-3xl"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{
@@ -53,6 +54,9 @@ export const HoverEffect = ({
           <Card>
             <CardTitle>{item.title}</CardTitle>
             <CardDescription>{item.description}</CardDescription>
+            <div className="flex items-center text-sm text-accent mt-4 group-hover:text-white transition-colors duration-200">
+                Learn More <ArrowRight className="ml-2 h-4 w-4" />
+            </div>
           </Card>
         </Link>
       ))}
