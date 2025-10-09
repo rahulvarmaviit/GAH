@@ -91,12 +91,18 @@ export default {
           "from": { transform: "translateX(-100%)" },
           "to": { transform: "translateX(0%)" },
         },
+        'gradient': {
+          '0%': { 'background-position': '0% 50%' },
+          '50%': { 'background-position': '100% 50%' },
+          '100%': { 'background-position': '0% 50%' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         marquee: 'marquee var(--duration, 30s) linear infinite',
         "marquee-reverse": "marquee-reverse var(--duration, 30s) linear infinite",
+        'gradient': 'gradient 6s ease infinite',
       },
     },
   },

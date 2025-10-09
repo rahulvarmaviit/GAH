@@ -52,22 +52,12 @@ export default function AboutPage() {
 
   return (
     <div className="flex flex-col bg-background">
-      <header className="relative h-[60vh] flex items-center justify-center text-center text-white">
-        {heroImage && (
-            <Image
-                src={heroImage.imageUrl}
-                alt={heroImage.description}
-                fill
-                className="object-cover -z-10"
-                data-ai-hint={heroImage.imageHint}
-            />
-        )}
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="container relative z-10">
-          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-white">
+      <header className="h-[60vh] flex items-center justify-center text-center bg-black">
+        <div className="container">
+          <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800 animate-gradient">
             We are Acknowledgement Hub
           </h1>
-          <p className="mx-auto max-w-[700px] text-white/80 md:text-xl mt-4">
+          <p className="mx-auto max-w-[700px] text-slate-300/80 md:text-xl mt-4">
             Innovators, dreamers, and builders dedicated to pushing the boundaries of what&apos;s possible.
           </p>
         </div>
