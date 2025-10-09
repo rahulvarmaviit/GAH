@@ -1,4 +1,8 @@
 import { HoverEffect } from '@/components/ui/hover-effect';
+import { cn } from '@/lib/utils';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 const services = [
   {
@@ -47,7 +51,7 @@ export default function ServicesPage() {
           </p>
         </div>
       </header>
-      <main className="flex-1 py-12 md:py-24 lg:py-32">
+      <main className="flex-1 py-12 md:py-24 lg:py-32 bg-black">
         <div className="container">
           <HoverEffect items={services} />
         </div>
