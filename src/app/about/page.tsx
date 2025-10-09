@@ -33,17 +33,20 @@ const values = [
     {
         icon: <Target className="h-10 w-10 text-primary" />,
         title: "Our Mission",
-        description: "To empower businesses and individuals through transformative technology, fostering a culture of continuous innovation and growth. We strive to create solutions that are not only powerful but also intuitive and accessible to all."
+        description: "To empower businesses and individuals through transformative technology, fostering a culture of continuous innovation and growth. We strive to create solutions that are not only powerful but also intuitive and accessible to all.",
+        image: PlaceHolderImages.find((img) => img.id === 'service-4')
     },
     {
         icon: <Eye className="h-10 w-10 text-primary" />,
         title: "Our Vision",
-        description: "We envision a future where technology seamlessly integrates with daily life, solving complex challenges and unlocking human potential. Our goal is to be at the forefront of this change, building a smarter, more connected world."
+        description: "We envision a future where technology seamlessly integrates with daily life, solving complex challenges and unlocking human potential. Our goal is to be at the forefront of this change, building a smarter, more connected world.",
+        image: PlaceHolderImages.find((img) => img.id === 'about-vision')
     },
     {
         icon: <Heart className="h-10 w-10 text-primary" />,
         title: "Our Passion",
-        description: "Our passion lies in problem-solving and creating elegant, efficient, and impactful solutions. We are driven by the desire to make a difference and contribute to a better technological landscape for everyone."
+        description: "Our passion lies in problem-solving and creating elegant, efficient, and impactful solutions. We are driven by the desire to make a difference and contribute to a better technological landscape for everyone.",
+        image: PlaceHolderImages.find((img) => img.id === 'feature-products')
     }
 ]
 
@@ -65,18 +68,30 @@ export default function AboutPage() {
 
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-                {values.map((value) => (
-                    <div key={value.title} className="text-center flex flex-col items-center">
-                        <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
-                            {value.icon}
-                        </div>
-                        <h3 className="text-2xl font-bold text-primary">{value.title}</h3>
-                        <p className="mt-2 text-muted-foreground">{value.description}</p>
-                    </div>
-                ))}
-            </div>
+          <div className="container px-4 md:px-6 space-y-16 md:space-y-24">
+            {values.map((value, index) => (
+              <div key={value.title} className="grid gap-8 md:grid-cols-2 md:gap-16 items-center">
+                <div className={`md:order-${index % 2 === 0 ? 1 : 2}`}>
+                  <div className="mb-4 inline-block rounded-lg bg-primary/10 p-4">
+                    {value.icon}
+                  </div>
+                  <h3 className="text-3xl md:text-4xl font-bold text-primary mb-4">{value.title}</h3>
+                  <p className="text-muted-foreground md:text-lg">{value.description}</p>
+                </div>
+                {value.image && (
+                  <div className={`md:order-${index % 2 === 0 ? 2 : 1}`}>
+                    <Image
+                      src={value.image.imageUrl}
+                      alt={value.title}
+                      width={800}
+                      height={600}
+                      className="rounded-xl shadow-2xl object-cover aspect-video"
+                      data-ai-hint={value.image.imageHint}
+                    />
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </section>
 
