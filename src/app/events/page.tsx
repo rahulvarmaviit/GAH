@@ -70,7 +70,7 @@ export default function EventsPage() {
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-white text-center mb-8">
                 Featured Event
             </h2>
-            <Card className="bg-slate-800/50 border-slate-700 text-slate-100 grid md:grid-cols-2 overflow-hidden shadow-2xl shadow-primary/10">
+            <Card className="bg-slate-900 border-slate-800 text-slate-100 grid md:grid-cols-2 overflow-hidden shadow-2xl shadow-primary/10">
                 <div className="relative">
                   {featuredEvent.image && (
                       <Image
@@ -124,7 +124,7 @@ export default function EventsPage() {
               {otherEvents.map((event) => (
                 <Card
                   key={event.title}
-                  className="bg-slate-800/50 border-slate-700 text-slate-100 transform transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 flex flex-col"
+                  className="bg-slate-900 border-slate-800 text-slate-100 transform transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 flex flex-col"
                 >
                   {event.image && (
                      <Image
