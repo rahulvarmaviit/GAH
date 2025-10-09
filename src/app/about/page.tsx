@@ -51,8 +51,6 @@ const values = [
 ]
 
 export default function AboutPage() {
-    const heroImage = PlaceHolderImages.find((img) => img.id === 'about-vision');
-
   return (
     <div className="flex flex-col bg-background">
       <header className="h-[80vh] flex items-center justify-center text-center bg-black">
@@ -67,42 +65,34 @@ export default function AboutPage() {
       </header>
 
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6 space-y-16 md:space-y-24">
-            {values.map((value, index) => (
-              <div key={value.title} className="grid gap-8 md:grid-cols-2 md:gap-16 items-center">
-                <div className={`md:order-${index % 2 === 0 ? 1 : 2}`}>
-                  <div className="mb-4 inline-block rounded-lg bg-primary/10 p-4">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-slate-900 text-slate-50">
+          <div className="container px-4 md:px-6">
+             <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+              {values.map((value) => (
+                <Card key={value.title} className="bg-black border-slate-800 text-slate-100 flex flex-col items-center text-center p-8 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20">
+                  <div className="mb-4 inline-block rounded-full bg-primary/10 p-4 border-2 border-primary/20">
                     {value.icon}
                   </div>
-                  <h3 className="text-3xl md:text-4xl font-bold text-primary mb-4">{value.title}</h3>
-                  <p className="text-muted-foreground md:text-lg">{value.description}</p>
-                </div>
-                {value.image && (
-                  <div className={`md:order-${index % 2 === 0 ? 2 : 1}`}>
-                    <Image
-                      src={value.image.imageUrl}
-                      alt={value.title}
-                      width={800}
-                      height={600}
-                      className="rounded-xl shadow-2xl object-cover aspect-video"
-                      data-ai-hint={value.image.imageHint}
-                    />
-                  </div>
-                )}
-              </div>
-            ))}
+                  <CardHeader>
+                    <CardTitle className="text-2xl text-white">{value.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-slate-400">{value.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-slate-900 text-slate-50">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-background text-foreground">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-white">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary">
                   Meet Our Team
                 </h2>
-                <p className="max-w-[900px] text-slate-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   The brilliant minds behind our success. We are a collective of passionate individuals committed to excellence.
                 </p>
               </div>
