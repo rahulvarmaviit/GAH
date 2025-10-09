@@ -64,7 +64,7 @@ export default function ContactPage() {
                 </Button>
               </form>
             </div>
-            <div className="space-y-8 rounded-lg bg-slate-900 p-8 text-slate-50 lg:p-12">
+            <div className="space-y-8 rounded-lg bg-black p-8 text-slate-50 lg:p-12">
               <h3 className="text-2xl font-bold text-white">Contact Information</h3>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
