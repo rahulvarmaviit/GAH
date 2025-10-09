@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Calendar, MapPin, ArrowRight } from 'lucide-react';
+import { Calendar, MapPin, ArrowRight, Star } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import {
@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import Link from 'next/link';
+import { Badge } from '@/components/ui/badge';
 
 const events = [
   {
@@ -46,6 +47,9 @@ const events = [
   },
 ];
 
+const featuredEvent = events[0];
+const otherEvents = events.slice(1);
+
 export default function EventsPage() {
   return (
     <div className="flex flex-col">
@@ -59,64 +63,108 @@ export default function EventsPage() {
           </p>
         </div>
       </header>
-      <main className="flex-1 bg-slate-900 py-12 md:py-24 lg:py-32">
+      <main className="flex-1 bg-slate-900/90 py-12 md:py-24 lg:py-32">
         <div className="container">
-          <div className="relative">
-            <div
-              className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-primary/20"
-              aria-hidden="true"
-            ></div>
-            <div className="space-y-16">
-              {events.map((event, index) => (
-                <div
-                  key={event.title}
-                  className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
-                >
-                  <div className="hidden md:flex w-5/12"></div>
-                  <div className="hidden md:flex absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
-                    <div className="h-6 w-6 rounded-full bg-primary ring-4 ring-background shadow-md"></div>
-                  </div>
-                  <div className="w-full md:w-5/12">
-                    <Card className="bg-slate-800/50 border-slate-700 text-slate-100 transform transition-transform duration-500 group-hover:scale-105">
-                      {event.image && (
-                         <Image
-                            src={event.image.imageUrl}
-                            alt={event.image.description}
-                            width={600}
-                            height={338}
-                            className="w-full rounded-t-lg object-cover"
-                            data-ai-hint={event.image.imageHint}
-                        />
-                      )}
-                      <CardHeader>
-                        <CardTitle className="text-2xl text-accent">
-                          {event.title}
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        <div className="flex items-center gap-2 text-slate-300">
-                          <Calendar className="h-4 w-4" />
-                          <span>{event.date}</span>
-                        </div>
-                        <div className="flex items-center gap-2 text-slate-300">
-                          <MapPin className="h-4 w-4" />
-                          <span>{event.location}</span>
-                        </div>
-                        <p className="text-slate-400">{event.description}</p>
-                      </CardContent>
-                      <CardFooter>
-                        <Button asChild variant="secondary" className="bg-accent/20 text-accent hover:bg-accent/30">
-                          <Link href="#">
-                            Register Now <ArrowRight className="ml-2 h-4 w-4" />
-                          </Link>
-                        </Button>
-                      </CardFooter>
-                    </Card>
-                  </div>
+          {/* Featured Event Section */}
+          <section className="mb-16 md:mb-24">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-white text-center mb-8">
+                Featured Event
+            </h2>
+            <Card className="bg-slate-800/50 border-slate-700 text-slate-100 grid md:grid-cols-2 overflow-hidden shadow-2xl shadow-primary/10">
+                <div className="relative">
+                  {featuredEvent.image && (
+                      <Image
+                          src={featuredEvent.image.imageUrl}
+                          alt={featuredEvent.image.description}
+                          width={800}
+                          height={600}
+                          className="w-full h-full object-cover"
+                          data-ai-hint={featuredEvent.image.imageHint}
+                      />
+                  )}
+                  <Badge variant="destructive" className="absolute top-4 left-4 flex items-center gap-1 bg-primary text-primary-foreground border-primary-foreground/50">
+                      <Star className="h-4 w-4" />
+                      Featured
+                  </Badge>
                 </div>
+                <div className="p-8 flex flex-col justify-center">
+                    <CardHeader>
+                        <CardTitle className="text-3xl text-accent">
+                        {featuredEvent.title}
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <div className="flex items-center gap-4 text-slate-300">
+                            <Calendar className="h-5 w-5" />
+                            <span>{featuredEvent.date}</span>
+                        </div>
+                        <div className="flex items-center gap-4 text-slate-300">
+                            <MapPin className="h-5 w-5" />
+                            <span>{featuredEvent.location}</span>
+                        </div>
+                        <p className="text-slate-400 text-lg">{featuredEvent.description}</p>
+                    </CardContent>
+                    <CardFooter>
+                        <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
+                        <Link href="#">
+                            Register Now <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+                        </Button>
+                    </CardFooter>
+                </div>
+            </Card>
+          </section>
+
+          {/* Other Events Section */}
+          <section>
+             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-white text-center mb-12">
+                More Upcoming Events
+            </h2>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {otherEvents.map((event) => (
+                <Card
+                  key={event.title}
+                  className="bg-slate-800/50 border-slate-700 text-slate-100 transform transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 flex flex-col"
+                >
+                  {event.image && (
+                     <Image
+                        src={event.image.imageUrl}
+                        alt={event.image.description}
+                        width={600}
+                        height={338}
+                        className="w-full rounded-t-lg object-cover aspect-video"
+                        data-ai-hint={event.image.imageHint}
+                    />
+                  )}
+                  <div className="p-6 flex flex-col flex-grow">
+                    <CardHeader className="p-0 mb-4">
+                      <CardTitle className="text-2xl text-accent">
+                        {event.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4 p-0 flex-grow">
+                      <div className="flex items-center gap-2 text-slate-300">
+                        <Calendar className="h-4 w-4" />
+                        <span>{event.date}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-slate-300">
+                        <MapPin className="h-4 w-4" />
+                        <span>{event.location}</span>
+                      </div>
+                      <p className="text-slate-400">{event.description}</p>
+                    </CardContent>
+                    <CardFooter className="p-0 mt-6">
+                      <Button asChild variant="secondary" className="bg-accent/20 text-accent hover:bg-accent/30 w-full">
+                        <Link href="#">
+                          Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
+                    </CardFooter>
+                  </div>
+                </Card>
               ))}
             </div>
-          </div>
+          </section>
         </div>
       </main>
     </div>
