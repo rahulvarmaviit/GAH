@@ -86,7 +86,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-slate-50 dark:bg-background text-foreground">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-slate-50 dark:bg-slate-900/50 text-foreground">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -100,29 +100,30 @@ export default function AboutPage() {
             </div>
             <div className="mx-auto mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
               {teamMembers.map((member) => (
-                <div key={member.name} className="group relative overflow-hidden rounded-lg text-center">
-                   {member.avatar && (
-                     <Image
+                <div key={member.name} className="group relative text-center">
+                  <div className="overflow-hidden rounded-lg">
+                    {member.avatar && (
+                      <Image
                         src={member.avatar.imageUrl}
                         alt={member.name}
                         width={400}
                         height={400}
-                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        className="h-auto w-full object-cover transition-transform duration-300 group-hover:scale-110"
                         data-ai-hint={member.avatar.imageHint}
-                    />
-                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-6">
-                    <h3 className="text-xl font-bold text-white">{member.name}</h3>
-                    <p className="text-sm text-accent">{member.role}</p>
-                    <div className="mt-4 flex justify-center space-x-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                      <Link href="#" className="text-slate-300 hover:text-accent">
+                      />
+                    )}
+                  </div>
+                  <div className="mt-4">
+                    <h3 className="text-xl font-bold">{member.name}</h3>
+                    <p className="text-sm text-primary">{member.role}</p>
+                    <div className="mt-2 flex justify-center space-x-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      <Link href="#" className="text-muted-foreground hover:text-primary">
                         <Twitter className="h-5 w-5" />
                       </Link>
-                      <Link href="#" className="text-slate-300 hover:text-accent">
+                      <Link href="#" className="text-muted-foreground hover:text-primary">
                         <Linkedin className="h-5 w-5" />
                       </Link>
-                      <Link href="#" className="text-slate-300 hover:text-accent">
+                      <Link href="#" className="text-muted-foreground hover:text-primary">
                         <Github className="h-5 w-5" />
                       </Link>
                     </div>
