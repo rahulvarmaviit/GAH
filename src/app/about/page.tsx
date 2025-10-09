@@ -49,7 +49,9 @@ const values = [
         description: "Our passion lies in problem-solving and creating elegant, efficient, and impactful solutions. We are driven by the desire to make a difference and contribute to a better technological landscape for everyone.",
         image: PlaceHolderImages.find((img) => img.id === 'feature-products')
     }
-]
+];
+
+const storyImage = PlaceHolderImages.find(img => img.id === 'feature-services');
 
 export default function AboutPage() {
   return (
@@ -66,6 +68,36 @@ export default function AboutPage() {
       </header>
 
       <main className="flex-1">
+        <section className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container px-4 md:px-6">
+            <div className="grid gap-10 lg:grid-cols-2 lg:gap-24">
+              <div className="flex flex-col justify-center space-y-6">
+                <div className="space-y-4">
+                  <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-primary">
+                    Our Story
+                  </h2>
+                  <p className="max-w-prose text-muted-foreground md:text-xl/relaxed">
+                    Founded in a small garage in 2018, Acknowledgement Hub started with a simple yet powerful idea: to revolutionize the way we interact with technology. Our founders, a group of passionate engineers and designers, believed that technology should be a seamless extension of human capability, not a barrier.
+                  </p>
+                  <p className="max-w-prose text-muted-foreground md:text-xl/relaxed">
+                    From our humble beginnings, we&apos;ve grown into a global team of innovators, thinkers, and creators. We&apos;ve stayed true to our core mission of building intuitive and powerful solutions that empower people and businesses across the globe. Our journey is one of relentless innovation and a deep-seated commitment to our users.
+                  </p>
+                </div>
+              </div>
+              {storyImage && (
+                <Image
+                  src={storyImage.imageUrl}
+                  alt="Our Story"
+                  width={800}
+                  height={600}
+                  className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
+                  data-ai-hint={storyImage.imageHint}
+                />
+              )}
+            </div>
+          </div>
+        </section>
+
         <section className="w-full py-12 md:py-24 lg:py-32 bg-background text-foreground">
           <div className="container px-4 md:px-6">
              <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
