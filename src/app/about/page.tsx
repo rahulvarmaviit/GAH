@@ -98,19 +98,19 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-background text-foreground">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-slate-900 text-white">
           <div className="container px-4 md:px-6">
              <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
               {values.map((value) => (
-                <Card key={value.title} className="bg-card flex flex-col items-center text-center p-8 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20">
+                <Card key={value.title} className="bg-black border-slate-800 flex flex-col items-center text-center p-8 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20">
                   <div className="mb-4 inline-block rounded-full bg-primary/10 p-4 border-2 border-primary/20">
                     {value.icon}
                   </div>
                   <CardHeader>
-                    <CardTitle className="text-2xl">{value.title}</CardTitle>
+                    <CardTitle className="text-2xl text-white">{value.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">{value.description}</p>
+                    <p className="text-slate-300">{value.description}</p>
                   </CardContent>
                 </Card>
               ))}
