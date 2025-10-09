@@ -48,6 +48,31 @@ const events = [
   },
 ];
 
+const pastEvents = [
+  {
+    title: 'Web 3.0 Conference 2023',
+    date: 'August 12, 2023',
+    location: 'Austin, TX',
+    description: 'An in-depth look at the decentralized web and its future potential.',
+    image: PlaceHolderImages.find((img) => img.id === 'service-1')
+  },
+  {
+    title: 'Cybersecurity Workshop',
+    date: 'June 5, 2023',
+    location: 'Virtual',
+    description: 'A hands-on workshop covering the latest in threat detection and prevention.',
+    image: PlaceHolderImages.find((img) => img.id === 'service-2')
+  },
+  {
+    title: 'AI in Healthcare Symposium',
+    date: 'March 22, 2023',
+    location: 'Boston, MA',
+    description: 'Exploring the transformative impact of AI on patient care and medical research.',
+    image: PlaceHolderImages.find((img) => img.id === 'service-3')
+  }
+];
+
+
 const featuredEvent = events[0];
 const otherEvents = events.slice(1);
 
@@ -158,6 +183,57 @@ export default function EventsPage() {
                       <Button asChild variant="secondary" className="bg-slate-800 text-slate-100 hover:bg-slate-700 w-full">
                         <Link href="#">
                           Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
+                    </CardFooter>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </section>
+          
+          {/* Past Events Section */}
+          <section className="mt-16 md:mt-24">
+             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-primary text-center mb-12">
+                Past Events
+            </h2>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {pastEvents.map((event) => (
+                <Card
+                  key={event.title}
+                  className="bg-black border-slate-800 text-slate-100 flex flex-col opacity-75 grayscale"
+                >
+                  {event.image && (
+                     <Image
+                        src={event.image.imageUrl}
+                        alt={event.image.description}
+                        width={600}
+                        height={338}
+                        className="w-full rounded-t-lg object-cover aspect-video"
+                        data-ai-hint={event.image.imageHint}
+                    />
+                  )}
+                  <div className="p-6 flex flex-col flex-grow">
+                    <CardHeader className="p-0 mb-4">
+                      <CardTitle className="text-2xl text-white">
+                        {event.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4 p-0 flex-grow">
+                      <div className="flex items-center gap-2 text-slate-300">
+                        <Calendar className="h-4 w-4" />
+                        <span>{event.date}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-slate-300">
+                        <MapPin className="h-4 w-4" />
+                        <span>{event.location}</span>
+                      </div>
+                      <p className="text-slate-400">{event.description}</p>
+                    </CardContent>
+                    <CardFooter className="p-0 mt-6">
+                      <Button asChild variant="secondary" className="bg-slate-800 text-slate-100 w-full" disabled>
+                        <Link href="#">
+                          Archived
                         </Link>
                       </Button>
                     </CardFooter>
