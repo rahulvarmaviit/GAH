@@ -98,6 +98,9 @@ function Navbar({ className, isDarkMode }: { className?: string, isDarkMode?: bo
                     {service.title}
                 </HoveredLink>
                 ))}
+                 <HoveredLink href="/services" className="font-bold text-primary pt-2">
+                    See all services &rarr;
+                </HoveredLink>
             </div>
             </MenuItem>
             <MenuItem setActive={setActive} active={active} item="Products" isDarkMode={isDarkMode} href="/products">
@@ -114,6 +117,11 @@ function Navbar({ className, isDarkMode }: { className?: string, isDarkMode?: bo
                     />
                 ) : null
                 )}
+                 <div className="col-span-2 text-center mt-4">
+                    <HoveredLink href="/products" className="font-bold text-primary">
+                        See all products &rarr;
+                    </HoveredLink>
+                </div>
             </div>
             </MenuItem>
             <HoveredLink href="/events" isDarkMode={isDarkMode}>Events</HoveredLink>
