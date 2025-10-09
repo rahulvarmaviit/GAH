@@ -56,10 +56,10 @@ export const MenuItem = ({
                 transition={transition}
                 layoutId="active" // layoutId ensures smooth animation
                 className={cn(
-                  "backdrop-blur-sm rounded-2xl overflow-hidden border shadow-xl",
+                  "rounded-2xl overflow-hidden border shadow-xl",
                   isDarkMode
-                    ? "bg-black/50 border-white/10"
-                    : "bg-white/90 border-black/10"
+                    ? "bg-white border-neutral-200"
+                    : "bg-black border-neutral-800"
                 )}
               >
                 <div className="h-full w-max p-4">
@@ -127,10 +127,10 @@ export const ProductItem = ({
         data-ai-hint={dataAiHint}
       />
       <div>
-        <h4 className={cn("text-xl font-bold mb-1", isDarkMode ? "text-white" : "text-black")}>
+        <h4 className={cn("text-xl font-bold mb-1", isDarkMode ? "text-black" : "text-white")}>
           {title}
         </h4>
-        <p className={cn("text-sm max-w-[10rem]", isDarkMode ? "text-neutral-300" : "text-neutral-700")}>
+        <p className={cn("text-sm max-w-[10rem]", isDarkMode ? "text-neutral-700" : "text-neutral-300")}>
           {description}
         </p>
       </div>
@@ -139,12 +139,20 @@ export const ProductItem = ({
 };
 
 export const HoveredLink = ({ children, isDarkMode, ...rest }: any) => {
+  const linkClassName = isDarkMode
+    ? "text-neutral-700 dark:text-neutral-200"
+    : "text-neutral-700 dark:text-neutral-200";
+
+  const hoverClassName = isDarkMode
+    ? "hover:text-black dark:hover:text-white"
+    : "hover:text-black dark:hover:text-black";
+    
   return (
     <Link
       {...rest}
       className={cn(
-        "text-neutral-700 dark:text-neutral-200 hover:text-black dark:hover:text-white",
-        isDarkMode ? "dark:text-neutral-200" : ""
+        linkClassName,
+        hoverClassName
       )}
     >
       {children}
