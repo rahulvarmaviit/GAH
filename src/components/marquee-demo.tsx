@@ -4,7 +4,7 @@ import { Marquee } from "@/components/ui/marquee"
 const Logos = {
   tailwindcss: () => (
     <svg
-      className={"h-[28px] sm:w-auto w-[140px]"}
+      className={"h-[28px] sm:w-auto w-[140px] fill-white"}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 262 33"
@@ -88,11 +88,11 @@ const Logos = {
 };
 
 export function MarqueeDemo2() {
-  const arr = [Logos.tailwindcss, Logos.framer, Logos.nextjs, Logos.aws]
+  const logos = [Logos.tailwindcss, Logos.framer, Logos.nextjs, Logos.aws];
 
   return (
     <Marquee className="bg-black">
-      {arr.map((Logo, index) => (
+      {[...logos, ...logos].map((Logo, index) => (
         <div
           key={index}
           className="relative h-full w-fit mx-[4rem] flex items-center justify-start"
