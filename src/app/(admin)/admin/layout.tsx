@@ -65,13 +65,6 @@ function AdminLayoutContent({ children }: { children: React.ReactNode }) {
         <SidebarFooter>
           <SidebarMenu>
                <SidebarMenuItem>
-                  <Link href="/admin/settings">
-                    <SidebarMenuButton icon={<Settings />} tooltip="Settings" isActive={pathname === '/admin/settings'}>
-                        Settings
-                    </SidebarMenuButton>
-                  </Link>
-               </SidebarMenuItem>
-               <SidebarMenuItem>
                   <Link href="/">
                     <SidebarMenuButton icon={<LogOut />} tooltip="Logout">
                         Logout
