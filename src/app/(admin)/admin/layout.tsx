@@ -53,7 +53,6 @@ function AdminLayoutContent({ children }: { children: React.ReactNode }) {
                     isActive={pathname === item.href}
                     icon={item.icon}
                     tooltip={item.label}
-                    asChild={false} 
                   >
                     {item.label}
                   </SidebarMenuButton>
@@ -70,9 +69,11 @@ function AdminLayoutContent({ children }: { children: React.ReactNode }) {
                   </SidebarMenuButton>
                </SidebarMenuItem>
                <SidebarMenuItem>
-                  <SidebarMenuButton icon={<LogOut />} tooltip="Logout">
-                      Logout
-                  </SidebarMenuButton>
+                  <Link href="/">
+                    <SidebarMenuButton icon={<LogOut />} tooltip="Logout">
+                        Logout
+                    </SidebarMenuButton>
+                  </Link>
                </SidebarMenuItem>
           </SidebarMenu>
         </SidebarFooter>
@@ -90,7 +91,7 @@ function AdminLayoutContent({ children }: { children: React.ReactNode }) {
                   </Avatar>
               </div>
           </header>
-          <main className="flex-1 p-4 md:p-6">{children}</main>
+          <main className="flex-1 flex flex-col p-4 md:p-6">{children}</main>
       </SidebarInset>
     </div>
   );
