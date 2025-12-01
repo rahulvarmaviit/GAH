@@ -1,74 +1,111 @@
 
 'use client';
-
-import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Mail, Lock, ArrowRight } from 'lucide-react';
-import { useState } from 'react';
+import { Briefcase, ShoppingBag, Calendar, ArrowUpRight } from 'lucide-react';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+import { Badge } from '@/components/ui/badge';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
-export default function AdminPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const recentActivities = [
+    { type: 'Product', name: 'Quantum Drone', status: 'Published', date: '2024-07-29' },
+    { type: 'Event', name: 'Future of AI Summit', status: 'Scheduled', date: '2024-07-28' },
+    { type: 'Service', name: 'Cloud Solutions', status: 'Updated', date: '2024-07-28' },
+    { type: 'Product', name: 'HoloWatch', status: 'Draft', date: '2024-07-27' },
+    { type: 'Event', name: 'Global Tech Networking Night', status: 'Cancelled', date: '2024-07-26' },
+]
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Login logic will be added here later
-    console.log('Logging in with:', { email, password });
-  };
-
+export default function AdminDashboard() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-black p-4">
-      <Card className="w-full max-w-md bg-slate-900/80 border-slate-700 text-white backdrop-blur-lg">
-        <CardHeader className="text-center">
-          <CardTitle className="text-3xl font-bold text-primary">Admin Panel</CardTitle>
-          <CardDescription className="text-slate-400">
-            Please sign in to continue
-          </CardDescription>
+    <div className="grid gap-6">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Services</CardTitle>
+            <Briefcase className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">6</div>
+            <p className="text-xs text-muted-foreground">
+              +2 from last month
+            </p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Products</CardTitle>
+            <ShoppingBag className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">5</div>
+            <p className="text-xs text-muted-foreground">
+              +1 from last month
+            </p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Upcoming Events</CardTitle>
+            <Calendar className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">4</div>
+            <p className="text-xs text-muted-foreground">
+              +1 scheduled for next month
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+
+      <Card>
+        <CardHeader>
+            <div className='flex justify-between items-center'>
+                 <CardTitle>Recent Activity</CardTitle>
+                 <Button asChild variant="outline" size="sm">
+                    <Link href="#">View All <ArrowUpRight className="ml-2 h-4 w-4" /></Link>
+                 </Button>
+            </div>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleLogin} className="space-y-6">
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="admin@example.com"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="bg-slate-800 border-slate-600 pl-10 text-white placeholder:text-slate-500 focus:border-primary focus:ring-primary"
-                />
-              </div>
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
-                <Input
-                  id="password"
-                  type="password"
-                  placeholder="••••••••"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="bg-slate-800 border-slate-600 pl-10 text-white placeholder:text-slate-500 focus:border-primary focus:ring-primary"
-                />
-              </div>
-            </div>
-            <Button type="submit" className="w-full" size="lg">
-              Sign In <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </form>
+            <Table>
+                <TableHeader>
+                    <TableRow>
+                        <TableHead>Type</TableHead>
+                        <TableHead>Name</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead>Date</TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    {recentActivities.map((activity, index) => (
+                        <TableRow key={index}>
+                            <TableCell>{activity.type}</TableCell>
+                            <TableCell className="font-medium">{activity.name}</TableCell>
+                            <TableCell>
+                                <Badge variant={
+                                    activity.status === 'Published' || activity.status === 'Scheduled' ? 'default' 
+                                    : activity.status === 'Updated' ? 'secondary'
+                                    : activity.status === 'Draft' ? 'outline'
+                                    : 'destructive'
+                                }>{activity.status}</Badge>
+                            </TableCell>
+                            <TableCell>{activity.date}</TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
         </CardContent>
       </Card>
     </div>
