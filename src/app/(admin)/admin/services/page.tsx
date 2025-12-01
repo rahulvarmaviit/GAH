@@ -21,8 +21,9 @@ import { MoreHorizontal, PlusCircle } from 'lucide-react';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel } from '@/components/ui/dropdown-menu';
+import { useEffect, useState } from 'react';
 
-const services = [
+const initialServices = [
     { title: "Cloud Solutions", description: "Scalable and secure cloud infrastructure.", status: "Active" },
     { title: "Cyber Security", description: "Advanced threat detection and prevention.", status: "Active" },
     { title: "AI & Machine Learning", description: "Unlock insights and automate processes.", status: "Inactive" },
@@ -32,6 +33,16 @@ const services = [
 ]
 
 export default function ServicesAdminPage() {
+  const [services, setServices] = useState(initialServices);
+
+  useEffect(() => {
+    const newServices = JSON.parse(localStorage.getItem('services') || '[]');
+    if (newServices.length > 0) {
+      setServices(prevServices => [...prevServices, ...newServices]);
+      localStorage.removeItem('services'); // Clear after adding
+    }
+  }, []);
+
   return (
     <Card>
       <CardHeader>
