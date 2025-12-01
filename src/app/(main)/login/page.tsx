@@ -16,14 +16,14 @@ import Link from 'next/link';
 
 export default function LoginPage() {
   return (
-    <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
+    <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center bg-slate-950 px-4 py-12 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8">
-        <Card className="bg-black border-slate-800 text-white">
+        <Card>
           <CardHeader className="text-center">
-            <CardTitle className="text-3xl font-bold tracking-tight text-primary">
+            <CardTitle className="text-3xl font-bold tracking-tight">
               Admin Sign In
             </CardTitle>
-            <CardDescription className="mt-2 text-slate-400">
+            <CardDescription className="mt-2">
               Enter your credentials to access the dashboard.
             </CardDescription>
           </CardHeader>
@@ -35,7 +35,6 @@ export default function LoginPage() {
                 type="email"
                 placeholder="admin@example.com"
                 required
-                className="bg-slate-900 border-slate-700 text-white focus:ring-primary"
               />
             </div>
             <div className="space-y-2">
@@ -52,7 +51,6 @@ export default function LoginPage() {
                 id="password"
                 type="password"
                 required
-                className="bg-slate-900 border-slate-700 text-white focus:ring-primary"
               />
             </div>
           </CardContent>
