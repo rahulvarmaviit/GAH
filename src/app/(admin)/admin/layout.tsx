@@ -39,7 +39,7 @@ function AdminLayoutContent({ children }: { children: React.ReactNode }) {
   const { isMobile } = useSidebar();
 
   return (
-    <div className="flex min-h-screen bg-slate-100 dark:bg-slate-950">
+    <div className="flex min-h-screen w-full bg-slate-100 dark:bg-slate-950">
       <Sidebar>
         <SidebarContent>
           <SidebarHeader>
@@ -77,7 +77,7 @@ function AdminLayoutContent({ children }: { children: React.ReactNode }) {
           </SidebarMenu>
         </SidebarFooter>
       </Sidebar>
-      <SidebarInset>
+      <SidebarInset className="flex-1 flex flex-col">
           <header className="flex h-14 items-center justify-between gap-4 border-b bg-background px-4 lg:h-[60px] lg:px-6">
               <div className="flex items-center gap-4">
                   {isMobile && <SidebarTrigger />}
