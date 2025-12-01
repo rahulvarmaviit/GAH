@@ -7,12 +7,13 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Upload } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Product } from '../page';
+import { useEffect, useState } from 'react';
 
 const productSchema = z.object({
     name: z.string().min(1, { message: "Name is required" }),
@@ -23,8 +24,13 @@ const productSchema = z.object({
     image: z.string().optional(),
 });
 
-export default function NewProductPage() {
+export default function EditProductPage() {
     const router = useRouter();
+    const params = useParams();
+    const { id } = params;
+    const productId = Number(id);
+    const [isMounted, setIsMounted] = useState(false);
+
     const form = useForm<z.infer<typeof productSchema>>({
         resolver: zodResolver(productSchema),
         defaultValues: {
@@ -33,19 +39,38 @@ export default function NewProductPage() {
             price: '',
             status: 'draft',
             category: 'tech',
-            image: 'https://picsum.photos/seed/3006/40/40' // default image
         }
     });
 
+    useEffect(() => {
+        setIsMounted(true);
+        if (typeof window !== 'undefined') {
+            const storedProducts: Product[] = JSON.parse(localStorage.getItem('products') || '[]');
+            const product = storedProducts[productId];
+            if (product) {
+                form.reset({
+                    ...product,
+                    price: product.price.replace('$', '')
+                });
+            }
+        }
+    }, [productId, form]);
+
     const onSubmit = (values: z.infer<typeof productSchema>) => {
-        const newProduct: Product = {
-            ...values,
-            price: `$${parseFloat(values.price).toFixed(2)}`
-        };
         const existingProducts: Product[] = JSON.parse(localStorage.getItem('products') || '[]');
-        localStorage.setItem('products', JSON.stringify([...existingProducts, newProduct]));
+        const updatedProduct: Product = {
+            ...existingProducts[productId],
+            ...values,
+            price: `$${parseFloat(values.price).toFixed(2)}`,
+        };
+        existingProducts[productId] = updatedProduct;
+        localStorage.setItem('products', JSON.stringify(existingProducts));
         router.push('/admin/products');
     };
+
+    if (!isMounted) {
+        return null; // or a loading spinner
+    }
 
     return (
         <Form {...form}>
@@ -53,13 +78,13 @@ export default function NewProductPage() {
                 <div className="mx-auto grid max-w-[59rem] flex-1 auto-rows-max gap-4">
                      <div className="flex items-center gap-4">
                          <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0">
-                            Add New Product
+                            Edit Product
                         </h1>
                         <div className="hidden items-center gap-2 md:ml-auto md:flex">
                             <Button variant="outline" size="sm" type="button" onClick={() => router.push('/admin/products')}>
                                 Discard
                             </Button>
-                            <Button size="sm" type="submit">Save Product</Button>
+                            <Button size="sm" type="submit">Update Product</Button>
                         </div>
                      </div>
                      <div className="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8">
@@ -67,7 +92,7 @@ export default function NewProductPage() {
                             <Card>
                                 <CardHeader>
                                     <CardTitle>Product Details</CardTitle>
-                                    <CardDescription>Provide the details for the new product.</CardDescription>
+                                    <CardDescription>Update the details for the product.</CardDescription>
                                 </CardHeader>
                                 <CardContent className='grid gap-6'>
                                      <FormField
@@ -147,7 +172,7 @@ export default function NewProductPage() {
                                         render={({ field }) => (
                                             <FormItem>
                                                 <FormLabel>Status</FormLabel>
-                                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                <Select onValueChange={field.onChange} value={field.value}>
                                                     <FormControl>
                                                         <SelectTrigger aria-label="Select status">
                                                             <SelectValue placeholder="Select status" />
@@ -176,7 +201,7 @@ export default function NewProductPage() {
                                         render={({ field }) => (
                                             <FormItem>
                                                 <FormLabel>Category</FormLabel>
-                                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                <Select onValueChange={field.onChange} value={field.value}>
                                                     <FormControl>
                                                         <SelectTrigger aria-label="Select category">
                                                             <SelectValue placeholder="Select category" />
@@ -202,7 +227,7 @@ export default function NewProductPage() {
                         <Button variant="outline" size="sm" type="button" onClick={() => router.push('/admin/products')}>
                             Discard
                         </Button>
-                        <Button size="sm" type="submit">Save Product</Button>
+                        <Button size="sm" type="submit">Update Product</Button>
                     </div>
                 </div>
             </form>
