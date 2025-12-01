@@ -7,12 +7,13 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Upload } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import type { Event } from '../page';
+import { useEffect, useState } from 'react';
 
 const eventSchema = z.object({
     name: z.string().min(1, { message: "Name is required" }),
@@ -23,8 +24,14 @@ const eventSchema = z.object({
     image: z.string().optional(),
 });
 
-export default function NewEventPage() {
+
+export default function EditEventPage() {
     const router = useRouter();
+    const params = useParams();
+    const { id } = params;
+    const eventId = Number(id);
+    const [isMounted, setIsMounted] = useState(false);
+
     const form = useForm<z.infer<typeof eventSchema>>({
         resolver: zodResolver(eventSchema),
         defaultValues: {
@@ -33,19 +40,35 @@ export default function NewEventPage() {
             location: '',
             date: '',
             status: 'draft',
-            image: `https://picsum.photos/seed/${Math.floor(Math.random() * 5000)}/40/40`
         }
     });
 
+    useEffect(() => {
+        setIsMounted(true);
+        if (typeof window !== 'undefined') {
+            const storedEvents: Event[] = JSON.parse(localStorage.getItem('events') || '[]');
+            const event = storedEvents[eventId];
+            if (event) {
+                form.reset(event);
+            }
+        }
+    }, [eventId, form]);
+
     const onSubmit = (values: z.infer<typeof eventSchema>) => {
-        const newEvent: Event = {
-            ...values,
-            status: values.status as 'draft' | 'scheduled' | 'archived' | 'cancelled', // ensure correct type
-        };
         const existingEvents: Event[] = JSON.parse(localStorage.getItem('events') || '[]');
-        localStorage.setItem('events', JSON.stringify([...existingEvents, newEvent]));
+        const updatedEvent: Event = {
+            ...existingEvents[eventId],
+            ...values,
+            status: values.status as 'draft' | 'scheduled' | 'archived' | 'cancelled',
+        };
+        existingEvents[eventId] = updatedEvent;
+        localStorage.setItem('events', JSON.stringify(existingEvents));
         router.push('/admin/events');
     };
+
+    if (!isMounted) {
+        return null; // or a loading spinner
+    }
 
     return (
         <Form {...form}>
@@ -53,13 +76,13 @@ export default function NewEventPage() {
                 <div className="mx-auto grid max-w-[59rem] flex-1 auto-rows-max gap-4">
                      <div className="flex items-center gap-4">
                          <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0">
-                            Add New Event
+                            Edit Event
                         </h1>
                         <div className="hidden items-center gap-2 md:ml-auto md:flex">
                             <Button variant="outline" size="sm" type="button" onClick={() => router.push('/admin/events')}>
                                 Discard
                             </Button>
-                            <Button size="sm" type="submit">Save Event</Button>
+                            <Button size="sm" type="submit">Update Event</Button>
                         </div>
                      </div>
                      <div className="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8">
@@ -67,10 +90,10 @@ export default function NewEventPage() {
                             <Card>
                                 <CardHeader>
                                     <CardTitle>Event Details</CardTitle>
-                                    <CardDescription>Provide the details for the new event.</CardDescription>
+                                    <CardDescription>Update the details for the event.</CardDescription>
                                 </CardHeader>
                                 <CardContent className='grid gap-6'>
-                                    <FormField
+                                     <FormField
                                         control={form.control}
                                         name="name"
                                         render={({ field }) => (
@@ -162,7 +185,7 @@ export default function NewEventPage() {
                                         render={({ field }) => (
                                             <FormItem>
                                                 <FormLabel>Status</FormLabel>
-                                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                <Select onValueChange={field.onChange} value={field.value}>
                                                     <FormControl>
                                                         <SelectTrigger aria-label="Select status">
                                                             <SelectValue placeholder="Select status" />
@@ -183,11 +206,11 @@ export default function NewEventPage() {
                             </Card>
                         </div>
                      </div>
-                     <div className="flex items-center justify-center gap-2 md:hidden">
-                        <Button variant="outline" size="sm" type='button' onClick={() => router.push('/admin/events')}>
+                      <div className="flex items-center justify-center gap-2 md:hidden">
+                        <Button variant="outline" size="sm" type="button" onClick={() => router.push('/admin/events')}>
                             Discard
                         </Button>
-                        <Button size="sm" type="submit">Save Event</Button>
+                        <Button size="sm" type="submit">Update Event</Button>
                     </div>
                 </div>
             </form>
