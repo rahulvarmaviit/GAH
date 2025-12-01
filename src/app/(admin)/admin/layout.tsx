@@ -32,6 +32,7 @@ const navItems = [
   { href: '/admin/services', label: 'Services', icon: <Briefcase /> },
   { href: '/admin/products', label: 'Products', icon: <ShoppingBag /> },
   { href: '/admin/events', label: 'Events', icon: <Calendar /> },
+  { href: '/admin/settings', label: 'Settings', icon: <Settings /> },
 ];
 
 function AdminLayoutContent({ children }: { children: React.ReactNode }) {
@@ -64,9 +65,11 @@ function AdminLayoutContent({ children }: { children: React.ReactNode }) {
         <SidebarFooter>
           <SidebarMenu>
                <SidebarMenuItem>
-                  <SidebarMenuButton icon={<Settings />} tooltip="Settings">
-                      Settings
-                  </SidebarMenuButton>
+                  <Link href="/admin/settings">
+                    <SidebarMenuButton icon={<Settings />} tooltip="Settings" isActive={pathname === '/admin/settings'}>
+                        Settings
+                    </SidebarMenuButton>
+                  </Link>
                </SidebarMenuItem>
                <SidebarMenuItem>
                   <Link href="/">
