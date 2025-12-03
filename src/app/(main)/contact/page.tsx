@@ -1,19 +1,20 @@
 
 'use client'
 import { useState } from 'react';
-import { Calendar, Clock, Globe, Video } from 'lucide-react';
+import { Calendar, Clock, Globe, Video, User, Mail, Plus, CheckCircle, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
 import { Calendar as CalendarComponent } from '@/components/ui/calendar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
 const timeSlots = [
   '9:00am', '9:30am', '10:00am', '10:30am', '11:00am', '11:30am',
   '12:00pm', '12:30pm', '1:00pm'
 ];
 
-const ContactCalendar = () => {
+const ContactCalendar = ({ onSelectTime }: { onSelectTime: (time: string) => void }) => {
   const [date, setDate] = useState<Date | undefined>(new Date(2025, 11, 4));
 
   return (
@@ -52,7 +53,12 @@ const ContactCalendar = () => {
           </div>
           <div className="space-y-2 h-80 overflow-y-auto">
             {timeSlots.map(time => (
-              <Button key={time} variant="outline" className="w-full justify-center bg-slate-800 border-slate-700 hover:bg-primary hover:text-primary-foreground">
+              <Button
+                key={time}
+                variant="outline"
+                className="w-full justify-center bg-slate-800 border-slate-700 hover:bg-primary hover:text-primary-foreground"
+                onClick={() => onSelectTime(time)}
+              >
                 {time}
               </Button>
             ))}
@@ -66,6 +72,21 @@ const ContactCalendar = () => {
 
 export default function ContactPage() {
   const [activeTab, setActiveTab] = useState<'form' | 'call'>('call');
+  const [step, setStep] = useState<'select-time' | 'enter-details' | 'confirmed'>('select-time');
+  const [selectedTime, setSelectedTime] = useState<string | null>(null);
+
+  const handleTimeSelect = (time: string) => {
+    setSelectedTime(time);
+    setStep('enter-details');
+  };
+  
+  const handleConfirm = () => {
+    setStep('confirmed');
+  };
+
+  const handleBack = () => {
+    setStep('select-time');
+  }
 
   return (
     <div className="bg-black text-white min-h-screen p-8 md:p-16">
@@ -93,7 +114,11 @@ export default function ContactPage() {
                 Fill Form
               </Button>
               <Button
-                onClick={() => setActiveTab('call')}
+                onClick={() => {
+                  setActiveTab('call');
+                  setStep('select-time'); // Reset booking flow
+                  setSelectedTime(null);
+                }}
                 className={cn(
                   "flex-1 justify-center",
                   activeTab === 'call' ? 'bg-slate-700 text-white' : 'bg-transparent text-muted-foreground'
@@ -150,32 +175,101 @@ export default function ContactPage() {
             )}
             {activeTab === 'call' && (
                 <div className='bg-slate-900 border border-slate-800 rounded-2xl p-4'>
-                    <div className='p-4'>
-                        <div className='flex items-center gap-4 mb-2'>
-                            <div className='w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center'>
-                                <span className='font-bold text-lg'>G</span>
+                    {step === 'select-time' && (
+                        <>
+                           <div className='p-4'>
+                                <div className='flex items-center gap-4 mb-2'>
+                                     <Avatar>
+                                        <AvatarFallback>T</AvatarFallback>
+                                    </Avatar>
+                                    <span className='text-muted-foreground'>Team - Global Acknowledgment</span>
+                                </div>
+                                <h2 className='text-3xl font-bold text-white mb-2'>30 Min Meeting</h2>
+                                <div className='space-y-2 text-muted-foreground'>
+                                    <div className='flex items-center gap-2'>
+                                        <Clock className='w-4 h-4' />
+                                        <span>30m</span>
+                                    </div>
+                                    <div className='flex items-center gap-2'>
+                                        <Video className='w-4 h-4' />
+                                        <span>Cal Video</span>
+                                    </div>
+                                    <div className='flex items-center gap-2'>
+                                        <Globe className='w-4 h-4' />
+                                        <span>Asia/Kolkata</span>
+                                    </div>
+                                </div>
                             </div>
-                            <span className='text-muted-foreground'>Team - Global Acknowledgment</span>
+                            <div className="border-t border-slate-800 mt-4 pt-4">
+                                <ContactCalendar onSelectTime={handleTimeSelect} />
+                            </div>
+                        </>
+                    )}
+                     {step === 'enter-details' && (
+                        <div className="p-6">
+                             <div className="flex items-center gap-4 mb-6">
+                                <Avatar>
+                                    <AvatarFallback>T</AvatarFallback>
+                                </Avatar>
+                                <span className='text-muted-foreground'>Team - Global Acknowledgment</span>
+                            </div>
+                            <h2 className="text-2xl font-bold text-white mb-2">30 Min Meeting</h2>
+                             <div className="space-y-2 text-muted-foreground mb-6">
+                                <div className='flex items-center gap-2'>
+                                    <Calendar className='w-4 h-4' />
+                                    <span>{selectedTime}, Thursday, December 4, 2025</span>
+                                </div>
+                                <div className='flex items-center gap-2'>
+                                    <Clock className='w-4 h-4' />
+                                    <span>30m</span>
+                                </div>
+                                <div className='flex items-center gap-2'>
+                                    <Video className='w-4 h-4' />
+                                    <span>Cal Video</span>
+                                </div>
+                                <div className='flex items-center gap-2'>
+                                    <Globe className='w-4 h-4' />
+                                    <span>Asia/Kolkata</span>
+                                </div>
+                            </div>
+
+                            <div className="space-y-4">
+                                <div>
+                                    <Label htmlFor="name" className="text-sm font-medium text-muted-foreground">Your name *</Label>
+                                    <Input id="name" className="bg-slate-800 border-slate-700 mt-1"/>
+                                </div>
+                                 <div>
+                                    <Label htmlFor="email" className="text-sm font-medium text-muted-foreground">Email address *</Label>
+                                    <Input id="email" type="email" className="bg-slate-800 border-slate-700 mt-1" />
+                                </div>
+                                <div>
+                                    <Label htmlFor="notes" className="text-sm font-medium text-muted-foreground">Additional notes</Label>
+                                    <Textarea id="notes" placeholder="Please share anything that will help prepare for our meeting." className="bg-slate-800 border-slate-700 mt-1" />
+                                </div>
+                                <Button variant="ghost" className="w-full justify-start p-0 h-auto hover:bg-transparent text-muted-foreground hover:text-white">
+                                    <Plus className="w-4 h-4 mr-2"/> Add guests
+                                </Button>
+                            </div>
+                             <p className="text-xs text-muted-foreground mt-6">
+                                By proceeding, you agree to our <a href="#" className="underline">Terms</a> and <a href="#" className="underline">Privacy Policy</a>.
+                            </p>
+                            <div className="flex justify-end gap-4 mt-6">
+                                <Button variant="outline" onClick={handleBack} className="bg-slate-800 border-slate-700">Back</Button>
+                                <Button onClick={handleConfirm}>Confirm</Button>
+                            </div>
                         </div>
-                        <h2 className='text-3xl font-bold text-white mb-2'>30 Min Meeting</h2>
-                        <div className='space-y-2 text-muted-foreground'>
-                            <div className='flex items-center gap-2'>
-                                <Clock className='w-4 h-4' />
-                                <span>30m</span>
-                            </div>
-                             <div className='flex items-center gap-2'>
-                                <Video className='w-4 h-4' />
-                                <span>Cal Video</span>
-                            </div>
-                             <div className='flex items-center gap-2'>
-                                <Globe className='w-4 h-4' />
-                                <span>Asia/Kolkata</span>
-                            </div>
+                    )}
+                    {step === 'confirmed' && (
+                        <div className="p-12 text-center flex flex-col items-center justify-center h-[400px]">
+                            <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
+                            <h2 className="text-2xl font-bold text-white mb-2">Booking Confirmed!</h2>
+                            <p className="text-muted-foreground mb-4">Your 30-minute meeting is scheduled.</p>
+                            <p className="text-muted-foreground text-sm">A confirmation email has been sent to you.</p>
+                            <Button variant="outline" onClick={() => setStep('select-time')} className="mt-8 bg-slate-800 border-slate-700">
+                                Schedule Another Meeting
+                            </Button>
                         </div>
-                    </div>
-                     <div className="border-t border-slate-800 mt-4 pt-4">
-                        <ContactCalendar />
-                    </div>
+                    )}
                 </div>
             )}
           </div>
