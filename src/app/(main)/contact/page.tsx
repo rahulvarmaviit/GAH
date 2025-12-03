@@ -1,110 +1,189 @@
 
-import Image from 'next/image';
-import { Mail, MapPin, Phone, Send } from 'lucide-react';
-
+'use client'
+import { useState } from 'react';
+import { Calendar, Clock, Globe, Video } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import Link from 'next/link';
+import { cn } from '@/lib/utils';
+import { Calendar as CalendarComponent } from '@/components/ui/calendar';
 
-export default function ContactPage() {
-    const heroImage = PlaceHolderImages.find(img => img.id === 'contact-hero');
+const timeSlots = [
+  '9:00am', '9:30am', '10:00am', '10:30am', '11:00am', '11:30am',
+  '12:00pm', '12:30pm', '1:00pm'
+];
+
+const ContactCalendar = () => {
+  const [date, setDate] = useState<Date | undefined>(new Date(2025, 11, 4));
 
   return (
-    <div className="flex flex-col">
-      <header className="relative pt-32 pb-16 md:pt-48 md:pb-24 bg-black">
-        <div className="container text-center">
-          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-primary">
-            Contact Us
-          </h1>
-          <p className="mx-auto max-w-[700px] text-slate-300 md:text-xl mt-4">
-            We&apos;d love to hear from you. Reach out with any questions,
-            comments, or partnership inquiries.
-          </p>
+    <div className="bg-black text-white p-6 rounded-lg max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="md:col-span-2">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-xl font-semibold">December 2025</h3>
+            <div className="flex items-center gap-2">
+              <Button variant="ghost" size="icon"><span className="sr-only">Previous month</span>{'<'}</Button>
+              <Button variant="ghost" size="icon"><span className="sr-only">Next month</span>{'>'}</Button>
+            </div>
+          </div>
+          <CalendarComponent
+            mode="single"
+            selected={date}
+            onSelect={setDate}
+            className="p-0"
+            classNames={{
+              head_cell: "text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]",
+              cell: "h-9 w-9 text-center text-sm p-0 relative [&:has([aria-selected])]:bg-primary-foreground first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
+              day: "h-9 w-9 p-0 font-normal rounded-md hover:bg-primary/90",
+              day_selected: "bg-white text-black hover:bg-white/90 focus:bg-white focus:text-black",
+              day_today: "bg-accent text-accent-foreground",
+              day_disabled: "text-muted-foreground opacity-50",
+            }}
+          />
         </div>
-      </header>
+        <div>
+          <div className="flex justify-between items-center mb-4">
+            <h4 className="font-semibold">Thu 04</h4>
+            <div className="flex items-center gap-2 text-sm">
+              <Button variant="ghost" size="sm" className="bg-slate-800">12h</Button>
+              <Button variant="ghost" size="sm">24h</Button>
+            </div>
+          </div>
+          <div className="space-y-2 h-80 overflow-y-auto">
+            {timeSlots.map(time => (
+              <Button key={time} variant="outline" className="w-full justify-center bg-slate-800 border-slate-700 hover:bg-primary hover:text-primary-foreground">
+                {time}
+              </Button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-      <main className="flex-1">
-        <section className="w-full py-12 md:py-24 bg-background">
-          <div className="container grid gap-12 px-4 md:px-6 lg:grid-cols-2 lg:gap-24">
-            <div className="space-y-8">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter text-primary">
-                  Get in Touch
-                </h2>
+
+export default function ContactPage() {
+  const [activeTab, setActiveTab] = useState<'form' | 'call'>('call');
+
+  return (
+    <div className="bg-black text-white min-h-screen p-8 md:p-16">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-3 h-6 bg-primary"></div>
+          <h1 className="text-3xl font-bold">Contact Us</h1>
+        </div>
+        <p className="text-muted-foreground max-w-2xl mb-12">
+          Ready to start your next project or have a question for our team? We&apos;d love to hear from you! Fill out the
+          form below, email us directly, or give us a call our team will get back to you as soon as possible.
+        </p>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Left Column */}
+          <div>
+            <div className="flex mb-8 border border-slate-700 rounded-lg p-1 max-w-xs">
+              <Button
+                onClick={() => setActiveTab('form')}
+                className={cn(
+                  "flex-1 justify-center",
+                  activeTab === 'form' ? 'bg-slate-700 text-white' : 'bg-transparent text-muted-foreground'
+                )}
+              >
+                Fill Form
+              </Button>
+              <Button
+                onClick={() => setActiveTab('call')}
+                className={cn(
+                  "flex-1 justify-center",
+                  activeTab === 'call' ? 'bg-slate-700 text-white' : 'bg-transparent text-muted-foreground'
+                )}
+              >
+                Book A Call
+              </Button>
+            </div>
+
+            <div className='mb-12'>
+                <h2 className="text-4xl font-bold mb-4">Let&apos;s talk ideas</h2>
                 <p className="text-muted-foreground">
-                  Fill out the form and our team will get back to you within 24
-                  hours.
+                    Schedule a call to discuss your project or get expert advice from our team.
                 </p>
-              </div>
-              <form className="space-y-6">
+            </div>
+
+            <div>
+                <h3 className="text-2xl font-bold mb-4">Address</h3>
+                <p className="text-muted-foreground">
+                    Global Acknowledgment Hub, Darga road, Near NIT <br/>
+                    Warangal, Telangana 506004, INDIA
+                </p>
+            </div>
+          </div>
+
+          {/* Right Column */}
+          <div>
+            {activeTab === 'form' && (
+              <form className="space-y-6 bg-slate-900/50 p-8 rounded-lg">
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                   <Input
                     placeholder="First Name"
-                    className="focus-visible:ring-primary/50 focus-visible:shadow-[0_0_12px_hsl(var(--primary)/0.3)]"
+                    className="bg-slate-800 border-slate-700 focus-visible:ring-primary/50"
                   />
                   <Input
                     placeholder="Last Name"
-                    className="focus-visible:ring-primary/50 focus-visible:shadow-[0_0_12px_hsl(var(--primary)/0.3)]"
+                    className="bg-slate-800 border-slate-700 focus-visible:ring-primary/50"
                   />
                 </div>
                 <Input
                   type="email"
                   placeholder="Email"
-                  className="focus-visible:ring-primary/50 focus-visible:shadow-[0_0_12px_hsl(var(--primary)/0.3)]"
+                  className="bg-slate-800 border-slate-700 focus-visible:ring-primary/50"
                 />
                 <Textarea
                   placeholder="Your Message"
                   rows={6}
-                  className="focus-visible:ring-primary/50 focus-visible:shadow-[0_0_12px_hsl(var(--primary)/0.3)]"
+                  className="bg-slate-800 border-slate-700 focus-visible:ring-primary/50"
                 />
                 <Button type="submit" size="lg" className="w-full">
-                  Send Message <Send className="ml-2 h-4 w-4" />
+                  Send Message
                 </Button>
               </form>
-            </div>
-            <div className="space-y-8 rounded-lg bg-black p-8 text-slate-50 lg:p-12">
-              <h3 className="text-2xl font-bold text-white">Contact Information</h3>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                    <MapPin className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-white">Our Address</h4>
-                    <p className="text-slate-300">
-                      123 Innovation Drive, Tech City, 54321
+            )}
+            {activeTab === 'call' && (
+                <div className='bg-slate-900 border border-slate-800 rounded-2xl p-4'>
+                    <div className='p-4'>
+                        <div className='flex items-center gap-4 mb-2'>
+                            <div className='w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center'>
+                                <span className='font-bold text-lg'>G</span>
+                            </div>
+                            <span className='text-muted-foreground'>Team - Global Acknowledgment</span>
+                        </div>
+                        <h2 className='text-3xl font-bold text-white mb-2'>30 Min Meeting</h2>
+                        <div className='space-y-2 text-muted-foreground'>
+                            <div className='flex items-center gap-2'>
+                                <Clock className='w-4 h-4' />
+                                <span>30m</span>
+                            </div>
+                             <div className='flex items-center gap-2'>
+                                <Video className='w-4 h-4' />
+                                <span>Cal Video</span>
+                            </div>
+                             <div className='flex items-center gap-2'>
+                                <Globe className='w-4 h-4' />
+                                <span>Asia/Kolkata</span>
+                            </div>
+                        </div>
+                    </div>
+                     <div className="border-t border-slate-800 mt-4 pt-4">
+                        <ContactCalendar />
+                    </div>
+                    <p className='text-center text-muted-foreground mt-4 text-sm'>
+                        Powered by Cal.com
                     </p>
-                  </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                    <Mail className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-white">Email Us</h4>
-                    <Link href="mailto:contact@acknowledgementhub.com" className="text-purple-400 hover:underline">
-                      contact@acknowledgementhub.com
-                    </Link>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                    <Phone className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-white">Call Us</h4>
-                    <Link href="tel:+1234567890" className="text-purple-400 hover:underline">
-                      (123) 456-7890
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
+            )}
           </div>
-        </section>
-      </main>
+        </div>
+      </div>
     </div>
   );
 }
