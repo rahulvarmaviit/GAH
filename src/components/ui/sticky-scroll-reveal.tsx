@@ -96,7 +96,7 @@ export const StickyScroll = ({
           <div className="h-40" />
         </div>
       </div>
-       <div className="hidden lg:block h-full w-80 sticky top-10">
+       <div className="hidden lg:block h-full w-80 sticky top-20">
             <motion.div
                 style={{ background: backgroundGradient }}
                 className={cn(
