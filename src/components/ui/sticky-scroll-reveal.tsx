@@ -62,10 +62,10 @@ export const StickyScroll = ({
       animate={{
         backgroundColor: backgroundColors[activeCard % backgroundColors.length],
       }}
-      className="relative p-10 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-10"
+      className="relative p-10 grid grid-cols-1 lg:grid-cols-2 gap-10"
       ref={ref}
     >
-      <div className="relative">
+      <div className="relative pl-12">
           {content.map((item, index) => (
             <div key={item.title + index} className="my-20 h-screen">
               <motion.h2
@@ -75,7 +75,7 @@ export const StickyScroll = ({
                 animate={{
                   opacity: activeCard === index ? 1 : 0.3,
                 }}
-                className="text-4xl font-bold text-slate-100"
+                className="text-5xl font-bold text-slate-100"
               >
                 {item.title}
               </motion.h2>
@@ -86,7 +86,7 @@ export const StickyScroll = ({
                 animate={{
                   opacity: activeCard === index ? 1 : 0.3,
                 }}
-                className="text-lg mt-10 max-w-sm text-slate-300"
+                className="text-xl mt-10 max-w-sm text-slate-300"
               >
                 {item.description}
               </motion.p>
@@ -94,19 +94,19 @@ export const StickyScroll = ({
           ))}
           <div className="h-40" />
       </div>
-       <div className="hidden lg:block h-full">
-            <div className="sticky top-1/4">
-                 <motion.div
-                    style={{ background: backgroundGradient }}
-                    className={cn(
-                    "h-96 w-96 rounded-md bg-white",
-                    contentClassName
-                    )}
-                >
-                    {content[activeCard].content ?? null}
-                </motion.div>
-            </div>
-       </div>
+      <div className="hidden lg:block h-full sticky top-1/4">
+        <div className="relative h-full w-full">
+            <motion.div
+            style={{ background: backgroundGradient }}
+            className={cn(
+                "h-96 w-96 rounded-md bg-white",
+                contentClassName
+            )}
+            >
+            {content[activeCard].content ?? null}
+            </motion.div>
+        </div>
+      </div>
     </motion.div>
   );
 };
