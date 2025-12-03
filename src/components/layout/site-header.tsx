@@ -138,37 +138,37 @@ function Navbar({ className, isDarkMode }: { className?: string, isDarkMode?: bo
 export function SiteHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showNav, setShowNav] = useState(true);
-  const scrollTimeout = React.useRef<NodeJS.Timeout | null>(null);
+  const lastScrollY = React.useRef(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-      setShowNav(false);
+        const currentScrollY = window.scrollY;
+        setIsScrolled(currentScrollY > 10);
 
-      if (scrollTimeout.current) {
-        clearTimeout(scrollTimeout.current);
-      }
-
-      scrollTimeout.current = setTimeout(() => {
-        setShowNav(true);
-      }, 250); // Show navbar if scrolling stops for 250ms
+        if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+            // Scrolling down
+            setShowNav(false);
+        } else {
+            // Scrolling up
+            setShowNav(true);
+        }
+        lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (scrollTimeout.current) {
-        clearTimeout(scrollTimeout.current);
-      }
     };
   }, []);
 
   return (
     <header className={cn(
-        "fixed top-0 left-0 right-0 z-50 bg-transparent transition-transform duration-300",
-        showNav ? "translate-y-0" : "-translate-y-full"
+        "fixed top-0 left-0 right-0 z-50 transition-transform duration-300",
+        showNav ? "translate-y-0" : "-translate-y-full",
       )}>
-        <div className="md:hidden container flex h-16 items-center justify-between bg-background/80 shadow-md backdrop-blur-sm">
+        <div className={cn("md:hidden container flex h-16 items-center justify-between shadow-md",
+             isScrolled ? "bg-background/80 backdrop-blur-sm" : "bg-transparent"
+        )}>
             <Logo />
             <MobileNav />
         </div>
