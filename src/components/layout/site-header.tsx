@@ -1,5 +1,6 @@
+
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   HoveredLink,
   Menu,
@@ -83,7 +84,7 @@ function Navbar({ className, isDarkMode }: { className?: string, isDarkMode?: bo
 
   return (
     <div
-      className={cn('fixed top-10 inset-x-0 max-w-4xl mx-auto z-50', className)}
+      className={cn('fixed top-10 inset-x-0 max-w-4xl mx-auto z-50 transition-transform duration-300', className)}
     >
       <Menu setActive={setActive} isDarkMode={isDarkMode}>
         <div className='flex items-center justify-start'>
@@ -136,17 +137,38 @@ function Navbar({ className, isDarkMode }: { className?: string, isDarkMode?: bo
 
 export function SiteHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [showNav, setShowNav] = useState(true);
 
   React.useEffect(() => {
     const handleScroll = () => {
+      const currentScrollY = window.scrollY;
       setIsScrolled(window.scrollY > 10);
+      
+      if (currentScrollY > 100) { // Add a threshold
+        if (currentScrollY > lastScrollY) {
+          // Scrolling down
+          setShowNav(true);
+        } else {
+          // Scrolling up
+          setShowNav(false);
+        }
+      } else {
+        setShowNav(true);
+      }
+
+      setLastScrollY(currentScrollY);
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
+    <header className={cn(
+        "fixed top-0 left-0 right-0 z-50 bg-transparent transition-transform duration-300",
+        showNav ? "translate-y-0" : "-translate-y-full"
+      )}>
         <div className="md:hidden container flex h-16 items-center justify-between bg-background/80 shadow-md backdrop-blur-sm">
             <Logo />
             <MobileNav />
