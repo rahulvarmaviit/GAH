@@ -116,7 +116,7 @@ export default function Home() {
               {features.map((feature) => (
                 <Card
                   key={feature.title}
-                  className="bg-slate-800/50 border-slate-700 text-slate-100 transform transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20"
+                  className="bg-slate-900/50 border-slate-800 text-slate-100 transform transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20"
                 >
                    {feature.image && (
                     <CardContent className="p-0">
