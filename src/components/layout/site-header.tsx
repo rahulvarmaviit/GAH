@@ -137,28 +137,31 @@ function Navbar({ className, isDarkMode }: { className?: string, isDarkMode?: bo
 
 export function SiteHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [showNav, setShowNav] = useState(true);
+  const scrollTimeout = React.useRef<NodeJS.Timeout | null>(null);
 
   React.useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
       setIsScrolled(window.scrollY > 10);
-      
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down
-        setShowNav(false);
-      } else {
-        // Scrolling up
-        setShowNav(true);
+      setShowNav(false);
+
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
       }
 
-      setLastScrollY(currentScrollY);
+      scrollTimeout.current = setTimeout(() => {
+        setShowNav(true);
+      }, 250); // Show navbar if scrolling stops for 250ms
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+    };
+  }, []);
 
   return (
     <header className={cn(
