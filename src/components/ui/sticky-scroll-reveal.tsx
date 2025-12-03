@@ -96,16 +96,18 @@ export const StickyScroll = ({
           <div className="h-40" />
         </div>
       </div>
-       <div className="hidden lg:block h-full w-80 sticky top-20">
-            <motion.div
-                style={{ background: backgroundGradient }}
-                className={cn(
-                "h-60 rounded-md bg-white",
-                contentClassName
-                )}
-            >
-                {content[activeCard].content ?? null}
-            </motion.div>
+       <div className="hidden lg:block h-full">
+            <div className="sticky top-40 h-60 w-80 overflow-hidden rounded-md">
+                <motion.div
+                    style={{ background: backgroundGradient }}
+                    className={cn(
+                    "h-full rounded-md bg-white",
+                    contentClassName
+                    )}
+                >
+                    {content[activeCard].content ?? null}
+                </motion.div>
+            </div>
        </div>
     </motion.div>
   );
