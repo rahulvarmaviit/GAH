@@ -65,9 +65,9 @@ export const StickyScroll = ({
       className="relative grid grid-cols-1 lg:grid-cols-[1fr_200px_1fr] gap-10 p-10"
       ref={ref}
     >
-      <div className="relative pl-12 lg:col-start-1">
+      <div className="relative lg:col-start-1">
           {content.map((item, index) => (
-            <div key={item.title + index} className="my-20 h-screen">
+            <div key={item.title + index} className="my-10 h-[60vh]">
               <motion.h2
                 initial={{
                   opacity: 0,
