@@ -77,7 +77,7 @@ const galleryItems = [
       'Streamline your workflow with our developer-friendly tools and documentation.',
     url: '#',
     image:
-      'https://images.unsplash.com/photo-1517694712202-1428bc3cd405?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudHxlbnwwfHx8fDE3NjAxOTU1NDJ8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      'https://images.unsplash.com/photo-1517694712202-1428bc3cd405?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxlbnwwfHx8fDE3NjAxOTU1NDJ8MA&ixlib=rb-4.1.0&q=80&w=1080',
   },
   {
     id: 'item-5',
@@ -95,7 +95,7 @@ export default function Home() {
     <div className="flex flex-col min-h-dvh">
       <main className="flex-1">
         <section>
-            <BackgroundPaths title="Welcome to Acknowledgement Hub" />
+            <BackgroundPaths title="Global Acknowledgment Hub" />
         </section>
 
         <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-slate-900 text-slate-50">
