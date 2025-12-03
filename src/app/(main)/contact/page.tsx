@@ -9,6 +9,7 @@ import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
 import { Calendar as CalendarComponent } from '@/components/ui/calendar';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { format } from 'date-fns';
 
 const timeSlots = [
   '9:00am', '9:30am', '10:00am', '10:30am', '11:00am', '11:30am',
@@ -16,23 +17,26 @@ const timeSlots = [
 ];
 
 const ContactCalendar = ({ onSelectTime }: { onSelectTime: (time: string) => void }) => {
-  const [date, setDate] = useState<Date | undefined>(new Date(2025, 11, 4));
+  const [date, setDate] = useState<Date | undefined>(new Date());
+  const [currentMonth, setCurrentMonth] = useState(new Date());
+
+  const handleMonthChange = (month: Date) => {
+    setCurrentMonth(month);
+  };
 
   return (
     <div className="bg-black text-white p-6 rounded-lg max-w-4xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="md:col-span-2">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-xl font-semibold">December 2025</h3>
-            <div className="flex items-center gap-2">
-              <Button variant="ghost" size="icon"><span className="sr-only">Previous month</span>{'<'}</Button>
-              <Button variant="ghost" size="icon"><span className="sr-only">Next month</span>{'>'}</Button>
-            </div>
+            <h3 className="text-xl font-semibold">{format(currentMonth, 'MMMM yyyy')}</h3>
           </div>
           <CalendarComponent
             mode="single"
             selected={date}
             onSelect={setDate}
+            month={currentMonth}
+            onMonthChange={handleMonthChange}
             className="p-0"
             classNames={{
               head_cell: "text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]",
@@ -46,7 +50,7 @@ const ContactCalendar = ({ onSelectTime }: { onSelectTime: (time: string) => voi
         </div>
         <div>
           <div className="flex justify-between items-center mb-4">
-            <h4 className="font-semibold">Thu 04</h4>
+            <h4 className="font-semibold">{date ? format(date, 'EEE dd') : 'Select a date'}</h4>
             <div className="flex items-center gap-2 text-sm">
               <Button variant="ghost" size="sm" className="bg-slate-800">12h</Button>
               <Button variant="ghost" size="sm">24h</Button>
@@ -59,6 +63,7 @@ const ContactCalendar = ({ onSelectTime }: { onSelectTime: (time: string) => voi
                 variant="outline"
                 className="w-full justify-center bg-slate-800 border-slate-700 hover:bg-primary hover:text-primary-foreground"
                 onClick={() => onSelectTime(time)}
+                disabled={!date}
               >
                 {time}
               </Button>
@@ -75,6 +80,7 @@ export default function ContactPage() {
   const [activeTab, setActiveTab] = useState<'form' | 'call'>('call');
   const [step, setStep] = useState<'select-time' | 'enter-details' | 'confirmed'>('select-time');
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
 
   const handleTimeSelect = (time: string) => {
     setSelectedTime(time);
@@ -206,7 +212,7 @@ export default function ContactPage() {
                             </div>
                         </>
                     )}
-                     {step === 'enter-details' && (
+                     {step === 'enter-details' && selectedDate && selectedTime && (
                         <div className="p-6">
                              <div className="flex items-center gap-4 mb-6">
                                 <Avatar>
@@ -218,7 +224,7 @@ export default function ContactPage() {
                              <div className="space-y-2 text-muted-foreground mb-6">
                                 <div className='flex items-center gap-2'>
                                     <Calendar className='w-4 h-4' />
-                                    <span>{selectedTime}, Thursday, December 4, 2025</span>
+                                    <span>{selectedTime}, {format(selectedDate, 'EEEE, MMMM d, yyyy')}</span>
                                 </div>
                                 <div className='flex items-center gap-2'>
                                     <Clock className='w-4 h-4' />
@@ -279,5 +285,7 @@ export default function ContactPage() {
     </div>
   );
 }
+
+    
 
     
