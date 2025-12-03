@@ -13,21 +13,8 @@ import { MobileNav } from './mobile-nav';
 import { Logo } from '../logo';
 import Link from 'next/link';
 
-function Navbar({ className, isDarkMode }: { className?: string, isDarkMode?: boolean }) {
-  const [active, setActive] = useState<string | null>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setActive(null);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
+function Navbar({ className, isDarkMode, active, setActive }: { className?: string, isDarkMode?: boolean, active: string | null, setActive: (active: string | null) => void }) {
+  
   const services = [
     {
       title: 'Cloud Solutions',
@@ -151,10 +138,15 @@ export function SiteHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showNav, setShowNav] = useState(true);
   const lastScrollY = React.useRef(0);
+  const [active, setActive] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
         const currentScrollY = window.scrollY;
+        if (currentScrollY > 10) {
+          setActive(null);
+        }
+
         setIsScrolled(currentScrollY > 10);
 
         if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
@@ -185,7 +177,7 @@ export function SiteHeader() {
             <MobileNav />
         </div>
         <div className="hidden md:block">
-            <Navbar isDarkMode={!isScrolled} />
+            <Navbar isDarkMode={!isScrolled} active={active} setActive={setActive} />
         </div>
     </header>
   );
