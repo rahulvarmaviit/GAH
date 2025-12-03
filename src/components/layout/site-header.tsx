@@ -145,15 +145,11 @@ export function SiteHeader() {
       const currentScrollY = window.scrollY;
       setIsScrolled(window.scrollY > 10);
       
-      if (currentScrollY > 100) { // Add a threshold
-        if (currentScrollY > lastScrollY) {
-          // Scrolling down
-          setShowNav(true);
-        } else {
-          // Scrolling up
-          setShowNav(false);
-        }
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down
+        setShowNav(false);
       } else {
+        // Scrolling up
         setShowNav(true);
       }
 
