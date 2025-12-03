@@ -10,14 +10,14 @@ import { cn } from '@/lib/utils';
 import { Calendar as CalendarComponent } from '@/components/ui/calendar';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { format } from 'date-fns';
+import { useToast } from '@/hooks/use-toast';
 
 const timeSlots = [
   '9:00am', '9:30am', '10:00am', '10:30am', '11:00am', '11:30am',
   '12:00pm', '12:30pm', '1:00pm'
 ];
 
-const ContactCalendar = ({ onSelectTime }: { onSelectTime: (time: string) => void }) => {
-  const [date, setDate] = useState<Date | undefined>(new Date());
+const ContactCalendar = ({ onSelectTime, selectedDate, onDateChange }: { onSelectTime: (time: string) => void, selectedDate: Date | undefined, onDateChange: (date: Date | undefined) => void }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
 
   const handleMonthChange = (month: Date) => {
@@ -33,8 +33,8 @@ const ContactCalendar = ({ onSelectTime }: { onSelectTime: (time: string) => voi
           </div>
           <CalendarComponent
             mode="single"
-            selected={date}
-            onSelect={setDate}
+            selected={selectedDate}
+            onSelect={onDateChange}
             month={currentMonth}
             onMonthChange={handleMonthChange}
             className="p-0"
@@ -50,7 +50,7 @@ const ContactCalendar = ({ onSelectTime }: { onSelectTime: (time: string) => voi
         </div>
         <div>
           <div className="flex justify-between items-center mb-4">
-            <h4 className="font-semibold">{date ? format(date, 'EEE dd') : 'Select a date'}</h4>
+            <h4 className="font-semibold">{selectedDate ? format(selectedDate, 'EEE dd') : 'Select a date'}</h4>
             <div className="flex items-center gap-2 text-sm">
               <Button variant="ghost" size="sm" className="bg-slate-800">12h</Button>
               <Button variant="ghost" size="sm">24h</Button>
@@ -63,7 +63,7 @@ const ContactCalendar = ({ onSelectTime }: { onSelectTime: (time: string) => voi
                 variant="outline"
                 className="w-full justify-center bg-slate-800 border-slate-700 hover:bg-primary hover:text-primary-foreground"
                 onClick={() => onSelectTime(time)}
-                disabled={!date}
+                disabled={!selectedDate}
               >
                 {time}
               </Button>
@@ -77,19 +77,67 @@ const ContactCalendar = ({ onSelectTime }: { onSelectTime: (time: string) => voi
 
 
 export default function ContactPage() {
+  const { toast } = useToast();
   const [activeTab, setActiveTab] = useState<'form' | 'call'>('call');
   const [step, setStep] = useState<'select-time' | 'enter-details' | 'confirmed'>('select-time');
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
+  
+  // State for contact form
+  const [contactForm, setContactForm] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    message: ''
+  });
+
+  // State for booking form
+  const [bookingForm, setBookingForm] = useState({
+    name: '',
+    email: '',
+    notes: ''
+  });
 
   const handleTimeSelect = (time: string) => {
     setSelectedTime(time);
     setStep('enter-details');
   };
   
-  const handleConfirm = () => {
+  const handleConfirm = (e: React.FormEvent) => {
+    e.preventDefault();
+    const recipient = 'venubull07ff@gmail.com';
+    const subject = 'New Meeting Booking';
+    const body = `
+      New booking request:
+      Name: ${bookingForm.name}
+      Email: ${bookingForm.email}
+      Date: ${selectedDate ? format(selectedDate, 'PPP') : 'Not selected'}
+      Time: ${selectedTime}
+      Notes: ${bookingForm.notes}
+    `;
+    window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setStep('confirmed');
+    setBookingForm({ name: '', email: '', notes: '' }); // Reset form
   };
+
+  const handleContactFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const recipient = 'venubull07ff@gmail.com';
+    const subject = 'New Contact Form Submission';
+    const body = `
+      New message from your website:
+      Name: ${contactForm.firstName} ${contactForm.lastName}
+      Email: ${contactForm.email}
+      Message:
+      ${contactForm.message}
+    `;
+    window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    toast({
+        title: "Form submitted",
+        description: "Your default email client has been opened to send the message.",
+    });
+    setContactForm({ firstName: '', lastName: '', email: '', message: '' }); // Reset form
+  }
 
   const handleBack = () => {
     setStep('select-time');
@@ -154,26 +202,38 @@ export default function ContactPage() {
           {/* Right Column */}
           <div>
             {activeTab === 'form' && (
-              <form className="space-y-6 bg-slate-900/50 p-8 rounded-lg">
+              <form onSubmit={handleContactFormSubmit} className="space-y-6 bg-slate-900/50 p-8 rounded-lg">
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                   <Input
                     placeholder="First Name"
                     className="bg-slate-800 border-slate-700 focus-visible:ring-primary/50"
+                    value={contactForm.firstName}
+                    onChange={(e) => setContactForm({...contactForm, firstName: e.target.value})}
+                    required
                   />
                   <Input
                     placeholder="Last Name"
                     className="bg-slate-800 border-slate-700 focus-visible:ring-primary/50"
+                    value={contactForm.lastName}
+                    onChange={(e) => setContactForm({...contactForm, lastName: e.target.value})}
+                    required
                   />
                 </div>
                 <Input
                   type="email"
                   placeholder="Email"
                   className="bg-slate-800 border-slate-700 focus-visible:ring-primary/50"
+                  value={contactForm.email}
+                  onChange={(e) => setContactForm({...contactForm, email: e.target.value})}
+                  required
                 />
                 <Textarea
                   placeholder="Your Message"
                   rows={6}
                   className="bg-slate-800 border-slate-700 focus-visible:ring-primary/50"
+                  value={contactForm.message}
+                  onChange={(e) => setContactForm({...contactForm, message: e.target.value})}
+                  required
                 />
                 <Button type="submit" size="lg" className="w-full">
                   Send Message
@@ -208,11 +268,12 @@ export default function ContactPage() {
                                 </div>
                             </div>
                             <div className="border-t border-slate-800 mt-4 pt-4">
-                                <ContactCalendar onSelectTime={handleTimeSelect} />
+                                <ContactCalendar onSelectTime={handleTimeSelect} selectedDate={selectedDate} onDateChange={setSelectedDate} />
                             </div>
                         </>
                     )}
                      {step === 'enter-details' && selectedDate && selectedTime && (
+                       <form onSubmit={handleConfirm}>
                         <div className="p-6">
                              <div className="flex items-center gap-4 mb-6">
                                 <Avatar>
@@ -243,15 +304,15 @@ export default function ContactPage() {
                             <div className="space-y-4">
                                 <div>
                                     <Label htmlFor="name" className="text-sm font-medium text-muted-foreground">Your name *</Label>
-                                    <Input id="name" className="bg-slate-800 border-slate-700 mt-1"/>
+                                    <Input id="name" className="bg-slate-800 border-slate-700 mt-1" value={bookingForm.name} onChange={(e) => setBookingForm({...bookingForm, name: e.target.value})} required/>
                                 </div>
                                  <div>
                                     <Label htmlFor="email" className="text-sm font-medium text-muted-foreground">Email address *</Label>
-                                    <Input id="email" type="email" className="bg-slate-800 border-slate-700 mt-1" />
+                                    <Input id="email" type="email" className="bg-slate-800 border-slate-700 mt-1" value={bookingForm.email} onChange={(e) => setBookingForm({...bookingForm, email: e.target.value})} required/>
                                 </div>
                                 <div>
                                     <Label htmlFor="notes" className="text-sm font-medium text-muted-foreground">Additional notes</Label>
-                                    <Textarea id="notes" placeholder="Please share anything that will help prepare for our meeting." className="bg-slate-800 border-slate-700 mt-1" />
+                                    <Textarea id="notes" placeholder="Please share anything that will help prepare for our meeting." className="bg-slate-800 border-slate-700 mt-1" value={bookingForm.notes} onChange={(e) => setBookingForm({...bookingForm, notes: e.target.value})}/>
                                 </div>
                                 <Button variant="ghost" className="w-full justify-start p-0 h-auto hover:bg-transparent text-muted-foreground hover:text-white">
                                     <Plus className="w-4 h-4 mr-2"/> Add guests
@@ -261,10 +322,11 @@ export default function ContactPage() {
                                 By proceeding, you agree to our <a href="#" className="underline">Terms</a> and <a href="#" className="underline">Privacy Policy</a>.
                             </p>
                             <div className="flex justify-end gap-4 mt-6">
-                                <Button variant="outline" onClick={handleBack} className="bg-slate-800 border-slate-700">Back</Button>
-                                <Button onClick={handleConfirm}>Confirm</Button>
+                                <Button variant="outline" onClick={handleBack} className="bg-slate-800 border-slate-700" type="button">Back</Button>
+                                <Button type="submit">Confirm</Button>
                             </div>
                         </div>
+                        </form>
                     )}
                     {step === 'confirmed' && (
                         <div className="p-12 text-center flex flex-col items-center justify-center h-[400px]">
@@ -285,7 +347,3 @@ export default function ContactPage() {
     </div>
   );
 }
-
-    
-
-    
