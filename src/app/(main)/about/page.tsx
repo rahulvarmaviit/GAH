@@ -158,7 +158,7 @@ function AboutPageClient() {
             >
               <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">Our Purpose</h2>
               <p className="text-lg text-slate-300 leading-relaxed">
-                Our purpose is to help companies improve business functions, operate securely, and adopt digital innovation that creates measurable impact. We deliver end-to-end solutions in cloud, cybersecurity, intelligence, and intelligent automation to build resilient and high-performing digital ecosystems.
+                We exist to enable businesses to innovate fearlessly, operate securely, and adopt digital transformation without complexity. We combine human insight, engineering excellence, and intelligent automation to build platforms that elevate efficiency and drive measurable growth.
               </p>
             </motion.div>
             <motion.div
