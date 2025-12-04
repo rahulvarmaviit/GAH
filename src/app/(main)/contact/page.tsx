@@ -145,7 +145,7 @@ export default function ContactPage() {
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800 animate-gradient">
             Contact Us
           </h1>
-          <p className="mx-auto max-w-[700px] text-slate-300/80 md:text-xl mt-4">
+          <p className="mx-auto max-w-[700px] text-slate-300 md:text-xl mt-4">
             Ready to start your next project or have a question? We&apos;d love to hear from you.
           </p>
         </div>
@@ -185,14 +185,14 @@ export default function ContactPage() {
 
                 <div className='mb-12 text-center'>
                     <h2 className="text-4xl font-bold mb-4 text-white">Let's talk ideas</h2>
-                    <p className="text-foreground/80">
+                    <p className="text-slate-300">
                         Schedule a call to discuss your project or get expert advice from our team.
                     </p>
                 </div>
 
                 <div className="text-center">
                     <h3 className="text-2xl font-bold mb-4 text-white">Address</h3>
-                    <p className="text-foreground/80">
+                    <p className="text-slate-300">
                         Global Acknowledgment Hub, Darga road, Near NIT <br/>
                         Warangal, Telangana 506004, INDIA
                     </p>
@@ -249,10 +249,10 @@ export default function ContactPage() {
                                         <Avatar>
                                             <AvatarFallback>T</AvatarFallback>
                                         </Avatar>
-                                        <span className='text-foreground/80'>Team - Global Acknowledgment</span>
+                                        <span className='text-slate-300'>Team - Global Acknowledgment</span>
                                     </div>
                                     <h2 className='text-3xl font-bold text-white mb-2'>30 Min Meeting</h2>
-                                    <div className='space-y-2 text-foreground/80'>
+                                    <div className='space-y-2 text-slate-300'>
                                         <div className='flex items-center gap-2'>
                                             <Clock className='w-4 h-4' />
                                             <span>30m</span>
@@ -279,10 +279,10 @@ export default function ContactPage() {
                                     <Avatar>
                                         <AvatarFallback>T</AvatarFallback>
                                     </Avatar>
-                                    <span className='text-foreground/80'>Team - Global Acknowledgment</span>
+                                    <span className='text-slate-300'>Team - Global Acknowledgment</span>
                                 </div>
                                 <h2 className="text-2xl font-bold text-white mb-2">30 Min Meeting</h2>
-                                <div className="space-y-2 text-foreground/80 mb-6">
+                                <div className="space-y-2 text-slate-300 mb-6">
                                     <div className='flex items-center gap-2'>
                                         <Calendar className='w-4 h-4' />
                                         <span>{selectedTime}, {format(selectedDate, 'EEEE, MMMM d, yyyy')}</span>
@@ -303,22 +303,22 @@ export default function ContactPage() {
 
                                 <div className="space-y-4">
                                     <div>
-                                        <Label htmlFor="name" className="text-sm font-medium text-foreground/80">Your name *</Label>
+                                        <Label htmlFor="name" className="text-sm font-medium text-slate-300">Your name *</Label>
                                         <Input id="name" className="bg-transparent border-border mt-1" value={bookingForm.name} onChange={(e) => setBookingForm({...bookingForm, name: e.target.value})} required/>
                                     </div>
                                     <div>
-                                        <Label htmlFor="email" className="text-sm font-medium text-foreground/80">Email address *</Label>
+                                        <Label htmlFor="email" className="text-sm font-medium text-slate-300">Email address *</Label>
                                         <Input id="email" type="email" className="bg-transparent border-border mt-1" value={bookingForm.email} onChange={(e) => setBookingForm({...bookingForm, email: e.target.value})} required/>
                                     </div>
                                     <div>
-                                        <Label htmlFor="notes" className="text-sm font-medium text-foreground/80">Additional notes</Label>
+                                        <Label htmlFor="notes" className="text-sm font-medium text-slate-300">Additional notes</Label>
                                         <Textarea id="notes" placeholder="Please share anything that will help prepare for our meeting." className="bg-transparent border-border mt-1" value={bookingForm.notes} onChange={(e) => setBookingForm({...bookingForm, notes: e.target.value})}/>
                                     </div>
-                                    <Button variant="ghost" className="w-full justify-start p-0 h-auto hover:bg-transparent text-foreground/80 hover:text-white">
+                                    <Button variant="ghost" className="w-full justify-start p-0 h-auto hover:bg-transparent text-slate-300 hover:text-white">
                                         <Plus className="w-4 h-4 mr-2"/> Add guests
                                     </Button>
                                 </div>
-                                <p className="text-xs text-foreground/80 mt-6">
+                                <p className="text-xs text-slate-400 mt-6">
                                     By proceeding, you agree to our <a href="#" className="underline">Terms</a> and <a href="#" className="underline">Privacy Policy</a>.
                                 </p>
                                 <div className="flex justify-end gap-4 mt-6">
@@ -332,8 +332,8 @@ export default function ContactPage() {
                             <div className="p-12 text-center flex flex-col items-center justify-center h-[400px]">
                                 <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
                                 <h2 className="text-2xl font-bold text-white mb-2">Booking Confirmed!</h2>
-                                <p className="text-foreground/80 mb-4">Your 30-minute meeting is scheduled.</p>
-                                <p className="text-foreground/80 text-sm">A confirmation email has been sent to you.</p>
+                                <p className="text-slate-300 mb-4">Your 30-minute meeting is scheduled.</p>
+                                <p className="text-slate-400 text-sm">A confirmation email has been sent to you.</p>
                                 <Button variant="outline" onClick={() => setStep('select-time')} className="mt-8 bg-transparent border-border">
                                     Schedule Another Meeting
                                 </Button>
@@ -348,3 +348,5 @@ export default function ContactPage() {
     </div>
   );
 }
+
+    
