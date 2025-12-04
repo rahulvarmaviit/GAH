@@ -200,7 +200,7 @@ export default function ContactPage() {
             </div>
 
             {/* Right Column */}
-            <div>
+            <div className="lg:min-h-[700px] flex flex-col justify-center">
                 {activeTab === 'form' && (
                 <form onSubmit={handleContactFormSubmit} className="space-y-6 bg-transparent border border-border p-8 rounded-lg">
                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
