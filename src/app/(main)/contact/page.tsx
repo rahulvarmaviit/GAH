@@ -144,7 +144,7 @@ export default function ContactPage() {
 
   return (
     <div className="flex flex-col bg-background">
-       <header className="py-32 md:py-48 text-center bg-black">
+      <header className="py-32 md:py-48 text-center bg-black">
         <div className="container">
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-600 to-purple-800 animate-gradient">
             Contact Us
@@ -159,40 +159,42 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto w-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Left Column */}
-            <div>
-                <div className="flex mb-8 border border-slate-700 rounded-lg p-1 max-w-xs">
-                <Button
-                    onClick={() => setActiveTab('form')}
-                    className={cn(
-                    "flex-1 justify-center",
-                    activeTab === 'form' ? 'bg-slate-700 text-white' : 'bg-transparent text-muted-foreground'
-                    )}
-                >
-                    Fill Form
-                </Button>
-                <Button
-                    onClick={() => {
-                    setActiveTab('call');
-                    setStep('select-time'); // Reset booking flow
-                    setSelectedTime(null);
-                    }}
-                    className={cn(
-                    "flex-1 justify-center",
-                    activeTab === 'call' ? 'bg-slate-700 text-white' : 'bg-transparent text-muted-foreground'
-                    )}
-                >
-                    Book A Call
-                </Button>
+            <div className="flex flex-col gap-8">
+                <div className="flex justify-center">
+                    <div className="flex mb-8 border border-slate-700 rounded-lg p-1 max-w-xs">
+                        <Button
+                            onClick={() => setActiveTab('form')}
+                            className={cn(
+                            "flex-1 justify-center",
+                            activeTab === 'form' ? 'bg-slate-700 text-white' : 'bg-transparent text-muted-foreground'
+                            )}
+                        >
+                            Fill Form
+                        </Button>
+                        <Button
+                            onClick={() => {
+                            setActiveTab('call');
+                            setStep('select-time'); // Reset booking flow
+                            setSelectedTime(null);
+                            }}
+                            className={cn(
+                            "flex-1 justify-center",
+                            activeTab === 'call' ? 'bg-slate-700 text-white' : 'bg-transparent text-muted-foreground'
+                            )}
+                        >
+                            Book A Call
+                        </Button>
+                    </div>
                 </div>
 
-                <div className='mb-12'>
+                <div className='mb-12 text-center'>
                     <h2 className="text-4xl font-bold mb-4">Let's talk ideas</h2>
                     <p className="text-muted-foreground">
                         Schedule a call to discuss your project or get expert advice from our team.
                     </p>
                 </div>
 
-                <div>
+                <div className="text-center">
                     <h3 className="text-2xl font-bold mb-4">Address</h3>
                     <p className="text-muted-foreground">
                         Global Acknowledgment Hub, Darga road, Near NIT <br/>
@@ -350,3 +352,5 @@ export default function ContactPage() {
     </div>
   );
 }
+
+    
