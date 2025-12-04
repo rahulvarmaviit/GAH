@@ -114,40 +114,40 @@ export default function Home() {
             </div>
             <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:max-w-none lg:grid-cols-3 mt-12">
               {features.map((feature) => (
-                <div key={feature.title} className="group relative">
-                  <div className="absolute -inset-0.5 rounded-lg bg-gradient-to-r from-purple-600 to-blue-500 opacity-0 blur transition duration-500 group-hover:opacity-75"></div>
-                  <Card
-                    className="relative h-full bg-slate-900/80 border-slate-800 text-slate-100 backdrop-blur-sm"
-                  >
-                    {feature.image && (
-                      <CardContent className="p-0">
-                        <Image
-                          src={feature.image.imageUrl}
-                          alt={feature.image.description}
-                          width={600}
-                          height={400}
-                          className="rounded-t-lg object-cover aspect-[3/2] opacity-80 group-hover:opacity-100 transition-opacity"
-                          data-ai-hint={feature.image.imageHint}
-                        />
-                      </CardContent>
-                    )}
-                    <CardHeader>
+                <Card
+                  key={feature.title}
+                  className="group h-full bg-slate-900/80 border-slate-800 text-slate-100 backdrop-blur-sm overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 flex flex-col"
+                >
+                  {feature.image && (
+                    <div className="overflow-hidden">
+                       <Image
+                        src={feature.image.imageUrl}
+                        alt={feature.image.description}
+                        width={600}
+                        height={400}
+                        className="rounded-t-lg object-cover aspect-[3/2] transition-transform duration-300 group-hover:scale-110"
+                        data-ai-hint={feature.image.imageHint}
+                      />
+                    </div>
+                  )}
+                  <div className="p-6 flex flex-col flex-grow">
+                    <CardHeader className="p-0">
                       <div className="flex items-center gap-4">
                         {feature.icon}
                         <CardTitle className="text-2xl">{feature.title}</CardTitle>
                       </div>
                       <CardDescription className="text-slate-300 pt-2">{feature.description}</CardDescription>
                     </CardHeader>
-                    <CardContent>
-                      <Button asChild variant="link" className="p-0 text-accent">
+                    <CardContent className="p-0 mt-auto pt-6">
+                      <Button asChild variant="secondary" className="w-full bg-slate-800 text-slate-100 hover:bg-slate-700">
                         <Link href={feature.link}>
                           Explore {feature.title.split(' ')[1]}
-                          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                          <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
                       </Button>
                     </CardContent>
-                  </Card>
-                </div>
+                  </div>
+                </Card>
               ))}
             </div>
           </div>
