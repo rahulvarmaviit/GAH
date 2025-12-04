@@ -116,7 +116,7 @@ export default function Home() {
               {features.map((feature) => (
                 <Card
                   key={feature.title}
-                  className="group h-full bg-slate-900 border-slate-800 text-slate-100 backdrop-blur-sm overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 flex flex-col"
+                  className="group h-full bg-gray-800/20 border-gray-700 text-slate-100 overflow-hidden transition-all duration-300 flex flex-col relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-purple-500/10 before:to-white/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300"
                 >
                   {feature.image && (
                     <div className="overflow-hidden">
