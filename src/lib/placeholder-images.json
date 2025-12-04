@@ -15,25 +15,25 @@
     {
       "id": "feature-products",
       "description": "Sleek and modern electronic gadgets on a table",
-      "imageUrl": "https://picsum.photos/seed/1002/600/400",
+      "imageUrl": "https://images.unsplash.com/photo-1717996563514-e3519f9ef9f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBnYWRnZXRzfGVufDB8fHx8MTc2NDc1Mzc4MHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "modern gadgets"
     },
     {
       "id": "feature-events",
       "description": "Large conference hall with an audience listening to a speaker",
-      "imageUrl": "https://picsum.photos/seed/1003/600/400",
+      "imageUrl": "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb25mZXJlbmNlJTIwYXVkaWVuY2V8ZW58MHx8fHwxNzY0NzgzNjMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "conference audience"
     },
     {
       "id": "service-1",
       "description": "Cloud computing and data storage concept",
-      "imageUrl": "https://picsum.photos/seed/2001/600/400",
+      "imageUrl": "https://images.unsplash.com/photo-1667984390535-6d03cff0b11a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjbG91ZCUyMGNvbXB1dGluZ3xlbnwwfHx8fDE3NjQ3MzA4MDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "cloud computing"
     },
     {
       "id": "service-2",
       "description": "Cybersecurity expert monitoring network traffic",
-      "imageUrl": "https://picsum.photos/seed/2002/600/400",
+      "imageUrl": "https://images.unsplash.com/photo-1620825937374-87fc7d6bddc2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjeWJlciUyMHNlY3VyaXR5fGVufDB8fHx8MTc2NDgwODQ4M3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "cyber security"
     },
     {
@@ -45,7 +45,7 @@
     {
       "id": "service-4",
       "description": "Data analytics dashboard with charts and graphs",
-      "imageUrl": "https://picsum.photos/seed/2004/600/400",
+      "imageUrl": "https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8MTc2NDc0MzE3OXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "data analytics"
     },
     {
@@ -63,7 +63,7 @@
     {
       "id": "product-1",
       "description": "A sleek, futuristic drone in mid-flight",
-      "imageUrl": "https://picsum.photos/seed/3001/600/400",
+      "imageUrl": "https://images.unsplash.com/photo-1609464474585-b353aaa64dc6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxkcm9uZSUyMGZsaWdodHxlbnwwfHx8fDE3NjQ3ODgyMjZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "drone flight"
     },
     {
@@ -81,13 +81,13 @@
     {
       "id": "product-4",
       "description": "Advanced home automation hub",
-      "imageUrl": "https://picsum.photos/seed/3004/600/400",
+      "imageUrl": "https://images.unsplash.com/photo-1706774609219-56c61f8b3c51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzbWFydCUyMGhvbWV8ZW58MHx8fHwxNzY0Nzc5MTA1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "smart home"
     },
     {
       "id": "product-5",
       "description": "A robot assistant performing a task",
-      "imageUrl": "https://picsum.photos/seed/3005/600/400",
+      "imageUrl": "https://images.unsplash.com/photo-1634910409614-71a507e13588?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxyb2JvdCUyMGFzc2lzdGFudHxlbnwwfHx8fDE3NjQ4MzExOTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "robot assistant"
     },
     {
@@ -99,7 +99,7 @@
     {
       "id": "event-1",
       "description": "Tech conference keynote speaker on stage",
-      "imageUrl": "https://picsum.photos/seed/4001/600/400",
+      "imageUrl": "https://images.unsplash.com/photo-1568983268695-74a04650c8b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjb25mZXJlbmNlJTIwa2V5bm90ZXxlbnwwfHx8fDE3NjQ4MzExOTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "conference keynote"
     },
     {
@@ -111,7 +111,7 @@
     {
       "id": "event-3",
       "description": "Hands-on coding workshop",
-      "imageUrl": "https://picsum.photos/seed/4003/600/400",
+      "imageUrl": "https://images.unsplash.com/photo-1581092334247-44dd684e3c82?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjb2RpbmclMjB3b3Jrc2hvcHxlbnwwfHx8fDE3NjQ3OTY2MTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "coding workshop"
     },
     {
@@ -123,13 +123,13 @@
     {
       "id": "team-1",
       "description": "Portrait of a female CEO in a modern office",
-      "imageUrl": "https://picsum.photos/seed/5001/400/400",
+      "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmZW1hbGUlMjBwcm9mZXNzaW9uYWx8ZW58MHx8fHwxNzY0NzMxMTQ3fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "female professional"
     },
     {
       "id": "team-2",
       "description": "Portrait of a male lead engineer",
-      "imageUrl": "https://picsum.photos/seed/5002/400/400",
+      "imageUrl": "https://images.unsplash.com/photo-1715423058726-ddea1ec51b66?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtYWxlJTIwcHJvZmVzc2lvbmFsfGVufDB8fHx8MTc2NDgzMTE5Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "male professional"
     },
     {
@@ -147,7 +147,7 @@
     {
       "id": "about-mission",
       "description": "Abstract image representing innovation and forward thinking",
-      "imageUrl": "https://picsum.photos/seed/6001/800/600",
+      "imageUrl": "https://images.unsplash.com/photo-1678742733118-029763b67e5c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxhYnN0cmFjdCUyMGlubm92YXRpb258ZW58MHx8fHwxNzY0NzQ5NzQ5fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "abstract innovation"
     },
     {
@@ -157,9 +157,15 @@
       "imageHint": "global connection"
     },
     {
+      "id": "about-story",
+      "description": "Two people working in a garage, symbolizing a startup's humble beginnings",
+      "imageUrl": "https://images.unsplash.com/photo-1675034743126-0f250a5fee51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzdGFydHVwJTIwZ2FyYWdlfGVufDB8fHx8MTc2NDgzMTE5Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "startup garage"
+    },
+    {
       "id": "contact-hero",
       "description": "Abstract image of communication lines",
-      "imageUrl": "https://picsum.photos/seed/7001/1600/400",
+      "imageUrl": "https://images.unsplash.com/photo-1721378466905-0375f1e7b879?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjb21tdW5pY2F0aW9uJTIwYWJzdHJhY3R8ZW58MHx8fHwxNzY0ODMxMTkyfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "communication abstract"
     },
     {
@@ -189,55 +195,55 @@
     {
       "id": "testimonial-1",
       "description": "Portrait of Briana Patton",
-      "imageUrl": "https://picsum.photos/seed/8001/40/40",
+      "imageUrl": "https://images.unsplash.com/photo-1610655507808-a59293f4e332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NDgwMjY3Nnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "woman portrait"
     },
     {
       "id": "testimonial-2",
       "description": "Portrait of Bilal Ahmed",
-      "imageUrl": "https://picsum.photos/seed/8002/40/40",
+      "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjQ3NTYxMDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
       "id": "testimonial-3",
       "description": "Portrait of Saman Malik",
-      "imageUrl": "https://picsum.photos/seed/8003/40/40",
+      "imageUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NDgwMjY3Nnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "woman portrait"
     },
     {
       "id": "testimonial-4",
       "description": "Portrait of Omar Raza",
-      "imageUrl": "https://picsum.photos/seed/8004/40/40",
+      "imageUrl": "https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjQ3NTYxMDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
       "id": "testimonial-5",
       "description": "Portrait of Zainab Hussain",
-      "imageUrl": "https://picsum.photos/seed/8005/40/40",
+      "imageUrl": "https://images.unsplash.com/photo-1614283233556-f35b0c801ef1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NDgwMjY3Nnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "woman portrait"
     },
     {
       "id": "testimonial-6",
       "description": "Portrait of Aliza Khan",
-      "imageUrl": "https://picsum.photos/seed/8006/40/40",
+      "imageUrl": "https://images.unsplash.com/photo-1592621385612-4d7129426394?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NDgwMjY3Nnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "woman portrait"
     },
     {
       "id": "testimonial-7",
       "description": "Portrait of Farhan Siddiqui",
-      "imageUrl": "https://picsum.photos/seed/8007/40/40",
+      "imageUrl": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjQ3NTYxMDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     },
     {
       "id": "testimonial-8",
       "description": "Portrait of Sana Sheikh",
-      "imageUrl": "https://picsum.photos/seed/8008/40/40",
+      "imageUrl": "https://images.unsplash.com/photo-1610655507808-a59293f4e332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NDgwMjY3Nnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "woman portrait"
     },
     {
       "id": "testimonial-9",
       "description": "Portrait of Hassan Ali",
-      "imageUrl": "https://picsum.photos/seed/8009/40/40",
+      "imageUrl": "https://images.unsplash.com/photo-1624395213043-fa2e123b2656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjQ3NTYxMDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "man portrait"
     }
   ]
