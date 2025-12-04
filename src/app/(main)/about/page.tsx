@@ -3,7 +3,7 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Lightbulb, ShieldCheck, Users, Handshake, Award } from 'lucide-react';
+import { Lightbulb, ShieldCheck, Users, Handshake, Award, CheckCircle } from 'lucide-react';
 
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
@@ -33,6 +33,16 @@ const coreValues = [
       title: 'Excellence',
       description: 'We are committed to the highest standards of quality and performance.'
     },
+];
+
+const domains = [
+    'Application Development',
+    'Cloud & Infrastructure',
+    'Cybersecurity & Governance',
+    'AI & Machine Learning',
+    'Product Transformation',
+    'SAP Consulting',
+    'Performance Engineering',
 ];
 
 function AboutPageClient() {
@@ -157,6 +167,46 @@ function AboutPageClient() {
                     data-ai-hint={PlaceHolderImages.find(p => p.id === 'about-purpose')!.imageHint}
                 />
               }
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="bg-background text-foreground py-20 md:py-32">
+          <div className="container grid md:grid-cols-2 gap-16 items-center">
+            <motion.div
+              className="relative h-96 md:h-[500px] md:order-2"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.8 }}
+            >
+              {PlaceHolderImages.find(p => p.id === 'about-domains') && (
+                <Image
+                  src={PlaceHolderImages.find(p => p.id === 'about-domains')!.imageUrl}
+                  alt="Domains of Excellence"
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-2xl shadow-2xl shadow-primary/20"
+                  data-ai-hint={PlaceHolderImages.find(p => p.id === 'about-domains')!.imageHint}
+                />
+              )}
+            </motion.div>
+            <motion.div
+              className="md:order-1"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">Our Domains of Excellence</h2>
+              <ul className="space-y-4">
+                {domains.map((domain, index) => (
+                  <li key={index} className="flex items-center">
+                    <CheckCircle className="h-6 w-6 text-primary mr-4" />
+                    <span className="text-lg text-muted-foreground">{domain}</span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           </div>
         </section>
