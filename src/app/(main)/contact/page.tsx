@@ -143,8 +143,8 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="bg-black text-white min-h-screen p-8 md:p-16 pt-64">
-      <div className="max-w-7xl mx-auto">
+    <div className="bg-black text-white min-h-screen flex flex-col justify-center p-8 md:p-16">
+      <div className="max-w-7xl mx-auto w-full">
         <div className="flex items-center gap-3 mb-4">
           <div className="w-3 h-6 bg-primary"></div>
           <h1 className="text-3xl font-bold">Contact Us</h1>
