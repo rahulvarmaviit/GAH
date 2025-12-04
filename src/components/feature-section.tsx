@@ -1,6 +1,7 @@
+
 import Image from 'next/image';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Layout, Pointer, Zap } from "lucide-react";
+import { Lightbulb, Code, Rocket } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -30,56 +31,56 @@ interface Feature108Props {
 }
 
 const Feature108 = ({
-  badge = "Acknowledgement Hub",
-  heading = "A Collection of Components Built With Shadcn & Tailwind",
-  description = "Join us to build flawless web solutions.",
+  badge = "Acknowledgement Hub Services",
+  heading = "Accelerate Your Growth with Our Expert Services",
+  description = "From strategy to execution, we provide end-to-end solutions to help your business thrive in the digital landscape.",
   tabs = [
     {
       value: "tab-1",
-      icon: <Zap className="h-auto w-4 shrink-0" />,
-      label: "Boost Revenue",
+      icon: <Lightbulb className="h-auto w-4 shrink-0" />,
+      label: "Strategy & Consulting",
       content: {
-        badge: "Modern Tactics",
-        title: "Make your site a true standout.",
+        badge: "Strategic Planning",
+        title: "Chart a Course for Success.",
         description:
-          "Discover new web trends that help you craft sleek, highly functional sites that drive traffic and convert leads into customers.",
-        buttonText: "See Plans",
+          "Our experts work with you to develop a comprehensive digital strategy, identifying opportunities and creating a roadmap for sustainable growth.",
+        buttonText: "Explore Strategies",
         imageSrc:
-          "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjcmVkaXQlMjBjYXJkJTIwcGF5bWVudHxlbnwwfHx8fDE3NTk3NzU5ODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-        imageAlt: "Revenue Growth",
-        imageHint: "payment terminal",
+          "https://images.unsplash.com/photo-1519389950473-47ba0277781c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx0ZWFtJTIwd29ya2luZyUyMG9uJTIwYSUyMHByb2plY3R8ZW58MHx8fHwxNzU5NzgxNTY4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+        imageAlt: "Strategy Meeting",
+        imageHint: "strategy meeting",
       },
     },
     {
       value: "tab-2",
-      icon: <Pointer className="h-auto w-4 shrink-0" />,
-      label: "Higher Engagement",
+      icon: <Code className="h-auto w-4 shrink-0" />,
+      label: "Development & Implementation",
       content: {
-        badge: "Expert Features",
-        title: "Boost your site with top-tier design.",
+        badge: "Expert Execution",
+        title: "Bring Your Vision to Life.",
         description:
-          "Use stellar design to easily engage users and strengthen their loyalty. Create a seamless experience that keeps them coming back for more.",
-        buttonText: "See Tools",
+          "Our skilled development team builds robust, scalable, and secure solutions tailored to your specific needs, ensuring a seamless launch and integration.",
+        buttonText: "View Our Work",
         imageSrc:
-          "https://images.unsplash.com/photo-1519389950473-47ba0277781c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx0ZWFtJTIwd29ya2luZyUyMG9uJTIwYSUyMHByb2plY3R8ZW58MHx8fHwxNzU5NzgxNTY4fDA&ixlib=rb-4.1.0&q=80&w=1080",
-        imageAlt: "User Engagement",
-        imageHint: "team working",
+          "https://images.unsplash.com/photo-1517694712202-1428bc3cd405?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxlbnwwfHx8fDE3NjAxOTU1NDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+        imageAlt: "Team working on code",
+        imageHint: "team coding",
       },
     },
     {
       value: "tab-3",
-      icon: <Layout className="h-auto w-4 shrink-0" />,
-      label: "Stunning Layouts",
+      icon: <Rocket className="h-auto w-4 shrink-0" />,
+      label: "Growth & Optimization",
       content: {
-        badge: "Elite Solutions",
-        title: "Build an advanced web experience.",
+        badge: "Continuous Improvement",
+        title: "Drive Measurable Results.",
         description:
-          "Lift your brand with modern tech that grabs attention and drives action. Create a digital experience that stands out from the crowd.",
-        buttonText: "See Options",
+          "We don't just build and launch. We provide ongoing support, analytics, and optimization services to ensure your project achieves its goals and delivers ROI.",
+        buttonText: "See Case Studies",
         imageSrc:
-          "https://images.unsplash.com/photo-1545239351-ef35f43d514b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3ZWIlMjBkZXNpZ24lMjBtb2NrdXB8ZW58MHx8fHwxNzU5NzU4MjEwfDA&ixlib=rb-4.1.0&q=80&w=1080",
-        imageAlt: "Website Layout",
-        imageHint: "web design",
+          "https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8MTc2NDc0MzE3OXww&ixlib=rb-4.1.0&q=80&w=1080",
+        imageAlt: "Data Analytics Dashboard",
+        imageHint: "data analytics",
       },
     },
   ],
