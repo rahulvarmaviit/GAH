@@ -103,7 +103,7 @@ function AboutPageClient() {
                 <Image
                     src={PlaceHolderImages.find(p => p.id === 'about-mission')!.imageUrl}
                     alt="Our Mission"
-                    layout="fill"
+                    fill
                     objectFit="cover"
                     className="rounded-2xl shadow-2xl shadow-primary/20"
                     data-ai-hint={PlaceHolderImages.find(p => p.id === 'about-mission')!.imageHint}
@@ -126,7 +126,7 @@ function AboutPageClient() {
                 <Image
                     src={PlaceHolderImages.find(p => p.id === 'about-vision')!.imageUrl}
                     alt="Our Vision"
-                    layout="fill"
+                    fill
                     objectFit="cover"
                     className="rounded-2xl shadow-2xl shadow-primary/20"
                     data-ai-hint={PlaceHolderImages.find(p => p.id === 'about-vision')!.imageHint}
@@ -172,7 +172,7 @@ function AboutPageClient() {
                 <Image
                     src={PlaceHolderImages.find(p => p.id === 'about-purpose')!.imageUrl}
                     alt="Our Purpose"
-                    layout="fill"
+                    fill
                     objectFit="cover"
                     className="rounded-2xl shadow-2xl shadow-primary/20"
                     data-ai-hint={PlaceHolderImages.find(p => p.id === 'about-purpose')!.imageHint}
@@ -195,7 +195,7 @@ function AboutPageClient() {
                 <Image
                   src={PlaceHolderImages.find(p => p.id === 'about-domains')!.imageUrl}
                   alt="Domains of Excellence"
-                  layout="fill"
+                  fill
                   objectFit="cover"
                   className="rounded-2xl shadow-2xl shadow-primary/20"
                   data-ai-hint={PlaceHolderImages.find(p => p.id === 'about-domains')!.imageHint}
@@ -212,8 +212,8 @@ function AboutPageClient() {
               <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">Our Domains of Excellence</h2>
               <ul className="space-y-4">
                 {domains.map((domain, index) => (
-                  <li key={index} className="flex items-center">
-                    <CheckCircle className="h-6 w-6 text-primary mr-4" />
+                  <li key={index} className="flex items-start">
+                    <CheckCircle className="h-6 w-6 text-primary mr-4 mt-1 flex-shrink-0" />
                     <span className="text-lg text-muted-foreground">{domain}</span>
                   </li>
                 ))}
@@ -257,7 +257,7 @@ function AboutPageClient() {
                     <Image
                         src={PlaceHolderImages.find(p => p.id === 'about-delivery-model')!.imageUrl}
                         alt="Global Delivery Model"
-                        layout="fill"
+                        fill
                         objectFit="cover"
                         className="rounded-2xl shadow-2xl shadow-primary/20"
                         data-ai-hint={PlaceHolderImages.find(p => p.id === 'about-delivery-model')!.imageHint}
@@ -304,7 +304,7 @@ function AboutPageClient() {
                 <Image
                     src={PlaceHolderImages.find(p => p.id === 'about-story')!.imageUrl}
                     alt="Our Story"
-                    layout="fill"
+                    fill
                     objectFit="cover"
                     className="rounded-2xl shadow-2xl shadow-primary/20"
                     data-ai-hint={PlaceHolderImages.find(p => p.id === 'about-story')!.imageHint}
@@ -318,9 +318,26 @@ function AboutPageClient() {
                 transition={{ duration: 0.8 }}
             >
               <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">Our Story</h2>
-              <p className="text-lg text-slate-300 leading-relaxed">
-                Founded in a small garage in 2018, Acknowledgement Hub started with a simple yet powerful idea: to revolutionize the way we interact with technology. Our founders, a group of passionate engineers and designers, believed that technology should be a seamless extension of human capability, not a barrier.
-              </p>
+                <div className="text-lg text-slate-300 leading-relaxed space-y-4">
+                    <p>
+                        Global Acknowledgment Hub (GAH) was founded with a simple belief — technology should empower, not overwhelm. In a rapidly evolving digital world, enterprises need unified, intelligent, and secure systems that can scale with their ambitions. GAH was formed to bridge this gap.
+                    </p>
+                    <p>
+                        We began as a technology consulting startup and quickly expanded into a multi-domain innovation hub, delivering solutions in:
+                    </p>
+                    <ul className="list-disc list-inside space-y-2 pl-4">
+                        <li>SaaS / PaaS / DaaS</li>
+                        <li>Enterprise Cybersecurity</li>
+                        <li>AI & Machine Learning</li>
+                        <li>Digital Transformation</li>
+                        <li>SAP & Enterprise Consulting</li>
+                        <li>Custom Web and Cloud Applications</li>
+                        <li>Proprietary Product Development</li>
+                    </ul>
+                    <p>
+                        Today, we partner with organizations across industries to modernize, secure, and accelerate their digital journeys.
+                    </p>
+                </div>
             </motion.div>
           </div>
         </section>
