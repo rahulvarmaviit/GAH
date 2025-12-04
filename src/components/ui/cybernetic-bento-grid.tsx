@@ -60,6 +60,10 @@ export const CyberneticBentoGrid = () => {
                         <h2 className="text-xl font-bold text-white">Automated Backups</h2>
                         <p className="mt-2 text-gray-400 text-sm">Your data is always safe with automated, redundant backups.</p>
                     </BentoItem>
+                    <BentoItem>
+                        <h2 className="text-xl font-bold text-white">24/7 Support</h2>
+                        <p className="mt-2 text-gray-400 text-sm">Our team is always here to help you with any issue.</p>
+                    </BentoItem>
                     <BentoItem className="col-span-2">
                         <h2 className="text-xl font-bold text-white">Serverless Functions</h2>
                         <p className="mt-2 text-gray-400 text-sm">Run your backend code without managing servers. Scale infinitely with ease.</p>
