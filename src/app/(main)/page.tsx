@@ -16,7 +16,6 @@ import { BackgroundPaths } from '@/components/ui/background-paths';
 import { Feature108 } from '@/components/feature-section';
 import { Gallery6 } from '@/components/ui/gallery6';
 import { CyberneticBentoGrid } from '@/components/ui/cybernetic-bento-grid';
-import { ConnectedEcosystem } from '@/components/connected-ecosystem';
 
 const features = [
   {
@@ -104,8 +103,6 @@ export default function Home() {
         </section>
 
         <Feature108 />
-
-        <ConnectedEcosystem />
 
         <section className="bg-black text-white">
           <Gallery6 items={galleryItems} heading="Featured Projects" />
