@@ -19,24 +19,36 @@ function Navbar({ className, isDarkMode, active, setActive }: { className?: stri
     {
       title: 'Cloud Solutions',
       href: '/services',
+      src: PlaceHolderImages.find((img) => img.id === 'service-1')?.imageUrl,
+      'data-ai-hint': PlaceHolderImages.find((img) => img.id === 'service-1')
+        ?.imageHint,
       description:
         'Scalable and secure cloud infrastructure to power your applications.',
     },
     {
       title: 'Cyber Security',
       href: '/services',
+      src: PlaceHolderImages.find((img) => img.id === 'service-2')?.imageUrl,
+      'data-ai-hint': PlaceHolderImages.find((img) => img.id === 'service-2')
+        ?.imageHint,
       description:
         'Protect your digital assets with our advanced threat detection and prevention services.',
     },
     {
       title: 'AI & Machine Learning',
       href: '/services',
+      src: PlaceHolderImages.find((img) => img.id === 'service-3')?.imageUrl,
+      'data-ai-hint': PlaceHolderImages.find((img) => img.id === 'service-3')
+        ?.imageHint,
       description:
         'Leverage the power of AI to unlock insights and automate processes.',
     },
     {
       title: 'Data Analytics',
       href: '/services',
+      src: PlaceHolderImages.find((img) => img.id === 'service-4')?.imageUrl,
+      'data-ai-hint': PlaceHolderImages.find((img) => img.id === 'service-4')
+        ?.imageHint,
       description:
         'Turn your data into actionable intelligence with our analytics platforms.',
     },
@@ -92,16 +104,26 @@ function Navbar({ className, isDarkMode, active, setActive }: { className?: stri
         <div className="flex items-center justify-center space-x-8">
             <HoveredLink href="/" isDarkMode={isDarkMode}>Home</HoveredLink>
             <MenuItem setActive={setActive} active={active} item="Services" isDarkMode={isDarkMode} href="/services">
-            <div className="flex flex-col space-y-4 text-sm">
-                {services.map((service) => (
-                <HoveredLink key={service.title} href={service.href} isDarkMode={isDarkMode}>
-                    {service.title}
-                </HoveredLink>
-                ))}
-                 <HoveredLink href="/services" className="font-bold text-primary pt-2" isDarkMode={isDarkMode}>
-                    See all services &rarr;
-                </HoveredLink>
-            </div>
+              <div className="text-sm grid grid-cols-2 gap-10 p-4">
+                {services.map((service) =>
+                  service.src ? (
+                    <ProductItem
+                      key={service.title}
+                      title={service.title}
+                      href={service.href}
+                      src={service.src}
+                      description={service.description}
+                      data-ai-hint={service['data-ai-hint']}
+                      isDarkMode={isDarkMode}
+                    />
+                  ) : null
+                )}
+                 <div className="col-span-2 text-center mt-4">
+                    <HoveredLink href="/services" className="font-bold text-primary" isDarkMode={isDarkMode}>
+                        See all services &rarr;
+                    </HoveredLink>
+                </div>
+              </div>
             </MenuItem>
             <MenuItem setActive={setActive} active={active} item="Products" isDarkMode={isDarkMode} href="/products">
             <div className="text-sm grid grid-cols-2 gap-10 p-4">
