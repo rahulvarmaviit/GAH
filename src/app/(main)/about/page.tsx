@@ -126,8 +126,42 @@ function AboutPageClient() {
             </motion.div>
           </div>
         </section>
-        
+
         <section className="bg-black text-white py-20 md:py-32">
+          <div className="container grid md:grid-cols-2 gap-16 items-center">
+            <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">Our Purpose</h2>
+              <p className="text-lg text-slate-300 leading-relaxed">
+                Our purpose is to help companies improve business functions, operate securely, and adopt digital innovation that creates measurable impact. We deliver end-to-end solutions in cloud, cybersecurity, intelligence, and intelligent automation to build resilient and high-performing digital ecosystems.
+              </p>
+            </motion.div>
+            <motion.div
+                className="relative h-80 md:h-96"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.8 }}
+            >
+              {PlaceHolderImages.find(p => p.id === 'about-purpose') &&
+                <Image
+                    src={PlaceHolderImages.find(p => p.id === 'about-purpose')!.imageUrl}
+                    alt="Our Purpose"
+                    layout="fill"
+                    objectFit="cover"
+                    className="rounded-2xl shadow-2xl shadow-primary/20"
+                    data-ai-hint={PlaceHolderImages.find(p => p.id === 'about-purpose')!.imageHint}
+                />
+              }
+            </motion.div>
+          </div>
+        </section>
+        
+        <section className="bg-background text-foreground py-20 md:py-32">
           <div className="container text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-primary mb-16">Our Core Values</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12">
@@ -143,15 +177,15 @@ function AboutPageClient() {
                   <div className="bg-primary/10 p-4 rounded-full mb-4 border border-primary/20">
                     {value.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-white">{value.title}</h3>
-                  <p className="text-slate-400 mt-2 text-center">{value.description}</p>
+                  <h3 className="text-xl font-bold">{value.title}</h3>
+                  <p className="text-muted-foreground mt-2 text-center">{value.description}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
         
-        <section className="bg-background text-foreground py-20 md:py-32">
+        <section className="bg-black text-white py-20 md:py-32">
           <div className="container grid md:grid-cols-2 gap-16 items-center">
              <motion.div
                 className="relative h-80 md:h-96"
@@ -172,13 +206,13 @@ function AboutPageClient() {
                }
             </motion.div>
             <motion.div
-                initial={{ opacity: 0, x: -50 }}
+                initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.8 }}
             >
               <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">Our Story</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-lg text-slate-300 leading-relaxed">
                 Founded in a small garage in 2018, Acknowledgement Hub started with a simple yet powerful idea: to revolutionize the way we interact with technology. Our founders, a group of passionate engineers and designers, believed that technology should be a seamless extension of human capability, not a barrier.
               </p>
             </motion.div>
