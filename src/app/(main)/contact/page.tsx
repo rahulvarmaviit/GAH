@@ -25,7 +25,7 @@ const ContactCalendar = ({ onSelectTime, selectedDate, onDateChange }: { onSelec
   };
 
   return (
-    <div className="bg-card text-card-foreground p-6 rounded-lg max-w-4xl mx-auto">
+    <div className="bg-black text-white p-6 rounded-lg max-w-4xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="md:col-span-2">
           <div className="flex justify-between items-center mb-4">
@@ -41,7 +41,7 @@ const ContactCalendar = ({ onSelectTime, selectedDate, onDateChange }: { onSelec
             classNames={{
               head_cell: "text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]",
               cell: "h-9 w-9 text-center text-sm p-0 relative [&:has([aria-selected])]:bg-primary first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
-              day: "h-9 w-9 p-0 font-normal rounded-md hover:bg-primary/90",
+              day: "h-9 w-9 p-0 font-normal rounded-md hover:bg-primary/90 text-white",
               day_selected: "bg-primary text-primary-foreground hover:bg-primary/90 focus:bg-primary focus:text-primary-foreground",
               day_today: "bg-accent text-accent-foreground",
               day_disabled: "text-muted-foreground opacity-50",
@@ -57,7 +57,7 @@ const ContactCalendar = ({ onSelectTime, selectedDate, onDateChange }: { onSelec
               <Button
                 key={time}
                 variant="outline"
-                className="w-full justify-center"
+                className="w-full justify-center text-white border-white/50 bg-transparent hover:bg-white hover:text-black"
                 onClick={() => onSelectTime(time)}
                 disabled={!selectedDate}
               >
@@ -185,14 +185,14 @@ export default function ContactPage() {
 
                 <div className='mb-12 text-center'>
                     <h2 className="text-4xl font-bold mb-4 text-foreground">Let's talk ideas</h2>
-                    <p className="text-muted-foreground">
+                    <p className="text-foreground/80">
                         Schedule a call to discuss your project or get expert advice from our team.
                     </p>
                 </div>
 
                 <div className="text-center">
                     <h3 className="text-2xl font-bold mb-4 text-foreground">Address</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-foreground/80">
                         Global Acknowledgment Hub, Darga road, Near NIT <br/>
                         Warangal, Telangana 506004, INDIA
                     </p>
@@ -202,26 +202,30 @@ export default function ContactPage() {
             {/* Right Column */}
             <div className="lg:min-h-[700px] flex flex-col justify-center">
                 {activeTab === 'form' && (
-                <form onSubmit={handleContactFormSubmit} className="space-y-6 bg-card border border-border p-8 rounded-lg">
+                <form onSubmit={handleContactFormSubmit} className="space-y-6 bg-black border border-primary/20 p-8 rounded-2xl">
                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                     <Input
                         placeholder="First Name"
                         required
+                        className="bg-background text-foreground"
                     />
                     <Input
                         placeholder="Last Name"
                         required
+                        className="bg-background text-foreground"
                     />
                     </div>
                     <Input
                     type="email"
                     placeholder="Email"
                     required
+                    className="bg-background text-foreground"
                     />
                     <Textarea
                     placeholder="Your Message"
                     rows={6}
                     required
+                    className="bg-background text-foreground"
                     />
                     <Button type="submit" size="lg" className="w-full">
                     Send Message
@@ -229,17 +233,17 @@ export default function ContactPage() {
                 </form>
                 )}
                 {activeTab === 'call' && (
-                    <div className='bg-card border border-border rounded-2xl p-4'>
+                    <div className='bg-black border border-primary/20 rounded-2xl p-4 text-white'>
                         {step === 'select-time' && (
                             <>
                             <div className='p-4'>
                                     <div className='flex items-center gap-4 mb-2'>
                                         <Avatar>
-                                            <AvatarFallback>T</AvatarFallback>
+                                            <AvatarFallback className='bg-primary text-primary-foreground'>T</AvatarFallback>
                                         </Avatar>
                                         <span className='text-muted-foreground'>Team - Global Acknowledgment</span>
                                     </div>
-                                    <h2 className='text-3xl font-bold text-card-foreground mb-2'>30 Min Meeting</h2>
+                                    <h2 className='text-3xl font-bold text-white mb-2'>30 Min Meeting</h2>
                                     <div className='space-y-2 text-muted-foreground'>
                                         <div className='flex items-center gap-2'>
                                             <Clock className='w-4 h-4' />
@@ -265,11 +269,11 @@ export default function ContactPage() {
                             <div className="p-6">
                                 <div className="flex items-center gap-4 mb-6">
                                     <Avatar>
-                                        <AvatarFallback>T</AvatarFallback>
+                                        <AvatarFallback className='bg-primary text-primary-foreground'>T</AvatarFallback>
                                     </Avatar>
                                     <span className='text-muted-foreground'>Team - Global Acknowledgment</span>
                                 </div>
-                                <h2 className="text-2xl font-bold text-card-foreground mb-2">30 Min Meeting</h2>
+                                <h2 className="text-2xl font-bold text-white mb-2">30 Min Meeting</h2>
                                 <div className="space-y-2 text-muted-foreground mb-6">
                                     <div className='flex items-center gap-2'>
                                         <Calendar className='w-4 h-4' />
@@ -291,18 +295,18 @@ export default function ContactPage() {
 
                                 <div className="space-y-4">
                                     <div>
-                                        <Label htmlFor="name" className="text-sm font-medium text-card-foreground">Your name *</Label>
-                                        <Input id="name" value={bookingForm.name} onChange={(e) => setBookingForm({...bookingForm, name: e.target.value})} required/>
+                                        <Label htmlFor="name" className="text-sm font-medium text-white">Your name *</Label>
+                                        <Input id="name" value={bookingForm.name} onChange={(e) => setBookingForm({...bookingForm, name: e.target.value})} required className="bg-background text-foreground"/>
                                     </div>
                                     <div>
-                                        <Label htmlFor="email" className="text-sm font-medium text-card-foreground">Email address *</Label>
-                                        <Input id="email" type="email" value={bookingForm.email} onChange={(e) => setBookingForm({...bookingForm, email: e.target.value})} required/>
+                                        <Label htmlFor="email" className="text-sm font-medium text-white">Email address *</Label>
+                                        <Input id="email" type="email" value={bookingForm.email} onChange={(e) => setBookingForm({...bookingForm, email: e.target.value})} required className="bg-background text-foreground"/>
                                     </div>
                                     <div>
-                                        <Label htmlFor="notes" className="text-sm font-medium text-card-foreground">Additional notes</Label>
-                                        <Textarea id="notes" placeholder="Please share anything that will help prepare for our meeting." value={bookingForm.notes} onChange={(e) => setBookingForm({...bookingForm, notes: e.target.value})}/>
+                                        <Label htmlFor="notes" className="text-sm font-medium text-white">Additional notes</Label>
+                                        <Textarea id="notes" placeholder="Please share anything that will help prepare for our meeting." value={bookingForm.notes} onChange={(e) => setBookingForm({...bookingForm, notes: e.target.value})} className="bg-background text-foreground"/>
                                     </div>
-                                    <Button variant="ghost" className="w-full justify-start p-0 h-auto hover:bg-transparent text-muted-foreground hover:text-foreground">
+                                    <Button variant="ghost" className="w-full justify-start p-0 h-auto hover:bg-transparent text-muted-foreground hover:text-white">
                                         <Plus className="w-4 h-4 mr-2"/> Add guests
                                     </Button>
                                 </div>
@@ -310,7 +314,7 @@ export default function ContactPage() {
                                     By proceeding, you agree to our <a href="#" className="underline">Terms</a> and <a href="#" className="underline">Privacy Policy</a>.
                                 </p>
                                 <div className="flex justify-end gap-4 mt-6">
-                                    <Button variant="outline" onClick={handleBack} type="button">Back</Button>
+                                    <Button variant="outline" onClick={handleBack} type="button" className="text-white border-white/50 bg-transparent hover:bg-white hover:text-black">Back</Button>
                                     <Button type="submit">Confirm</Button>
                                 </div>
                             </div>
@@ -319,10 +323,10 @@ export default function ContactPage() {
                         {step === 'confirmed' && (
                             <div className="p-12 text-center flex flex-col items-center justify-center h-[400px]">
                                 <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
-                                <h2 className="text-2xl font-bold text-card-foreground mb-2">Booking Confirmed!</h2>
+                                <h2 className="text-2xl font-bold text-white mb-2">Booking Confirmed!</h2>
                                 <p className="text-muted-foreground mb-4">Your 30-minute meeting is scheduled.</p>
                                 <p className="text-muted-foreground text-sm">A confirmation email has been sent to you.</p>
-                                <Button variant="outline" onClick={() => setStep('select-time')} className="mt-8">
+                                <Button variant="outline" onClick={() => setStep('select-time')} className="mt-8 text-white border-white/50 bg-transparent hover:bg-white hover:text-black">
                                     Schedule Another Meeting
                                 </Button>
                             </div>
