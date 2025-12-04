@@ -13,7 +13,6 @@ import {
 } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { BackgroundPaths } from '@/components/ui/background-paths';
-import { Testimonials } from '@/components/testimonials';
 import { Feature108 } from '@/components/feature-section';
 import { Gallery6 } from '@/components/ui/gallery6';
 
@@ -158,8 +157,6 @@ export default function Home() {
         <section className="bg-black text-white">
           <Gallery6 items={galleryItems} heading="Featured Projects" />
         </section>
-
-        <Testimonials />
 
       </main>
     </div>
