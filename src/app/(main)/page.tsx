@@ -15,6 +15,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { BackgroundPaths } from '@/components/ui/background-paths';
 import { Feature108 } from '@/components/feature-section';
 import { Gallery6 } from '@/components/ui/gallery6';
+import { CyberneticBentoGrid } from '@/components/ui/cybernetic-bento-grid';
 
 const features = [
   {
@@ -98,58 +99,7 @@ export default function Home() {
         </section>
 
         <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-black text-slate-50">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  Explore Our Offerings
-                </h2>
-                <p className="max-w-[900px] text-slate-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  We provide a diverse range of services, products, and events
-                  to cater to your every need. Dive in and explore what we have
-                  to offer.
-                </p>
-              </div>
-            </div>
-            <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:max-w-none lg:grid-cols-3 mt-12">
-              {features.map((feature) => (
-                <Card
-                  key={feature.title}
-                  className="group h-full bg-gray-800/20 border-gray-700 text-slate-100 overflow-hidden transition-all duration-300 flex flex-col relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-purple-500/10 before:to-white/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300"
-                >
-                  {feature.image && (
-                    <div className="overflow-hidden">
-                       <Image
-                        src={feature.image.imageUrl}
-                        alt={feature.image.description}
-                        width={600}
-                        height={400}
-                        className="rounded-t-lg object-cover aspect-[3/2] transition-transform duration-300 group-hover:scale-110"
-                        data-ai-hint={feature.image.imageHint}
-                      />
-                    </div>
-                  )}
-                  <div className="p-6 flex flex-col flex-grow">
-                    <CardHeader className="p-0">
-                      <div className="flex items-center gap-4">
-                        {feature.icon}
-                        <CardTitle className="text-2xl">{feature.title}</CardTitle>
-                      </div>
-                      <CardDescription className="text-slate-300 pt-2">{feature.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent className="p-0 mt-auto pt-6">
-                      <Button asChild variant="secondary" className="w-full bg-slate-800 text-slate-100 hover:bg-slate-700">
-                        <Link href={feature.link}>
-                          Explore {feature.title.split(' ')[1]}
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </Link>
-                      </Button>
-                    </CardContent>
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </div>
+          <CyberneticBentoGrid />
         </section>
 
         <Feature108 />

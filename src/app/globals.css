@@ -128,3 +128,43 @@
 .shadow-input {
   box-shadow: var(--shadow-input);
 }
+
+.main-container {
+    @apply bg-black min-h-screen w-full flex items-center justify-center p-4;
+}
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.bento-item {
+    @apply bg-neutral-900 border border-neutral-700 rounded-lg p-6 relative overflow-hidden transition-all duration-300;
+    --mouse-x: -100px;
+    --mouse-y: -100px;
+}
+
+.bento-item::before {
+    content: "";
+    position: absolute;
+    top: var(--mouse-y);
+    left: var(--mouse-x);
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle at center, hsla(274, 75%, 38%, 0.3) 0%, transparent 100%);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.bento-item:hover::before {
+    opacity: 1;
+}
+
+.bento-item:hover {
+    border-color: hsl(var(--primary));
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px hsla(274, 75%, 38%, 0.1);
+}
