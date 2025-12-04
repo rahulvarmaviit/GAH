@@ -50,6 +50,12 @@ const domains = [
     'System optimization',
 ];
 
+const deliveryModelBenefits = [
+    'Faster development cycles',
+    '24×7 operational availability',
+    'High-quality implementation processes',
+];
+
 function AboutPageClient() {
   return (
     <div className="flex flex-col bg-background">
@@ -214,6 +220,51 @@ function AboutPageClient() {
               </ul>
             </motion.div>
           </div>
+        </section>
+
+        <section className="bg-black text-white py-20 md:py-32">
+            <div className="container grid md:grid-cols-2 gap-16 items-center">
+                <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.8 }}
+                >
+                    <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">Global Delivery Model</h2>
+                    <p className="text-lg text-slate-300 leading-relaxed mb-6">
+                        Our team works seamlessly across geographies, enabling:
+                    </p>
+                    <ul className="space-y-4 mb-6">
+                        {deliveryModelBenefits.map((benefit, index) => (
+                        <li key={index} className="flex items-center">
+                            <CheckCircle className="h-6 w-6 text-primary mr-4" />
+                            <span className="text-lg text-slate-300">{benefit}</span>
+                        </li>
+                        ))}
+                    </ul>
+                    <p className="text-lg text-slate-300 leading-relaxed">
+                        We combine the agility of a startup with the discipline of a consulting firm.
+                    </p>
+                </motion.div>
+                <motion.div
+                    className="relative h-80 md:h-96"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.8 }}
+                >
+                {PlaceHolderImages.find(p => p.id === 'about-delivery-model') &&
+                    <Image
+                        src={PlaceHolderImages.find(p => p.id === 'about-delivery-model')!.imageUrl}
+                        alt="Global Delivery Model"
+                        layout="fill"
+                        objectFit="cover"
+                        className="rounded-2xl shadow-2xl shadow-primary/20"
+                        data-ai-hint={PlaceHolderImages.find(p => p.id === 'about-delivery-model')!.imageHint}
+                    />
+                }
+                </motion.div>
+            </div>
         </section>
         
         <section className="bg-background text-foreground py-20 md:py-32">

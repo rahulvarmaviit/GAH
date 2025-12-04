@@ -39,7 +39,7 @@
     {
       "id": "service-3",
       "description": "AI and machine learning brain interface",
-      "imageUrl": "https://images.unsplash.com/photo-1534723328310-e82dad3ee43f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlfGVufDB8fHx8MTc1OTcyMjIzMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1534723328310-e82dad3ee43f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlfGVufDB8fHx8MTc1OTcyMjIzMXww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "artificial intelligence"
     },
     {
@@ -57,13 +57,13 @@
     {
       "id": "service-6",
       "description": "UX/UI designer sketching wireframes",
-      "imageUrl": "https://images.unsplash.com/photo-1602576666092-bf6447a729fc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx1eCUyMGRlc2lnbnxlbnwwfHx8fDE3NTk3NTQwMzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1602576666092-bf6447a729fc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx1eCUyMGRlc2lnbnxlbnwwfHx8fDE3NTk3NTQwMzd8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "ux design"
     },
     {
       "id": "product-1",
       "description": "A sleek, futuristic drone in mid-flight",
-      "imageUrl": "https://images.unsplash.com/photo-1609464474585-b353aaa64dc6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxkcm9uZSUyMGZsaWdodHxlbnwwfHx8fDE3NjQ3ODgyMjZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1609464474585-b353aaa64dc6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxkcm9uZSUyMGZsaWdodHxlbnwwfHx8fDE3NjQ3ODgyMjZ8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "drone flight"
     },
     {
@@ -81,7 +81,7 @@
     {
       "id": "product-4",
       "description": "Advanced home automation hub",
-      "imageUrl": "https://images.unsplash.com/photo-1706774609219-56c61f8b3c51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzbWFydCUyMGhvbWV8ZW58MHx8fHwxNzY0Nzc5MTA1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1706774609219-56c61f8b3c51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzbWFydCUyMGhvbWV8ZW58MHx8fHwxNzY0Nzc5MTA1fDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "smart home"
     },
     {
@@ -173,6 +173,12 @@
       "description": "Two people working in a garage, symbolizing a startup's humble beginnings",
       "imageUrl": "https://images.unsplash.com/photo-1675034743126-0f250a5fee51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzdGFydHVwJTIwZ2FyYWdlfGVufDB8fHx8MTc2NDgzMTE5Mnww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "startup garage"
+    },
+    {
+      "id": "about-delivery-model",
+      "description": "A world map with connected dots, representing a global network",
+      "imageUrl": "https://images.unsplash.com/photo-1533152162-638734e70335?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxnbG9iYWwlMjBuZXR3b3JrfGVufDB8fHx8MTc2NTQxOTUwMnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "global network"
     },
     {
       "id": "contact-hero",
