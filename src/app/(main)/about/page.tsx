@@ -1,4 +1,6 @@
 
+'use client';
+
 import Image from 'next/image';
 import { Github, Linkedin, Twitter } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -49,7 +51,7 @@ const teamMembers = [
   },
 ];
 
-const AboutPageClient = () => {
+function AboutPageClient() {
   return (
     <div className="flex flex-col bg-background">
       <header className="h-[80vh] flex items-center justify-center text-center bg-black">
@@ -181,8 +183,6 @@ const AboutPageClient = () => {
 }
 
 
-// As the page now includes motion, it needs to be a client component.
-// We'll wrap the existing page in a client component.
 export default function AboutPage() {
     return <AboutPageClient />;
 }
