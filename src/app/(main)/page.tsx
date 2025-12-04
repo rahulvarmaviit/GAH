@@ -105,12 +105,11 @@ export default function Home() {
 
         <Feature108 />
 
-        <ConnectedEcosystem />
-
         <section className="bg-black text-white">
           <Gallery6 items={galleryItems} heading="Featured Projects" />
         </section>
 
+        <ConnectedEcosystem />
       </main>
     </div>
   );
