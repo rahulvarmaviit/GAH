@@ -77,7 +77,7 @@ export const products = [
     {
       id: 3,
       title: 'WFx -  Wolfronix',
-      shortTitle: '“Support Simplified. Results Magnified.”',
+      shortTitle: '“Encrypt Once . Trust Forever.”',
       slug: 'wfx-wolfronix',
       description: 'An innovative platform for next-generation workflow automation and integration.',
       link: 'https://images.unsplash.com/photo-1611095790444-1dfa3c8a1f2w?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx3b3JrZmxvdyUyMGF1dG9tYXRpb258ZW58MHx8fHwxNzY1NTc3MTM4fDA&ixlib-rb-4.1.0&q=80&w=1080',
@@ -112,7 +112,7 @@ export const products = [
     {
       id: 4,
       title: 'CST - Customer Support Tool',
-      shortTitle: '“Encrypt Once . Trust Forever.”',
+      shortTitle: '“Support Simplified. Results Magnified.”',
       slug: 'cst-customer-support-tool',
       description: 'C.S.T streamlines customer support by organizing service requests into clear, trackable tickets that guide both agents and customers through the entire resolution journey. With structured communication, real-time updates, and easy follow-up flows, C.S.T ensures faster responses, transparent progress, and a smoother support experience for teams and clients alike.',
       link: 'https://images.unsplash.com/photo-1611095782313-0b0a8f3c7f4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjdXN0b21lciUyMHN1cHBvcnR8ZW58MHx8fHwxNzY1NTc3MTY1fDA&ixlib-rb-4.1.0&q=80&w=1080',
