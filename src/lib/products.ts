@@ -9,7 +9,7 @@ export const products = [
       shortTitle: '"Manage better . Perform Smarter"',
       slug: 'tms-team-management-system',
       description: 'A comprehensive tool for managing teams, tasks, and project workflows efficiently.',
-      link: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NTk3NzQzNDd8MA&ixlib-rb-4.1.0&q=80&w=1080',
+      link: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NTk3NzQzNDd8MA&ixlib=rb-4.1.0&q=80&w=1080',
       color: '#5196fd',
       releaseDate: 'Jan 2024',
       category: 'Productivity',
@@ -77,7 +77,7 @@ export const products = [
     {
       id: 3,
       title: 'WFx -  Wolfronix',
-      shortTitle: 'WFx',
+      shortTitle: '“Support Simplified. Results Magnified.”',
       slug: 'wfx-wolfronix',
       description: 'An innovative platform for next-generation workflow automation and integration.',
       link: 'https://images.unsplash.com/photo-1611095790444-1dfa3c8a1f2w?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx3b3JrZmxvdyUyMGF1dG9tYXRpb258ZW58MHx8fHwxNzY1NTc3MTM4fDA&ixlib-rb-4.1.0&q=80&w=1080',
@@ -145,6 +145,7 @@ export const products = [
       ],
     },
   ];
+
 
 
 
