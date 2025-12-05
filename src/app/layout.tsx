@@ -2,8 +2,7 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
-import { Toaster } from '@/components/ui/toaster';
-import { ToastProvider } from '@/components/ui/toast';
+import { ToastProvider } from '@/components/toast-provider';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -30,10 +29,7 @@ export default function RootLayout({
           poppins.variable
         )}
       >
-        <ToastProvider>
-          {children}
-          <Toaster />
-        </ToastProvider>
+        <ToastProvider>{children}</ToastProvider>
       </body>
     </html>
   );
