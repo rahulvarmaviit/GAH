@@ -10,70 +10,75 @@ import Link from 'next/link';
 const whyChooseHashtagger = [
     {
         icon: <Shield className="h-8 w-8 text-accent" />,
-        title: 'Privacy-First Social',
-        description: 'Connect and share without compromising your personal data.',
-    },
-    {
-        icon: <Hash className="h-8 w-8 text-accent" />,
-        title: 'Interest-Based Circles',
-        description: 'Discover and join communities centered around your passions.',
-    },
-    {
-        icon: <Zap className="h-8 w-8 text-accent" />,
-        title: 'Distraction-Free Interface',
-        description: 'A clean, modern design that focuses on content and connection.',
+        title: 'Interest-first, not algorithm-first',
+        description: 'Discovery is driven by hashtags and topics, not hidden algorithmic tricks.',
     },
     {
         icon: <Users className="h-8 w-8 text-accent" />,
-        title: 'AI-Assisted Features',
-        description: 'Smart tools to enhance your content and connections.',
+        title: 'Multiple circles, one identity',
+        description: 'Separate personal, professional, and community spaces — without juggling multiple accounts.',
+    },
+    {
+        icon: <Zap className="h-8 w-8 text-accent" />,
+        title: 'AI that respects privacy',
+        description: 'Chat, translate, summarize, and explore content with AI support that doesn’t compromise your control.',
+    },
+    {
+        icon: <Eye className="h-8 w-8 text-accent" />,
+        title: 'Built for creators & communities',
+        description: 'From short Clips to long-form Hashflicks and Events, Hashtagger supports every content style.',
     },
 ];
 
 const howItWorks = [
     {
         step: 1,
-        title: 'Create Your Profile',
-        description: 'Set up your secure profile and choose your interests.'
+        title: 'Create your profile',
+        description: 'Set up your identity and choose your circles — personal, professional, community.'
     },
     {
         step: 2,
-        title: 'Explore Hashtags',
-        description: 'Discover trending and niche hashtags to find your communities.'
+        title: 'Follow hashtags',
+        description: 'Pick topics, interests, communities and let your feed adapt around them.'
     },
     {
         step: 3,
-        title: 'Join Circles',
-        description: 'Connect with like-minded people in private or public circles.'
+        title: 'Create & engage',
+        description: 'Post Clips, Hashflicks, join Events, and interact within circles.'
     },
     {
         step: 4,
-        title: 'Share & Engage',
-        description: 'Post text, images, audio, and more in a secure environment.'
+        title: 'Organize your digital world',
+        description: 'Save content into MemoryBank, build Collections, and revisit what matters to you.'
     },
 ];
 
 const features = [
-    'End-to-end encrypted messaging',
-    'AI-powered content recommendations',
-    'Multi-format content sharing (text, image, audio)',
-    'Customizable user circles (public/private)',
-    'Advanced privacy and data controls',
-    'Clean, ad-free user experience',
+    'Hashtag-first content discovery',
+    'Dynamic circles for structured engagement',
+    'Clips & Hashflicks for short and long-form content',
+    'Event-based social experiences',
+    'MemoryBank for private stored content',
+    'Collection Spaces for curated inspiration',
+    'Strong encryption and privacy controls',
 ];
 
 const faqs = [
     {
-        question: 'Is my data really private on Hashtagger?',
-        answer: 'Yes. We use end-to-end encryption for private communications and provide you with granular control over your data. We do not sell user data to third parties.',
+        question: 'Is Hashtagger for individuals or communities?',
+        answer: 'Both. Hashtagger is ideal for solo creators, friend groups, professional communities, and public networks.',
     },
     {
-        question: 'How do circles work?',
-        answer: 'Circles are like groups, but more flexible. You can create public circles for broad interests or private, invite-only circles for close friends or specific projects.',
+        question: 'Does Hashtagger track my behavior for ads?',
+        answer: 'No. Hashtagger is designed around privacy and consent, not intrusive tracking.',
     },
     {
-        question: 'What kind of content can I share?',
-        answer: 'Hashtagger supports a variety of formats, including text posts, high-resolution images, audio clips, and more. We are continuously expanding our content options.',
+        question: 'Can I keep my personal and professional activity separate?',
+        answer: 'Yes. Circles allow you to clearly separate your different worlds without creating multiple accounts.',
+    },
+     {
+        question: 'Is my content secure?',
+        answer: 'Content is protected by robust privacy layers and encryption, with you in control of what is visible and to whom.',
     },
 ];
 
@@ -90,14 +95,21 @@ export function HashtaggerPageContent() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-500 to-accent animate-gradient">
-                Hashtagger – Endless Limits. Endless Privacy.
+                Hashtagger – Social networking without compromises.
             </motion.h1>
+             <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="text-2xl font-semibold text-slate-200 mt-4">
+                Endless possibilities. Endless privacy.
+            </motion.h2>
             <motion.p 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="mx-auto max-w-[800px] text-slate-300/80 md:text-xl mt-6">
-                A next-gen social platform empowering users to connect through interests and share content without sacrificing privacy.
+                Hashtagger is a hashtag-first social platform that lets you explore interests, build circles, and create content — all in a privacy-first, user-controlled environment. No manipulative feeds, no noise. Just meaningful, interest-driven connections.
             </motion.p>
             <motion.div 
                 initial={{ opacity: 0, y: 20 }}
@@ -106,12 +118,12 @@ export function HashtaggerPageContent() {
                 className="flex gap-4 justify-center mt-8">
                     <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
                         <Link href="/contact">
-                            Join the Waitlist
+                            Get Started
                         </Link>
                     </Button>
                     <Button asChild size="lg" variant="outline" className="text-white border-white/50 bg-transparent hover:bg-white hover:text-black">
                         <Link href="/products">
-                            Explore Products
+                            Watch Demo
                         </Link>
                     </Button>
             </motion.div>
@@ -148,11 +160,11 @@ export function HashtaggerPageContent() {
             {/* How It Works */}
             <section>
                  <div className="text-center mb-16">
-                    <h2 className="text-4xl font-bold text-primary mb-4">How It Works</h2>
+                    <h2 className="text-4xl font-bold text-primary mb-4">How Hashtagger Works</h2>
                 </div>
                 <div className="relative grid md:grid-cols-4 gap-8">
                     <div className="absolute top-1/2 left-0 w-full h-0.5 bg-primary/20 -translate-y-1/2 hidden md:block"></div>
-                    <div className="absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-accent hidden md:block" style={{clipPath: 'polygon(0 0, 50% 0, 50% 100%, 0 100%)'}}></div>
+                    <div className="absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-accent hidden md:block" style={{clipPath: 'polygon(0 0, 75% 0, 75% 100%, 0 100%)'}}></div>
 
                     {howItWorks.map((step, index) => (
                          <motion.div 
@@ -177,7 +189,7 @@ export function HashtaggerPageContent() {
             <section className="bg-primary/5 p-12 rounded-2xl border border-primary/20">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                     <div>
-                         <h2 className="text-4xl font-bold text-primary mb-6">Core Features</h2>
+                         <h2 className="text-4xl font-bold text-primary mb-6">Features at a glance</h2>
                          <p className="text-lg text-slate-300/90 leading-relaxed mb-6">A feature-rich social experience designed for the modern, privacy-conscious user.</p>
                     </div>
                      <ul className="space-y-4">
@@ -193,7 +205,7 @@ export function HashtaggerPageContent() {
             
             {/* FAQs */}
             <section>
-                <h2 className="text-4xl font-bold text-primary mb-12 text-center">Frequently Asked Questions</h2>
+                <h2 className="text-4xl font-bold text-primary mb-12 text-center">Hashtagger - FAQs</h2>
                 <Accordion type="single" collapsible className="w-full max-w-4xl mx-auto">
                     {faqs.map((faq, index) => (
                          <AccordionItem key={index} value={`item-${index+1}`} className="bg-slate-900/80 border-slate-800 rounded-lg mb-4 px-6">
@@ -215,7 +227,7 @@ export function HashtaggerPageContent() {
                 <div className="flex gap-4 justify-center">
                     <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
                         <Link href="/contact">
-                            Join the Waitlist <ArrowRight className="ml-2 h-5 w-5" />
+                            Get Started <ArrowRight className="ml-2 h-5 w-5" />
                         </Link>
                     </Button>
                     <Button asChild size="lg" variant="outline" className="text-white border-white/50 bg-transparent hover:bg-white hover:text-black">
