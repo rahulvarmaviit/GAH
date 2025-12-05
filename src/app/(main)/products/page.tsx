@@ -6,38 +6,38 @@ import { RadialOrbitalTimelineDemo } from '@/components/ui/radial-orbital-timeli
 
 const projects = [
   {
-    title: 'Quantum Drone',
+    title: 'TMS - Team Management System',
     description:
-      'An autonomous drone with AI-powered flight and cinematic capabilities.',
-    link: 'https://images.unsplash.com/photo-1579721840641-7d0e67f1204e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxzbWFydCUyMHdhdGNofGVufDB8fHx8MTc1OTc0MDkyOHww&ixlib=rb-4.1.0&q=80&w=1080',
+      'A comprehensive tool for managing teams, tasks, and project workflows efficiently.',
+    link: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NTk3NzQzNDd8MA&ixlib=rb-4.1.0&q=80&w=1080',
     color: '#5196fd',
   },
   {
-    title: 'HoloWatch',
+    title: 'RMS - Resource Management System',
     description:
-      'A revolutionary smartwatch featuring a holographic interface and advanced biometrics.',
-    link: 'https://images.unsplash.com/photo-1617802690992-15d93263d3a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx2aXJ0dWFsJTIwcmVhbGl0eXxlbnwwfHx8fDE3NTk3NTY4OTB8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      'Optimize resource allocation, track utilization, and forecast needs with our powerful RMS.',
+    link: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxyZXNvdXJjZSUyMG1hbmFnZW1lbnR8ZW58MHx8fHwxNzY1NTc3MTEyfDA&ixlib=rb-4.1.0&q=80&w=1080',
     color: '#8f89ff',
   },
   {
-    title: 'NeuroLink VR',
+    title: 'WFx - Wolfronix',
     description:
-      'Immersive virtual reality headset with neural feedback for unparalleled realism.',
-    link: 'https://images.unsplash.com/photo-1615829386703-e2bb66a7cb7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxlbGVjdHJpYyUyMGNhcnxlbnwwfHx8fDE3NTk3NzY2MzV8MA&ixlib-rb-4.1.0&q=80&w=1080',
+      'An innovative platform for next-generation workflow automation and integration.',
+    link: 'https://images.unsplash.com/photo-1611095790444-1dfa3c8a1f2w?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx3b3JrZmxvdyUyMGF1dG9tYXRpb258ZW58MHx8fHwxNzY1NTc3MTM4fDA&ixlib=rb-4.1.0&q=80&w=1080',
     color: '#13006c',
   },
   {
-    title: 'Aura Home Hub',
+    title: 'CST - Customer Support Tool',
     description:
-      'A central smart home hub that learns and adapts to your lifestyle.',
-    link: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NTk3NzQzNDd8MA&ixlib-rb-4.1.0&q=80&w=1080',
+      'Enhance customer satisfaction with a streamlined and intelligent support ticketing system.',
+    link: 'https://images.unsplash.com/photo-1611095782313-0b0a8f3c7f4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjdXN0b21lciUyMHN1cHBvcnR8ZW58MHx8fHwxNzY1NTc3MTY1fDA&ixlib=rb-4.1.0&q=80&w=1080',
     color: '#ed649e',
   },
   {
-    title: 'Atlas Companion Bot',
+    title: 'HashTagger',
     description:
-      'A personal robotic assistant designed to help with daily tasks and organization.',
-    link: 'https://images.unsplash.com/photo-1534723328310-e82dad3ee43f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlfGVufDB8fHx8MTc1OTcyMjIzMXww&ixlib-rb-4.1.0&q=80&w=1080',
+      'A social media tool to discover, manage, and analyze trending hashtags for maximum reach.',
+    link: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzb2NpYWwlMjBtZWRpYXxlbnwwfHx8fDE3NjU1NzcxODh8MA&ixlib-rb-4.1.0&q=80&w=1080',
     color: '#fd521a',
   },
 ];
