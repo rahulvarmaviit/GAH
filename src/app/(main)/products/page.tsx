@@ -10,6 +10,7 @@ const timelineData = products.map(p => ({
     title: p.shortTitle,
     date: p.releaseDate,
     content: p.description,
+    slug: p.slug,
     category: p.category,
     icon: p.icon,
     relatedIds: [],

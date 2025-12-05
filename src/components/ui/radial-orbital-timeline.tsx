@@ -1,16 +1,18 @@
 
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { ArrowRight, Link, Zap } from "lucide-react";
+import { ArrowRight, Link as LinkIcon, Zap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
 
 interface TimelineItem {
   id: number;
   title: string;
   date: string;
   content: string;
+  slug: string;
   category: string;
   icon: React.ElementType;
   relatedIds: number[];
@@ -263,6 +265,14 @@ export default function RadialOrbitalTimeline({
                     <CardContent className="text-xs text-white/80">
                       <p>{item.content}</p>
 
+                      <div className="mt-4">
+                         <Button asChild variant="secondary" className="w-full bg-white/10 hover:bg-white/20 text-white">
+                            <Link href={`/products/${item.slug}`}>
+                                View Product <ArrowRight size={12} className="ml-2" />
+                            </Link>
+                        </Button>
+                      </div>
+
                       <div className="mt-4 pt-3 border-t border-white/10">
                         <div className="flex justify-between items-center text-xs mb-1">
                           <span className="flex items-center">
@@ -282,7 +292,7 @@ export default function RadialOrbitalTimeline({
                       {item.relatedIds.length > 0 && (
                         <div className="mt-4 pt-3 border-t border-white/10">
                           <div className="flex items-center mb-2">
-                            <Link size={10} className="text-white/70 mr-1" />
+                            <LinkIcon size={10} className="text-white/70 mr-1" />
                             <h4 className="text-xs uppercase tracking-wider font-medium text-white/70">
                               Connected Nodes
                             </h4>
