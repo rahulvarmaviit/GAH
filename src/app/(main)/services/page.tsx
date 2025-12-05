@@ -55,7 +55,8 @@ export default function ServicesPage() {
             className="space-y-24"
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
           >
             {services.map((service, index) => (
               <motion.div
@@ -69,6 +70,7 @@ export default function ServicesPage() {
                       src={service.image.imageUrl}
                       alt={service.title}
                       fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover transition-transform duration-500 hover:scale-105"
                       data-ai-hint={service.image.imageHint}
                     />
