@@ -15,31 +15,31 @@
     {
       "id": "feature-products",
       "description": "Sleek and modern electronic gadgets on a table",
-      "imageUrl": "https://images.unsplash.com/photo-1717996563514-e3519f9ef9f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBnYWRnZXRzfGVufDB8fHx8MTc2NDc1Mzc4MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1717996563514-e3519f9ef9f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBnYWRnZXRzfGVufDB8fHx8MTc2NDc1Mzc4MHww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "modern gadgets"
     },
     {
       "id": "feature-events",
       "description": "Large conference hall with an audience listening to a speaker",
-      "imageUrl": "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb25mZXJlbmNlJTIwYXVkaWVuY2V8ZW58MHx8fHwxNzY0NzgzNjMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb25mZXJlbmNlJTIwYXVkaWVuY2V8ZW58MHx8fHwxNzY0NzgzNjMxfDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "conference audience"
     },
     {
       "id": "service-1",
       "description": "Cloud computing and data storage concept",
-      "imageUrl": "https://images.unsplash.com/photo-1667984390535-6d03cff0b11a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjbG91ZCUyMGNvbXB1dGluZ3xlbnwwfHx8fDE3NjQ3MzA4MDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1667984390535-6d03cff0b11a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjbG91ZCUyMGNvbXB1dGluZ3xlbnwwfHx8fDE3NjQ3MzA4MDd8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "cloud computing"
     },
     {
       "id": "service-2",
       "description": "Cybersecurity expert monitoring network traffic",
-      "imageUrl": "https://images.unsplash.com/photo-1620825937374-87fc7d6bddc2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjeWJlciUyMHNlY3VyaXR5fGVufDB8fHx8MTc2NDgwODQ4M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1620825937374-87fc7d6bddc2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjeWJlciUyMHNlY3VyaXR5fGVufDB8fHx8MTc2NDgwODQ4M3ww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "cyber security"
     },
     {
       "id": "service-3",
       "description": "AI and machine learning brain interface",
-      "imageUrl": "https://images.unsplash.com/photo-1534723328310-e82dad3ee43f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlfGVufDB8fHx8MTc1OTcyMjIzMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1534723328310-e82dad3ee43f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlfGVufDB8fHx8MTc1OTcyMjIzMXww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "artificial intelligence"
     },
     {
@@ -51,7 +51,7 @@
     {
       "id": "service-5",
       "description": "Digital marketing strategy session with sticky notes",
-      "imageUrl": "https://images.unsplash.com/photo-1590102425728-aa39769512ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtYXJrZXRpbmclMjBzdHJhdGVneXxlbnwwfHx8fDE3NTk3ODU0NzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1590102425728-aa39769512ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtYXJrZXRpbmclMjBzdHJhdGVneXxlbnwwfHx8fDE3NTk3ODU0NzB8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "marketing strategy"
     },
     {
@@ -59,6 +59,12 @@
       "description": "UX/UI designer sketching wireframes",
       "imageUrl": "https://images.unsplash.com/photo-1602576666092-bf6447a729fc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx1eCUyMGRlc2lnbnxlbnwwfHx8fDE3NTk3NTQwMzd8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "ux design"
+    },
+    {
+      "id": "service-7",
+      "description": "Developer coding on a laptop with multiple screens",
+      "imageUrl": "https://images.unsplash.com/photo-1517694712202-1428bc3cd405?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxlbnwwfHx8fDE3NjAxOTU1NDJ8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "web development"
     },
     {
       "id": "product-1",
@@ -117,7 +123,7 @@
     {
       "id": "event-4",
       "description": "Product launch event with a new device showcased",
-      "imageUrl": "https://images.unsplash.com/photo-1759491627968-3ca2247a31e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxwcm9kdWN0JTIwbGF1bmNofGVufDB8fHx8MTc1OTc2NzM3N3ww&ixlib.rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1759491627968-3ca2247a31e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxwcm9kdWN0JTIwbGF1bmNofGVufDB8fHx8MTc1OTc2NzM3N3ww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "product launch"
     },
     {
@@ -171,7 +177,7 @@
     {
       "id": "about-story",
       "description": "Two people working in a garage, symbolizing a startup's humble beginnings",
-      "imageUrl": "https://images.unsplash.com/photo-1675034743126-0f250a5fee51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzdGFydHVwJTIwZ2FyYWdlfGVufDB8fHx8MTc2NDgzMTE5Mnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1675034743126-0f250a5fee51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzcGFydHVwJTIwZ2FyYWdlfGVufDB8fHx8MTc2NDgzMTE5Mnww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "startup garage"
     },
     {

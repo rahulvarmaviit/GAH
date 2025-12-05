@@ -261,4 +261,47 @@ export const services = [
         'Stronger brand perception'
     ],
   },
+  {
+    title: 'Custom Web Solutions',
+    slug: 'custom-web-solutions',
+    description: 'Bespoke web development to meet your unique business needs, from corporate sites to complex applications.',
+    link: '/services/custom-web-solutions',
+    fullDescription: 'We build high-performance, scalable, and secure web solutions tailored to your specific requirements. Our team handles everything from initial concept and design to development, deployment, and maintenance.',
+    image: PlaceHolderImages.find((img) => img.id === 'service-7'),
+    features: [
+      'Custom web application development',
+      'E-commerce platform development',
+      'Content Management Systems (CMS)',
+      'API design and integration',
+    ],
+    problemStatement: "Off-the-shelf solutions often fail to meet the unique needs and workflows of a business, leading to compromises in functionality, scalability, and user experience.",
+    solutionsOffered: [
+        "Tailor-made web applications",
+        "Scalable e-commerce stores",
+        "Headless CMS implementation",
+        "Third-party API integrations",
+    ],
+    toolsTechStack: [
+        { name: 'Next.js', icon: 'Code' },
+        { name: 'React', icon: 'Code' },
+        { name: 'Node.js', icon: 'Server' },
+        { name: 'PostgreSQL', icon: 'Server' },
+        { name: 'Vercel', icon: 'Server' },
+    ],
+    whyChooseGAH: "We don't just build websites; we build digital assets that drive business growth. Our agile development process ensures we deliver high-quality solutions quickly, while our focus on clean code and modern architecture guarantees a product that is both maintainable and future-proof.",
+    caseStudies: [
+        { title: "SaaS company launches MVP in record time", description: "We helped a SaaS startup build and launch their Minimum Viable Product (MVP) in just 3 months, enabling them to secure their first round of funding.", link: "#" },
+        { title: "Retailer sees 300% increase in online sales", description: "A custom e-commerce platform we built for a retail client resulted in a 300% increase in online sales and improved customer satisfaction.", link: "#" },
+    ],
+    faqs: [
+        { question: "Can you work with our existing brand guidelines?", answer: "Yes, our design and development teams work closely with your brand guidelines to ensure a consistent and seamless user experience that reflects your brand identity." },
+        { question: "What is your development process?", answer: "We follow an agile methodology, which includes regular sprints, daily stand-ups, and frequent demos. This allows for flexibility and ensures that we are always aligned with your business goals throughout the project lifecycle." },
+    ],
+     outcomeFocus: [
+        'Improved operational efficiency',
+        'Enhanced user engagement',
+        'Increased revenue and sales',
+        'Scalable and future-proof solutions'
+    ],
+  },
 ];
