@@ -42,7 +42,7 @@ export const products = [
     {
       id: 2,
       title: 'RMS - Resource Management System',
-      shortTitle: 'RMS',
+      shortTitle: '“Smarter Workflows. Happier Employees.”',
       slug: 'rms-resource-management-system',
       description: 'Optimize resource allocation, track utilization, and forecast needs with our powerful RMS.',
       link: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxyZXNvdXJjZSUyMG1hbmFnZW1lbnR8ZW58MHx8fHwxNzY1NTc3MTEyfDA&ixlib-rb-4.1.0&q=80&w=1080',
@@ -145,6 +145,7 @@ export const products = [
       ],
     },
   ];
+
 
 
 
