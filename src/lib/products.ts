@@ -44,7 +44,7 @@ export const products = [
       title: 'RMS - Resource Management System',
       shortTitle: '“Smarter Workflows. Happier Employees.”',
       slug: 'rms-resource-management-system',
-      description: 'Optimize resource allocation, track utilization, and forecast needs with our powerful RMS.',
+      description: 'R.M.S helps organizations manage people, tools, and operational resources with precision and clarity. It centralizes all resource data, provides role-based visibility, and enables intelligent allocation across teams and projects. With R.M.S, businesses can reduce inefficiencies, prevent overload, and ensure every resource is used effectively for maximum productivity.',
       link: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxyZXNvdXJjZSUyMG1hbmFnZW1lbnR8ZW58MHx8fHwxNzY1NTc3MTEyfDA&ixlib-rb-4.1.0&q=80&w=1080',
       color: '#8f89ff',
       releaseDate: 'Feb 2024',
@@ -145,4 +145,3 @@ export const products = [
       ],
     },
   ];
-
