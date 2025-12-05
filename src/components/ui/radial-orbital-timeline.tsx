@@ -1,3 +1,4 @@
+
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { ArrowRight, Link, Zap } from "lucide-react";
@@ -154,7 +155,7 @@ export default function RadialOrbitalTimeline({
 
   return (
     <div
-      className="w-full h-screen flex flex-col items-center justify-center bg-black overflow-hidden"
+      className="w-full h-screen flex flex-col items-center justify-center bg-slate-950 overflow-hidden"
       ref={containerRef}
       onClick={handleContainerClick}
     >
@@ -271,7 +272,7 @@ export default function RadialOrbitalTimeline({
                           {item.date}
                         </span>
                       </div>
-                      <CardTitle className="text-sm mt-2">
+                      <CardTitle className="text-sm text-white mt-2">
                         {item.title}
                       </CardTitle>
                     </CardHeader>
@@ -340,3 +341,5 @@ export default function RadialOrbitalTimeline({
     </div>
   );
 }
+
+    
