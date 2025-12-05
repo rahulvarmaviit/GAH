@@ -10,70 +10,69 @@ import Link from 'next/link';
 const whyChooseWfx = [
     {
         icon: <ShieldCheck className="h-8 w-8 text-accent" />,
-        title: 'Multi-Layer Defense',
-        description: 'Robust protection across your entire digital infrastructure.',
+        title: 'Multi-Layer Protection',
+        description: 'Defense at the data, access, and system levels.',
     },
     {
         icon: <Lock className="h-8 w-8 text-accent" />,
-        title: 'Strong Access Controls',
-        description: 'Ensure only authorized users access sensitive information.',
+        title: 'Privacy & Integrity by Design',
+        description: 'Built to protect sensitive information from misuse or tampering.',
     },
     {
         icon: <Eye className="h-8 w-8 text-accent" />,
-        title: 'Integrity Monitoring',
-        description: 'Real-time alerts on unauthorized changes to your systems.',
+        title: 'Enterprise-Ready',
+        description: 'Suitable for regulated industries and security-sensitive environments.',
     },
     {
         icon: <Layers className="h-8 w-8 text-accent" />,
-        title: 'Adaptive & Scalable',
-        description: 'Security that grows and evolves with your infrastructure needs.',
+        title: 'Scales with Your Infrastructure',
+        description: 'As your systems grow, W.F.X grows with them.',
     },
 ];
 
 const howItWorks = [
     {
         step: 1,
-        title: 'Deploy the Shield',
-        description: 'Integrate W.F.X into your environment with our seamless setup process.'
+        title: 'Integrate with Your Environment',
+        description: 'W.F.X plugs into your existing architecture.'
     },
     {
         step: 2,
-        title: 'Configure Policies',
-        description: 'Define access rules, integrity checks, and privacy settings.'
+        title: 'Apply Layered Controls',
+        description: 'Access controls, privacy guardrails, and integrity checks.'
     },
     {
         step: 3,
-        title: 'Monitor & Detect',
-        description: 'W.F.X continuously monitors for threats and policy violations in real-time.'
+        title: 'Monitor & Alert',
+        description: 'The system observes critical events and surfaces risks.'
     },
     {
         step: 4,
-        title: 'Respond & Remediate',
-        description: 'Receive actionable alerts and automated responses to security incidents.'
+        title: 'Continuously Improve',
+        description: 'Use insights to strengthen your security posture over time.'
     },
 ];
 
 const features = [
-    'Centralized security dashboard',
-    'Role-based access control (RBAC)',
-    'File integrity monitoring (FIM)',
-    'Data encryption and privacy controls',
-    'Compliance reporting (e.g., GDPR, HIPAA)',
-    'Automated threat response',
+    'Multi-layer security enforcement',
+    'Access & identity control hooks',
+    'Data privacy protection mechanisms',
+    'Integrity monitoring and alerting',
+    'Compliance-friendly architecture',
 ];
 
 const faqs = [
     {
-        question: 'What kind of systems can W.F.X protect?',
-        answer: 'W.F.X is designed to protect a wide range of systems, including cloud servers, on-premise infrastructure, and hybrid environments.',
+        question: 'Is W.F.X only for large enterprises?',
+        answer: 'No. It can support both growing companies and large enterprises.',
     },
     {
-        question: 'Is W.F.X difficult to manage?',
-        answer: 'No. W.F.X features a user-friendly dashboard that simplifies security management, even for complex infrastructures.',
+        question: 'Does W.F.X replace existing security tools?',
+        answer: 'It can complement your existing stack, acting as a foundational layer.',
     },
     {
-        question: 'Can W.F.X help with compliance?',
-        answer: 'Yes, W.F.X includes features for monitoring and reporting that help you meet various compliance standards like GDPR, HIPAA, and PCI-DSS.',
+        question: 'Does W.F.X handle user data directly?',
+        answer: 'It is designed to secure data access and integrity based on your configurations.',
     },
 ];
 
@@ -90,14 +89,14 @@ export function WfxPageContent() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-500 to-accent animate-gradient">
-                W.F.X – Encrypt Once. Trust Forever.
+                W.F.X – Security in every layer.
             </motion.h1>
             <motion.p 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="mx-auto max-w-[800px] text-slate-300/80 md:text-xl mt-6">
-                W.F.X is a robust multi-layer security platform designed to safeguard digital systems with strong access controls, integrity monitoring, and privacy protection.
+                W.F.X by Wolfronix is a multi-layer security foundation that protects your data, access, and operations. It is designed for organizations that treat security as a core requirement, not an afterthought.
             </motion.p>
             <motion.div 
                 initial={{ opacity: 0, y: 20 }}
@@ -106,12 +105,12 @@ export function WfxPageContent() {
                 className="flex gap-4 justify-center mt-8">
                     <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
                         <Link href="/contact">
-                            Get a Demo
+                            Talk to Security Team
                         </Link>
                     </Button>
                     <Button asChild size="lg" variant="outline" className="text-white border-white/50 bg-transparent hover:bg-white hover:text-black">
-                        <Link href="/products">
-                            Explore Products
+                        <Link href="#use-cases">
+                            View Capabilities
                         </Link>
                     </Button>
             </motion.div>
@@ -121,7 +120,7 @@ export function WfxPageContent() {
       <main className="py-20 md:py-24">
         <div className="container space-y-24">
             {/* Why Choose W.F.X */}
-            <section>
+            <section id="use-cases">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl font-bold text-primary mb-4">Why Choose W.F.X</h2>
                 </div>
@@ -215,7 +214,7 @@ export function WfxPageContent() {
                 <div className="flex gap-4 justify-center">
                     <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
                         <Link href="/contact">
-                            Request a Demo <ArrowRight className="ml-2 h-5 w-5" />
+                            Talk to Security Team <ArrowRight className="ml-2 h-5 w-5" />
                         </Link>
                     </Button>
                     <Button asChild size="lg" variant="outline" className="text-white border-white/50 bg-transparent hover:bg-white hover:text-black">
