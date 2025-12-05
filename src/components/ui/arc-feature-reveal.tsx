@@ -52,18 +52,6 @@ const features = [
             "Streamline internal communications.",
             "Boost productivity and engagement."
         ]
-    },
-    {
-        title: "Hashtagger",
-        icon: Hash,
-        color: "#10B981", // Emerald
-        delay: 0.5,
-        description: "Hashtagger",
-        details: [
-            "Discover content via hashtags.",
-            "Privacy-first social networking.",
-            "Build communities and circles."
-        ]
     }
 ];
 
