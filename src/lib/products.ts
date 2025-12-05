@@ -45,7 +45,7 @@ export const products = [
       shortTitle: 'RMS',
       slug: 'rms-resource-management-system',
       description: 'Optimize resource allocation, track utilization, and forecast needs with our powerful RMS.',
-      link: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxyZXNvdXJjZSUyMG1hbmFnZW1lbnR8ZW58MHx8fHwxNzY1NTc3MTEyfDA&ixlib=rb-4.1.0&q=80&w=1080',
+      link: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxyZXNvdXJjZSUyMG1hbmFnZW1lbnR8ZW58MHx8fHwxNzY1NTc3MTEyfDA&ixlib-rb-4.1.0&q=80&w=1080',
       color: '#8f89ff',
       releaseDate: 'Feb 2024',
       category: 'Operations',
@@ -76,7 +76,7 @@ export const products = [
     },
     {
       id: 3,
-      title: 'WFx - Wolfronix',
+      title: 'WFx -  Wolfronix',
       shortTitle: 'WFx',
       slug: 'wfx-wolfronix',
       description: 'An innovative platform for next-generation workflow automation and integration.',
@@ -144,39 +144,5 @@ export const products = [
           { title: "Online retailer reduces response time by 50%", description: "By implementing CST and its AI features, a retailer was able to handle a higher volume of tickets with the same team size.", link: "#" },
       ],
     },
-     {
-      id: 5,
-      title: 'HashTagger',
-      shortTitle: 'HashTagger',
-      slug: 'hashtagger',
-      description: 'AI-powered hashtag generation and analytics for social media growth.',
-      link: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzb2NpYWwlMjBtZWRpYXxlbnwwfHx8fDE3NjU1NzcyMTN8MA&ixlib=rb-4.1.0&q=80&w=1080',
-      color: '#0891b2',
-      releaseDate: 'May 2024',
-      category: 'Social Media',
-      icon: Hash,
-      fullDescription: 'HashTagger uses AI to analyze your content and suggest the most effective hashtags to maximize reach and engagement. Track hashtag performance and discover trending topics in your niche.',
-      features: [
-        'AI-based hashtag suggestions',
-        'Performance analytics for tracked hashtags',
-        'Competitor hashtag analysis',
-        'Content and trend discovery',
-      ],
-      problemStatement: "Creators and brands struggle to choose the right hashtags to get their content discovered on social media, limiting their reach and growth potential.",
-      solutionsOffered: [
-          "Intelligent hashtag recommendations based on content analysis.",
-          "Analytics to measure the effectiveness of hashtag strategies.",
-          "Tools to monitor competitor and industry hashtag usage.",
-          "A dashboard to identify and capitalize on trending topics.",
-      ],
-      toolsTechStack: [
-          { name: 'Next.js', icon: 'Code' },
-          { name: 'Python', icon: 'Server' },
-          { name: 'FastAPI', icon: 'Server' },
-          { name: 'BERT', icon: 'BrainCircuit' },
-      ],
-      caseStudies: [
-          { title: "Influencer doubles engagement in one month", description: "Using HashTagger's AI recommendations, a lifestyle influencer saw a 2x increase in post engagement and follower growth.", link: "#" },
-      ],
-    },
   ];
+
