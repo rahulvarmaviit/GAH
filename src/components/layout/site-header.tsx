@@ -18,7 +18,7 @@ function Navbar({ className, isDarkMode, active, setActive }: { className?: stri
   const services = [
     {
       title: 'Cloud Solutions',
-      href: '/services',
+      href: '/services/cloud-solutions',
       src: PlaceHolderImages.find((img) => img.id === 'service-1')?.imageUrl,
       'data-ai-hint': PlaceHolderImages.find((img) => img.id === 'service-1')
         ?.imageHint,
@@ -27,7 +27,7 @@ function Navbar({ className, isDarkMode, active, setActive }: { className?: stri
     },
     {
       title: 'Cyber Security',
-      href: '/services',
+      href: '/services/cyber-security',
       src: PlaceHolderImages.find((img) => img.id === 'service-2')?.imageUrl,
       'data-ai-hint': PlaceHolderImages.find((img) => img.id === 'service-2')
         ?.imageHint,
@@ -36,7 +36,7 @@ function Navbar({ className, isDarkMode, active, setActive }: { className?: stri
     },
     {
       title: 'AI & Machine Learning',
-      href: '/services',
+      href: '/services/ai-machine-learning',
       src: PlaceHolderImages.find((img) => img.id === 'service-3')?.imageUrl,
       'data-ai-hint': PlaceHolderImages.find((img) => img.id === 'service-3')
         ?.imageHint,
@@ -45,7 +45,7 @@ function Navbar({ className, isDarkMode, active, setActive }: { className?: stri
     },
     {
       title: 'Data Analytics',
-      href: '/services',
+      href: '/services/data-analytics',
       src: PlaceHolderImages.find((img) => img.id === 'service-4')?.imageUrl,
       'data-ai-hint': PlaceHolderImages.find((img) => img.id === 'service-4')
         ?.imageHint,
@@ -56,40 +56,32 @@ function Navbar({ className, isDarkMode, active, setActive }: { className?: stri
 
   const products = [
     {
-      title: 'Quantum Drone',
-      href: '/products',
-      src: PlaceHolderImages.find((img) => img.id === 'product-1')?.imageUrl,
-      'data-ai-hint': PlaceHolderImages.find((img) => img.id === 'product-1')
-        ?.imageHint,
-      description:
-        'An autonomous drone with AI-powered flight and cinematic capabilities.',
+      title: 'TMS',
+      href: '/products/tms-team-management-system',
+      src: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NTk3NzQzNDd8MA&ixlib-rb-4.1.0&q=80&w=1080',
+      'data-ai-hint': 'team collaboration',
+      description: 'One workspace for every team, bringing structure to tasks, projects, and communication.',
     },
     {
-      title: 'HoloWatch',
-      href: '/products',
-      src: PlaceHolderImages.find((img) => img.id === 'product-2')?.imageUrl,
-      'data-ai-hint': PlaceHolderImages.find((img) => img.id === 'product-2')
-        ?.imageHint,
-      description:
-        'A revolutionary smartwatch featuring a holographic interface and advanced biometrics.',
+      title: 'RMS',
+      href: '/products/rms-resource-management-system',
+      src: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxyZXNvdXJjZSUyMG1hbmFnZW1lbnR8ZW58MHx8fHwxNzY1NTc3MTEyfDA&ixlib-rb-4.1.0&q=80&w=1080',
+      'data-ai-hint': 'resource management',
+      description: 'Centralize resources to know who is doing what, where, and when.',
     },
     {
-      title: 'NeuroLink VR',
-      href: '/products',
-      src: PlaceHolderImages.find((img) => img.id === 'product-3')?.imageUrl,
-      'data-ai-hint': PlaceHolderImages.find((img) => img.id === 'product-3')
-        ?.imageHint,
-      description:
-        'Immersive virtual reality headset with neural feedback for unparalleled realism.',
+      title: 'CST',
+      href: '/products/cst-customer-support-tool',
+      src: 'https://images.unsplash.com/photo-1611095782313-0b0a8f3c7f4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjdXN0b21lciUyMHN1cHBvcnR8ZW58MHx8fHwxNzY1NTc3MTY1fDA&ixlib-rb-4.1.0&q=80&w=1080',
+      'data-ai-hint': 'customer support',
+      description: 'Turn support chaos into clarity with tracked, visible, and documented ticket resolution.',
     },
     {
-      title: 'Aura Home Hub',
-      href: '/products',
-      src: PlaceHolderImages.find((img) => img.id === 'product-4')?.imageUrl,
-      'data-ai-hint': PlaceHolderImages.find((img) => img.id === 'product-4')
-        ?.imageHint,
-      description:
-        'A central smart home hub that learns and adapts to your lifestyle.',
+      title: 'WFX',
+      href: '/products/wfx-wolfronix',
+      src: 'https://images.unsplash.com/photo-1611095790444-1dfa3c8a1f2w?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx3b3JrZmxvdyUyMGF1dG9tYXRpb258ZW58MHx8fHwxNzY1NTc3MTM4fDA&ixlib-rb-4.1.0&q=80&w=1080',
+      'data-ai-hint': 'workflow automation',
+      description: 'A multi-layer security foundation that protects your data, access, and operations.',
     },
   ];
 
