@@ -144,7 +144,7 @@ export function RmsPageContent() {
             {/* How It Works */}
             <section>
                  <div className="text-center mb-16">
-                    <h2 className="text-4xl font-bold text-primary mb-4">How It Works</h2>
+                    <h2 className="text-5xl font-bold text-primary mb-4">How It Works</h2>
                 </div>
                 <Timeline data={howItWorks} />
             </section>
