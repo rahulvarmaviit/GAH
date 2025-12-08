@@ -8,6 +8,7 @@ import { ArrowRight, Code } from 'lucide-react';
 // The main hero component
 const CyberMatrixHero = () => {
     const gridRef = useRef<HTMLDivElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
     const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
@@ -47,7 +48,9 @@ const CyberMatrixHero = () => {
 
         const createTiles = (quantity: number) => {
             Array.from(Array(quantity)).map((_, index) => {
-                grid.appendChild(createTile(index));
+                if (grid) {
+                    grid.appendChild(createTile(index));
+                }
             });
         }
 
@@ -78,24 +81,45 @@ const CyberMatrixHero = () => {
 
             // Occasionally highlight a full word
             const highlightInterval = setInterval(() => {
-                 if(Math.random() > 0.7) { // 30% chance to run this interval
+                 if(Math.random() > 0.7 && contentRef.current) { 
+                    const contentRect = contentRef.current.getBoundingClientRect();
                     const word = puzzleWords[Math.floor(Math.random() * puzzleWords.length)];
-                    const startRow = Math.floor(Math.random() * (rows - 1));
-                    let startCol = Math.floor(Math.random() * (columns - word.length));
                     
-                    for (let i = 0; i < word.length; i++) {
-                        const tileIndex = startRow * columns + startCol + i;
-                        if (tileIndex < tiles.length) {
-                            const tile = tiles[tileIndex];
-                            tile.textContent = word[i];
-                            tile.classList.add('highlight');
-                            setTimeout(() => {
-                                tile.classList.remove('highlight');
-                            }, 1000); // Highlight for 1 second
+                    let startRow = 0;
+                    let startCol = 0;
+                    let overlaps = true;
+                    let attempts = 0;
+
+                    while(overlaps && attempts < 20) {
+                        startRow = Math.floor(Math.random() * (rows - 1));
+                        startCol = Math.floor(Math.random() * (columns - word.length));
+                        
+                        // Check for overlap
+                        const wordStartX = startCol * size;
+                        const wordEndX = (startCol + word.length) * size;
+                        const wordY = startRow * size;
+
+                        if (wordEndX < contentRect.left || wordStartX > contentRect.right || (wordY + size) < contentRect.top || wordY > contentRect.bottom) {
+                            overlaps = false;
+                        }
+                        attempts++;
+                    }
+
+                    if (!overlaps) {
+                        for (let i = 0; i < word.length; i++) {
+                            const tileIndex = startRow * columns + startCol + i;
+                            if (tileIndex < tiles.length) {
+                                const tile = tiles[tileIndex];
+                                tile.textContent = word[i];
+                                tile.classList.add('highlight');
+                                setTimeout(() => {
+                                    tile.classList.remove('highlight');
+                                }, 1000); 
+                            }
                         }
                     }
                 }
-            }, 500); // highlight every 0.5 seconds
+            }, 500); 
             
             return () => clearInterval(highlightInterval);
         }
@@ -209,7 +233,7 @@ const CyberMatrixHero = () => {
             `}</style>
 
             {/* Overlay HTML Content */}
-            <div className="relative z-10 text-center p-6 bg-black rounded-xl border border-white/10">
+            <div ref={contentRef} className="relative z-10 text-center p-6 bg-black rounded-xl border border-white/10">
                 <motion.div
                     custom={0}
                     variants={fadeUpVariants}
@@ -259,4 +283,3 @@ const CyberMatrixHero = () => {
     );
 };
 export default CyberMatrixHero;
-
