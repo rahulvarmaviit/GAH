@@ -6,6 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { CheckCircle, Users, Eye, Zap, ArrowRight, MessageSquare, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { Timeline } from '@/components/ui/timeline';
 
 const whyChooseCst = [
     {
@@ -32,24 +33,20 @@ const whyChooseCst = [
 
 const howItWorks = [
     {
-        step: 1,
-        title: 'Customer raises a ticket',
-        description: 'Through web, app, or integrated channels.'
+        title: 'Step 1: Raise',
+        content: <p className="text-slate-300">Customer raises a ticket through web, app, or integrated channels.</p>
     },
     {
-        step: 2,
-        title: 'Ticket is categorized',
-        description: 'By issue type, priority, and department.'
+        title: 'Step 2: Categorize',
+        content: <p className="text-slate-300">Ticket is categorized by issue type, priority, and department.</p>
     },
     {
-        step: 3,
-        title: 'Agent picks it up',
-        description: 'Responds, asks questions, and works toward resolution.'
+        title: 'Step 3: Resolve',
+        content: <p className="text-slate-300">Agent picks it up, responds, asks questions, and works toward resolution.</p>
     },
     {
-        step: 4,
-        title: 'Resolution & follow-up',
-        description: 'Final outcome is recorded and shared, with optional follow-up.'
+        title: 'Step 4: Follow-up',
+        content: <p className="text-slate-300">Final outcome is recorded and shared, with optional follow-up.</p>
     },
 ];
 
@@ -149,27 +146,7 @@ export function CstPageContent() {
                  <div className="text-center mb-16">
                     <h2 className="text-4xl font-bold text-primary mb-4">How It Works</h2>
                 </div>
-                <div className="relative grid md:grid-cols-4 gap-8">
-                    <div className="absolute top-1/2 left-0 w-full h-0.5 bg-primary/20 -translate-y-1/2 hidden md:block"></div>
-                    <div className="absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-accent hidden md:block" style={{clipPath: 'polygon(0 0, 50% 0, 50% 100%, 0 100%)'}}></div>
-
-                    {howItWorks.map((step, index) => (
-                         <motion.div 
-                            key={index}
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.5 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="relative bg-slate-900 p-6 rounded-2xl border border-slate-800"
-                        >
-                            <div className="absolute -top-4 -left-4 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-xl border-4 border-black">
-                                {step.step}
-                            </div>
-                            <h3 className="text-xl font-bold text-white mb-3 mt-8">{step.title}</h3>
-                            <p className="text-slate-400">{step.description}</p>
-                        </motion.div>
-                    ))}
-                </div>
+                <Timeline data={howItWorks} />
             </section>
 
             {/* Features */}

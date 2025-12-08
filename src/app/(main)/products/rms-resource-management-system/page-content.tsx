@@ -6,6 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { CheckCircle, Users, Eye, Zap, ArrowRight, GanttChartSquare, Package, Database } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { Timeline } from '@/components/ui/timeline';
 
 const whyChooseRms = [
     {
@@ -32,24 +33,20 @@ const whyChooseRms = [
 
 const howItWorks = [
     {
-        step: 1,
-        title: 'Add your people & resources',
-        description: 'Employees, tools, locations, time blocks — everything in one system.'
+        title: 'Step 1: Add',
+        content: <p className="text-slate-300">Add your people & resources. Employees, tools, locations, time blocks — everything in one system.</p>
     },
     {
-        step: 2,
-        title: 'Define roles & responsibilities',
-        description: 'Map who can access, view, or edit specific resource pools.'
+        title: 'Step 2: Define',
+        content: <p className="text-slate-300">Define roles & responsibilities. Map who can access, view, or edit specific resource pools.</p>
     },
     {
-        step: 3,
-        title: 'Allocate & track usage',
-        description: 'Assign resources to teams, projects, or tasks with clear timelines.'
+        title: 'Step 3: Allocate',
+        content: <p className="text-slate-300">Allocate & track usage. Assign resources to teams, projects, or tasks with clear timelines.</p>
     },
     {
-        step: 4,
-        title: 'Analyze & optimize',
-        description: 'See where resources are underused or overloaded and adjust accordingly.'
+        title: 'Step 4: Analyze',
+        content: <p className="text-slate-300">Analyze & optimize. See where resources are underused or overloaded and adjust accordingly.</p>
     },
 ];
 
@@ -149,27 +146,7 @@ export function RmsPageContent() {
                  <div className="text-center mb-16">
                     <h2 className="text-4xl font-bold text-primary mb-4">How It Works</h2>
                 </div>
-                <div className="relative grid md:grid-cols-4 gap-8">
-                    <div className="absolute top-1/2 left-0 w-full h-0.5 bg-primary/20 -translate-y-1/2 hidden md:block"></div>
-                    <div className="absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-accent hidden md:block" style={{clipPath: 'polygon(0 0, 50% 0, 50% 100%, 0 100%)'}}></div>
-
-                    {howItWorks.map((step, index) => (
-                         <motion.div 
-                            key={index}
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.5 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="relative bg-slate-900 p-6 rounded-2xl border border-slate-800"
-                        >
-                            <div className="absolute -top-4 -left-4 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-xl border-4 border-black">
-                                {step.step}
-                            </div>
-                            <h3 className="text-xl font-bold text-white mb-3 mt-8">{step.title}</h3>
-                            <p className="text-slate-400">{step.description}</p>
-                        </motion.div>
-                    ))}
-                </div>
+                <Timeline data={howItWorks} />
             </section>
 
             {/* Features */}
