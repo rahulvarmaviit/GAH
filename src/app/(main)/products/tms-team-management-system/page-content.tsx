@@ -147,7 +147,7 @@ export function TmsPageContent() {
             
             <section>
                 <div className="text-center mb-16">
-                    <h2 className="text-5xl font-bold text-primary mb-4">How It Works</h2>
+                    <h2 className="text-5xl font-bold text-neutral-500 mb-4">How It Works</h2>
                 </div>
                 <Timeline data={howItWorksContent} />
             </section>
