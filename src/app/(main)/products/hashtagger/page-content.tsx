@@ -186,10 +186,10 @@ export function HashtaggerPageContent() {
                 </div>
             </section>
 
-             <section className="bg-background text-foreground py-20 md:py-24">
+             <section className="bg-black text-white py-20 md:py-24">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl font-bold text-primary mb-4">Our Process</h2>
-                    <p className="text-lg text-muted-foreground max-w-3xl mx-auto">We follow a structured and transparent process to ensure the successful delivery of every project, from initial discovery to final launch and beyond.</p>
+                    <p className="text-lg text-slate-300 max-w-3xl mx-auto">We follow a structured and transparent process to ensure the successful delivery of every project, from initial discovery to final launch and beyond.</p>
                 </div>
                 <QuantumTimeline />
             </section>
