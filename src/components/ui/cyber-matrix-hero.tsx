@@ -162,7 +162,7 @@ const CyberMatrixHero = () => {
                 >
                     <Code className="h-4 w-4 text-purple-400" />
                     <span className="text-sm font-medium text-gray-200">
-                        Decentralized Computing
+                        Multi-Layer Security
                     </span>
                 </motion.div>
 
@@ -173,7 +173,7 @@ const CyberMatrixHero = () => {
                     animate="visible"
                     className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400"
                 >
-                    Cyber Matrix Protocol
+                    W.F.X - Wolfronix
                 </motion.h1>
 
                 <motion.p
@@ -183,7 +183,7 @@ const CyberMatrixHero = () => {
                     animate="visible"
                     className="max-w-2xl mx-auto text-lg text-gray-400 mb-10"
                 >
-                    A new layer for the internet. Build secure, scalable, and resilient applications on a distributed global network.
+                    A multi-layer security foundation that protects your data, access, and operations. Built for organizations that treat security as a core requirement.
                 </motion.p>
 
                 <motion.div
@@ -193,7 +193,7 @@ const CyberMatrixHero = () => {
                     animate="visible"
                 >
                     <button className="px-8 py-4 bg-white text-black font-semibold rounded-lg shadow-lg hover:bg-gray-200 transition-colors duration-300 flex items-center gap-2 mx-auto">
-                        Deploy Now
+                        Request a Demo
                         <ArrowRight className="h-5 w-5" />
                     </button>
                 </motion.div>
