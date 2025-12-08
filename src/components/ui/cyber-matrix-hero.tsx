@@ -9,6 +9,7 @@ import { ArrowRight, Code } from 'lucide-react';
 const CyberMatrixHero = () => {
     const gridRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
     const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
@@ -20,13 +21,12 @@ const CyberMatrixHero = () => {
         if (!isClient || !gridRef.current) return;
 
         const grid = gridRef.current;
-        const baseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<>/?;:"[]{}\\|!@#$%^&*()_+-=';
         const puzzleWords = [
             'S3CUR1TY', 'WFX', 'W0LFR0N1X', 'AKH', 'PR1VACY', 'D@T@', 
             'ACC3SS', 'C0NTR0L', '3NF0RC3', '1NT3GR1TY', 'M0N1T0R', 
             'P0L1CY'
         ];
-        // Create a character pool with puzzle words interspersed with random characters
+        const baseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<>/?;:"[]{}\\|!@#$%^&*()_+-=';
         const chars = [...puzzleWords, ...Array.from(baseChars)].join('');
 
         let columns = 0;
@@ -58,7 +58,7 @@ const CyberMatrixHero = () => {
             if (!grid) return;
             grid.innerHTML = '';
             
-            const size = 30; // Made tiles smaller for a denser grid
+            const size = 30; 
             columns = Math.floor(window.innerWidth / size);
             rows = Math.floor(window.innerHeight / size);
             
@@ -68,20 +68,13 @@ const CyberMatrixHero = () => {
             const numTiles = columns * rows;
             createTiles(numTiles);
 
-            // Set initial characters and highlight puzzle words
             const tiles = Array.from(grid.children) as HTMLDivElement[];
             for(const tile of tiles) {
-                if (Math.random() > 0.8) { 
-                    const word = puzzleWords[Math.floor(Math.random() * puzzleWords.length)];
-                    tile.textContent = word[Math.floor(Math.random() * word.length)];
-                } else {
-                    tile.textContent = baseChars[Math.floor(Math.random() * baseChars.length)];
-                }
+                tile.textContent = baseChars[Math.floor(Math.random() * baseChars.length)];
             }
 
-            // Occasionally highlight a full word
             const highlightInterval = setInterval(() => {
-                 if(Math.random() > 0.7 && contentRef.current) { 
+                 if(contentRef.current) { 
                     const contentRect = contentRef.current.getBoundingClientRect();
                     const word = puzzleWords[Math.floor(Math.random() * puzzleWords.length)];
                     
@@ -94,7 +87,6 @@ const CyberMatrixHero = () => {
                         startRow = Math.floor(Math.random() * (rows - 1));
                         startCol = Math.floor(Math.random() * (columns - word.length));
                         
-                        // Check for overlap
                         const wordStartX = startCol * size;
                         const wordEndX = (startCol + word.length) * size;
                         const wordY = startRow * size;
@@ -145,14 +137,29 @@ const CyberMatrixHero = () => {
             }
         };
 
+        const handleMouseLeave = () => {
+            if (!grid) return;
+            for(const tile of grid.children) {
+                (tile as HTMLDivElement).style.setProperty('--intensity', '0');
+            }
+        };
+
+        const currentContainer = containerRef.current;
+
         window.addEventListener('resize', createGrid);
-        window.addEventListener('mousemove', handleMouseMove);
+        if (currentContainer) {
+            currentContainer.addEventListener('mousemove', handleMouseMove);
+            currentContainer.addEventListener('mouseleave', handleMouseLeave);
+        }
         
         const cleanupGrid = createGrid();
 
         return () => {
             window.removeEventListener('resize', createGrid);
-            window.removeEventListener('mousemove', handleMouseMove);
+             if (currentContainer) {
+                currentContainer.removeEventListener('mousemove', handleMouseMove);
+                currentContainer.removeEventListener('mouseleave', handleMouseLeave);
+            }
             if (cleanupGrid) {
                 cleanupGrid();
             }
@@ -174,7 +181,7 @@ const CyberMatrixHero = () => {
     };
 
     return (
-        <div className="relative h-screen w-full bg-black flex flex-col items-center justify-center overflow-hidden">
+        <div ref={containerRef} className="relative h-screen w-full bg-black flex flex-col items-center justify-center overflow-hidden">
             {/* Animated Grid Background */}
             <div ref={gridRef} id="tiles"></div>
             
@@ -204,7 +211,7 @@ const CyberMatrixHero = () => {
                     color: hsl(275, 100%, calc(50% + var(--intensity) * 50%));
                     text-shadow: 0 0 calc(var(--intensity) * 15px) hsl(275, 100%, 50%);
                     transform: scale(calc(1 + var(--intensity) * 0.2));
-                    transition: color 0.2s ease, text-shadow 0.2s ease, transform 0.2s ease;
+                    transition: color 0.2s ease, text-shadow 0.2s ease, transform 0.2s ease, opacity 0.5s ease;
                 }
                 .tile.glitch {
                     animation: glitch-anim 0.2s ease;
