@@ -19,7 +19,15 @@ const CyberMatrixHero = () => {
         if (!isClient || !gridRef.current) return;
 
         const grid = gridRef.current;
-        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789<>/?;:"[]{}\\|!@#$%^&*()_+-=';
+        const baseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<>/?;:"[]{}\\|!@#$%^&*()_+-=';
+        const puzzleWords = [
+            'S3CUR1TY', 'WFX', 'W0LFR0N1X', 'PR1VACY', 'D@T@', 
+            'ACC3SS', 'C0NTR0L', '3NF0RC3', '1NT3GR1TY', 'M0N1T0R', 
+            'P0L1CY', 'RUST', 'G0'
+        ];
+        // Create a character pool with puzzle words interspersed with random characters
+        const chars = [...puzzleWords, ...Array.from(baseChars)].join('');
+
         let columns = 0;
         let rows = 0;
         
@@ -56,9 +64,14 @@ const CyberMatrixHero = () => {
             
             createTiles(columns * rows);
 
-            // Set initial characters
+            // Set initial characters with a higher chance of being from the puzzle
             for(const tile of grid.children) {
-                (tile as HTMLDivElement).textContent = chars[Math.floor(Math.random() * chars.length)];
+                 if (Math.random() > 0.8) { // 20% chance to be a puzzle word piece
+                    const word = puzzleWords[Math.floor(Math.random() * puzzleWords.length)];
+                    (tile as HTMLDivElement).textContent = word[Math.floor(Math.random() * word.length)];
+                } else {
+                    (tile as HTMLDivElement).textContent = baseChars[Math.floor(Math.random() * baseChars.length)];
+                }
             }
         }
 
@@ -202,3 +215,4 @@ const CyberMatrixHero = () => {
     );
 };
 export default CyberMatrixHero;
+
