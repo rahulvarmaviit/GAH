@@ -24,7 +24,7 @@ const CyberMatrixHero = () => {
         const puzzleWords = [
             'S3CUR1TY', 'WFX', 'W0LFR0N1X', 'AKH', 'PR1VACY', 'D@T@', 
             'ACC3SS', 'C0NTR0L', '3NF0RC3', '1NT3GR1TY', 'M0N1T0R', 
-            'P0L1CY'
+            'P0L1CY', 'RUST', 'G0'
         ];
         // Create a character pool with puzzle words interspersed with random characters
         const chars = [...puzzleWords, ...Array.from(baseChars)].join('');
@@ -114,12 +114,12 @@ const CyberMatrixHero = () => {
                                 tile.classList.add('highlight');
                                 setTimeout(() => {
                                     tile.classList.remove('highlight');
-                                }, 1000); 
+                                }, 500); 
                             }
                         }
                     }
                 }
-            }, 500); 
+            }, 200); 
             
             return () => clearInterval(highlightInterval);
         }
