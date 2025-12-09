@@ -7,6 +7,7 @@ import { CheckCircle, Users, Eye, Zap, ArrowRight, TrendingUp } from 'lucide-rea
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Timeline } from '@/components/ui/timeline';
+import { ZoomParallax } from '@/components/ui/zoom-parallax';
 
 const whyChooseTms = [
     {
@@ -78,6 +79,37 @@ const faqs = [
     },
 ];
 
+const parallaxImages = [
+    {
+      src: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NTk3NzQzNDd8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      alt: 'Team collaboration'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0ZWFtJTIwbWVldGluZ3xlbnwwfHx8fDE3NjU2NzMyOTR8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      alt: 'Team meeting'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1573497491208-6b1acb260507?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxwcm9qZWN0JTIwbWFuYWdlbWVudHxlbnwwfHx8fDE3NjU2NzMzMjV8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      alt: 'Project management'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0YXNrJTIwbWFuYWdlbWVudHxlbnwwfHx8fDE3NjU2NzMzNTB8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      alt: 'Task management'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9kdWN0aXZpdHl8ZW58MHx8fHwxNzY1NjczMzc0fDA&ixlib=rb-4.1.0&q=80&w=1080',
+      alt: 'Productivity'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxyZXNvdXJjZSUyMG1hbmFnZW1lbnR8ZW58MHx8fHwxNzY1NTc3MTEyfDA&ixlib=rb-4.1.0&q=80&w=1080',
+      alt: 'Resource management'
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3b3JrZmxvd3xlbnwwfHx8fDE3NjU2NzM0MjJ8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      alt: 'Workflow'
+    }
+  ]
+
 export function TmsPageContent() {
   return (
     <div className="flex flex-col bg-black text-white">
@@ -143,6 +175,10 @@ export function TmsPageContent() {
                         </motion.div>
                     ))}
                 </div>
+            </section>
+
+            <section>
+                <ZoomParallax images={parallaxImages} />
             </section>
             
             <section>
