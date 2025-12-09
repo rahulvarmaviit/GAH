@@ -3,26 +3,14 @@
 
 import { motion } from 'framer-motion';
 import { services } from '@/lib/services';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { HoverEffect } from '@/components/ui/hover-effect';
 
 export default function ServicesPage() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
+  const formattedServices = services.map(service => ({
+    title: service.title,
+    description: service.description,
+    link: `/services/${service.slug}`,
+  }));
 
   return (
     <div className="flex flex-col bg-background text-foreground">
@@ -51,49 +39,7 @@ export default function ServicesPage() {
 
       <main className="flex-1 py-12 md:py-24 lg:py-32 bg-black text-white">
         <div className="container">
-          <motion.div
-            className="space-y-24"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            {services.map((service, index) => (
-              <motion.div
-                key={service.slug}
-                variants={itemVariants}
-                className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center"
-              >
-                <div className={`relative h-80 md:h-96 rounded-2xl overflow-hidden shadow-2xl shadow-primary/20 ${index % 2 === 1 ? 'md:order-2' : ''}`}>
-                  {service.image && (
-                    <Image
-                      src={service.image.imageUrl}
-                      alt={service.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover transition-transform duration-500 hover:scale-105"
-                      data-ai-hint={service.image.imageHint}
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                </div>
-
-                <div className="flex flex-col justify-center">
-                  <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4">
-                    {service.title}
-                  </h2>
-                  <p className="text-lg text-slate-300/80 mb-6 leading-relaxed">
-                    {service.description}
-                  </p>
-                  <Button asChild size="lg" variant="secondary" className="self-start bg-slate-800 text-slate-100 hover:bg-slate-700">
-                    <Link href={`/services/${service.slug}`}>
-                      Learn More <ArrowRight className="ml-2 h-5 w-5" />
-                    </Link>
-                  </Button>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+          <HoverEffect items={formattedServices} />
         </div>
       </main>
     </div>
