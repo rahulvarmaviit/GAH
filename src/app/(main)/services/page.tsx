@@ -1,21 +1,21 @@
 
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { services } from '@/lib/services';
 import { DynamicFrameLayout } from '@/components/ui/dynamic-frame-layout';
 
 // Sample video URLs. In a real app, these would be different for each service.
 const serviceVideos = [
-  "https://cdn.pixabay.com/video/2024/05/29/211905_large.mp4",
-  "https://cdn.pixabay.com/video/2023/11/07/186534-881523735_large.mp4",
-  "https://cdn.pixabay.com/video/2024/05/20/210874-944747517_large.mp4",
-  "https://cdn.pixabay.com/video/2023/10/24/184131-874246039_large.mp4",
-  "https://cdn.pixabay.com/video/2024/01/24/195955-905544485_large.mp4",
-  "https://cdn.pixabay.com/video/2024/03/10/202159-918749007_large.mp4",
-  "https://cdn.pixabay.com/video/2023/04/04/156906-814981149_large.mp4",
-  "https://cdn.pixabay.com/video/2023/06/11/169116-834954471_large.mp4",
-  "https://cdn.pixabay.com/video/2022/10/21/133718-762967204_large.mp4"
+  "https://cdn.pixabay.com/video/2024/03/27/204049-923126319_large.mp4", // Cloud
+  "https://cdn.pixabay.com/video/2024/03/10/202159-918749007_large.mp4", // Cyber Security
+  "https://cdn.pixabay.com/video/2024/05/20/210874-944747517_large.mp4", // AI
+  "https://cdn.pixabay.com/video/2023/10/24/184131-874246039_large.mp4", // Data Analytics
+  "https://cdn.pixabay.com/video/2022/08-03/121852-738930455_large.mp4", // Digital Marketing
+  "https://cdn.pixabay.com/video/2024/01/24/195955-905544485_large.mp4", // UX/UI
+  "https://cdn.pixabay.com/video/2023/04/04/156906-814981149_large.mp4", // Web Solutions
+  "https://cdn.pixabay.com/video/2022/10/21/133718-762967204_large.mp4", // SAP
+  "https://cdn.pixabay.com/video/2023/11/07/186534-881523735_large.mp4"  // Generic Tech
 ];
 
 // Frame assets - using placeholders
@@ -88,4 +88,3 @@ export default function ServicesPage() {
     </div>
   );
 }
-
