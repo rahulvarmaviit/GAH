@@ -304,4 +304,47 @@ export const services = [
         'Scalable and future-proof solutions'
     ],
   },
+  {
+    title: 'SAP Transformation',
+    slug: 'sap-transformation',
+    description: 'End-to-end SAP solutions, from implementation and migration to optimization and support, driving enterprise efficiency.',
+    link: '/services/sap-transformation',
+    fullDescription: 'We specialize in SAP transformation to streamline your business processes, enhance efficiency, and drive growth. Our expert consultants provide end-to-end solutions, from S/4HANA migration to custom development and ongoing support.',
+    image: PlaceHolderImages.find((img) => img.id === 'service-8'),
+    features: [
+      'SAP S/4HANA Migration and Implementation',
+      'SAP Business Technology Platform (BTP) Development',
+      'SAP Analytics Cloud (SAC) and Data Intelligence',
+      'Managed Services and Application Support',
+    ],
+    problemStatement: "Many enterprises struggle to unlock the full potential of their SAP investment. Legacy systems, complex integrations, and a lack of specialized expertise can lead to inefficiencies, high operational costs, and an inability to adapt to modern business demands.",
+    solutionsOffered: [
+        "Greenfield and Brownfield S/4HANA implementations.",
+        "Custom Fiori application development on BTP.",
+        "Data migration and integration strategies.",
+        "24/7 application management and support.",
+    ],
+    toolsTechStack: [
+        { name: 'SAP S/4HANA', icon: 'Server' },
+        { name: 'SAP BTP', icon: 'Code' },
+        { name: 'SAP Analytics Cloud', icon: 'BarChart' },
+        { name: 'ABAP', icon: 'Code' },
+        { name: 'SAP Fiori', icon: 'Code' },
+    ],
+    whyChooseGAH: "Our certified SAP consultants bring deep industry knowledge and technical expertise to every project. We focus on delivering value-driven transformations that not only modernize your ERP system but also empower your business with agile, intelligent, and integrated processes for a competitive edge.",
+    caseStudies: [
+        { title: "Manufacturing giant streamlines supply chain with S/4HANA", description: "We led a successful S/4HANA migration that unified supply chain data, providing real-time visibility and reducing operational costs by 15%.", link: "#" },
+        { title: "Retail company enhances customer experience with custom Fiori apps", description: "Our team developed a suite of custom Fiori apps on BTP, creating a seamless and intuitive experience for both in-store and online customers.", link: "#" },
+    ],
+    faqs: [
+        { question: "What is the typical timeline for an S/4HANA migration?", answer: "The timeline can vary significantly based on the complexity of your current landscape. A typical brownfield migration can take 6-12 months, while a greenfield implementation might be longer. We conduct a detailed assessment to provide a realistic timeline." },
+        { question: "How does SAP BTP extend the capabilities of S/4HANA?", answer: "SAP Business Technology Platform (BTP) allows you to build custom applications and extensions without modifying the core S/4HANA system. This keeps your core clean, simplifies upgrades, and enables rapid innovation." },
+    ],
+     outcomeFocus: [
+        'Streamlined business processes',
+        'Real-time data for decision-making',
+        'Improved user experience with Fiori apps',
+        'Lower total cost of ownership (TCO)'
+    ],
+  },
 ];

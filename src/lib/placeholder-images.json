@@ -9,7 +9,7 @@
     {
       "id": "feature-services",
       "description": "Professional team collaborating in a modern office",
-      "imageUrl": "https://images.unsplash.com/photo-1543269865-cbf427effbad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NTk3NzQzNDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1543269865-cbf427effbad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NTk3NzQzNDd8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "team collaboration"
     },
     {
@@ -65,6 +65,12 @@
       "description": "Developer coding on a laptop with multiple screens",
       "imageUrl": "https://images.unsplash.com/photo-1517694712202-1428bc3cd405?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxlbnwwfHx8fDE3NjAxOTU1NDJ8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "web development"
+    },
+    {
+      "id": "service-8",
+      "description": "SAP system architecture diagram on a screen",
+      "imageUrl": "https://images.unsplash.com/photo-1633113089634-31b3156f4d89?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxlbnRlcnByaXNlJTIwc29mdHdhcmV8ZW58MHx8fHwxNzY1ODMzMDI0fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "enterprise software"
     },
     {
       "id": "product-1",
