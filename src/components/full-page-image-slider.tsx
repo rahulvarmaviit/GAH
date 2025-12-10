@@ -7,7 +7,20 @@ import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const FullPageImageSlider: React.FC = () => {
-    const slides = PlaceHolderImages.filter(img => img.id.startsWith('slider-'));
+    const slides = [
+        {
+          id: 'slider-1',
+          title: "WFX - Wolfronix",
+          description: "A multi-layer security foundation that protects your data, access, and operations.",
+          imageUrl: "https://images.unsplash.com/photo-1620825937374-87fc7d6bddc2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjeWJlciUyMHNlY3VyaXR5fGVufDB8fHx8MTc2NDgwODQ4M3ww&ixlib-rb-4.1.0&q=80&w=1080",
+        },
+        {
+          id: 'slider-2',
+          title: "Product Ecosystem",
+          description: "A suite of integrated tools designed to streamline your workflow and boost productivity.",
+          imageUrl: "https://images.unsplash.com/photo-1543269865-cbf427effbad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NTk3NzQzNDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+        },
+    ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -53,7 +66,7 @@ const FullPageImageSlider: React.FC = () => {
           >
             <img
               src={slide.imageUrl}
-              alt={slide.description}
+              alt={slide.title}
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-black/40" />
