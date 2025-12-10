@@ -44,7 +44,7 @@ export default function JobDetailPage() {
         <main className="flex-1 w-full max-w-screen-xl mx-auto py-10 md:py-24 px-4 sm:px-6 lg:px-8 bg-background">
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
                 <div className="lg:col-span-3">
-                    <div className="flex flex-col gap-3 pb-6">
+                    <div className="flex flex-col gap-3 pb-6 pt-8">
                         <h1 className="text-foreground text-4xl font-black leading-tight tracking-[-0.033em]">{job.title}</h1>
                         <div className="flex flex-wrap items-center gap-2">
                             <Badge variant="outline" className="gap-2">
