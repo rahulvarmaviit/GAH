@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { QuantumTimeline } from '@/components/ui/quantum-process-timeline';
 import { HeroSection } from '@/components/ui/feature-carousel';
 import ImgSphereDemo from '@/components/ui/img-sphere-demo';
+import { ScrollMorphHero } from '@/components/ui/scroll-morph-hero';
 
 const HashtaggerCarousel = () => {
   const images = [
@@ -109,47 +110,8 @@ export function HashtaggerPageContent() {
   return (
     <div className="flex flex-col bg-black text-white">
       {/* Hero Section */}
-      <header className="relative h-screen flex items-center justify-center text-center overflow-hidden">
-        <div className="absolute inset-0 bg-grid-white/[0.05] [mask-image:radial-gradient(ellipse_100%_50%_at_50%_50%,#000_60%,transparent_100%)]"></div>
-        <div className="relative container z-10">
-            <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-500 to-accent animate-gradient">
-                Hashtagger – Social networking without compromises.
-            </motion.h1>
-             <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.1 }}
-                className="text-2xl font-semibold text-slate-200 mt-4">
-                Endless possibilities. Endless privacy.
-            </motion.h2>
-            <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="mx-auto max-w-[800px] text-slate-300/80 md:text-xl mt-6">
-                Hashtagger is a hashtag-first social platform that lets you explore interests, build circles, and create content — all in a privacy-first, user-controlled environment. No manipulative feeds, no noise. Just meaningful, interest-driven connections.
-            </motion.p>
-            <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="flex gap-4 justify-center mt-8">
-                    <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
-                        <Link href="/contact">
-                            Get Started
-                        </Link>
-                    </Button>
-                    <Button asChild size="lg" variant="outline" className="text-white border-white/50 bg-transparent hover:bg-white hover:text-black">
-                        <Link href="/products">
-                            Watch Demo
-                        </Link>
-                    </Button>
-            </motion.div>
-        </div>
+      <header className="relative h-screen w-full">
+        <ScrollMorphHero />
       </header>
 
       <main className="py-20 md:py-24">
