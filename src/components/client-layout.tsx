@@ -29,7 +29,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
   }, []);
 
   if (loading) {
-    return <AiLoader text="Acknowledgement Hub" />;
+    return <AiLoader text="Global Acknowledgement Hub" />;
   }
   
   if (isFullPage) {

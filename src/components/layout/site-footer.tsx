@@ -1,5 +1,6 @@
+
 import Link from 'next/link';
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import { Github, Linkedin, Twitter, Instagram, Mail } from 'lucide-react';
 import { Logo } from '../logo';
 
 export function SiteFooter() {
@@ -36,6 +37,12 @@ export function SiteFooter() {
               </Link>
               <Link href="#" className="text-slate-400 hover:text-primary" aria-label="GitHub">
                 <Github className="h-6 w-6" />
+              </Link>
+              <a href="mailto:venubull07ff@gmail.com" className="text-slate-400 hover:text-primary" aria-label="Email">
+                <Mail className="h-6 w-6" />
+              </a>
+              <Link href="#" className="text-slate-400 hover:text-primary" aria-label="Instagram">
+                <Instagram className="h-6 w-6" />
               </Link>
             </div>
           </div>

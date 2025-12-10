@@ -6,7 +6,7 @@ interface LoaderProps {
   text?: string;
 }
 
-export const AiLoader: React.FC<LoaderProps> = ({ size = 220, text = "Acknowledgement Hub" }) => {
+export const AiLoader: React.FC<LoaderProps> = ({ size = 290, text = "Global Acknowledgement Hub" }) => {
   const letters = text.split("");
 
   return (
