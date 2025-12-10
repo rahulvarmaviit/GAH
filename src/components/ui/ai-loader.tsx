@@ -6,11 +6,11 @@ interface LoaderProps {
   text?: string;
 }
 
-export const AiLoader: React.FC<LoaderProps> = ({ size = 220, text = "Generating" }) => {
+export const AiLoader: React.FC<LoaderProps> = ({ size = 220, text = "Acknowledgement Hub" }) => {
   const letters = text.split("");
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-b from-purple-900/50 via-[#0f172a] to-black dark:from-gray-100 dark:via-gray-200 dark:to-gray-300">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-white">
       <div
         className="relative flex items-center justify-center font-sans select-none"
         style={{ width: size, height: size }}
@@ -19,7 +19,7 @@ export const AiLoader: React.FC<LoaderProps> = ({ size = 220, text = "Generating
         {letters.map((letter, index) => (
           <span
             key={index}
-            className="inline-block text-white dark:text-gray-800 opacity-40 animate-loaderLetter"
+            className="inline-block text-gray-800 opacity-40 animate-loaderLetter"
             style={{ animationDelay: `${index * 0.1}s` }}
           >
             {letter}
