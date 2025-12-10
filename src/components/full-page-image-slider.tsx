@@ -1,10 +1,9 @@
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const FullPageImageSlider: React.FC = () => {
     const slides = [
@@ -12,25 +11,25 @@ const FullPageImageSlider: React.FC = () => {
           id: 'slider-1',
           title: "WFX - Wolfronix",
           description: "A multi-layer security foundation that protects your data, access, and operations.",
-          imageUrl: "https://images.unsplash.com/photo-1620825937374-87fc7d6bddc2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjeWJlciUyMHNlY3VyaXR5fGVufDB8fHx8MTc2NDgwODQ4M3ww&ixlib-rb-4.1.0&q=80&w=1080",
+          imageUrl: "https://images.unsplash.com/photo-1620825937374-87fc7d6bddc2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjeWJlciUyMHNlY3VyaXR5fGVufDB8fHx8MTc2NDgwODQ4M3ww&ixlib=rb-4.1.0&q=80&w=1080",
         },
         {
           id: 'slider-2',
           title: "Product Ecosystem",
           description: "A suite of integrated tools designed to streamline your workflow and boost productivity.",
-          imageUrl: "https://images.unsplash.com/photo-1543269865-cbf427effbad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NTk3NzQzNDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+          imageUrl: "https://images.unsplash.com/photo-1543269865-cbf427effbad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NTk3NzQzNDd8MA&ixlib-rb-4.1.0&q=80&w=1080",
         },
     ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     if (isTransitioning) return;
     setIsTransitioning(true);
     setCurrentIndex((prev) => (prev + 1) % slides.length);
     setTimeout(() => setIsTransitioning(false), 600);
-  };
+  }, [isTransitioning, slides.length]);
 
   const prevSlide = () => {
     if (isTransitioning) return;
@@ -47,7 +46,15 @@ const FullPageImageSlider: React.FC = () => {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isTransitioning]);
+  }, [nextSlide]);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            nextSlide();
+        }, 4000);
+        return () => clearInterval(timer);
+    }, [nextSlide]);
+
 
   if (slides.length === 0) {
     return null;
