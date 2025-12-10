@@ -275,7 +275,7 @@ export function ScrollMorphHero() {
             <div className="flex h-full w-full flex-col items-center justify-center perspective-1000">
 
                 {/* Intro Text (Fades out) */}
-                <div className="absolute z-0 flex flex-col items-center justify-center text-center pointer-events-none top-1/2 -translate-y-1/2">
+                <div className="absolute z-20 flex flex-col items-center justify-center text-center pointer-events-none top-1/2 -translate-y-1/2">
                     <motion.h1
                         initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
                         animate={introPhase === "circle" && morphValue < 0.5 ? { opacity: 1 - morphValue * 2, y: 0, filter: "blur(0px)" } : { opacity: 0, filter: "blur(10px)" }}
@@ -297,7 +297,7 @@ export function ScrollMorphHero() {
                 {/* Arc Active Content (Fades in) */}
                 <motion.div
                     style={{ opacity: contentOpacity, y: contentY }}
-                    className="absolute top-[10%] z-10 flex flex-col items-center justify-center text-center pointer-events-none px-4"
+                    className="absolute top-[10%] z-20 flex flex-col items-center justify-center text-center pointer-events-none px-4"
                 >
                     <h2 className="text-3xl md:text-5xl font-semibold text-gray-900 tracking-tight mb-4">
                         Explore Our Vision
@@ -414,4 +414,3 @@ export function ScrollMorphHero() {
         </div>
     );
 }
-
