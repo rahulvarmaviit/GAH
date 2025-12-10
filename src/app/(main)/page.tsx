@@ -17,6 +17,7 @@ import { Feature108 } from '@/components/feature-section';
 import { Gallery6 } from '@/components/ui/gallery6';
 import { CyberneticBentoGrid } from '@/components/ui/cybernetic-bento-grid';
 import { ConnectedEcosystem } from '@/components/connected-ecosystem';
+import FullPageImageSlider from '@/components/full-page-image-slider';
 
 const features = [
   {
@@ -97,6 +98,10 @@ export default function Home() {
       <main className="flex-1">
         <section>
             <BackgroundPaths title="Global Acknowledgment Hub" />
+        </section>
+
+        <section>
+          <FullPageImageSlider />
         </section>
 
         <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-black text-slate-50">
