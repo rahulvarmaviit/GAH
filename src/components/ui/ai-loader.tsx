@@ -10,8 +10,8 @@ export const AiLoader: React.FC<LoaderProps> = ({ size = 220, text = "Acknowledg
   const letters = text.split("");
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background">
-       <div className="absolute inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:36px_36px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_60%,transparent_100%)]"></div>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
+       <div className="absolute inset-0 h-full w-full bg-black bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:36px_36px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_60%,transparent_100%)]"></div>
       <div
         className="relative flex items-center justify-center font-sans select-none"
         style={{ width: size, height: size }}
@@ -20,7 +20,7 @@ export const AiLoader: React.FC<LoaderProps> = ({ size = 220, text = "Acknowledg
         {letters.map((letter, index) => (
           <span
             key={index}
-            className="inline-block text-gray-800 opacity-40 animate-loaderLetter"
+            className="inline-block text-white opacity-40 animate-loaderLetter"
             style={{ animationDelay: `${index * 0.1}s` }}
           >
             {letter}
