@@ -3,6 +3,7 @@ import { Poppins } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { ToastProvider } from '@/components/toast-provider';
+import { ClientLayout } from '@/components/client-layout';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -29,7 +30,9 @@ export default function RootLayout({
           poppins.variable
         )}
       >
-        <ToastProvider>{children}</ToastProvider>
+        <ToastProvider>
+          <ClientLayout>{children}</ClientLayout>
+        </ToastProvider>
       </body>
     </html>
   );

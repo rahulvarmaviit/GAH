@@ -6,9 +6,19 @@ import { SiteFooter } from './layout/site-footer';
 import { AiLoader } from './ui/ai-loader';
 import { MarqueeDemo2 } from './marquee-demo';
 import { BackgroundBoxesSection } from './background-boxes-section';
+import { usePathname } from 'next/navigation';
+
+const noHeaderFooterRoutes = [
+  '/admin',
+  '/login'
+]
 
 export function ClientLayout({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
+  const pathname = usePathname();
+
+  const isFullPage = noHeaderFooterRoutes.some(route => pathname.startsWith(route));
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -20,6 +30,10 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
 
   if (loading) {
     return <AiLoader text="Acknowledgement Hub" />;
+  }
+  
+  if (isFullPage) {
+    return <main>{children}</main>;
   }
 
   return (
