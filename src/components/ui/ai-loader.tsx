@@ -10,7 +10,8 @@ export const AiLoader: React.FC<LoaderProps> = ({ size = 220, text = "Acknowledg
   const letters = text.split("");
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-white">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background">
+       <div className="absolute inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:36px_36px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_60%,transparent_100%)]"></div>
       <div
         className="relative flex items-center justify-center font-sans select-none"
         style={{ width: size, height: size }}
@@ -36,11 +37,11 @@ export const AiLoader: React.FC<LoaderProps> = ({ size = 220, text = "Acknowledg
           0% {
             transform: rotate(90deg);
             box-shadow:
-              0 6px 12px 0 #a855f7 inset,
-              0 12px 18px 0 #9333ea inset,
-              0 36px 36px 0 #6119aa inset,
-              0 0 3px 1.2px rgba(168, 85, 247, 0.3),
-              0 0 6px 1.8px rgba(147, 51, 234, 0.2);
+              0 6px 12px 0 #e9d5ff inset,
+              0 12px 18px 0 #c084fc inset,
+              0 36px 36px 0 #a855f7 inset,
+              0 0 3px 1.2px rgba(233, 213, 255, 0.3),
+              0 0 6px 1.8px rgba(192, 132, 252, 0.2);
           }
           50% {
             transform: rotate(270deg);
@@ -54,11 +55,11 @@ export const AiLoader: React.FC<LoaderProps> = ({ size = 220, text = "Acknowledg
           100% {
             transform: rotate(450deg);
             box-shadow:
-              0 6px 12px 0 #e9d5ff inset,
-              0 12px 18px 0 #c084fc inset,
-              0 36px 36px 0 #a855f7 inset,
-              0 0 3px 1.2px rgba(233, 213, 255, 0.3),
-              0 0 6px 1.8px rgba(192, 132, 252, 0.2);
+              0 6px 12px 0 #a855f7 inset,
+              0 12px 18px 0 #9333ea inset,
+              0 36px 36px 0 #6119aa inset,
+              0 0 3px 1.2px rgba(168, 85, 247, 0.3),
+              0 0 6px 1.8px rgba(147, 51, 234, 0.2);
           }
         }
 
