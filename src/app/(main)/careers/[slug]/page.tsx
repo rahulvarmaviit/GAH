@@ -80,8 +80,8 @@ export default function JobDetailPage() {
                         </Button>
                     </div>
                 </div>
-                <div className="lg:col-span-2">
-                    <div className="sticky top-28 pt-8">
+                <div className="lg:col-span-2 pt-8">
+                    <div className="sticky top-28">
                          <form onSubmit={handleSubmit} className="flex flex-col gap-6 p-6 bg-card dark:bg-slate-900/50 rounded-lg shadow-sm border border-border">
                             <h2 className="text-foreground text-[22px] font-bold leading-tight tracking-[-0.015em]">Apply for this role</h2>
                             <div className="grid grid-cols-1 gap-6">
@@ -97,6 +97,10 @@ export default function JobDetailPage() {
                             <div>
                                 <Label htmlFor="phone">Phone Number <span className="text-muted-foreground">(Optional)</span></Label>
                                 <Input id="phone" name="phone" placeholder="+1 (555) 123-4567" type="tel" />
+                            </div>
+                             <div>
+                                <Label htmlFor="resume">Upload Resume</Label>
+                                <Input id="resume" name="resume" type="file" />
                             </div>
                             <div>
                                 <Label htmlFor="role">Role</Label>
