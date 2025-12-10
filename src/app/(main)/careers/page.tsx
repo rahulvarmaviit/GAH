@@ -4,42 +4,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { MapPin, BrainCircuit, Users, Award, Briefcase, ArrowRight, Heart, Coffee, TrendingUp, Monitor } from 'lucide-react';
 import Link from 'next/link';
-
-const jobOpenings = [
-    {
-        title: 'Senior Frontend Engineer',
-        department: 'Engineering',
-        location: 'Remote, Global',
-    },
-    {
-        title: 'Cloud Solutions Architect',
-        department: 'Cloud Services',
-        location: 'Warangal, India',
-    },
-    {
-        title: 'AI/ML Research Scientist',
-        department: 'Innovation',
-        location: 'Virtual Event',
-    },
-    {
-        title: 'Cybersecurity Analyst',
-        department: 'Security',
-        location: 'Remote, Global',
-    },
-     {
-        title: 'SAP Consultant (S/4HANA)',
-        department: 'Enterprise Solutions',
-        location: 'Warangal, India',
-    },
-     {
-        title: 'UX/UI Designer',
-        department: 'Product Design',
-        location: 'Remote, Global',
-    },
-];
+import { jobs } from '@/lib/jobs';
 
 const coreValues = [
     {
@@ -83,7 +51,6 @@ const benefits = [
 ];
 
 export default function CareersPage() {
-  const recipientEmail = 'venubull07ff@gmail.com';
   return (
     <div className="flex flex-col bg-background">
       <header className="py-32 md:py-48 text-center bg-black">
@@ -134,7 +101,7 @@ export default function CareersPage() {
           <div className="container">
             <h2 className="text-4xl md:text-5xl font-bold text-primary mb-16 text-center">Current Openings</h2>
             <div className="max-w-4xl mx-auto space-y-6">
-                {jobOpenings.map((job, index) => (
+                {jobs.map((job, index) => (
                     <Card key={index} className="bg-slate-900 border-slate-800 text-slate-100 transform transition-all duration-300 hover:border-primary hover:shadow-2xl hover:shadow-primary/20">
                         <CardContent className="p-6 grid md:grid-cols-[1fr_auto] items-center gap-6">
                             <div>
@@ -151,9 +118,9 @@ export default function CareersPage() {
                                 </div>
                             </div>
                             <Button asChild variant="secondary" className="bg-slate-800 text-slate-100 hover:bg-slate-700">
-                                <a href={`mailto:${recipientEmail}?subject=Application for ${encodeURIComponent(job.title)}`}>
+                                <Link href={`/careers/${job.slug}`}>
                                     Apply Now <ArrowRight className="ml-2 h-4 w-4" />
-                                </a>
+                                </Link>
                             </Button>
                         </CardContent>
                     </Card>
