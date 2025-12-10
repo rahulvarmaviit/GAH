@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
-import { MapPin, Briefcase, Palette } from 'lucide-react';
+import { MapPin, Briefcase, Palette, UploadCloud } from 'lucide-react';
 import Link from 'next/link';
 
 export default function JobDetailPage() {
@@ -84,6 +84,10 @@ export default function JobDetailPage() {
                     <div className="sticky top-28">
                          <form onSubmit={handleSubmit} className="flex flex-col gap-6 p-6 bg-card dark:bg-slate-900/50 rounded-lg shadow-sm border border-border">
                             <h2 className="text-foreground text-[22px] font-bold leading-tight tracking-[-0.015em]">Apply for this role</h2>
+                             <div>
+                                <Label htmlFor="role">Role</Label>
+                                <Input id="role" name="role" type="text" value={job.title} readOnly className="bg-muted" />
+                            </div>
                             <div className="grid grid-cols-1 gap-6">
                                 <div>
                                     <Label htmlFor="fullName">Full Name</Label>
@@ -99,12 +103,15 @@ export default function JobDetailPage() {
                                 <Input id="phone" name="phone" placeholder="+1 (555) 123-4567" type="tel" />
                             </div>
                              <div>
-                                <Label htmlFor="resume">Upload Resume</Label>
-                                <Input id="resume" name="resume" type="file" />
-                            </div>
-                            <div>
-                                <Label htmlFor="role">Role</Label>
-                                <Input id="role" name="role" type="text" value={job.title} readOnly className="bg-muted" />
+                                <Label htmlFor="resume-upload">Upload Resume</Label>
+                                <Label htmlFor="resume-upload" className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer bg-muted/50 hover:bg-muted/80 transition-colors">
+                                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                        <UploadCloud className="w-8 h-8 mb-2 text-muted-foreground" />
+                                        <p className="mb-1 text-sm text-muted-foreground"><span className="font-semibold text-foreground">Click to upload</span> or drag and drop</p>
+                                        <p className="text-xs text-muted-foreground">PDF, DOCX, or TXT (MAX. 5MB)</p>
+                                    </div>
+                                    <Input id="resume-upload" name="resume" type="file" className="hidden" />
+                                </Label>
                             </div>
                             <div className="flex justify-end">
                                 <Button type="submit" className="w-full">
