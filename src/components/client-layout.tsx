@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { SiteHeader } from './layout/site-header';
 import { SiteFooter } from './layout/site-footer';
-import { AnimatedLoader } from './animated-loader';
+import { AiLoader } from './ui/ai-loader';
 import { MarqueeDemo2 } from './marquee-demo';
 import { BackgroundBoxesSection } from './background-boxes-section';
 
@@ -19,7 +19,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
   }, []);
 
   if (loading) {
-    return <AnimatedLoader />;
+    return <AiLoader text="Acknowledgement Hub" />;
   }
 
   return (
