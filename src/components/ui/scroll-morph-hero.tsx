@@ -282,7 +282,7 @@ export function ScrollMorphHero() {
                         transition={{ duration: 1 }}
                         className="text-2xl font-medium tracking-tight text-gray-800 md:text-4xl"
                     >
-                        Hashtagger - A new way to experience social media
+                        HASHTAGGER
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0 }}
@@ -290,7 +290,7 @@ export function ScrollMorphHero() {
                         transition={{ duration: 1, delay: 0.2 }}
                         className="mt-4 text-xs font-bold tracking-[0.2em] text-gray-500"
                     >
-                        SCROLL TO EXPLORE
+                        A new way to experience social media
                     </motion.p>
                 </div>
 

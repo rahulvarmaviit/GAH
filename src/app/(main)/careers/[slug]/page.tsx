@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
-import { MapPin, Briefcase, Palette, Upload } from 'lucide-react';
+import { MapPin, Briefcase, Palette } from 'lucide-react';
 import Link from 'next/link';
 
 export default function JobDetailPage() {
@@ -23,9 +23,11 @@ export default function JobDetailPage() {
         const email = formData.get('email');
         const phone = formData.get('phone');
         const coverLetter = formData.get('coverLetter');
+        const role = formData.get('role');
 
         const subject = `Application for ${job?.title}: ${fullName}`;
         const body = `
+            Role: ${role}
             Full Name: ${fullName}
             Email: ${email}
             Phone: ${phone || 'Not provided'}
@@ -43,9 +45,9 @@ export default function JobDetailPage() {
     return (
         <main className="flex-1 w-full max-w-screen-xl mx-auto py-10 md:py-24 px-4 sm:px-6 lg:px-8 bg-background">
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-                <div className="lg:col-span-3">
-                    <div className="flex flex-col gap-3 pb-6 pt-8">
-                        <h1 className="text-foreground text-4xl font-black leading-tight tracking-[-0.033em]">{job.title}</h1>
+                <div className="lg:col-span-3 pt-8">
+                    <div className="flex flex-col gap-3 pb-6">
+                        <h1 className="text-foreground text-4xl font-black leading-tight tracking-[-0.033em] pt-8">{job.title}</h1>
                         <div className="flex flex-wrap items-center gap-2">
                             <Badge variant="outline" className="gap-2">
                                 <MapPin className="h-4 w-4" /> {job.location}
@@ -84,10 +86,14 @@ export default function JobDetailPage() {
                     </div>
                 </div>
                 <div className="lg:col-span-2">
-                    <div className="sticky top-28 pt-6">
+                    <div className="sticky top-28 pt-8">
                          <form onSubmit={handleSubmit} className="flex flex-col gap-6 p-6 bg-card dark:bg-slate-900/50 rounded-lg shadow-sm border border-border">
                             <h2 className="text-foreground text-[22px] font-bold leading-tight tracking-[-0.015em]">Apply for this role</h2>
                             <div className="grid grid-cols-1 gap-6">
+                                <div>
+                                    <Label htmlFor="role">Role</Label>
+                                    <Input id="role" name="role" type="text" value={job.title} readOnly className="bg-muted" />
+                                </div>
                                 <div>
                                     <Label htmlFor="fullName">Full Name</Label>
                                     <Input id="fullName" name="fullName" placeholder="Jane Doe" required type="text" />
@@ -104,22 +110,6 @@ export default function JobDetailPage() {
                             <div>
                                 <Label htmlFor="coverLetter">Cover Letter</Label>
                                 <Textarea id="coverLetter" name="coverLetter" placeholder="Tell us why you're a great fit for this role..." rows={4} />
-                            </div>
-                            <div>
-                                <Label htmlFor="resume">Upload Resume</Label>
-                                <div className="mt-2 flex justify-center rounded-lg border border-dashed border-border px-6 py-10">
-                                    <div className="text-center">
-                                        <Upload className="mx-auto h-12 w-12 text-muted-foreground" />
-                                        <div className="mt-4 flex text-sm leading-6 text-muted-foreground">
-                                            <Label htmlFor="file-upload" className="relative cursor-pointer rounded-lg font-semibold text-primary focus-within:outline-none focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 hover:text-primary/80">
-                                                <span>Upload a file</span>
-                                                <Input id="file-upload" name="file-upload" type="file" className="sr-only" />
-                                            </Label>
-                                            <p className="pl-1">or drag and drop</p>
-                                        </div>
-                                        <p className="text-xs leading-5 text-muted-foreground/80">PDF, DOCX up to 10MB</p>
-                                    </div>
-                                </div>
                             </div>
                             <div className="flex justify-end">
                                 <Button type="submit" className="w-full">
