@@ -155,10 +155,19 @@ export function ScrollMorphHero() {
         if (!container) return;
 
         const handleWheel = (e: WheelEvent) => {
-            // Prevent default to stop browser overscroll/bounce
+            const currentScroll = scrollRef.current;
+            const delta = e.deltaY;
+            
+            if (currentScroll <= 0 && delta < 0) {
+              return; 
+            }
+            if (currentScroll >= MAX_SCROLL && delta > 0) {
+              return; 
+            }
+
             e.preventDefault();
 
-            const newScroll = Math.min(Math.max(scrollRef.current + e.deltaY, 0), MAX_SCROLL);
+            const newScroll = Math.min(Math.max(currentScroll + delta, 0), MAX_SCROLL);
             scrollRef.current = newScroll;
             virtualScroll.set(newScroll);
         };
@@ -261,7 +270,7 @@ export function ScrollMorphHero() {
     const contentY = useTransform(smoothMorph, [0.8, 1], [20, 0]);
 
     return (
-        <div ref={containerRef} className="relative w-full h-screen bg-[#FAFAFA] overflow-hidden">
+        <div ref={containerRef} className="relative w-full h-screen bg-black overflow-hidden">
             {/* Container */}
             <div className="flex h-full w-full flex-col items-center justify-center perspective-1000">
 
@@ -271,9 +280,9 @@ export function ScrollMorphHero() {
                         initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
                         animate={introPhase === "circle" && morphValue < 0.5 ? { opacity: 1 - morphValue * 2, y: 0, filter: "blur(0px)" } : { opacity: 0, filter: "blur(10px)" }}
                         transition={{ duration: 1 }}
-                        className="text-2xl font-medium tracking-tight text-gray-800 md:text-4xl"
+                        className="text-2xl font-medium tracking-tight text-white md:text-4xl"
                     >
-                        The future is built on AI.
+                        Hashtagger - A new way to experience social media
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0 }}
@@ -290,10 +299,10 @@ export function ScrollMorphHero() {
                     style={{ opacity: contentOpacity, y: contentY }}
                     className="absolute top-[10%] z-10 flex flex-col items-center justify-center text-center pointer-events-none px-4"
                 >
-                    <h2 className="text-3xl md:text-5xl font-semibold text-gray-900 tracking-tight mb-4">
+                    <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight mb-4">
                         Explore Our Vision
                     </h2>
-                    <p className="text-sm md:text-base text-gray-600 max-w-lg leading-relaxed">
+                    <p className="text-sm md:text-base text-gray-400 max-w-lg leading-relaxed">
                         Discover a world where technology meets creativity. <br className="hidden md:block" />
                         Scroll through our curated collection of innovations designed to shape the future.
                     </p>
@@ -405,3 +414,5 @@ export function ScrollMorphHero() {
         </div>
     );
 }
+
+    
