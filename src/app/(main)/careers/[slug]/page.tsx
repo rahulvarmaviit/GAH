@@ -6,7 +6,6 @@ import { jobs } from '@/lib/jobs';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { MapPin, Briefcase, Palette } from 'lucide-react';
 import Link from 'next/link';
@@ -22,7 +21,6 @@ export default function JobDetailPage() {
         const fullName = formData.get('fullName');
         const email = formData.get('email');
         const phone = formData.get('phone');
-        const coverLetter = formData.get('coverLetter');
         const role = formData.get('role');
 
         const subject = `Application for ${job?.title}: ${fullName}`;
@@ -31,9 +29,6 @@ export default function JobDetailPage() {
             Full Name: ${fullName}
             Email: ${email}
             Phone: ${phone || 'Not provided'}
-
-            Cover Letter:
-            ${coverLetter}
         `;
         window.location.href = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     };
@@ -91,10 +86,6 @@ export default function JobDetailPage() {
                             <h2 className="text-foreground text-[22px] font-bold leading-tight tracking-[-0.015em]">Apply for this role</h2>
                             <div className="grid grid-cols-1 gap-6">
                                 <div>
-                                    <Label htmlFor="role">Role</Label>
-                                    <Input id="role" name="role" type="text" value={job.title} readOnly className="bg-muted" />
-                                </div>
-                                <div>
                                     <Label htmlFor="fullName">Full Name</Label>
                                     <Input id="fullName" name="fullName" placeholder="Jane Doe" required type="text" />
                                 </div>
@@ -108,8 +99,8 @@ export default function JobDetailPage() {
                                 <Input id="phone" name="phone" placeholder="+1 (555) 123-4567" type="tel" />
                             </div>
                             <div>
-                                <Label htmlFor="coverLetter">Cover Letter</Label>
-                                <Textarea id="coverLetter" name="coverLetter" placeholder="Tell us why you're a great fit for this role..." rows={4} />
+                                <Label htmlFor="role">Role</Label>
+                                <Input id="role" name="role" type="text" value={job.title} readOnly className="bg-muted" />
                             </div>
                             <div className="flex justify-end">
                                 <Button type="submit" className="w-full">
