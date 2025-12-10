@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
-import { MapPin, Briefcase, Palette, UploadFile } from 'lucide-react';
+import { MapPin, Briefcase, Palette, Upload } from 'lucide-react';
 import Link from 'next/link';
 
 export default function JobDetailPage() {
@@ -109,7 +109,7 @@ export default function JobDetailPage() {
                                 <Label htmlFor="resume">Upload Resume</Label>
                                 <div className="mt-2 flex justify-center rounded-lg border border-dashed border-border px-6 py-10">
                                     <div className="text-center">
-                                        <UploadFile className="mx-auto h-12 w-12 text-muted-foreground" />
+                                        <Upload className="mx-auto h-12 w-12 text-muted-foreground" />
                                         <div className="mt-4 flex text-sm leading-6 text-muted-foreground">
                                             <Label htmlFor="file-upload" className="relative cursor-pointer rounded-lg font-semibold text-primary focus-within:outline-none focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 hover:text-primary/80">
                                                 <span>Upload a file</span>
