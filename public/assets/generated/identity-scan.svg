@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <defs>
+    <linearGradient id="identityGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f97316;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="identityGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#ec4899;stop-opacity:0.8" />
+    </linearGradient>
+    <filter id="glow2">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background glow -->
+  <circle cx="250" cy="250" r="160" fill="url(#identityGrad1)" opacity="0.1" filter="url(#glow2)"/>
+  
+  <!-- Fingerprint base circle -->
+  <circle cx="250" cy="250" r="120" fill="#1e1b4b" stroke="#ec4899" stroke-width="2" opacity="0.3"/>
+  
+  <!-- Fingerprint lines -->
+  <path d="M250 150 Q280 150 300 170 Q320 190 320 220 Q320 250 300 270" 
+        fill="none" stroke="url(#identityGrad2)" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+  <path d="M250 170 Q270 170 285 185 Q300 200 300 220 Q300 240 290 255" 
+        fill="none" stroke="url(#identityGrad2)" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <path d="M250 190 Q260 190 270 200 Q280 210 280 225 Q280 235 275 245" 
+        fill="none" stroke="url(#identityGrad2)" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  
+  <path d="M250 150 Q220 150 200 170 Q180 190 180 220 Q180 250 200 270" 
+        fill="none" stroke="url(#identityGrad2)" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+  <path d="M250 170 Q230 170 215 185 Q200 200 200 220 Q200 240 210 255" 
+        fill="none" stroke="url(#identityGrad2)" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <path d="M250 190 Q240 190 230 200 Q220 210 220 225 Q220 235 225 245" 
+        fill="none" stroke="url(#identityGrad2)" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  
+  <!-- Center dot -->
+  <circle cx="250" cy="250" r="8" fill="#ec4899" filter="url(#glow2)"/>
+  
+  <!-- Scanning line animation -->
+  <line x1="130" y1="250" x2="370" y2="250" stroke="#a855f7" stroke-width="2" opacity="0.6">
+    <animate attributeName="y1" values="150;350;150" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="y2" values="150;350;150" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="3s" repeatCount="indefinite"/>
+  </line>
+  
+  <!-- User icon -->
+  <circle cx="250" cy="100" r="20" fill="none" stroke="#ec4899" stroke-width="2"/>
+  <path d="M230 140 Q250 120 270 140" fill="none" stroke="#ec4899" stroke-width="2"/>
+  
+  <!-- Checkmark -->
+  <circle cx="350" cy="150" r="25" fill="#1e1b4b" stroke="#10b981" stroke-width="2"/>
+  <path d="M340 150 L348 158 L365 140" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Decorative particles -->
+  <circle cx="150" cy="180" r="3" fill="#ec4899" opacity="0.8">
+    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="350" cy="320" r="2.5" fill="#a855f7" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+</svg>

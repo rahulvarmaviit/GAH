@@ -1,0 +1,298 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero-background",
+      "description": "Abstract futuristic background with glowing purple and blue particles",
+      "imageUrl": "https://images.unsplash.com/photo-1671716784499-a3d26826d844?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhYnN0cmFjdCUyMGJhY2tncm91bmR8ZW58MHx8fHwxNzU5NzY3NDk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract background"
+    },
+    {
+      "id": "feature-services",
+      "description": "Professional team collaborating in a modern office",
+      "imageUrl": "https://images.unsplash.com/photo-1543269865-cbf427effbad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NTk3NzQzNDd8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "team collaboration"
+    },
+    {
+      "id": "feature-products",
+      "description": "Sleek and modern electronic gadgets on a table",
+      "imageUrl": "https://images.unsplash.com/photo-1717996563514-e3519f9ef9f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBnYWRnZXRzfGVufDB8fHx8MTc2NDc1Mzc4MHww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "modern gadgets"
+    },
+    {
+      "id": "feature-events",
+      "description": "Large conference hall with an audience listening to a speaker",
+      "imageUrl": "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb25mZXJlbmNlJTIwYXVkaWVuY2V8ZW58MHx8fHwxNzY0NzgzNjMxfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "conference audience"
+    },
+    {
+      "id": "service-1",
+      "description": "Cloud computing and data storage concept",
+      "imageUrl": "https://images.unsplash.com/photo-1667984390535-6d03cff0b11a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjbG91ZCUyMGNvbXB1dGluZ3xlbnwwfHx8fDE3NjQ3MzA4MDd8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "cloud computing"
+    },
+    {
+      "id": "service-2",
+      "description": "Cybersecurity expert monitoring network traffic",
+      "imageUrl": "https://images.unsplash.com/photo-1620825937374-87fc7d6bddc2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjeWJlciUyMHNlY3VyaXR5fGVufDB8fHx8MTc2NDgwODQ4M3ww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "cyber security"
+    },
+    {
+      "id": "service-3",
+      "description": "AI and machine learning brain interface",
+      "imageUrl": "https://images.unsplash.com/photo-1534723328310-e82dad3ee43f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlfGVufDB8fHx8MTc1OTcyMjIzMXww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "artificial intelligence"
+    },
+    {
+      "id": "service-4",
+      "description": "Data analytics dashboard with charts and graphs",
+      "imageUrl": "https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8MTc2NDc0MzE3OXww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "data analytics"
+    },
+    {
+      "id": "service-5",
+      "description": "Digital marketing strategy session with sticky notes",
+      "imageUrl": "https://images.unsplash.com/photo-1590102425728-aa39769512ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtYXJrZXRpbmclMjBzdHJhdGVneXxlbnwwfHx8fDE3NTk3ODU0NzB8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "marketing strategy"
+    },
+    {
+      "id": "service-6",
+      "description": "UX/UI designer sketching wireframes",
+      "imageUrl": "https://images.unsplash.com/photo-1602576666092-bf6447a729fc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx1eCUyMGRlc2lnbnxlbnwwfHx8fDE3NTk3NTQwMzd8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "ux design"
+    },
+    {
+      "id": "service-7",
+      "description": "Developer coding on a laptop with multiple screens",
+      "imageUrl": "https://images.unsplash.com/photo-1517694712202-1428bc3cd405?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxlbnwwfHx8fDE3NjAxOTU1NDJ8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "web development"
+    },
+    {
+      "id": "service-8",
+      "description": "SAP system architecture diagram on a screen",
+      "imageUrl": "https://images.unsplash.com/photo-1633113089634-31b3156f4d89?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxlbnRlcnByaXNlJTIwc29mdHdhcmV8ZW58MHx8fHwxNzY1ODMzMDI0fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "enterprise software"
+    },
+    {
+      "id": "service-3-new",
+      "description": "Digital engineering and application development workspace",
+      "imageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb2RpbmclMjBsYXB0b3B8ZW58MHx8fHwxNzY1Mjg5NTQxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "coding laptop"
+    },
+    {
+      "id": "service-6-new",
+      "description": "SAP enterprise resource planning dashboard",
+      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGRhc2hib2FyZHxlbnwwfHx8fDE3NjUyODk5ODh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "business dashboard"
+    },
+    {
+      "id": "product-1",
+      "description": "A sleek, futuristic drone in mid-flight",
+      "imageUrl": "https://images.unsplash.com/photo-1609464474585-b353aaa64dc6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxkcm9uZSUyMGZsaWdodHxlbnwwfHx8fDE3NjQ3ODgyMjZ8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "drone flight"
+    },
+    {
+      "id": "product-2",
+      "description": "Smartwatch with a holographic display",
+      "imageUrl": "https://images.unsplash.com/photo-1579721840641-7d0e67f1204e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxzbWFydCUyMHdhdGNofGVufDB8fHx8MTc1OTc0MDkyOHww&ixlibrb-4.1.0&q=80&w=1080",
+      "imageHint": "smart watch"
+    },
+    {
+      "id": "product-3",
+      "description": "Virtual reality headset being worn",
+      "imageUrl": "https://images.unsplash.com/photo-1617802690992-15d93263d3a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx2aXJ0dWFsJTIwcmVhbGl0eXxlbnwwfHx8fDE3NTk3NTY4OTB8MA&ixlib.rb-4.1.0&q=80&w=1080",
+      "imageHint": "virtual reality"
+    },
+    {
+      "id": "product-4",
+      "description": "Advanced home automation hub",
+      "imageUrl": "https://images.unsplash.com/photo-1706774609219-56c61f8b3c51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzbWFydCUyMGhvbWV8ZW58MHx8fHwxNzY0Nzc5MTA1fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "smart home"
+    },
+    {
+      "id": "product-5",
+      "description": "A robot assistant performing a task",
+      "imageUrl": "https://images.unsplash.com/photo-1634910409614-71a507e13588?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxyb2JvdCUyMGFzc2lzdGFudHxlbnwwfHx8fDE3NjQ4MzExOTJ8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "robot assistant"
+    },
+    {
+      "id": "product-6",
+      "description": "Electric concept car on a futuristic road",
+      "imageUrl": "https://images.unsplash.com/photo-1615829386703-e2bb66a7cb7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxlbGVjdHJpYyUyMGNhcnxlbnwwfHx8fDE3NTk3NzY2MzV8MA&ixlib.rb-4.1.0&q=80&w=1080",
+      "imageHint": "electric car"
+    },
+    {
+      "id": "event-1",
+      "description": "Tech conference keynote speaker on stage",
+      "imageUrl": "https://images.unsplash.com/photo-1568983268695-74a04650c8b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjb25mZXJlbmNlJTIwa2V5bm90ZXxlbnwwfHx8fDE3NjQ4MzExOTJ8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "conference keynote"
+    },
+    {
+      "id": "event-2",
+      "description": "Networking event with people talking",
+      "imageUrl": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxuZXR3b3JraW5nJTIwZXZlbnR8ZW58MHx8fHwxNzU5NzgxNDM0fDA&ixlib.rb-4.1.0&q=80&w=1080",
+      "imageHint": "networking event"
+    },
+    {
+      "id": "event-3",
+      "description": "Hands-on coding workshop",
+      "imageUrl": "https://images.unsplash.com/photo-1581092334247-44dd684e3c82?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjb2RpbmclMjB3b3Jrc2hvcHxlbnwwfHx8fDE3NjQ3OTY2MTB8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "coding workshop"
+    },
+    {
+      "id": "event-4",
+      "description": "Product launch event with a new device showcased",
+      "imageUrl": "https://images.unsplash.com/photo-1759491627968-3ca2247a31e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxwcm9kdWN0JTIwbGF1bmNofGVufDB8fHx8MTc1OTc2NzM3N3ww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "product launch"
+    },
+    {
+      "id": "team-1",
+      "description": "Portrait of a female CEO in a modern office",
+      "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmZW1hbGUlMjBwcm9mZXNzaW9uYWx8ZW58MHx8fHwxNzY0NzMxMTQ3fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "female professional"
+    },
+    {
+      "id": "team-2",
+      "description": "Portrait of a male lead engineer",
+      "imageUrl": "https://images.unsplash.com/photo-1715423058726-ddea1ec51b66?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtYWxlJTIwcHJvZmVzc2lvbmFsfGVufDB8fHx8MTc2NDgzMTE5Mnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "male professional"
+    },
+    {
+      "id": "team-3",
+      "description": "Portrait of a non-binary marketing director",
+      "imageUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NTk3NDM1MjZ8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "team-4",
+      "description": "Portrait of a female product manager",
+      "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB3b21hbnxlbnwwfHx8fDE3NTk3NjIyNDh8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional woman"
+    },
+    {
+      "id": "about-mission",
+      "description": "Abstract image representing innovation and forward thinking",
+      "imageUrl": "https://images.unsplash.com/photo-1678742733118-029763b67e5c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxhYnN0cmFjdCUyMGlubm92YXRpb258ZW58MHx8fHwxNzY0NzQ5NzQ5fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract innovation"
+    },
+    {
+      "id": "about-vision",
+      "description": "Abstract image representing global connection and future",
+      "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxnbG9iYWwlMjBjb25uZWN0aW9ufGVufDB8fHx8MTc1OTc4MTUyNnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "global connection"
+    },
+    {
+      "id": "about-purpose",
+      "description": "Team working towards a common goal",
+      "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx0ZWFtJTIwZ29hbHxlbnwwfHx8fDE3NjU0MTcyMTR8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "team goal"
+    },
+    {
+      "id": "about-domains",
+      "description": "Abstract visualization of different technology domains connecting",
+      "imageUrl": "https://images.unsplash.com/photo-1554224155-8d04421cd6c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxkb21haW5zJTIwdGVjaG5vbG9neXxlbnwwfHx8fDE3NjU0MTczNTB8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "technology domains"
+    },
+    {
+      "id": "about-story",
+      "description": "Two people working in a garage, symbolizing a startup's humble beginnings",
+      "imageUrl": "https://images.unsplash.com/photo-1675034743126-0f250a5fee51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzcGFydHVwJTIwZ2FyYWdlfGVufDB8fHx8MTc2NDgzMTE5Mnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "startup garage"
+    },
+    {
+      "id": "about-delivery-model",
+      "description": "A world map with connected dots, representing a global network",
+      "imageUrl": "https://images.unsplash.com/photo-1533152162-638734e70335?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxnbG9iYWwlMjBuZXR3b3JrfGVufDB8fHx8MTc2NTQxOTUwMnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "global network"
+    },
+    {
+      "id": "about-join-team",
+      "description": "A diverse group of professionals in a collaborative meeting",
+      "imageUrl": "https://images.unsplash.com/photo-1573164713988-8665fc963095?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbmNsdXNpdmUlMjB0ZWFtfGVufDB8fHx8MTc2NTQyMDI3N3ww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "inclusive team"
+    },
+    {
+      "id": "contact-hero",
+      "description": "Abstract image of communication lines",
+      "imageUrl": "https://images.unsplash.com/photo-1721378466905-0375f1e7b879?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjb21tdW5pY2F0aW9uJTIwYWJzdHJhY3R8ZW58MHx8fHwxNzY0ODMxMTkyfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "communication abstract"
+    },
+    {
+      "id": "navbar-product-1",
+      "description": "Algochurn product image",
+      "imageUrl": "https://assets.aceternity.com/demos/algochurn.webp",
+      "imageHint": "product interface"
+    },
+    {
+      "id": "navbar-product-2",
+      "description": "Tailwind Master Kit product image",
+      "imageUrl": "https://assets.aceternity.com/demos/tailwindmasterkit.webp",
+      "imageHint": "code components"
+    },
+    {
+      "id": "navbar-product-3",
+      "description": "Moonbeam product image",
+      "imageUrl": "https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png",
+      "imageHint": "writing application"
+    },
+    {
+      "id": "navbar-product-4",
+      "description": "Rogue product image",
+      "imageUrl": "https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png",
+      "imageHint": "AI government contracts"
+    },
+    {
+      "id": "testimonial-1",
+      "description": "Portrait of Briana Patton",
+      "imageUrl": "https://images.unsplash.com/photo-1610655507808-a59293f4e332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NDgwMjY3Nnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "testimonial-2",
+      "description": "Portrait of Bilal Ahmed",
+      "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjQ3NTYxMDR8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "testimonial-3",
+      "description": "Portrait of Saman Malik",
+      "imageUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NDgwMjY3Nnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "testimonial-4",
+      "description": "Portrait of Omar Raza",
+      "imageUrl": "https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjQ3NTYxMDR8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "testimonial-5",
+      "description": "Portrait of Zainab Hussain",
+      "imageUrl": "https://images.unsplash.com/photo-1614283233556-f35b0c801ef1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NDgwMjY3Nnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "testimonial-6",
+      "description": "Portrait of Aliza Khan",
+      "imageUrl": "https://images.unsplash.com/photo-1592621385612-4d7129426394?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NDgwMjY3Nnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "testimonial-7",
+      "description": "Portrait of Farhan Siddiqui",
+      "imageUrl": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjQ3NTYxMDR8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "testimonial-8",
+      "description": "Portrait of Sana Sheikh",
+      "imageUrl": "https://images.unsplash.com/photo-1610655507808-a59293f4e332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NDgwMjY3Nnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "testimonial-9",
+      "description": "Portrait of Hassan Ali",
+      "imageUrl": "https://images.unsplash.com/photo-1624395213043-fa2e123b2656?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjQ3NTYxMDR8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "man portrait"
+    }
+  ]
+}

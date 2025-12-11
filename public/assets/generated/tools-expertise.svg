@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <defs>
+    <linearGradient id="toolsGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#64748b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="toolsGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#64748b;stop-opacity:0.8" />
+    </linearGradient>
+    <filter id="glow6">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background glow -->
+  <circle cx="250" cy="250" r="160" fill="url(#toolsGrad1)" opacity="0.1" filter="url(#glow6)"/>
+  
+  <!-- Toolbox/Platform -->
+  <rect x="150" y="220" width="200" height="120" rx="8" fill="#1e1b4b" stroke="url(#toolsGrad2)" stroke-width="3"/>
+  <rect x="150" y="200" width="200" height="30" rx="8" fill="url(#toolsGrad2)" opacity="0.8"/>
+  <circle cx="250" cy="215" r="8" fill="#1e1b4b" stroke="#a855f7" stroke-width="2"/>
+  
+  <!-- Tool icons inside -->
+  <g transform="translate(180, 250)">
+    <!-- Wrench -->
+    <path d="M0 0 L5 -15 Q8 -18 11 -15 L6 0 Z" fill="#a855f7" opacity="0.8"/>
+    <circle cx="8" cy="-15" r="3" fill="none" stroke="#a855f7" stroke-width="1"/>
+  </g>
+  
+  <g transform="translate(220, 250)">
+    <!-- Gear -->
+    <circle cx="0" cy="0" r="10" fill="none" stroke="#06b6d4" stroke-width="2"/>
+    <circle cx="0" cy="0" r="5" fill="#1e1b4b"/>
+    <rect x="-2" y="-12" width="4" height="4" fill="#06b6d4"/>
+    <rect x="-2" y="8" width="4" height="4" fill="#06b6d4"/>
+    <rect x="-12" y="-2" width="4" height="4" fill="#06b6d4"/>
+    <rect x="8" y="-2" width="4" height="4" fill="#06b6d4"/>
+  </g>
+  
+  <g transform="translate(260, 250)">
+    <!-- Code brackets -->
+    <path d="M-5 -8 L-10 0 L-5 8" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+    <path d="M5 -8 L10 0 L5 8" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  
+  <g transform="translate(300, 250)">
+    <!-- Database -->
+    <ellipse cx="0" cy="-8" rx="8" ry="3" fill="none" stroke="#f59e0b" stroke-width="2"/>
+    <line x1="-8" y1="-8" x2="-8" y2="8" stroke="#f59e0b" stroke-width="2"/>
+    <line x1="8" y1="-8" x2="8" y2="8" stroke="#f59e0b" stroke-width="2"/>
+    <ellipse cx="0" cy="8" rx="8" ry="3" fill="none" stroke="#f59e0b" stroke-width="2"/>
+  </g>
+  
+  <g transform="translate(180, 300)">
+    <!-- Shield -->
+    <path d="M0 -8 L6 -5 L6 2 Q6 6 0 10 Q-6 6 -6 2 L-6 -5 Z" 
+          fill="none" stroke="#ec4899" stroke-width="2"/>
+  </g>
+  
+  <g transform="translate(220, 300)">
+    <!-- Lock -->
+    <rect x="-5" y="0" width="10" height="8" rx="1" fill="none" stroke="#a855f7" stroke-width="2"/>
+    <path d="M-3 0 L-3 -3 Q-3 -5 0 -5 Q3 -5 3 -3 L3 0" 
+          fill="none" stroke="#a855f7" stroke-width="2"/>
+  </g>
+  
+  <!-- Floating tool icons -->
+  <g transform="translate(120, 180)">
+    <circle cx="0" cy="0" r="20" fill="#1e1b4b" stroke="#06b6d4" stroke-width="2" opacity="0.8"/>
+    <path d="M-6 0 L-2 4 L6 -6" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  
+  <g transform="translate(380, 200)">
+    <circle cx="0" cy="0" r="20" fill="#1e1b4b" stroke="#10b981" stroke-width="2" opacity="0.8"/>
+    <circle cx="0" cy="0" r="8" fill="none" stroke="#10b981" stroke-width="2"/>
+    <line x1="6" y1="-6" x2="12" y2="-12" stroke="#10b981" stroke-width="2"/>
+  </g>
+  
+  <g transform="translate(100, 300)">
+    <circle cx="0" cy="0" r="18" fill="#1e1b4b" stroke="#ec4899" stroke-width="2" opacity="0.8"/>
+    <rect x="-6" y="-3" width="12" height="6" rx="1" fill="none" stroke="#ec4899" stroke-width="1.5"/>
+  </g>
+  
+  <!-- Connection lines -->
+  <line x1="120" y1="180" x2="170" y2="210" stroke="#06b6d4" stroke-width="1" opacity="0.3" stroke-dasharray="3,3"/>
+  <line x1="380" y1="200" x2="330" y2="220" stroke="#10b981" stroke-width="1" opacity="0.3" stroke-dasharray="3,3"/>
+  <line x1="100" y1="300" x2="160" y2="300" stroke="#ec4899" stroke-width="1" opacity="0.3" stroke-dasharray="3,3"/>
+  
+  <!-- Decorative particles -->
+  <circle cx="140" cy="160" r="2.5" fill="#a855f7" opacity="0.8">
+    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="360" cy="180" r="2" fill="#06b6d4" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="90" cy="280" r="3" fill="#ec4899" opacity="0.7">
+    <animate attributeName="opacity" values="0.7;0.3;0.7" dur="3s" repeatCount="indefinite"/>
+  </circle>
+</svg>

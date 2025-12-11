@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <defs>
+    <linearGradient id="grcGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ef4444;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grcGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:0.8" />
+    </linearGradient>
+    <filter id="glow4">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background glow -->
+  <circle cx="250" cy="250" r="160" fill="url(#grcGrad1)" opacity="0.1" filter="url(#glow4)"/>
+  
+  <!-- Document/Clipboard -->
+  <rect x="180" y="120" width="140" height="200" rx="8" fill="#1e1b4b" stroke="url(#grcGrad2)" stroke-width="2"/>
+  <rect x="180" y="100" width="140" height="30" rx="8" fill="url(#grcGrad2)" opacity="0.8"/>
+  
+  <!-- Document lines -->
+  <line x1="200" y1="150" x2="300" y2="150" stroke="#a855f7" stroke-width="2" opacity="0.6"/>
+  <line x1="200" y1="170" x2="280" y2="170" stroke="#a855f7" stroke-width="2" opacity="0.5"/>
+  <line x1="200" y1="190" x2="290" y2="190" stroke="#a855f7" stroke-width="2" opacity="0.6"/>
+  <line x1="200" y1="210" x2="270" y2="210" stroke="#a855f7" stroke-width="2" opacity="0.5"/>
+  
+  <!-- Checkboxes -->
+  <rect x="200" y="235" width="20" height="20" rx="3" fill="none" stroke="#10b981" stroke-width="2"/>
+  <path d="M205 245 L210 250 L215 240" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+  
+  <rect x="200" y="265" width="20" height="20" rx="3" fill="none" stroke="#10b981" stroke-width="2"/>
+  <path d="M205 275 L210 280 L215 270" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+  
+  <rect x="200" y="295" width="20" height="20" rx="3" fill="none" stroke="#f59e0b" stroke-width="2"/>
+  
+  <!-- Text lines next to checkboxes -->
+  <line x1="230" y1="245" x2="290" y2="245" stroke="#a855f7" stroke-width="2" opacity="0.5"/>
+  <line x1="230" y1="275" x2="280" y2="275" stroke="#a855f7" stroke-width="2" opacity="0.5"/>
+  <line x1="230" y1="305" x2="285" y2="305" stroke="#a855f7" stroke-width="2" opacity="0.5"/>
+  
+  <!-- Seal/Badge -->
+  <g transform="translate(350, 200)">
+    <circle cx="0" cy="0" r="35" fill="url(#grcGrad2)" filter="url(#glow4)"/>
+    <circle cx="0" cy="0" r="28" fill="#1e1b4b" stroke="#f59e0b" stroke-width="2"/>
+    <path d="M-8 0 L-3 5 L8 -8" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Ribbon tails -->
+    <path d="M-15 30 L-15 50 L-5 45 L-15 40" fill="#f59e0b" opacity="0.8"/>
+    <path d="M15 30 L15 50 L5 45 L15 40" fill="#f59e0b" opacity="0.8"/>
+  </g>
+  
+  <!-- Magnifying glass -->
+  <g transform="translate(140, 280)">
+    <circle cx="0" cy="0" r="25" fill="none" stroke="#06b6d4" stroke-width="3"/>
+    <line x1="18" y1="18" x2="35" y2="35" stroke="#06b6d4" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="0" cy="0" r="15" fill="none" stroke="#06b6d4" stroke-width="2" opacity="0.5"/>
+  </g>
+  
+  <!-- Decorative particles -->
+  <circle cx="160" cy="140" r="3" fill="#f59e0b" opacity="0.8">
+    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="330" cy="160" r="2.5" fill="#a855f7" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="180" cy="320" r="2" fill="#06b6d4" opacity="0.7">
+    <animate attributeName="opacity" values="0.7;0.3;0.7" dur="3s" repeatCount="indefinite"/>
+  </circle>
+</svg>

@@ -1,0 +1,268 @@
+
+"use client"
+
+import { useState, useEffect, useRef } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import Image from 'next/image';
+
+interface Frame {
+  id: number
+  image: string
+  defaultPos: { x: number; y: number; w: number; h: number }
+  corner: string
+  edgeHorizontal: string
+  edgeVertical: string
+  mediaSize: number
+  borderThickness: number
+  borderSize: number
+  isHovered: boolean,
+  title: string,
+  description: string,
+  link: string,
+}
+
+interface FrameComponentProps {
+  image: string
+  width: number | string
+  height: number | string
+  className?: string
+  corner: string
+  edgeHorizontal: string
+  edgeVertical: string
+  mediaSize: number
+  borderThickness: number
+  borderSize: number
+  showFrame: boolean
+  isHovered: boolean
+  title: string,
+  description: string
+}
+
+function FrameComponent({
+  image,
+  width,
+  height,
+  className = "",
+  corner,
+  edgeHorizontal,
+  edgeVertical,
+  mediaSize,
+  borderThickness,
+  borderSize,
+  showFrame,
+  isHovered,
+  title,
+  description
+}: FrameComponentProps) {
+
+  return (
+    <div
+      className={`relative ${className}`}
+      style={{
+        width,
+        height,
+        transition: "width 0.3s ease-in-out, height 0.3s ease-in-out",
+      }}
+    >
+      <div className="relative w-full h-full overflow-hidden">
+        <div
+          className="absolute inset-0 flex items-center justify-center"
+          style={{
+            zIndex: 1,
+            transition: "all 0.3s ease-in-out",
+            padding: showFrame ? `${borderThickness}px` : "0",
+            width: showFrame ? `${borderSize}%` : "100%",
+            height: showFrame ? `${borderSize}%` : "100%",
+            left: showFrame ? `${(100 - borderSize) / 2}%` : "0",
+            top: showFrame ? `${(100 - borderSize) / 2}%` : "0",
+          }}
+        >
+          <div
+            className="w-full h-full overflow-hidden"
+            style={{
+              transform: `scale(${mediaSize})`,
+              transformOrigin: "center",
+              transition: "transform 0.3s ease-in-out",
+            }}
+          >
+            <Image
+              src={image}
+              alt={title}
+              width={600}
+              height={400}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        {showFrame && (
+          <div className="absolute inset-0" style={{ zIndex: 2 }}>
+            <div
+              className="absolute top-0 left-0 w-16 h-16 bg-contain bg-no-repeat"
+              style={{ backgroundImage: `url(${corner})` }}
+            />
+            <div
+              className="absolute top-0 right-0 w-16 h-16 bg-contain bg-no-repeat"
+              style={{ backgroundImage: `url(${corner})`, transform: "scaleX(-1)" }}
+            />
+            <div
+              className="absolute bottom-0 left-0 w-16 h-16 bg-contain bg-no-repeat"
+              style={{ backgroundImage: `url(${corner})`, transform: "scaleY(-1)" }}
+            />
+            <div
+              className="absolute bottom-0 right-0 w-16 h-16 bg-contain bg-no-repeat"
+              style={{ backgroundImage: `url(${corner})`, transform: "scale(-1, -1)" }}
+            />
+
+            <div
+              className="absolute top-0 left-16 right-16 h-16"
+              style={{
+                backgroundImage: `url(${edgeHorizontal})`,
+                backgroundSize: "auto 64px",
+                backgroundRepeat: "repeat-x",
+              }}
+            />
+            <div
+              className="absolute bottom-0 left-16 right-16 h-16"
+              style={{
+                backgroundImage: `url(${edgeHorizontal})`,
+                backgroundSize: "auto 64px",
+                backgroundRepeat: "repeat-x",
+                transform: "rotate(180deg)",
+              }}
+            />
+            <div
+              className="absolute left-0 top-16 bottom-16 w-16"
+              style={{
+                backgroundImage: `url(${edgeVertical})`,
+                backgroundSize: "64px auto",
+                backgroundRepeat: "repeat-y",
+              }}
+            />
+            <div
+              className="absolute right-0 top-16 bottom-16 w-16"
+              style={{
+                backgroundImage: `url(${edgeVertical})`,
+                backgroundSize: "64px auto",
+                backgroundRepeat: "repeat-y",
+                transform: "scaleX(-1)",
+              }}
+            />
+          </div>
+        )}
+        <div
+          className="absolute inset-0 z-10 flex flex-col items-center justify-center p-4 bg-black/50 transition-all duration-300"
+        >
+          <motion.h3 
+            className="text-2xl font-bold text-white text-center"
+            animate={{ y: isHovered ? -10 : 0 }}
+          >
+            {title}
+          </motion.h3>
+          <AnimatePresence>
+            {isHovered && (
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ delay: 0.1 }}
+                className="text-sm text-center text-white/80 mt-2"
+              >
+                {description}
+              </motion.p>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+interface DynamicFrameLayoutProps {
+  frames: Frame[]
+  className?: string
+  showFrames?: boolean
+  hoverSize?: number
+  gapSize?: number
+}
+
+export function DynamicFrameLayout({ 
+  frames: initialFrames, 
+  className,
+  showFrames = false,
+  hoverSize = 6,
+  gapSize = 4
+}: DynamicFrameLayoutProps) {
+  const [frames] = useState<Frame[]>(initialFrames)
+  const [hovered, setHovered] = useState<{ row: number; col: number } | null>(null)
+
+  const getRowSizes = () => {
+    if (hovered === null) return "4fr 4fr 4fr"
+    const { row } = hovered
+    const nonHoveredSize = (12 - hoverSize) / 2
+    return [0, 1, 2].map((r) => (r === row ? `${hoverSize}fr` : `${nonHoveredSize}fr`)).join(" ")
+  }
+
+  const getColSizes = () => {
+    if (hovered === null) return "4fr 4fr 4fr"
+    const { col } = hovered
+    const nonHoveredSize = (12 - hoverSize) / 2
+    return [0, 1, 2].map((c) => (c === col ? `${hoverSize}fr` : `${nonHoveredSize}fr`)).join(" ")
+  }
+
+  const getTransformOrigin = (x: number, y: number) => {
+    const vertical = y === 0 ? "top" : y === 4 ? "center" : "bottom"
+    const horizontal = x === 0 ? "left" : x === 4 ? "center" : "right"
+    return `${vertical} ${horizontal}`
+  }
+
+  return (
+    <div
+      className={`relative w-full h-full ${className}`}
+      style={{
+        display: "grid",
+        gridTemplateRows: getRowSizes(),
+        gridTemplateColumns: getColSizes(),
+        gap: `${gapSize}px`,
+        transition: "grid-template-rows 0.4s ease, grid-template-columns 0.4s ease",
+      }}
+    >
+      {frames.map((frame) => {
+        const row = Math.floor(frame.defaultPos.y / 4)
+        const col = Math.floor(frame.defaultPos.x / 4)
+        const transformOrigin = getTransformOrigin(frame.defaultPos.x, frame.defaultPos.y)
+
+        return (
+          <motion.a
+            key={frame.id}
+            href={`/services/${frame.link}`}
+            className="relative"
+            style={{
+              transformOrigin,
+              transition: "transform 0.4s ease",
+            }}
+            onMouseEnter={() => setHovered({ row, col })}
+            onMouseLeave={() => setHovered(null)}
+          >
+            <FrameComponent
+              image={frame.image}
+              title={frame.title}
+              description={frame.description}
+              width="100%"
+              height="100%"
+              className="absolute inset-0"
+              corner={frame.corner}
+              edgeHorizontal={frame.edgeHorizontal}
+              edgeVertical={frame.edgeVertical}
+              mediaSize={frame.mediaSize}
+              borderThickness={frame.borderThickness}
+              borderSize={frame.borderSize}
+              showFrame={showFrames}
+              isHovered={hovered?.row === row && hovered?.col === col}
+            />
+          </motion.a>
+        )
+      })}
+    </div>
+  )
+}
