@@ -98,7 +98,7 @@ export default function JobDetailPage() {
                                 <Label htmlFor="phone">Phone Number <span className="text-muted-foreground">(Optional)</span></Label>
                                 <Input id="phone" name="phone" placeholder="+1 (555) 123-4567" type="tel" />
                             </div>
-                            <div>
+                             <div>
                                 <Label htmlFor="role">Role</Label>
                                 <Input id="role" name="role" type="text" value={job.title} readOnly className="bg-muted" />
                             </div>
