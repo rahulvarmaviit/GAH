@@ -11,7 +11,7 @@ const FullPageImageSlider: React.FC = () => {
       id: 'slider-1',
       title: "WFX - Wolfronix",
       description: "A multi-layer security foundation that protects your data, access, and operations.",
-      imageUrl: "https://images.unsplash.com/photo-1620825937374-87fc7d6bddc2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjeWJlciUyMHNlY3VyaXR5fGVufDB8fHx8MTc2NDgwODQ4M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      imageUrl: "/assets/1765433587557.jpg",
     },
     {
       id: 'slider-2',
@@ -87,16 +87,16 @@ const FullPageImageSlider: React.FC = () => {
             <div className="max-w-xl">
               <h1
                 className={`text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-3 md:mb-4 transition-all duration-600 ${isTransitioning
-                    ? 'opacity-0 translate-y-8'
-                    : 'opacity-100 translate-y-0'
+                  ? 'opacity-0 translate-y-8'
+                  : 'opacity-100 translate-y-0'
                   }`}
               >
                 {slides[currentIndex].title}
               </h1>
               <p
                 className={`text-base md:text-lg lg:text-xl text-white/90 mb-6 md:mb-8 transition-all duration-600 delay-100 ${isTransitioning
-                    ? 'opacity-0 translate-y-8'
-                    : 'opacity-100 translate-y-0'
+                  ? 'opacity-0 translate-y-8'
+                  : 'opacity-100 translate-y-0'
                   }`}
               >
                 {slides[currentIndex].description}
@@ -104,8 +104,8 @@ const FullPageImageSlider: React.FC = () => {
               <Button
                 size="lg"
                 className={`bg-white text-black hover:bg-white/90 transition-all duration-600 delay-200 ${isTransitioning
-                    ? 'opacity-0 translate-y-8'
-                    : 'opacity-100 translate-y-0'
+                  ? 'opacity-0 translate-y-8'
+                  : 'opacity-100 translate-y-0'
                   }`}
               >
                 See More
