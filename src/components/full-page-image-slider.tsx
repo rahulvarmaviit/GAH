@@ -6,20 +6,20 @@ import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const FullPageImageSlider: React.FC = () => {
-    const slides = [
-        {
-          id: 'slider-1',
-          title: "WFX - Wolfronix",
-          description: "A multi-layer security foundation that protects your data, access, and operations.",
-          imageUrl: "https://images.unsplash.com/photo-1620825937374-87fc7d6bddc2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjeWJlciUyMHNlY3VyaXR5fGVufDB8fHx8MTc2NDgwODQ4M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-        },
-        {
-          id: 'slider-2',
-          title: "Product Ecosystem",
-          description: "A suite of integrated tools designed to streamline your workflow and boost productivity.",
-          imageUrl: "https://images.unsplash.com/photo-1543269865-cbf427effbad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NTk3NzQzNDd8MA&ixlib-rb-4.1.0&q=80&w=1080",
-        },
-    ];
+  const slides = [
+    {
+      id: 'slider-1',
+      title: "WFX - Wolfronix",
+      description: "A multi-layer security foundation that protects your data, access, and operations.",
+      imageUrl: "https://images.unsplash.com/photo-1620825937374-87fc7d6bddc2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjeWJlciUyMHNlY3VyaXR5fGVufDB8fHx8MTc2NDgwODQ4M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+    },
+    {
+      id: 'slider-2',
+      title: "Our Product Ecosystem",
+      description: "A suite of integrated tools designed to streamline your workflow and boost productivity.",
+      imageUrl: "https://images.unsplash.com/photo-1543269865-cbf427effbad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NTk3NzQzNDd8MA&ixlib-rb-4.1.0&q=80&w=1080",
+    },
+  ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -48,12 +48,12 @@ const FullPageImageSlider: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [nextSlide]);
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            nextSlide();
-        }, 4000);
-        return () => clearInterval(timer);
-    }, [nextSlide]);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [nextSlide]);
 
 
   if (slides.length === 0) {
@@ -67,9 +67,8 @@ const FullPageImageSlider: React.FC = () => {
         {slides.map((slide, index) => (
           <div
             key={slide.id}
-            className={`absolute inset-0 transition-opacity duration-600 ease-in-out ${
-              index === currentIndex ? 'opacity-100' : 'opacity-0'
-            }`}
+            className={`absolute inset-0 transition-opacity duration-600 ease-in-out ${index === currentIndex ? 'opacity-100' : 'opacity-0'
+              }`}
           >
             <img
               src={slide.imageUrl}
@@ -87,30 +86,27 @@ const FullPageImageSlider: React.FC = () => {
           <div className="container">
             <div className="max-w-xl">
               <h1
-                className={`text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-3 md:mb-4 transition-all duration-600 ${
-                  isTransitioning
+                className={`text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-3 md:mb-4 transition-all duration-600 ${isTransitioning
                     ? 'opacity-0 translate-y-8'
                     : 'opacity-100 translate-y-0'
-                }`}
+                  }`}
               >
                 {slides[currentIndex].title}
               </h1>
               <p
-                className={`text-base md:text-lg lg:text-xl text-white/90 mb-6 md:mb-8 transition-all duration-600 delay-100 ${
-                  isTransitioning
+                className={`text-base md:text-lg lg:text-xl text-white/90 mb-6 md:mb-8 transition-all duration-600 delay-100 ${isTransitioning
                     ? 'opacity-0 translate-y-8'
                     : 'opacity-100 translate-y-0'
-                }`}
+                  }`}
               >
                 {slides[currentIndex].description}
               </p>
               <Button
                 size="lg"
-                className={`bg-white text-black hover:bg-white/90 transition-all duration-600 delay-200 ${
-                  isTransitioning
+                className={`bg-white text-black hover:bg-white/90 transition-all duration-600 delay-200 ${isTransitioning
                     ? 'opacity-0 translate-y-8'
                     : 'opacity-100 translate-y-0'
-                }`}
+                  }`}
               >
                 See More
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -171,9 +167,8 @@ const FullPageImageSlider: React.FC = () => {
                 className="group flex-1 h-1 bg-white/20 rounded-full overflow-hidden"
               >
                 <div
-                  className={`h-full bg-white transition-all duration-300 ${
-                    index === currentIndex ? 'w-full' : 'w-0 group-hover:w-full group-hover:bg-white/50'
-                  }`}
+                  className={`h-full bg-white transition-all duration-300 ${index === currentIndex ? 'w-full' : 'w-0 group-hover:w-full group-hover:bg-white/50'
+                    }`}
                 />
               </button>
             ))}
