@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import CyberMatrixHero from '@/components/ui/cyber-matrix-hero';
 import { Timeline } from '@/components/ui/timeline';
+import { TrcxSuiteSection } from '@/components/trcx-suite-section';
 
 const whyChooseWfx = [
     {
@@ -76,101 +77,103 @@ const faqs = [
 
 
 export function WfxPageContent() {
-  return (
-    <div className="flex flex-col bg-black text-white">
-      {/* Hero Section */}
-      <CyberMatrixHero />
+    return (
+        <div className="flex flex-col bg-black text-white">
+            {/* Hero Section */}
+            <CyberMatrixHero />
 
-      <main className="py-20 md:py-24">
-        <div className="container space-y-24">
-            {/* Why Choose W.F.X */}
-            <section id="use-cases">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl font-bold text-primary mb-4">Why Choose W.F.X</h2>
-                </div>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {whyChooseWfx.map((item, index) => (
-                        <motion.div 
-                            key={index}
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.5 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="bg-slate-900/50 p-6 rounded-2xl border border-primary/20 text-center flex flex-col items-center"
-                        >
-                            <div className="bg-primary/10 p-4 rounded-full mb-4 border border-primary/20">
-                                {item.icon}
+            <main className="py-20 md:py-24">
+                <div className="container space-y-24">
+                    {/* Why Choose W.F.X */}
+                    <section id="use-cases">
+                        <div className="text-center mb-16">
+                            <h2 className="text-4xl font-bold text-primary mb-4">Why Choose W.F.X</h2>
+                        </div>
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {whyChooseWfx.map((item, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, amount: 0.5 }}
+                                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                                    className="bg-slate-900/50 p-6 rounded-2xl border border-primary/20 text-center flex flex-col items-center"
+                                >
+                                    <div className="bg-primary/10 p-4 rounded-full mb-4 border border-primary/20">
+                                        {item.icon}
+                                    </div>
+                                    <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                                    <p className="text-slate-300/80">{item.description}</p>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* How It Works */}
+                    <section>
+                        <div className="text-center mb-16">
+                            <h2 className="text-5xl font-bold text-neutral-500 mb-4">How It Works</h2>
+                        </div>
+                        <Timeline data={howItWorks} />
+                    </section>
+
+                    <TrcxSuiteSection activeProduct="WFX" />
+
+                    {/* Features */}
+                    <section className="bg-primary/5 p-12 rounded-2xl border border-primary/20">
+                        <div className="grid md:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <h2 className="text-4xl font-bold text-primary mb-6">Core Features</h2>
+                                <p className="text-lg text-slate-300/90 leading-relaxed mb-6">A comprehensive security suite to protect your organization's digital assets.</p>
                             </div>
-                            <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                            <p className="text-slate-300/80">{item.description}</p>
-                        </motion.div>
-                    ))}
-                </div>
-            </section>
-            
-            {/* How It Works */}
-            <section>
-                 <div className="text-center mb-16">
-                    <h2 className="text-5xl font-bold text-neutral-500 mb-4">How It Works</h2>
-                </div>
-                <Timeline data={howItWorks} />
-            </section>
+                            <ul className="space-y-4">
+                                {features.map((feature, index) => (
+                                    <li key={index} className="flex items-center text-lg text-slate-300">
+                                        <CheckCircle className="h-6 w-6 text-accent mr-4 flex-shrink-0" />
+                                        <span>{feature}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </section>
 
-            {/* Features */}
-            <section className="bg-primary/5 p-12 rounded-2xl border border-primary/20">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
-                    <div>
-                         <h2 className="text-4xl font-bold text-primary mb-6">Core Features</h2>
-                         <p className="text-lg text-slate-300/90 leading-relaxed mb-6">A comprehensive security suite to protect your organization's digital assets.</p>
-                    </div>
-                     <ul className="space-y-4">
-                        {features.map((feature, index) => (
-                            <li key={index} className="flex items-center text-lg text-slate-300">
-                                <CheckCircle className="h-6 w-6 text-accent mr-4 flex-shrink-0" />
-                                <span>{feature}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </section>
-            
-            {/* FAQs */}
-            <section>
-                <h2 className="text-4xl font-bold text-primary mb-12 text-center">Frequently Asked Questions</h2>
-                <Accordion type="single" collapsible className="w-full max-w-4xl mx-auto">
-                    {faqs.map((faq, index) => (
-                         <AccordionItem key={index} value={`item-${index+1}`} className="bg-slate-900/80 border-slate-800 rounded-lg mb-4 px-6">
-                            <AccordionTrigger className="text-lg text-white hover:no-underline">{faq.question}</AccordionTrigger>
-                            <AccordionContent className="text-base text-slate-300/80">
-                                {faq.answer}
-                            </AccordionContent>
-                        </AccordionItem>
-                    ))}
-                </Accordion>
-            </section>
-            
-            {/* Final CTA */}
-            <section className="text-center bg-gradient-to-r from-primary/10 via-transparent to-primary/10 py-20 rounded-3xl border border-primary/20">
-                <h2 className="text-4xl font-bold text-white mb-4">Ready to Secure Your Digital Future?</h2>
-                <p className="text-lg text-slate-300/80 max-w-2xl mx-auto mb-8">
-                    Learn how W.F.X can provide the foundational security your organization needs to innovate with confidence.
-                </p>
-                <div className="flex gap-4 justify-center">
-                    <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
-                        <Link href="/contact">
-                            Talk to Security Team <ArrowRight className="ml-2 h-5 w-5" />
-                        </Link>
-                    </Button>
-                    <Button asChild size="lg" variant="outline" className="text-white border-white/50 bg-transparent hover:bg-white hover:text-black">
-                        <Link href="/products">
-                            Explore Other Products
-                        </Link>
-                    </Button>
-                </div>
-            </section>
+                    {/* FAQs */}
+                    <section>
+                        <h2 className="text-4xl font-bold text-primary mb-12 text-center">Frequently Asked Questions</h2>
+                        <Accordion type="single" collapsible className="w-full max-w-4xl mx-auto">
+                            {faqs.map((faq, index) => (
+                                <AccordionItem key={index} value={`item-${index + 1}`} className="bg-slate-900/80 border-slate-800 rounded-lg mb-4 px-6">
+                                    <AccordionTrigger className="text-lg text-white hover:no-underline">{faq.question}</AccordionTrigger>
+                                    <AccordionContent className="text-base text-slate-300/80">
+                                        {faq.answer}
+                                    </AccordionContent>
+                                </AccordionItem>
+                            ))}
+                        </Accordion>
+                    </section>
 
+                    {/* Final CTA */}
+                    <section className="text-center bg-gradient-to-r from-primary/10 via-transparent to-primary/10 py-20 rounded-3xl border border-primary/20">
+                        <h2 className="text-4xl font-bold text-white mb-4">Ready to Secure Your Digital Future?</h2>
+                        <p className="text-lg text-slate-300/80 max-w-2xl mx-auto mb-8">
+                            Learn how W.F.X can provide the foundational security your organization needs to innovate with confidence.
+                        </p>
+                        <div className="flex gap-4 justify-center">
+                            <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
+                                <Link href="/contact">
+                                    Talk to Security Team <ArrowRight className="ml-2 h-5 w-5" />
+                                </Link>
+                            </Button>
+                            <Button asChild size="lg" variant="outline" className="text-white border-white/50 bg-transparent hover:bg-white hover:text-black">
+                                <Link href="/products">
+                                    Explore Other Products
+                                </Link>
+                            </Button>
+                        </div>
+                    </section>
+
+                </div>
+            </main>
         </div>
-      </main>
-    </div>
-  );
+    );
 }
