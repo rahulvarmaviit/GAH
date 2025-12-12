@@ -308,12 +308,12 @@ export const services = [
                 riskExposure: 40,
                 afterEngagement: 85,
                 beforeDescription: 'Before: weekly or monthly releases with manual coordination.',
-                afterDescription: 'After: multiple deploys per day with automated pipelines.'
+                afterDescription: 'After DevOps adoption: multiple deploys per day with automated pipelines.'
             }
         },
         realitySection: {
-            title: 'Legacy delivery models can’t keep up with digital demand.',
-            subtitle: 'On-prem, monolithic systems and manual deployment processes slow down innovation, increase risk and inflate operating cost.',
+            title: 'The need for modernisation',
+            subtitle: 'Legacy delivery models can\'t keep up with digital demand. On-prem, monolithic systems and manual deployment processes slow down innovation, increase risk and inflate operating cost.',
             points: [
                 'New features take weeks or months to reach production.',
                 'Environments are brittle, hard to replicate and inconsistent.',
@@ -321,8 +321,8 @@ export const services = [
             ]
         },
         valueProposition: {
-            title: 'We turn your cloud and delivery stack into an innovation engine.',
-            subtitle: 'We combine cloud strategy, DevOps, security and FinOps to create a platform where teams can build, ship and scale digital products confidently.',
+            title: 'Our value proposition',
+            subtitle: 'We turn your cloud and delivery stack into an innovation engine. We combine cloud strategy, DevOps, security and FinOps to create a platform where teams can build, ship and scale digital products confidently.',
             points: [
                 'Clear modernization roadmap aligned to business priorities and risk.',
                 'Automated CI/CD pipelines and self-service environments for engineering teams.',

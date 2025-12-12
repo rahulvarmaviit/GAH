@@ -3,7 +3,7 @@
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import { services } from '@/lib/services';
-import { CheckCircle, ArrowRight, Server, Code, Shield, BrainCircuit, BarChart, ShoppingCart, MessageSquare, Bot, AlertTriangle, Zap, Layers, Target, Users, Check, Laptop, Globe, Lock, TrendingUp, Cloud, Scale, GraduationCap, RefreshCw } from 'lucide-react';
+import { CheckCircle, ArrowRight, Server, Code, Shield, BrainCircuit, BarChart, ShoppingCart, MessageSquare, Bot, AlertTriangle, Zap, Layers, Target, Users, Check, Laptop, Globe, Lock, TrendingUp, Cloud, Scale, GraduationCap, RefreshCw, Activity } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -16,6 +16,8 @@ import DecryptedText from '@/components/ui/decrypted-text';
 import { DigitalPyramid } from '@/components/cybersecurity/digital-pyramid';
 import ArcCarousel from '@/components/ui/arc-carousel';
 import GlowingCard from '@/components/cybersecurity/glowing-card';
+import { CircularServiceSelector } from '@/components/circular-service-selector';
+import { PyramidOutcomes } from '@/components/ui/pyramid-outcomes';
 import React, { MouseEvent, useCallback } from 'react';
 
 const iconMap: { [key: string]: React.ReactNode } = {
@@ -81,6 +83,7 @@ export default function ServiceDetailPage() {
     const params = useParams();
     const slug = params.slug;
     const service = services.find((s) => s.slug === slug);
+    const [activeCard, setActiveCard] = React.useState(1); // 0=Reality, 1=WhoWeHelp, 2=OurValue
 
     if (!service) {
         return (
@@ -96,7 +99,73 @@ export default function ServiceDetailPage() {
     }
 
     const isNewLayout = !!service.heroAttributes;
+    const isAIService = slug === 'ai-intelligent-automation';
 
+    // Theme Configuration
+    const SERVICE_THEMES: Record<string, any> = {
+        'cloud-modernization-devops': {
+            color: 'purple',
+            orb1: 'bg-[#a855f7]/50', orb2: 'bg-[#ff7b29]/50', orb3: 'bg-[#6366f1]/40',
+            titleGradient: 'from-white via-white to-purple-200',
+            buttonGradient: 'from-purple-600 to-indigo-600',
+            buttonShadow: 'shadow-[0_0_20px_rgba(124,58,237,0.5)]',
+            kicker: 'text-purple-400',
+            tagBorder: 'border-purple-500/30',
+            tagText: 'text-purple-300',
+            tagDot: 'bg-purple-500',
+            tagShadow: 'shadow-[0_0_15px_rgba(168,85,247,0.15)]',
+        },
+        'digital-engineering-application-development': {
+            color: 'purple',
+            orb1: 'bg-[#a855f7]/50', orb2: 'bg-[#7c3aed]/50', orb3: 'bg-[#d946ef]/40',
+            titleGradient: 'from-white via-white to-purple-200',
+            buttonGradient: 'from-purple-600 to-violet-600',
+            buttonShadow: 'shadow-[0_0_20px_rgba(168,85,247,0.5)]',
+            kicker: 'text-purple-400',
+            tagBorder: 'border-purple-500/30',
+            tagText: 'text-purple-300',
+            tagDot: 'bg-purple-500',
+            tagShadow: 'shadow-[0_0_15px_rgba(168,85,247,0.15)]',
+        },
+        'data-analytics': {
+            color: 'emerald',
+            orb1: 'bg-[#10b981]/50', orb2: 'bg-[#14b8a6]/50', orb3: 'bg-[#0ea5e9]/40',
+            titleGradient: 'from-white via-white to-emerald-200',
+            buttonGradient: 'from-emerald-600 to-teal-600',
+            buttonShadow: 'shadow-[0_0_20px_rgba(16,185,129,0.5)]',
+            kicker: 'text-emerald-400',
+            tagBorder: 'border-emerald-500/30',
+            tagText: 'text-emerald-300',
+            tagDot: 'bg-emerald-500',
+            tagShadow: 'shadow-[0_0_15px_rgba(16,185,129,0.15)]',
+        },
+        'ai-intelligent-automation': {
+            color: 'pink',
+            orb1: 'bg-[#ec4899]/50', orb2: 'bg-[#d946ef]/50', orb3: 'bg-[#e11d48]/40',
+            titleGradient: 'from-white via-white to-pink-200',
+            buttonGradient: 'from-pink-600 to-rose-600',
+            buttonShadow: 'shadow-[0_0_20px_rgba(236,72,153,0.5)]',
+            kicker: 'text-pink-400',
+            tagBorder: 'border-pink-500/30',
+            tagText: 'text-pink-300',
+            tagDot: 'bg-pink-500',
+            tagShadow: 'shadow-[0_0_15px_rgba(236,72,153,0.15)]',
+        },
+        'sap-consulting-enterprise-solutions': {
+            color: 'orange',
+            orb1: 'bg-[#f97316]/50', orb2: 'bg-[#f59e0b]/50', orb3: 'bg-[#ef4444]/40',
+            titleGradient: 'from-white via-white to-orange-200',
+            buttonGradient: 'from-orange-600 to-amber-600',
+            buttonShadow: 'shadow-[0_0_20px_rgba(249,115,22,0.5)]',
+            kicker: 'text-orange-400',
+            tagBorder: 'border-orange-500/30',
+            tagText: 'text-orange-300',
+            tagDot: 'bg-orange-500',
+            tagShadow: 'shadow-[0_0_15px_rgba(249,115,22,0.15)]',
+        }
+    };
+
+    const currentTheme = SERVICE_THEMES[slug as string] || SERVICE_THEMES['cloud-modernization-devops'];
 
     return (
         <div className="flex flex-col bg-black text-white selection:bg-primary/30 relative min-h-screen">
@@ -107,9 +176,283 @@ export default function ServiceDetailPage() {
                 </div>
             )}
 
+
+
             {/* HEADER / HERO (Preserved) */}
             {/* HEADER / HERO */}
-            {slug === 'cybersecurity-risk-management' ? (
+            {/* HEADER / HERO - Unified for all except Cyber */}
+            {slug !== 'cybersecurity-risk-management' ? (
+                <header className={`relative flex flex-col pt-32 pb-20 overflow-hidden bg-transparent ${isAIService ? 'min-h-[75vh]' : 'min-h-screen'}`}>
+                    {/* Hero Section Gradient Background */}
+                    <div className="absolute inset-0 z-0 pointer-events-none saturate-200 contrast-125">
+                        {/* Orb 1 */}
+                        <div className={`absolute top-[-10%] left-[-10%] w-[60%] h-[70vh] ${currentTheme.orb1} blur-[130px] rounded-full mix-blend-screen opacity-80`} />
+                        {/* Orb 2 */}
+                        <div className={`absolute top-[-10%] right-[-10%] w-[60%] h-[70vh] ${currentTheme.orb2} blur-[130px] rounded-full mix-blend-screen opacity-80`} />
+                        {/* Orb 3 */}
+                        <div className={`absolute bottom-[-20%] left-[10%] w-[80%] h-[60vh] ${currentTheme.orb3} blur-[150px] rounded-full mix-blend-screen opacity-80`} />
+                    </div>
+
+                    {/* Grid Pattern */}
+
+                    {/* Grid Pattern */}
+                    <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-30 [mask-image:linear-gradient(to_bottom,white,transparent)] pointer-events-none" />
+
+                    <div className={`container relative z-10 mx-auto px-4 ${isAIService ? 'grid lg:grid-cols-2 gap-12 items-center' : 'flex flex-col items-center'}`}>
+
+                        {/* AI Hero Image (Left Column for AI Only) */}
+                        {isAIService && (
+                            <div className="relative w-full h-[600px] lg:h-[800px] flex justify-start items-end order-first -ml-20 lg:-ml-40 -mb-24 pb-32 lg:pb-48">
+                                <div className="relative w-[700px] lg:w-[1000px] h-full">
+                                    <Image
+                                        src="/ai-hero.png"
+                                        alt="AI & Intelligent Automation"
+                                        fill
+                                        className="object-contain object-bottom"
+                                        priority
+                                    />
+
+                                    {/* Glow Effects */}
+                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-pink-500/20 blur-[120px] -z-10 rounded-full mix-blend-screen" />
+                                    <div className="absolute top-1/3 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] bg-purple-600/20 blur-[100px] -z-10 rounded-full mix-blend-screen" />
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Title & Content Wrapper */}
+                        <div className={`flex flex-col ${isAIService ? 'items-start text-left z-20' : 'items-center text-center max-w-5xl'}`}>
+                            {/* Title - Centralized & Glowing */}
+                            <h1 className={`${isAIService ? 'text-4xl md:text-6xl text-left' : 'text-center text-5xl md:text-7xl'} font-bold tracking-tight text-white mb-6 drop-shadow-2xl`}>
+                                <span className={`bg-clip-text text-transparent bg-gradient-to-br ${currentTheme.titleGradient}`}>
+                                    {service.heroAttributes?.title}
+                                </span>
+                            </h1>
+
+                            <div className={`flex flex-wrap gap-2 ${isAIService ? 'justify-start' : 'justify-center'} mb-8`}>
+                                {service.heroAttributes?.tags?.slice(0, 3).map((tag, i) => (
+                                    <div key={i} className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/80 border ${currentTheme.tagBorder} ${currentTheme.tagText} text-sm font-medium backdrop-blur-md ${currentTheme.tagShadow}`}>
+                                        <span className={`w-1.5 h-1.5 rounded-full ${currentTheme.tagDot} animate-pulse box-shadow-[0_0_10px_rgba(255,255,255,0.5)]`}></span>
+                                        {tag}
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Subtitle */}
+                            <p className={`${isAIService ? 'text-left text-lg' : 'text-center text-lg md:text-xl'} text-slate-400 max-w-3xl leading-relaxed mb-10`}>
+                                {service.heroAttributes?.subtitle}
+                            </p>
+
+                            {/* CTA Buttons */}
+                            <div className={`flex flex-wrap gap-4 ${isAIService ? 'justify-start' : 'justify-center'} mb-24`}>
+                                <Button size="lg" className={`rounded-full bg-gradient-to-r ${currentTheme.buttonGradient} hover:brightness-110 text-white ${currentTheme.buttonShadow} border-0`}>
+                                    {service.heroAttributes?.cta.replace('→', '')} <ArrowRight className="ml-2 w-4 h-4" />
+                                </Button>
+                                <Button size="lg" variant="outline" className="rounded-full border-white/20 bg-white/5 text-white hover:bg-white/10 backdrop-blur-sm">
+                                    {service.heroAttributes?.ctaSecondary}
+                                </Button>
+                            </div>
+                        </div>
+
+                        {/* OVERLAPPING CARDS SECTION - Dynamic & Data-Driven */}
+                        <div className={`w-full max-w-6xl mx-auto relative h-[550px] flex justify-center items-center perspective-1000 mt-16 ${isAIService ? 'col-span-2' : ''}`}>
+
+                            {/* Card 1: The Reality (Index 0) */}
+                            {service.realitySection && (
+                                <div
+                                    onClick={() => setActiveCard(0)}
+                                    className={`absolute w-[450px] md:w-[520px] aspect-[4/4] transition-all duration-500 ease-out cursor-pointer group/card1
+                                        ${activeCard === 0 ? 'z-50 scale-100 opacity-100' : 'z-10 scale-90 opacity-60 hover:opacity-100'}`}
+                                    style={{
+                                        transform: activeCard === 0 ? 'translateX(0%) rotateY(0deg)' :
+                                            activeCard === 1 ? 'translateX(-32%) rotateY(4deg)' :
+                                                'translateX(32%) rotateY(-4deg)'
+                                    }}>
+
+                                    <div className="h-full w-full bg-[#050505] rounded-[24px] p-1 flex flex-col relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_0_1px_rgba(255,255,255,0.1)]">
+                                        <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-orange-500/10 to-transparent opacity-50 pointer-events-none" />
+
+                                        <div className="h-full w-full bg-[#0A0A0A]/90 backdrop-blur-xl rounded-[22px] p-6 flex flex-col transition-colors duration-300 group-hover/card1:bg-[#111111]">
+                                            {/* Header */}
+                                            <div className="flex justify-between items-start mb-6">
+                                                <div>
+                                                    <h3 className="text-slate-200 font-medium text-xl">Critical Analysis</h3>
+                                                    <p className="text-slate-500 text-sm mt-1">Current Landscape</p>
+                                                </div>
+                                                <div className="h-10 w-10 rounded-full bg-[#1A1A1A] border border-white/10 flex items-center justify-center shadow-[0_0_15px_rgba(249,115,22,0.2)]">
+                                                    <AlertTriangle className="w-6 h-6 text-orange-500" />
+                                                </div>
+                                            </div>
+
+                                            {/* Recessed Inner Box */}
+                                            <div className="flex-1 bg-[#050505] rounded-xl p-6 shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)] border border-white/5 relative">
+                                                <div className="flex items-center gap-4 mb-6">
+                                                    <div className="h-12 w-12 rounded-full bg-gradient-to-br from-orange-500/20 to-red-500/10 border border-orange-500/20 flex items-center justify-center">
+                                                        <Activity className="w-7 h-7 text-orange-400" />
+                                                    </div>
+                                                    <div>
+                                                        <div className="text-slate-200 text-lg font-semibold">The Reality</div>
+                                                        <div className="text-sm text-orange-400">Issues Identified</div>
+                                                    </div>
+                                                </div>
+
+                                                <p className="text-lg text-slate-300 mb-5 italic leading-relaxed">"The need for modernisation"</p>
+
+                                                <p className="text-base text-slate-400 mb-6 leading-relaxed">
+                                                    Legacy delivery models can't keep up with digital demand.
+                                                </p>
+
+                                                <div className="space-y-4">
+                                                    <div className="flex items-start gap-3">
+                                                        <div className="w-2 h-2 rounded-full bg-blue-400 mt-2 flex-shrink-0" />
+                                                        <div className="text-sm text-slate-400 leading-snug">
+                                                            New features take weeks or months to reach production.
+                                                        </div>
+                                                    </div>
+                                                    <div className="flex items-start gap-3">
+                                                        <div className="w-2 h-2 rounded-full bg-blue-400 mt-2 flex-shrink-0" />
+                                                        <div className="text-sm text-slate-400 leading-snug">
+                                                            Environments are brittle, hard to replicate and inconsistent.
+                                                        </div>
+                                                    </div>
+                                                    <div className="flex items-start gap-3">
+                                                        <div className="w-2 h-2 rounded-full bg-blue-400 mt-2 flex-shrink-0" />
+                                                        <div className="text-sm text-slate-400 leading-snug">
+                                                            Cloud costs rise without clear visibility or accountability.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Card 2: Who We Help (Index 1) */}
+                            {service.heroAttributes?.whoWeHelp && (
+                                <div
+                                    onClick={() => setActiveCard(1)}
+                                    className={`absolute w-[450px] md:w-[520px] aspect-[4/4] transition-all duration-500 ease-out cursor-pointer group/card2
+                                        ${activeCard === 1 ? 'z-[60] scale-100 opacity-100' : 'z-20 scale-90 opacity-60 hover:opacity-100'}`}
+                                    style={{
+                                        transform: activeCard === 1 ? 'translateY(0%) scale(1.05)' :
+                                            activeCard === 2 ? 'translateX(-32%) rotateY(4deg) translateY(5%)' :
+                                                'translateX(32%) rotateY(-4deg) translateY(5%)'
+                                    }}>
+
+                                    <div className="h-full w-full bg-[#08080A] rounded-[28px] p-1 flex flex-col relative overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.9),0_0_0_1px_rgba(168,85,247,0.3)]">
+                                        <div className="absolute top-0 inset-x-0 h-[200px] bg-gradient-to-b from-purple-600/10 via-purple-900/5 to-transparent blur-xl pointer-events-none" />
+
+                                        <div className="h-full w-full bg-[#0C0C10]/95 backdrop-blur-3xl rounded-[26px] p-8 flex flex-col relative transition-colors duration-300 group-hover/card2:bg-[#151520]">
+                                            {/* Top Bar */}
+                                            <div className="flex items-center justify-between mb-8">
+                                                <div className="flex items-center gap-5">
+                                                    <div className="relative">
+                                                        <div className="h-12 w-12 rounded-xl bg-[#1A1A20] border border-white/10 flex items-center justify-center">
+                                                            <Users className="w-7 h-7 text-purple-400" />
+                                                        </div>
+                                                        <div className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-green-500 border-2 border-[#0C0C10]" />
+                                                    </div>
+                                                    <div>
+                                                        <div className="text-white font-semibold text-xl">Target Audience</div>
+                                                        <div className="text-slate-500 text-sm">Active Transformations</div>
+                                                    </div>
+                                                </div>
+                                                <div className="px-4 py-2 rounded-full bg-[#1A1A20] border border-white/5 text-purple-300 text-sm font-bold shadow-inner">
+                                                    Live
+                                                </div>
+                                            </div>
+
+                                            {/* Inner "Data Logging" Box */}
+                                            <div className="bg-[#050505] rounded-xl p-7 border border-white/5 shadow-[inset_0_2px_20px_rgba(0,0,0,0.8)] mb-8 relative overflow-hidden">
+                                                <div className="flex justify-between text-sm text-slate-500 mb-6 uppercase tracking-wider font-bold">
+                                                    <span>Who We Help</span>
+                                                    <span>Priority High</span>
+                                                </div>
+
+                                                <div className="space-y-5">
+                                                    {service.heroAttributes.whoWeHelp.slice(0, 3).map((item, i) => (
+                                                        <div key={i} className="flex items-center gap-5">
+                                                            <div className="h-8 w-8 rounded bg-purple-500/10 flex items-center justify-center border border-purple-500/20 text-sm text-purple-400 font-bold">
+                                                                {i + 1}
+                                                            </div>
+                                                            <div className="text-base text-slate-300 font-medium">{item}</div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+
+                                                {/* Connecting Line */}
+                                                <div className="absolute bottom-0 left-[2.25rem] w-[1px] h-6 bg-gradient-to-b from-purple-500/50 to-transparent" />
+                                            </div>
+
+                                            {/* Bottom "What We Stand For" Section */}
+                                            <div className="mt-auto bg-gradient-to-br from-purple-900/20 to-indigo-900/20 rounded-xl p-6 border border-purple-500/10 backdrop-blur-md">
+                                                <div className="text-sm text-purple-300/70 mb-2 uppercase tracking-wider font-bold">
+                                                    What We Stand For
+                                                </div>
+                                                <p className="text-base text-slate-300 leading-relaxed">
+                                                    Cloud is not the destination — it's the engine that powers agility and innovation.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Card 3: Our Value (Index 2) */}
+                            {service.valueProposition && (
+                                <div
+                                    onClick={() => setActiveCard(2)}
+                                    className={`absolute w-[450px] md:w-[520px] aspect-[4/4] transition-all duration-500 ease-out cursor-pointer group/card3
+                                        ${activeCard === 2 ? 'z-50 scale-100 opacity-100' : 'z-10 scale-90 opacity-60 hover:opacity-100'}`}
+                                    style={{
+                                        transform: activeCard === 2 ? 'translateX(0%) rotateY(0deg)' :
+                                            activeCard === 0 ? 'translateX(-32%) rotateY(4deg)' :
+                                                'translateX(32%) rotateY(-4deg)'
+                                    }}>
+
+                                    <div className="h-full w-full bg-[#050505] rounded-[24px] p-1 flex flex-col relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_0_1px_rgba(255,255,255,0.1)]">
+                                        <div className="absolute bottom-0 right-0 w-full h-1/2 bg-gradient-to-t from-cyan-500/10 to-transparent opacity-50 pointer-events-none" />
+
+                                        <div className="h-full w-full bg-[#0A0A0A]/90 backdrop-blur-xl rounded-[22px] p-6 flex flex-col transition-colors duration-300 group-hover/card3:bg-[#111111]">
+                                            {/* Header */}
+                                            <div className="flex justify-between items-center mb-6">
+                                                <h3 className="text-slate-200 font-medium text-xl">Value Delivered</h3>
+                                                <div className="h-8 px-4 rounded-md bg-[#1A1A1A] border border-white/10 flex items-center text-sm text-cyan-400 font-mono">
+                                                    + ROI
+                                                </div>
+                                            </div>
+
+                                            {/* Data Display */}
+                                            <div className="flex-1 flex flex-col gap-5">
+                                                <div className="bg-[#050505] rounded-xl p-6 border border-white/5 shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)]">
+                                                    <div className="text-sm text-slate-500 mb-4 uppercase tracking-wider">Our Proposition</div>
+                                                    <p className="text-xl font-semibold text-white leading-tight mb-6">"Our value proposition"</p>
+
+                                                    <div className="flex flex-wrap gap-3 text-sm mb-6">
+                                                        <span className="px-4 py-2 bg-cyan-900/20 text-cyan-300 rounded-md border border-cyan-500/20 font-medium">
+                                                            Clear
+                                                        </span>
+                                                        <span className="px-4 py-2 bg-cyan-900/20 text-cyan-300 rounded-md border border-cyan-500/20 font-medium">
+                                                            Automated
+                                                        </span>
+                                                        <span className="px-4 py-2 bg-cyan-900/20 text-cyan-300 rounded-md border border-cyan-500/20 font-medium">
+                                                            Cloud
+                                                        </span>
+                                                    </div>
+
+                                                    <p className="text-base text-slate-400 leading-relaxed">
+                                                        We turn your cloud and delivery stack into an innovation engine. We combine cloud strategy, DevOps, security and FinOps to create a platform where teams can build, ship and scale digital products confidently.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </header>
+            ) : slug === 'cybersecurity-risk-management' ? (
                 <header className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-black pt-20 pb-0">
                     {/* Background Effects */}
                     {/* Background Effects */}
@@ -205,15 +548,6 @@ export default function ServiceDetailPage() {
                             transition={{ duration: 0.8 }}
                             className="space-y-8"
                         >
-                            <div className="flex flex-wrap gap-2 justify-center">
-                                {service.heroAttributes?.tags.slice(0, 3).map((tag, i) => (
-                                    <div key={i} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/80 border border-purple-500/30 text-purple-300 text-sm font-medium backdrop-blur-md shadow-[0_0_15px_rgba(168,85,247,0.15)]">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse box-shadow-[0_0_10px_rgba(168,85,247,0.8)]"></span>
-                                        {tag}
-                                    </div>
-                                ))}
-                            </div>
-
                             <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-tight bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-slate-400 drop-shadow-2xl max-w-4xl mx-auto min-h-[1.2em]">
                                 <span className="mr-2">Secure Today.</span>
                                 <DecryptedText
@@ -228,6 +562,15 @@ export default function ServiceDetailPage() {
                                     encryptedClassName="encrypted"
                                 />
                             </h1>
+
+                            <div className="flex flex-wrap gap-2 justify-center">
+                                {service.heroAttributes?.tags.slice(0, 3).map((tag, i) => (
+                                    <div key={i} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/80 border border-purple-500/30 text-purple-300 text-sm font-medium backdrop-blur-md shadow-[0_0_15px_rgba(168,85,247,0.15)]">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse box-shadow-[0_0_10px_rgba(168,85,247,0.8)]"></span>
+                                        {tag}
+                                    </div>
+                                ))}
+                            </div>
 
                             <p className="text-lg text-slate-300 md:text-xl leading-relaxed max-w-3xl mx-auto font-light">
                                 {service.heroAttributes?.subtitle}
@@ -251,26 +594,8 @@ export default function ServiceDetailPage() {
                         </motion.div>
                     </div>
 
-                    {/* Decorative Elements mimicking the node network */}
-                    <div className="absolute top-1/2 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
-                        {/* Left Node */}
-                        <div className="absolute top-[30%] left-[10%] opacity-20 hidden lg:block">
-                            <div className="flex items-center gap-4">
-                                <div className="w-3 h-3 bg-purple-500 rounded-full shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-                                <div className="h-[1px] w-20 bg-gradient-to-r from-purple-500/50 to-transparent"></div>
-                                <div className="text-xs text-purple-300">Ethereum <br /> <span className="text-slate-500">+7.6%</span></div>
-                            </div>
-                        </div>
-                        {/* Right Node */}
-                        <div className="absolute top-[40%] right-[10%] opacity-20 hidden lg:block">
-                            <div className="flex items-center gap-4 flex-row-reverse">
-                                <div className="w-3 h-3 bg-pink-500 rounded-full shadow-[0_0_10px_rgba(236,72,153,0.8)]"></div>
-                                <div className="h-[1px] w-20 bg-gradient-to-l from-pink-500/50 to-transparent"></div>
-                                <div className="text-xs text-pink-300 text-right">Solana <br /> <span className="text-slate-500">+125.05%</span></div>
-                            </div>
-                        </div>
-                    </div>
                 </header>
+
 
             ) : isNewLayout ? (
                 <header className="relative py-24 md:py-32 flex items-center justify-center overflow-hidden">
@@ -366,7 +691,261 @@ export default function ServiceDetailPage() {
             )}
 
             <main className="py-20 md:py-24">
-                {slug === 'cybersecurity-risk-management' && (
+                {/* Unified Layout for All Non-Cyber Services */}
+                {slug !== 'cybersecurity-risk-management' ? (
+                    <div className="space-y-32">
+                        {/* 1. PILLARS / SERVICES */}
+                        {service.servicePillars && (
+                            <section className="w-full bg-white text-slate-900">
+                                <CircularServiceSelector
+                                    pillars={service.servicePillars.pillars}
+                                    title={service.servicePillars.title}
+                                    subtitle={service.servicePillars.subtitle}
+                                    theme="light"
+                                    accentColor={currentTheme.color}
+                                />
+                            </section>
+                        )}
+
+                        {/* 2. USE CASES */}
+                        {service.useCases && (
+                            <section className="h-screen min-h-[800px] flex flex-col justify-center bg-transparent -mt-20">
+                                <div className="container relative z-10 mb-8 md:mb-12">
+                                    <span className={`${currentTheme.kicker} font-bold tracking-widest text-xs uppercase`}>Impact Areas</span>
+                                    <h2 className="text-3xl md:text-5xl font-bold text-white mt-3 mb-6">{service.useCases.title}</h2>
+
+                                    <p className="text-lg text-slate-400 max-w-3xl">{service.useCases.subtitle}</p>
+                                </div>
+                                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
+                                    {service.useCases.cases.map((useCase, i) => {
+                                        const icons = [Shield, Zap, Lock, Globe, Server, Code];
+                                        const Icon = icons[i % icons.length];
+
+                                        const baseColors = ["purple", "pink", "blue", "emerald", "orange", "red"];
+                                        const baseColor = baseColors[i % baseColors.length] as "purple" | "pink" | "blue" | "emerald" | "orange" | "red";
+
+                                        const colorMap = {
+                                            purple: { bg: "bg-purple-500", text: "text-purple-500", border: "group-hover:border-purple-500/50", shadow: "group-hover:shadow-purple-500/20", glow: "from-purple-500/20" },
+                                            pink: { bg: "bg-pink-500", text: "text-pink-500", border: "group-hover:border-pink-500/50", shadow: "group-hover:shadow-pink-500/20", glow: "from-pink-500/20" },
+                                            blue: { bg: "bg-blue-500", text: "text-blue-500", border: "group-hover:border-blue-500/50", shadow: "group-hover:shadow-blue-500/20", glow: "from-blue-500/20" },
+                                            emerald: { bg: "bg-emerald-500", text: "text-emerald-500", border: "group-hover:border-emerald-500/50", shadow: "group-hover:shadow-emerald-500/20", glow: "from-emerald-500/20" },
+                                            orange: { bg: "bg-orange-500", text: "text-orange-500", border: "group-hover:border-orange-500/50", shadow: "group-hover:shadow-orange-500/20", glow: "from-orange-500/20" },
+                                            red: { bg: "bg-red-500", text: "text-red-500", border: "group-hover:border-red-500/50", shadow: "group-hover:shadow-red-500/20", glow: "from-red-500/20" },
+                                        };
+                                        const theme = colorMap[baseColor] || colorMap.purple;
+
+                                        return (
+                                            <div key={i} className={`group relative bg-[#0a0a0a] border border-white/10 p-8 h-[340px] flex flex-col justify-between overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:z-20 ${theme.border} hover:shadow-2xl ${theme.shadow}`}>
+
+                                                {/* Hover Glow Gradient Background */}
+                                                <div className={`absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-to-br ${theme.glow} to-transparent opacity-0 group-hover:opacity-100 blur-[80px] transition-opacity duration-700 pointer-events-none rounded-full -mr-20 -mt-20`}></div>
+
+                                                {/* Abstract Pattern - Dynamic Color & Increased Visibility */}
+                                                <div className={`absolute -bottom-20 -right-20 w-80 h-80 opacity-20 group-hover:opacity-50 transition-all duration-500 group-hover:scale-110 ${theme.text} ${i % 2 === 0 ? 'rotate-12' : '-rotate-12'}`}>
+                                                    {i % 6 === 0 && (
+                                                        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" className="w-full h-full">
+                                                            <path d="M0 100 L100 0 M20 100 L100 20 M40 100 L100 40 M60 100 L100 60 M80 100 L100 80" strokeWidth="2" />
+                                                        </svg>
+                                                    )}
+                                                    {i % 6 === 1 && (
+                                                        <svg viewBox="0 0 100 100" fill="currentColor" className="w-full h-full">
+                                                            <circle cx="20" cy="80" r="4" /> <circle cx="40" cy="60" r="4" /> <circle cx="60" cy="40" r="4" /> <circle cx="80" cy="20" r="4" />
+                                                            <circle cx="40" cy="80" r="4" /> <circle cx="60" cy="60" r="4" /> <circle cx="80" cy="40" r="4" />
+                                                            <circle cx="60" cy="80" r="4" /> <circle cx="80" cy="60" r="4" />
+                                                        </svg>
+                                                    )}
+                                                    {i % 6 === 2 && (
+                                                        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" className="w-full h-full">
+                                                            <circle cx="100" cy="100" r="20" strokeWidth="2" />
+                                                            <circle cx="100" cy="100" r="40" strokeWidth="2" />
+                                                            <circle cx="100" cy="100" r="60" strokeWidth="2" />
+                                                            <circle cx="100" cy="100" r="80" strokeWidth="2" />
+                                                        </svg>
+                                                    )}
+                                                    {i % 6 === 3 && (
+                                                        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" className="w-full h-full">
+                                                            <path d="M-20 100 L50 30 L120 100" strokeWidth="2" />
+                                                            <path d="M-20 80 L50 10 L120 80" strokeWidth="2" />
+                                                            <path d="M-20 60 L50 -10 L120 60" strokeWidth="2" />
+                                                            <path d="M-20 120 L50 50 L120 120" strokeWidth="2" />
+                                                        </svg>
+                                                    )}
+                                                    {i % 6 === 4 && (
+                                                        <svg viewBox="0 0 100 100" fill="currentColor" className="w-full h-full">
+                                                            <rect x="10" y="40" width="8" height="8" /> <rect x="30" y="80" width="12" height="12" />
+                                                            <rect x="60" y="20" width="6" height="6" /> <rect x="80" y="60" width="10" height="10" />
+                                                            <rect x="50" y="50" width="8" height="8" /> <rect x="90" y="10" width="14" height="14" />
+                                                            <rect x="20" y="10" width="6" height="6" />
+                                                        </svg>
+                                                    )}
+                                                    {i % 6 === 5 && (
+                                                        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" className="w-full h-full">
+                                                            <path d="M0 50 Q 25 20 50 50 T 100 50" strokeWidth="2" />
+                                                            <path d="M0 30 Q 25 0 50 30 T 100 30" strokeWidth="2" />
+                                                            <path d="M0 70 Q 25 40 50 70 T 100 70" strokeWidth="2" />
+                                                            <path d="M0 90 Q 25 60 50 90 T 100 90" strokeWidth="2" />
+                                                            <path d="M0 10 Q 25 -20 50 10 T 100 10" strokeWidth="2" />
+                                                        </svg>
+                                                    )}
+                                                </div>
+
+                                                <div className="flex justify-between items-start z-10 relative">
+                                                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${theme.bg} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                                                        <Icon className="text-white w-7 h-7" />
+                                                    </div>
+                                                    <span className={`text-[10px] font-mono ${theme.text} bg-white/5 px-3 py-1 rounded-full border border-white/5 group-hover:border-white/10 transition-colors uppercase tracking-widest`}>{useCase.tag}</span>
+                                                </div>
+
+                                                <div className="z-10 mt-auto relative">
+                                                    <div className={`text-[10px] ${theme.text} font-bold uppercase tracking-widest mb-3 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300`}>
+                                                        Impact Area
+                                                    </div>
+                                                    <h3 className={`text-xl font-bold text-white mb-3 leading-tight group-hover:${theme.text} transition-colors`}>{useCase.title}</h3>
+                                                    <p className="text-sm text-slate-400 line-clamp-3 leading-relaxed group-hover:text-slate-200 transition-colors">{useCase.description}</p>
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </section>
+                        )}
+
+
+                        {/* 3. BUSINESS OUTCOMES - PYRAMID VISUALIZATION */}
+                        {service.businessOutcomes && (
+                            <DigitalPyramid
+                                title={service.businessOutcomes.title}
+                                subtitle={service.businessOutcomes.subtitle}
+                                // DigitalPyramid expects [Base, Mid, Top] order for indexing (0=Base, 1=Mid, 2=Top)
+                                // Our data is [Top(Feature), Mid(Uptime), Base(Cost)]
+                                outcomes={[
+                                    service.businessOutcomes.outcomes[2], // Cost -> Base
+                                    service.businessOutcomes.outcomes[1], // Uptime -> Strategy
+                                    service.businessOutcomes.outcomes[0]  // Feature -> Purpose
+                                ]}
+                            />
+                        )}
+
+                        {/* 4. ENGAGEMENT STEPS */}
+                        {service.engagementApproach && (
+                            <section className="relative py-20 w-full overflow-hidden bg-black">
+                                <div className="container relative mb-8 text-center max-w-3xl mx-auto">
+                                    <span className={currentTheme.kicker + " font-bold tracking-widest text-xs uppercase"}>How We Work</span>
+                                    <h2 className="text-3xl font-bold text-white mt-2 mb-4">{service.engagementApproach.title}</h2>
+                                    <p className="text-lg text-slate-400">{service.engagementApproach.subtitle}</p>
+                                </div>
+
+                                <div className="container max-w-5xl mx-auto py-4">
+                                    {service.engagementApproach.steps.map((step, i) => {
+                                        const isEven = i % 2 === 0;
+                                        const colors = [
+                                            { from: '#FFA500', to: '#FFD700', shadow: 'rgba(255, 165, 0, 0.4)' }, // Orange-Yellow
+                                            { from: '#FF6B6B', to: '#FF8E53', shadow: 'rgba(255, 107, 107, 0.4)' }, // Red-Orange
+                                            { from: '#FF1744', to: '#FF4081', shadow: 'rgba(255, 23, 68, 0.4)' }, // Pink-Red
+                                        ];
+                                        const color = colors[i % colors.length];
+
+                                        return (
+                                            <motion.div
+                                                key={i}
+                                                initial={{ opacity: 0, x: isEven ? -100 : 100 }}
+                                                whileInView={{ opacity: 1, x: 0 }}
+                                                transition={{ duration: 0.6, delay: 0.1 }}
+                                                viewport={{ once: true, margin: "-50px" }}
+                                                className={`flex items-center gap-6 ${isEven ? 'flex-row' : 'flex-row-reverse'} mb-6 last:mb-0`}
+                                                style={{ zIndex: 1 }}
+                                            >
+                                                {/* Icon Circle with Line from Edge */}
+                                                <div className="relative flex items-center flex-shrink-0">
+                                                    {/* Horizontal Line from Edge */}
+                                                    {isEven ? (
+                                                        // For Even items (Left side): Line comes from Left Edge
+                                                        <div
+                                                            className="absolute top-1/2 -translate-y-1/2 h-0.5 right-full mr-4"
+                                                            style={{
+                                                                width: '100vw', // Extend far off-screen
+                                                                background: `linear-gradient(to right, transparent, ${color.from})`
+                                                            }}
+                                                        />
+                                                    ) : (
+                                                        // For Odd items (Right side): Line comes from Right Edge
+                                                        <div
+                                                            className="absolute top-1/2 -translate-y-1/2 h-0.5 left-full ml-4"
+                                                            style={{
+                                                                width: '100vw', // Extend far off-screen
+                                                                background: `linear-gradient(to left, transparent, ${color.from})`
+                                                            }}
+                                                        />
+                                                    )}
+
+                                                    {/* Outer Glow Circle - Smaller */}
+                                                    <div
+                                                        className="absolute inset-0 rounded-full blur-lg"
+                                                        style={{
+                                                            background: `linear-gradient(135deg, ${color.from}, ${color.to})`,
+                                                            opacity: 0.3
+                                                        }}
+                                                    />
+
+                                                    {/* Colored Circle - Smaller (w-20 from w-24) */}
+                                                    <div
+                                                        className="relative w-20 h-20 rounded-full flex items-center justify-center"
+                                                        style={{
+                                                            background: `linear-gradient(135deg, ${color.from}, ${color.to})`,
+                                                            boxShadow: `0 4px 20px ${color.shadow}`
+                                                        }}
+                                                    >
+                                                        {/* Inner White Circle */}
+                                                        <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-inner">
+                                                            {/* Icon */}
+                                                            <div className="text-2xl">
+                                                                {i === 0 && '💡'}
+                                                                {i === 1 && '⚙️'}
+                                                                {i === 2 && '⏱️'}
+                                                                {i === 3 && '📈'}
+                                                                {i > 3 && '✓'}
+                                                            </div>
+                                                        </div>
+
+                                                        {/* Dashed Circle Border */}
+                                                        <svg className="absolute -inset-2 w-24 h-24" viewBox="0 0 128 128">
+                                                            <circle
+                                                                cx="64"
+                                                                cy="64"
+                                                                r="60"
+                                                                fill="none"
+                                                                stroke="currentColor"
+                                                                strokeWidth="1"
+                                                                strokeDasharray="4 4"
+                                                                className="text-slate-600"
+                                                            />
+                                                        </svg>
+                                                        <div
+                                                            className={`absolute bottom-1/2 mb-4 text-7xl font-bold leading-none tracking-tighter z-20 ${isEven ? 'right-full mr-8' : 'left-full ml-8'}`}
+                                                            style={{
+                                                                color: color.from,
+                                                                textShadow: `0 0 30px ${color.shadow}`,
+                                                                opacity: 0.8
+                                                            }}
+                                                        >
+                                                            {step.step}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                {/* Content */}
+                                                <div className={`flex-1 flex flex-col justify-center relative z-10 ${isEven ? 'text-left items-start' : 'text-right items-end'}`}>
+                                                    <h3 className="text-2xl font-bold text-white mb-2">{step.title}</h3>
+                                                    <p className="text-slate-400 leading-relaxed max-w-md">{step.description}</p>
+                                                </div>
+                                            </motion.div>
+                                        );
+                                    })}
+                                </div>
+                            </section>
+                        )}
+                    </div>
+                ) : slug === 'cybersecurity-risk-management' && (
                     <section className="container relative z-20 mb-32 mt-10">
                         <div className="flex flex-col md:flex-row items-stretch justify-center gap-6 perspective-1000">
 
@@ -545,519 +1124,519 @@ export default function ServiceDetailPage() {
                             )}
                         </div>
                     </section>
-                )}
+                )
+                }
 
-                {isNewLayout ? (
-                    <div className={slug === 'cybersecurity-risk-management' ? "space-y-32" : "space-y-32"}>
+                {
+                    isNewLayout ? (
+                        <div className={slug === 'cybersecurity-risk-management' ? "space-y-32" : "space-y-32"}>
 
-                        {/* 1. REALITY VS VALUE - Spotlight Comparison (Render ONLY if NOT cybersecurity, to avoid dupes) */}
-                        {slug !== 'cybersecurity-risk-management' && (
-                            <section className="container">
-                                <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-                                    {/* Reality */}
-                                    {service.realitySection && (
-                                        <SpotlightCard className="rounded-3xl p-8 lg:p-12 border-red-900/30" spotlightColor="rgba(239, 68, 68, 0.15)">
-                                            <div className="relative z-10">
-                                                <AlertTriangle className="h-12 w-12 text-red-500 mb-6" />
-                                                <span className="text-red-500 font-bold tracking-widest text-xs uppercase mb-2 block">The Reality</span>
-                                                <h2 className="text-3xl font-bold text-white mb-4">{service.realitySection.title}</h2>
-                                                <p className="text-slate-400 mb-8">{service.realitySection.subtitle}</p>
-                                                <ul className="space-y-4">
-                                                    {service.realitySection.points.map((point, i) => (
-                                                        <li key={i} className="flex gap-4 items-start">
-                                                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-red-500 flex-shrink-0" />
-                                                            <span className="text-slate-300 text-sm">{point}</span>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        </SpotlightCard>
-                                    )}
-
-                                    {/* Value */}
-                                    {service.valueProposition && (
-                                        <SpotlightCard className="rounded-3xl p-8 lg:p-12 border-green-900/30" spotlightColor="rgba(34, 197, 94, 0.15)">
-                                            <div className="relative z-10">
-                                                <Shield className="h-12 w-12 text-green-500 mb-6" />
-                                                <span className="text-green-500 font-bold tracking-widest text-xs uppercase mb-2 block">Our Value</span>
-                                                <h2 className="text-3xl font-bold text-white mb-4">{service.valueProposition.title}</h2>
-                                                <p className="text-slate-400 mb-8">{service.valueProposition.subtitle}</p>
-                                                <ul className="space-y-4 mb-8">
-                                                    {service.valueProposition.points.map((point, i) => (
-                                                        <li key={i} className="flex gap-4 items-start">
-                                                            <div className="mt-1.5 min-w-[6px] h-1.5 rounded-full bg-green-500 flex-shrink-0" />
-                                                            <span className="text-slate-300 text-sm">{point}</span>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                                {service.valueProposition.note && (
-                                                    <div className="bg-black/30 p-4 rounded-xl border-l-2 border-green-500/50 text-sm text-slate-400 italic">
-                                                        "{service.valueProposition.note}"
-                                                    </div>
-                                                )}
-                                            </div>
-                                        </SpotlightCard>
-                                    )}
-                                </div>
-                            </section>
-                        )}
-
-                        {/* 2. CORE PILLARS */}
-                        {service.servicePillars && (
-                            slug === 'cybersecurity-risk-management' ? (
-                                <CybersecurityPillars
-                                    pillars={service.servicePillars.pillars}
-                                    title={service.servicePillars.title}
-                                    subtitle={service.servicePillars.subtitle}
-                                />
-                            ) : (
+                            {/* 1. REALITY VS VALUE - Spotlight Comparison (Legacy - Disabled for all as Unified Layout handles it, and Cyber skips it) */}
+                            {false && (
                                 <section className="container">
-                                    <div className="mb-16 max-w-3xl">
-                                        <span className="text-primary font-bold tracking-widest text-xs uppercase">Core Capabilities</span>
-                                        <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">{service.servicePillars.title}</h2>
-                                        <p className="text-xl text-slate-400">{service.servicePillars.subtitle}</p>
-                                    </div>
-                                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                        {service.servicePillars.pillars.map((pillar, i) => (
-                                            <TiltCard key={i} className="h-full">
-                                                <div className="h-full bg-slate-900/40 border border-slate-800 p-8 rounded-2xl hover:bg-slate-800/60 transition-colors">
-                                                    <div className="flex items-center justify-between mb-6">
-                                                        <div className="text-xs font-mono text-primary/80 bg-primary/10 px-2 py-1 rounded">
-                                                            {pillar.badge.split('·')[0].trim()}
-                                                        </div>
-                                                        <Layers className="h-5 w-5 text-slate-600" />
-                                                    </div>
-                                                    <h3 className="text-xl font-bold text-white mb-3">{pillar.title}</h3>
-                                                    <p className="text-slate-400 text-sm mb-6 min-h-[40px]">{pillar.description}</p>
-                                                    <ul className="space-y-3 border-t border-slate-800 pt-5">
-                                                        {pillar.points.map((pt, j) => (
-                                                            <li key={j} className="text-sm text-slate-300 flex items-start gap-3">
-                                                                <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                                                                {pt}
+                                    <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+                                        {/* Reality */}
+                                        {service.realitySection && (
+                                            <SpotlightCard className="rounded-3xl p-8 lg:p-12 border-red-900/30" spotlightColor="rgba(239, 68, 68, 0.15)">
+                                                <div className="relative z-10">
+                                                    <AlertTriangle className="h-12 w-12 text-red-500 mb-6" />
+                                                    <span className="text-red-500 font-bold tracking-widest text-xs uppercase mb-2 block">The Reality</span>
+                                                    <h2 className="text-3xl font-bold text-white mb-4">{service.realitySection.title}</h2>
+                                                    <p className="text-slate-400 mb-8">{service.realitySection.subtitle}</p>
+                                                    <ul className="space-y-4">
+                                                        {service.realitySection.points.map((point, i) => (
+                                                            <li key={i} className="flex gap-4 items-start">
+                                                                <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-red-500 flex-shrink-0" />
+                                                                <span className="text-slate-300 text-sm">{point}</span>
                                                             </li>
                                                         ))}
                                                     </ul>
                                                 </div>
-                                            </TiltCard>
-                                        ))}
+                                            </SpotlightCard>
+                                        )}
+
+                                        {/* Value */}
+                                        {service.valueProposition && (
+                                            <SpotlightCard className="rounded-3xl p-8 lg:p-12 border-green-900/30" spotlightColor="rgba(34, 197, 94, 0.15)">
+                                                <div className="relative z-10">
+                                                    <Shield className="h-12 w-12 text-green-500 mb-6" />
+                                                    <span className="text-green-500 font-bold tracking-widest text-xs uppercase mb-2 block">Our Value</span>
+                                                    <h2 className="text-3xl font-bold text-white mb-4">{service.valueProposition.title}</h2>
+                                                    <p className="text-slate-400 mb-8">{service.valueProposition.subtitle}</p>
+                                                    <ul className="space-y-4 mb-8">
+                                                        {service.valueProposition.points.map((point, i) => (
+                                                            <li key={i} className="flex gap-4 items-start">
+                                                                <div className="mt-1.5 min-w-[6px] h-1.5 rounded-full bg-green-500 flex-shrink-0" />
+                                                                <span className="text-slate-300 text-sm">{point}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                    {service.valueProposition.note && (
+                                                        <div className="bg-black/30 p-4 rounded-xl border-l-2 border-green-500/50 text-sm text-slate-400 italic">
+                                                            "{service.valueProposition.note}"
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </SpotlightCard>
+                                        )}
                                     </div>
                                 </section>
-                            )
-                        )}
+                            )}
 
-                        {/* 3. HIGH VALUE USE CASES - Bento Grid */}
-                        {service.useCases && (
-                            <section className="py-20 relative bg-black overflow-hidden">
-                                <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:60px_60px] pointer-events-none" />
-                                <div className="container relative z-10 mb-12">
-                                    <span className="text-primary font-bold tracking-widest text-xs uppercase">Impact Areas</span>
-                                    <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">{service.useCases.title}</h2>
-                                    <p className="text-xl text-slate-400 max-w-3xl">{service.useCases.subtitle}</p>
-                                </div>
-
-                                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
-                                    {service.useCases.cases.map((useCase, i) => {
-                                        const icons = [Shield, Zap, Lock, Globe, Server, Code];
-                                        const Icon = icons[i % icons.length];
-
-                                        const baseColors = ["purple", "pink", "blue", "emerald", "orange", "red"];
-                                        const baseColor = baseColors[i % baseColors.length] as keyof typeof colorMap;
-
-                                        const colorMap = {
-                                            purple: { bg: "bg-purple-500", text: "text-purple-500", border: "group-hover:border-purple-500/50", shadow: "group-hover:shadow-purple-500/20", glow: "from-purple-500/20" },
-                                            pink: { bg: "bg-pink-500", text: "text-pink-500", border: "group-hover:border-pink-500/50", shadow: "group-hover:shadow-pink-500/20", glow: "from-pink-500/20" },
-                                            blue: { bg: "bg-blue-500", text: "text-blue-500", border: "group-hover:border-blue-500/50", shadow: "group-hover:shadow-blue-500/20", glow: "from-blue-500/20" },
-                                            emerald: { bg: "bg-emerald-500", text: "text-emerald-500", border: "group-hover:border-emerald-500/50", shadow: "group-hover:shadow-emerald-500/20", glow: "from-emerald-500/20" },
-                                            orange: { bg: "bg-orange-500", text: "text-orange-500", border: "group-hover:border-orange-500/50", shadow: "group-hover:shadow-orange-500/20", glow: "from-orange-500/20" },
-                                            red: { bg: "bg-red-500", text: "text-red-500", border: "group-hover:border-red-500/50", shadow: "group-hover:shadow-red-500/20", glow: "from-red-500/20" },
-                                        };
-                                        const theme = colorMap[baseColor];
-
-                                        return (
-                                            <div key={i} className={`group relative bg-[#0a0a0a] border border-white/10 p-8 h-[340px] flex flex-col justify-between overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:z-20 ${theme.border} hover:shadow-2xl ${theme.shadow}`}>
-
-                                                {/* Hover Glow Gradient Background */}
-                                                <div className={`absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-to-br ${theme.glow} to-transparent opacity-0 group-hover:opacity-100 blur-[80px] transition-opacity duration-700 pointer-events-none rounded-full -mr-20 -mt-20`}></div>
-
-                                                {/* Abstract Pattern - Dynamic Color & Increased Visibility */}
-                                                <div className={`absolute -bottom-20 -right-20 w-80 h-80 opacity-20 group-hover:opacity-50 transition-all duration-500 group-hover:scale-110 ${theme.text} ${i % 2 === 0 ? 'rotate-12' : '-rotate-12'}`}>
-                                                    {i % 6 === 0 && (
-                                                        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" className="w-full h-full">
-                                                            <path d="M0 100 L100 0 M20 100 L100 20 M40 100 L100 40 M60 100 L100 60 M80 100 L100 80" strokeWidth="2" />
-                                                        </svg>
-                                                    )}
-                                                    {i % 6 === 1 && (
-                                                        <svg viewBox="0 0 100 100" fill="currentColor" className="w-full h-full">
-                                                            <circle cx="20" cy="80" r="4" /> <circle cx="40" cy="60" r="4" /> <circle cx="60" cy="40" r="4" /> <circle cx="80" cy="20" r="4" />
-                                                            <circle cx="40" cy="80" r="4" /> <circle cx="60" cy="60" r="4" /> <circle cx="80" cy="40" r="4" />
-                                                            <circle cx="60" cy="80" r="4" /> <circle cx="80" cy="60" r="4" />
-                                                        </svg>
-                                                    )}
-                                                    {i % 6 === 2 && (
-                                                        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" className="w-full h-full">
-                                                            <circle cx="100" cy="100" r="20" strokeWidth="2" />
-                                                            <circle cx="100" cy="100" r="40" strokeWidth="2" />
-                                                            <circle cx="100" cy="100" r="60" strokeWidth="2" />
-                                                            <circle cx="100" cy="100" r="80" strokeWidth="2" />
-                                                        </svg>
-                                                    )}
-                                                    {i % 6 === 3 && (
-                                                        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" className="w-full h-full">
-                                                            <path d="M-20 100 L50 30 L120 100" strokeWidth="2" />
-                                                            <path d="M-20 80 L50 10 L120 80" strokeWidth="2" />
-                                                            <path d="M-20 60 L50 -10 L120 60" strokeWidth="2" />
-                                                            <path d="M-20 120 L50 50 L120 120" strokeWidth="2" />
-                                                        </svg>
-                                                    )}
-                                                    {i % 6 === 4 && (
-                                                        <svg viewBox="0 0 100 100" fill="currentColor" className="w-full h-full">
-                                                            <rect x="10" y="40" width="8" height="8" /> <rect x="30" y="80" width="12" height="12" />
-                                                            <rect x="60" y="20" width="6" height="6" /> <rect x="80" y="60" width="10" height="10" />
-                                                            <rect x="50" y="50" width="8" height="8" /> <rect x="90" y="10" width="14" height="14" />
-                                                            <rect x="20" y="10" width="6" height="6" />
-                                                        </svg>
-                                                    )}
-                                                    {i % 6 === 5 && (
-                                                        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" className="w-full h-full">
-                                                            <path d="M0 50 Q 25 20 50 50 T 100 50" strokeWidth="2" />
-                                                            <path d="M0 30 Q 25 0 50 30 T 100 30" strokeWidth="2" />
-                                                            <path d="M0 70 Q 25 40 50 70 T 100 70" strokeWidth="2" />
-                                                            <path d="M0 90 Q 25 60 50 90 T 100 90" strokeWidth="2" />
-                                                            <path d="M0 10 Q 25 -20 50 10 T 100 10" strokeWidth="2" />
-                                                        </svg>
-                                                    )}
-                                                </div>
-
-                                                <div className="flex justify-between items-start z-10 relative">
-                                                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${theme.bg} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                                                        <Icon className="text-white w-7 h-7" />
+                            {/* 2. CORE PILLARS */}
+                            {service.servicePillars && slug === 'cybersecurity-risk-management' && (
+                                slug === 'cybersecurity-risk-management' ? (
+                                    <CybersecurityPillars
+                                        pillars={service.servicePillars.pillars}
+                                        title={service.servicePillars.title}
+                                        subtitle={service.servicePillars.subtitle}
+                                    />
+                                ) : (
+                                    <section className="container">
+                                        <div className="mb-16 max-w-3xl">
+                                            <span className="text-primary font-bold tracking-widest text-xs uppercase">Core Capabilities</span>
+                                            <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">{service.servicePillars.title}</h2>
+                                            <p className="text-xl text-slate-400">{service.servicePillars.subtitle}</p>
+                                        </div>
+                                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                            {service.servicePillars.pillars.map((pillar, i) => (
+                                                <TiltCard key={i} className="h-full">
+                                                    <div className="h-full bg-slate-900/40 border border-slate-800 p-8 rounded-2xl hover:bg-slate-800/60 transition-colors">
+                                                        <div className="flex items-center justify-between mb-6">
+                                                            <div className="text-xs font-mono text-primary/80 bg-primary/10 px-2 py-1 rounded">
+                                                                {pillar.badge.split('·')[0].trim()}
+                                                            </div>
+                                                            <Layers className="h-5 w-5 text-slate-600" />
+                                                        </div>
+                                                        <h3 className="text-xl font-bold text-white mb-3">{pillar.title}</h3>
+                                                        <p className="text-slate-400 text-sm mb-6 min-h-[40px]">{pillar.description}</p>
+                                                        <ul className="space-y-3 border-t border-slate-800 pt-5">
+                                                            {pillar.points.map((pt, j) => (
+                                                                <li key={j} className="text-sm text-slate-300 flex items-start gap-3">
+                                                                    <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                                                                    {pt}
+                                                                </li>
+                                                            ))}
+                                                        </ul>
                                                     </div>
-                                                    <span className={`text-[10px] font-mono ${theme.text} bg-white/5 px-3 py-1 rounded-full border border-white/5 group-hover:border-white/10 transition-colors uppercase tracking-widest`}>{useCase.tag}</span>
-                                                </div>
+                                                </TiltCard>
+                                            ))}
+                                        </div>
+                                    </section>
+                                )
+                            )}
 
-                                                <div className="z-10 mt-auto relative">
-                                                    <div className={`text-[10px] ${theme.text} font-bold uppercase tracking-widest mb-3 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300`}>
-                                                        Impact Area
+                            {/* 3. HIGH VALUE USE CASES - Bento Grid */}
+                            {service.useCases && slug === 'cybersecurity-risk-management' && (
+                                <section className="py-20 relative bg-black overflow-hidden">
+                                    <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:60px_60px] pointer-events-none" />
+                                    <div className="container relative z-10 mb-12">
+                                        <span className="text-primary font-bold tracking-widest text-xs uppercase">Impact Areas</span>
+                                        <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-6">{service.useCases.title}</h2>
+                                        <p className="text-xl text-slate-400 max-w-3xl">{service.useCases.subtitle}</p>
+                                    </div>
+
+                                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
+                                        {service.useCases.cases.map((useCase, i) => {
+                                            const icons = [Shield, Zap, Lock, Globe, Server, Code];
+                                            const Icon = icons[i % icons.length];
+
+                                            const baseColors = ["purple", "pink", "blue", "emerald", "orange", "red"];
+                                            const baseColor = baseColors[i % baseColors.length] as keyof typeof colorMap;
+
+                                            const colorMap = {
+                                                purple: { bg: "bg-purple-500", text: "text-purple-500", border: "group-hover:border-purple-500/50", shadow: "group-hover:shadow-purple-500/20", glow: "from-purple-500/20" },
+                                                pink: { bg: "bg-pink-500", text: "text-pink-500", border: "group-hover:border-pink-500/50", shadow: "group-hover:shadow-pink-500/20", glow: "from-pink-500/20" },
+                                                blue: { bg: "bg-blue-500", text: "text-blue-500", border: "group-hover:border-blue-500/50", shadow: "group-hover:shadow-blue-500/20", glow: "from-blue-500/20" },
+                                                emerald: { bg: "bg-emerald-500", text: "text-emerald-500", border: "group-hover:border-emerald-500/50", shadow: "group-hover:shadow-emerald-500/20", glow: "from-emerald-500/20" },
+                                                orange: { bg: "bg-orange-500", text: "text-orange-500", border: "group-hover:border-orange-500/50", shadow: "group-hover:shadow-orange-500/20", glow: "from-orange-500/20" },
+                                                red: { bg: "bg-red-500", text: "text-red-500", border: "group-hover:border-red-500/50", shadow: "group-hover:shadow-red-500/20", glow: "from-red-500/20" },
+                                            };
+                                            const theme = colorMap[baseColor];
+
+                                            return (
+                                                <div key={i} className={`group relative bg-[#0a0a0a] border border-white/10 p-8 h-[340px] flex flex-col justify-between overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:z-20 ${theme.border} hover:shadow-2xl ${theme.shadow}`}>
+
+                                                    {/* Hover Glow Gradient Background */}
+                                                    <div className={`absolute top-0 right-0 w-[300px] h-[300px] bg-gradient-to-br ${theme.glow} to-transparent opacity-0 group-hover:opacity-100 blur-[80px] transition-opacity duration-700 pointer-events-none rounded-full -mr-20 -mt-20`}></div>
+
+                                                    {/* Abstract Pattern - Dynamic Color & Increased Visibility */}
+                                                    <div className={`absolute -bottom-20 -right-20 w-80 h-80 opacity-20 group-hover:opacity-50 transition-all duration-500 group-hover:scale-110 ${theme.text} ${i % 2 === 0 ? 'rotate-12' : '-rotate-12'}`}>
+                                                        {i % 6 === 0 && (
+                                                            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" className="w-full h-full">
+                                                                <path d="M0 100 L100 0 M20 100 L100 20 M40 100 L100 40 M60 100 L100 60 M80 100 L100 80" strokeWidth="2" />
+                                                            </svg>
+                                                        )}
+                                                        {i % 6 === 1 && (
+                                                            <svg viewBox="0 0 100 100" fill="currentColor" className="w-full h-full">
+                                                                <circle cx="20" cy="80" r="4" /> <circle cx="40" cy="60" r="4" /> <circle cx="60" cy="40" r="4" /> <circle cx="80" cy="20" r="4" />
+                                                                <circle cx="40" cy="80" r="4" /> <circle cx="60" cy="60" r="4" /> <circle cx="80" cy="40" r="4" />
+                                                                <circle cx="60" cy="80" r="4" /> <circle cx="80" cy="60" r="4" />
+                                                            </svg>
+                                                        )}
+                                                        {i % 6 === 2 && (
+                                                            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" className="w-full h-full">
+                                                                <circle cx="100" cy="100" r="20" strokeWidth="2" />
+                                                                <circle cx="100" cy="100" r="40" strokeWidth="2" />
+                                                                <circle cx="100" cy="100" r="60" strokeWidth="2" />
+                                                                <circle cx="100" cy="100" r="80" strokeWidth="2" />
+                                                            </svg>
+                                                        )}
+                                                        {i % 6 === 3 && (
+                                                            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" className="w-full h-full">
+                                                                <path d="M-20 100 L50 30 L120 100" strokeWidth="2" />
+                                                                <path d="M-20 80 L50 10 L120 80" strokeWidth="2" />
+                                                                <path d="M-20 60 L50 -10 L120 60" strokeWidth="2" />
+                                                                <path d="M-20 120 L50 50 L120 120" strokeWidth="2" />
+                                                            </svg>
+                                                        )}
+                                                        {i % 6 === 4 && (
+                                                            <svg viewBox="0 0 100 100" fill="currentColor" className="w-full h-full">
+                                                                <rect x="10" y="40" width="8" height="8" /> <rect x="30" y="80" width="12" height="12" />
+                                                                <rect x="60" y="20" width="6" height="6" /> <rect x="80" y="60" width="10" height="10" />
+                                                                <rect x="50" y="50" width="8" height="8" /> <rect x="90" y="10" width="14" height="14" />
+                                                                <rect x="20" y="10" width="6" height="6" />
+                                                            </svg>
+                                                        )}
+                                                        {i % 6 === 5 && (
+                                                            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" className="w-full h-full">
+                                                                <path d="M0 50 Q 25 20 50 50 T 100 50" strokeWidth="2" />
+                                                                <path d="M0 30 Q 25 0 50 30 T 100 30" strokeWidth="2" />
+                                                                <path d="M0 70 Q 25 40 50 70 T 100 70" strokeWidth="2" />
+                                                                <path d="M0 90 Q 25 60 50 90 T 100 90" strokeWidth="2" />
+                                                                <path d="M0 10 Q 25 -20 50 10 T 100 10" strokeWidth="2" />
+                                                            </svg>
+                                                        )}
                                                     </div>
-                                                    <h3 className={`text-xl font-bold text-white mb-3 leading-tight group-hover:${theme.text} transition-colors`}>{useCase.title}</h3>
-                                                    <p className="text-sm text-slate-400 line-clamp-3 leading-relaxed group-hover:text-slate-200 transition-colors">{useCase.description}</p>
+
+                                                    <div className="flex justify-between items-start z-10 relative">
+                                                        <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${theme.bg} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                                                            <Icon className="text-white w-7 h-7" />
+                                                        </div>
+                                                        <span className={`text-[10px] font-mono ${theme.text} bg-white/5 px-3 py-1 rounded-full border border-white/5 group-hover:border-white/10 transition-colors uppercase tracking-widest`}>{useCase.tag}</span>
+                                                    </div>
+
+                                                    <div className="z-10 mt-auto relative">
+                                                        <div className={`text-[10px] ${theme.text} font-bold uppercase tracking-widest mb-3 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300`}>
+                                                            Impact Area
+                                                        </div>
+                                                        <h3 className={`text-xl font-bold text-white mb-3 leading-tight group-hover:${theme.text} transition-colors`}>{useCase.title}</h3>
+                                                        <p className="text-sm text-slate-400 line-clamp-3 leading-relaxed group-hover:text-slate-200 transition-colors">{useCase.description}</p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            </section>
-                        )}
+                                            );
+                                        })}
+                                    </div>
+                                </section>
+                            )}
 
-                        {/* 4. BUSINESS OUTCOMES (Pyramid Framework) */}
-                        {service.businessOutcomes && (
-                            <DigitalPyramid
-                                outcomes={service.businessOutcomes.outcomes}
-                                title={service.businessOutcomes.title}
-                                subtitle={service.businessOutcomes.subtitle}
-                            />
-                        )}
+                            {/* 4. BUSINESS OUTCOMES (Pyramid Framework) */}
+                            {service.businessOutcomes && slug === 'cybersecurity-risk-management' && (
+                                <DigitalPyramid
+                                    outcomes={service.businessOutcomes.outcomes}
+                                    title={service.businessOutcomes.title}
+                                    subtitle={service.businessOutcomes.subtitle}
+                                />
+                            )}
 
-                        {/* 5. ENGAGEMENT APPROACH - Tracing Beam */}
-                        {service.engagementApproach && (
-                            <section className="relative py-8 w-full overflow-hidden">
-                                <div className="container relative mb-8 text-center max-w-3xl mx-auto">
-                                    <span className="text-primary font-bold tracking-widest text-xs uppercase">How We Work</span>
-                                    <h2 className="text-3xl font-bold text-white mt-2 mb-4">{service.engagementApproach.title}</h2>
-                                    <p className="text-lg text-slate-400">{service.engagementApproach.subtitle}</p>
-                                </div>
+                            {/* 5. ENGAGEMENT APPROACH - Tracing Beam */}
+                            {service.engagementApproach && slug === 'cybersecurity-risk-management' && (
+                                <section className="relative py-8 w-full overflow-hidden">
+                                    <div className="container relative mb-8 text-center max-w-3xl mx-auto">
+                                        <span className={currentTheme.kicker + " font-bold tracking-widest text-xs uppercase"}>How We Work</span>
+                                        <h2 className="text-3xl font-bold text-white mt-2 mb-4">{service.engagementApproach.title}</h2>
+                                        <p className="text-lg text-slate-400">{service.engagementApproach.subtitle}</p>
+                                    </div>
 
-                                <div className="container max-w-5xl mx-auto py-4">
-                                    {service.engagementApproach.steps.map((step, i) => {
-                                        const isEven = i % 2 === 0;
-                                        const colors = [
-                                            { from: '#FFA500', to: '#FFD700', shadow: 'rgba(255, 165, 0, 0.4)' }, // Orange-Yellow
-                                            { from: '#FF6B6B', to: '#FF8E53', shadow: 'rgba(255, 107, 107, 0.4)' }, // Red-Orange
-                                            { from: '#FF1744', to: '#FF4081', shadow: 'rgba(255, 23, 68, 0.4)' }, // Pink-Red
-                                        ];
-                                        const color = colors[i % colors.length];
+                                    <div className="container max-w-5xl mx-auto py-4">
+                                        {service.engagementApproach.steps.map((step, i) => {
+                                            const isEven = i % 2 === 0;
+                                            const colors = [
+                                                { from: '#FFA500', to: '#FFD700', shadow: 'rgba(255, 165, 0, 0.4)' }, // Orange-Yellow
+                                                { from: '#FF6B6B', to: '#FF8E53', shadow: 'rgba(255, 107, 107, 0.4)' }, // Red-Orange
+                                                { from: '#FF1744', to: '#FF4081', shadow: 'rgba(255, 23, 68, 0.4)' }, // Pink-Red
+                                            ];
+                                            const color = colors[i % colors.length];
 
-                                        return (
-                                            <motion.div
-                                                key={i}
-                                                initial={{ opacity: 0, x: isEven ? -100 : 100 }}
-                                                whileInView={{ opacity: 1, x: 0 }}
-                                                transition={{ duration: 0.6, delay: 0.1 }}
-                                                viewport={{ once: true, margin: "-50px" }}
-                                                className={`flex items-center gap-6 ${isEven ? 'flex-row' : 'flex-row-reverse'} mb-6 last:mb-0`}
-                                                style={{ zIndex: 1 }}
-                                            >
-                                                {/* Icon Circle with Line from Edge */}
-                                                <div className="relative flex items-center flex-shrink-0">
-                                                    {/* Horizontal Line from Edge */}
-                                                    {isEven ? (
-                                                        // For Even items (Left side): Line comes from Left Edge
+                                            return (
+                                                <motion.div
+                                                    key={i}
+                                                    initial={{ opacity: 0, x: isEven ? -100 : 100 }}
+                                                    whileInView={{ opacity: 1, x: 0 }}
+                                                    transition={{ duration: 0.6, delay: 0.1 }}
+                                                    viewport={{ once: true, margin: "-50px" }}
+                                                    className={`flex items-center gap-6 ${isEven ? 'flex-row' : 'flex-row-reverse'} mb-6 last:mb-0`}
+                                                    style={{ zIndex: 1 }}
+                                                >
+                                                    {/* Icon Circle with Line from Edge */}
+                                                    <div className="relative flex items-center flex-shrink-0">
+                                                        {/* Horizontal Line from Edge */}
+                                                        {isEven ? (
+                                                            // For Even items (Left side): Line comes from Left Edge
+                                                            <div
+                                                                className="absolute top-1/2 -translate-y-1/2 h-0.5 right-full mr-4"
+                                                                style={{
+                                                                    width: '100vw', // Extend far off-screen
+                                                                    background: `linear-gradient(to right, transparent, ${color.from})`
+                                                                }}
+                                                            />
+                                                        ) : (
+                                                            // For Odd items (Right side): Line comes from Right Edge
+                                                            <div
+                                                                className="absolute top-1/2 -translate-y-1/2 h-0.5 left-full ml-4"
+                                                                style={{
+                                                                    width: '100vw', // Extend far off-screen
+                                                                    background: `linear-gradient(to left, transparent, ${color.from})`
+                                                                }}
+                                                            />
+                                                        )}
+
+                                                        {/* Outer Glow Circle - Smaller */}
                                                         <div
-                                                            className="absolute top-1/2 -translate-y-1/2 h-0.5 right-full mr-4"
+                                                            className="absolute inset-0 rounded-full blur-lg"
                                                             style={{
-                                                                width: '100vw', // Extend far off-screen
-                                                                background: `linear-gradient(to right, transparent, ${color.from})`
+                                                                background: `linear-gradient(135deg, ${color.from}, ${color.to})`,
+                                                                opacity: 0.3
                                                             }}
                                                         />
-                                                    ) : (
-                                                        // For Odd items (Right side): Line comes from Right Edge
+
+                                                        {/* Colored Circle - Smaller (w-20 from w-24) */}
                                                         <div
-                                                            className="absolute top-1/2 -translate-y-1/2 h-0.5 left-full ml-4"
+                                                            className="relative w-20 h-20 rounded-full flex items-center justify-center"
                                                             style={{
-                                                                width: '100vw', // Extend far off-screen
-                                                                background: `linear-gradient(to left, transparent, ${color.from})`
+                                                                background: `linear-gradient(135deg, ${color.from}, ${color.to})`,
+                                                                boxShadow: `0 4px 20px ${color.shadow}`
                                                             }}
-                                                        />
-                                                    )}
+                                                        >
+                                                            {/* Inner White Circle */}
+                                                            <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-inner">
+                                                                {/* Icon */}
+                                                                <div className="text-2xl">
+                                                                    {i === 0 && '💡'}
+                                                                    {i === 1 && '⚙️'}
+                                                                    {i === 2 && '⏱️'}
+                                                                    {i === 3 && '📈'}
+                                                                    {i > 3 && '✓'}
+                                                                </div>
+                                                            </div>
 
-                                                    {/* Outer Glow Circle - Smaller */}
-                                                    <div
-                                                        className="absolute inset-0 rounded-full blur-lg"
-                                                        style={{
-                                                            background: `linear-gradient(135deg, ${color.from}, ${color.to})`,
-                                                            opacity: 0.3
-                                                        }}
-                                                    />
-
-                                                    {/* Colored Circle - Smaller (w-20 from w-24) */}
-                                                    <div
-                                                        className="relative w-20 h-20 rounded-full flex items-center justify-center"
-                                                        style={{
-                                                            background: `linear-gradient(135deg, ${color.from}, ${color.to})`,
-                                                            boxShadow: `0 4px 20px ${color.shadow}`
-                                                        }}
-                                                    >
-                                                        {/* Inner White Circle */}
-                                                        <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-inner">
-                                                            {/* Icon */}
-                                                            <div className="text-2xl">
-                                                                {i === 0 && '💡'}
-                                                                {i === 1 && '⚙️'}
-                                                                {i === 2 && '⏱️'}
-                                                                {i === 3 && '📈'}
-                                                                {i > 3 && '✓'}
+                                                            {/* Dashed Circle Border */}
+                                                            <svg className="absolute -inset-2 w-24 h-24" viewBox="0 0 128 128">
+                                                                <circle
+                                                                    cx="64"
+                                                                    cy="64"
+                                                                    r="60"
+                                                                    fill="none"
+                                                                    stroke="currentColor"
+                                                                    strokeWidth="1"
+                                                                    strokeDasharray="4 4"
+                                                                    className="text-slate-600"
+                                                                />
+                                                            </svg>
+                                                            <div
+                                                                className={`absolute bottom-1/2 mb-4 text-7xl font-bold leading-none tracking-tighter z-20 ${isEven ? 'right-full mr-8' : 'left-full ml-8'}`}
+                                                                style={{
+                                                                    color: color.from,
+                                                                    textShadow: `0 0 30px ${color.shadow}`,
+                                                                    opacity: 0.8
+                                                                }}
+                                                            >
+                                                                {step.step}
                                                             </div>
                                                         </div>
-
-                                                        {/* Dashed Circle Border */}
-                                                        <svg className="absolute -inset-2 w-24 h-24" viewBox="0 0 128 128">
-                                                            <circle
-                                                                cx="64"
-                                                                cy="64"
-                                                                r="60"
-                                                                fill="none"
-                                                                stroke="currentColor"
-                                                                strokeWidth="1"
-                                                                strokeDasharray="4 4"
-                                                                className="text-slate-600"
-                                                            />
-                                                        </svg>
-                                                    </div>
-                                                </div>
-
-                                                {/* Content */}
-                                                <div className={`flex-1 flex flex-col justify-center relative z-10 ${isEven ? 'text-left items-start' : 'text-right items-end'}`}>
-                                                    {/* Step Number */}
-                                                    <div
-                                                        className="text-8xl font-bold opacity-10 absolute top-0"
-                                                        style={{
-                                                            [isEven ? 'right' : 'left']: '0',
-                                                            background: `linear-gradient(135deg, ${color.from}, ${color.to})`,
-                                                            WebkitBackgroundClip: 'text',
-                                                            WebkitTextFillColor: 'transparent'
-                                                        }}
-                                                    >
-                                                        {step.step}
                                                     </div>
 
-                                                    <h3 className="text-2xl font-bold text-white mb-2">{step.title}</h3>
-                                                    <p className="text-slate-400 leading-relaxed max-w-md">{step.description}</p>
-                                                </div>
+                                                    {/* Content */}
+                                                    <div className={`flex-1 flex flex-col justify-center relative z-10 ${isEven ? 'text-left items-start' : 'text-right items-end'}`}>
+                                                        <h3 className="text-2xl font-bold text-white mb-2">{step.title}</h3>
+                                                        <p className="text-slate-400 leading-relaxed max-w-md">{step.description}</p>
+                                                    </div>
 
 
-                                            </motion.div>
-                                        );
-                                    })}
-                                </div>
-                            </section>
-                        )
-                        }
-
-                        {/* 6. WHY CHOOSE & FUTURE READY */}
-                        {
-                            service.whyChooseExtended && (
-                                <section className="container relative pb-20">
-                                    {/* Ambient Background for Glass Effect */}
-                                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-6xl -z-10 opacity-30 pointer-events-none">
-                                        <div className="absolute top-20 left-1/4 w-96 h-96 bg-purple-600/30 rounded-full blur-[100px]" />
-                                        <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-blue-600/30 rounded-full blur-[100px]" />
+                                                </motion.div>
+                                            );
+                                        })}
                                     </div>
-
-                                    <div className="mb-16 text-center">
-                                        <h2 className="text-4xl font-bold text-white mt-2 mb-4">{service.whyChooseExtended.title}</h2>
-                                        <p className="text-xl text-slate-400 max-w-2xl mx-auto">{service.whyChooseExtended.subtitle}</p>
-                                    </div>
-
-                                    {/* 3D Arc Carousel */}
-                                    <div className="w-full py-10">
-                                        <ArcCarousel
-                                            items={service.whyChooseExtended.cards.map((card, i) => {
-                                                // Icon mapping based on index or title
-                                                const icons = [
-                                                    <TrendingUp key="1" />, // Business-aligned
-                                                    <Cloud key="2" />,      // Modern-first
-                                                    <Bot key="3" />,        // Automation
-                                                    <Scale key="4" />,      // Vendor-neutral
-                                                    <GraduationCap key="5" />, // Enablement
-                                                    <RefreshCw key="6" />   // Transformation
-                                                ];
-
-                                                const colors = [
-                                                    '#a855f7', // Purple
-                                                    '#3b82f6', // Blue
-                                                    '#f59e0b', // Amber
-                                                    '#10b981', // Emerald
-                                                    '#ec4899', // Pink
-                                                    '#06b6d4'  // Cyan
-                                                ];
-
-                                                return (
-                                                    <GlowingCard
-                                                        key={i}
-                                                        title={card.title}
-                                                        description={card.description}
-                                                        icon={icons[i % icons.length]}
-                                                        color={colors[i % colors.length]}
-                                                    />
-                                                );
-                                            })}
-                                        />
-                                    </div>
-
-                                    {service.whyChooseExtended.futureReady && (
-                                        <div className="relative overflow-hidden rounded-3xl border border-white/10 p-1">
-                                            <div className="absolute inset-0 bg-gradient-to-r from-purple-900/60 via-blue-900/60 to-purple-900/60 animate-gradient-slow z-0"></div>
-                                            <div className="relative z-10 bg-black/40 backdrop-blur-xl p-8 md:p-12 rounded-[22px] flex flex-col md:flex-row gap-12 items-center justify-between">
-                                                <div className="max-w-2xl">
-                                                    <h4 className="text-2xl font-bold text-white mb-4">Future-proof Your Security</h4>
-                                                    <p className="text-slate-200 text-lg leading-relaxed">{service.whyChooseExtended.futureReady.message}</p>
-                                                </div>
-                                                <div className="flex flex-wrap gap-3 justify-center md:max-w-xs">
-                                                    {service.whyChooseExtended.futureReady.tags.map((tag, i) => (
-                                                        <span key={i} className="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium">
-                                                            {tag}
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )}
                                 </section>
                             )
-                        }
-                    </div>
-                ) : (
-                    <>
-                        <section>
-                            <div className="grid md:grid-cols-3 gap-12 text-center">
-                                <div className="bg-slate-900/50 p-8 rounded-2xl border border-primary/20">
-                                    <h3 className="text-2xl font-bold text-primary mb-4">Description</h3>
-                                    <p className="text-slate-300">{service.description}</p>
-                                </div>
-                                <div className="bg-slate-900/50 p-8 rounded-2xl border border-primary/20">
-                                    <h3 className="text-2xl font-bold text-primary mb-4">Key Capabilities</h3>
-                                    <ul className="space-y-2 text-slate-300 text-left">
-                                        {service.features.map((feature, index) => (
-                                            <li key={index} className="flex items-start">
-                                                <CheckCircle className="h-5 w-5 text-accent mr-3 mt-1 flex-shrink-0" />
-                                                <span>{feature}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                                <div className="bg-slate-900/50 p-8 rounded-2xl border border-primary/20">
-                                    <h3 className="text-2xl font-bold text-primary mb-4">Outcome Focus</h3>
-                                    <ul className="space-y-2 text-slate-300 text-left">
-                                        {service.outcomeFocus.map((outcome, index) => (
-                                            <li key={index} className="flex items-start">
-                                                <CheckCircle className="h-5 w-5 text-accent mr-3 mt-1 flex-shrink-0" />
-                                                <span>{outcome}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                        </section>
+                            }
 
-                        <section className="grid md:grid-cols-2 gap-16 items-center">
-                            <div className='bg-slate-900/50 p-8 rounded-2xl border border-destructive/20'>
-                                <h2 className="text-3xl font-bold text-destructive mb-4">Problem Statement</h2>
-                                <p className="text-lg text-slate-300/80 leading-relaxed">{service.problemStatement}</p>
-                            </div>
-                            <div className='bg-slate-900/50 p-8 rounded-2xl border border-accent/20'>
-                                <h2 className="text-3xl font-bold text-accent mb-4">Solutions We Offer</h2>
-                                <ul className="space-y-3 text-lg text-slate-300/80">
-                                    {service.solutionsOffered.map((solution, index) => (
-                                        <li key={index} className="flex items-start">
-                                            <CheckCircle className="h-6 w-6 text-accent mr-4 mt-1 flex-shrink-0" />
-                                            <span>{solution}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </section>
-
-                        <section className="text-center">
-                            <h2 className="text-4xl font-bold text-primary mb-12">Tools & Tech Stack</h2>
-                            <div className="flex flex-wrap justify-center gap-8">
-                                {service.toolsTechStack.map((tool, index) => (
-                                    <div key={index} className="flex flex-col items-center gap-3 text-slate-300 transition-transform hover:-translate-y-2 duration-300">
-                                        {iconMap[tool.icon]}
-                                        <span className="text-sm">{tool.name}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </section>
-
-                        {/* Shared Case Studies & FAQs for Legacy */}
-                        <section>
-                            <h2 className="text-4xl font-bold text-primary mb-12 text-center">Case Studies</h2>
-                            <div className="grid md:grid-cols-2 gap-8">
-                                {service.caseStudies.map((study, index) => (
-                                    <Card key={index} className="bg-slate-900 border-slate-800 text-slate-100 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20">
-                                        <CardHeader>
-                                            <CardTitle className="text-2xl text-white">{study.title}</CardTitle>
-                                        </CardHeader>
-                                        <CardContent>
-                                            <p className="text-slate-400">{study.description}</p>
-                                        </CardContent>
-                                        <div className="p-6 pt-0">
-                                            <Button asChild variant="secondary" className="bg-slate-800 text-slate-100 hover:bg-slate-700">
-                                                <Link href={study.link}>
-                                                    Read More <ArrowRight className="ml-2 h-4 w-4" />
-                                                </Link>
-                                            </Button>
+                            {/* 6. WHY CHOOSE & FUTURE READY */}
+                            {
+                                service.whyChooseExtended && (
+                                    <section className="container relative pb-20">
+                                        {/* Ambient Background for Glass Effect */}
+                                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-6xl -z-10 opacity-30 pointer-events-none">
+                                            <div className="absolute top-20 left-1/4 w-96 h-96 bg-purple-600/30 rounded-full blur-[100px]" />
+                                            <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-blue-600/30 rounded-full blur-[100px]" />
                                         </div>
-                                    </Card>
-                                ))}
-                            </div>
-                        </section>
 
-                        <section>
-                            <h2 className="text-4xl font-bold text-primary mb-12 text-center">Frequently Asked Questions</h2>
-                            <Accordion type="single" collapsible className="w-full max-w-4xl mx-auto">
-                                {service.faqs.map((faq, index) => (
-                                    <AccordionItem key={index} value={`item-${index + 1}`} className="bg-slate-900/80 border-slate-800 rounded-lg mb-4 px-6">
-                                        <AccordionTrigger className="text-lg text-white hover:no-underline">{faq.question}</AccordionTrigger>
-                                        <AccordionContent className="text-base text-slate-300/80">
-                                            {faq.answer}
-                                        </AccordionContent>
-                                    </AccordionItem>
-                                ))}
-                            </Accordion>
-                        </section>
-                    </>
-                )
+                                        <div className="mb-4 text-center">
+                                            <span className={`${currentTheme.kicker} font-bold tracking-widest text-xs uppercase mb-3 block`}>Why Global Acknowledgement Hub</span>
+                                            <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-4">{service.whyChooseExtended.title}</h2>
+                                            <p className="text-lg text-slate-400 max-w-2xl mx-auto">{service.whyChooseExtended.subtitle}</p>
+                                        </div>
+
+                                        {/* 3D Arc Carousel */}
+                                        <div className="w-full py-0">
+                                            <ArcCarousel
+                                                items={service.whyChooseExtended.cards.map((card, i) => {
+                                                    // Icon mapping based on index or title
+                                                    const icons = [
+                                                        <TrendingUp key="1" />, // Business-aligned
+                                                        <Cloud key="2" />,      // Modern-first
+                                                        <Bot key="3" />,        // Automation
+                                                        <Scale key="4" />,      // Vendor-neutral
+                                                        <GraduationCap key="5" />, // Enablement
+                                                        <RefreshCw key="6" />   // Transformation
+                                                    ];
+
+                                                    const colors = [
+                                                        '#a855f7', // Purple
+                                                        '#3b82f6', // Blue
+                                                        '#f59e0b', // Amber
+                                                        '#10b981', // Emerald
+                                                        '#ec4899', // Pink
+                                                        '#06b6d4'  // Cyan
+                                                    ];
+
+                                                    return (
+                                                        <GlowingCard
+                                                            key={i}
+                                                            title={card.title}
+                                                            description={card.description}
+                                                            icon={icons[i % icons.length]}
+                                                            color={colors[i % colors.length]}
+                                                        />
+                                                    );
+                                                })}
+                                            />
+                                        </div>
+
+                                        {service.whyChooseExtended.futureReady && (
+                                            <div className="relative overflow-hidden rounded-2xl border border-white/10 p-1 max-w-5xl mx-auto mt-8">
+                                                <div className="absolute inset-0 bg-gradient-to-r from-purple-900/60 via-blue-900/60 to-purple-900/60 animate-gradient-slow z-0"></div>
+                                                <div className="relative z-10 bg-black/40 backdrop-blur-xl p-6 md:p-8 rounded-[18px] flex flex-col md:flex-row gap-8 items-center justify-between">
+                                                    <div className="max-w-2xl text-left">
+                                                        <h4 className="text-xl md:text-2xl font-bold text-white mb-2">Future-proof Your Security</h4>
+                                                        <p className="text-slate-200 text-base md:text-lg leading-relaxed">{service.whyChooseExtended.futureReady.message}</p>
+                                                    </div>
+                                                    <div className="flex flex-col gap-2 w-full md:max-w-xs shrink-0">
+                                                        {service.whyChooseExtended.futureReady.tags.map((tag, i) => (
+                                                            <span key={i} className="w-full text-center px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium hover:bg-white/15 transition-colors cursor-default">
+                                                                {tag}
+                                                            </span>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </section>
+                                )
+                            }
+                        </div>
+                    ) : (
+                        <>
+                            <section>
+                                <div className="grid md:grid-cols-3 gap-12 text-center">
+                                    <div className="bg-slate-900/50 p-8 rounded-2xl border border-primary/20">
+                                        <h3 className="text-2xl font-bold text-primary mb-4">Description</h3>
+                                        <p className="text-slate-300">{service.description}</p>
+                                    </div>
+                                    <div className="bg-slate-900/50 p-8 rounded-2xl border border-primary/20">
+                                        <h3 className="text-2xl font-bold text-primary mb-4">Key Capabilities</h3>
+                                        <ul className="space-y-2 text-slate-300 text-left">
+                                            {service.features.map((feature, index) => (
+                                                <li key={index} className="flex items-start">
+                                                    <CheckCircle className="h-5 w-5 text-accent mr-3 mt-1 flex-shrink-0" />
+                                                    <span>{feature}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                    <div className="bg-slate-900/50 p-8 rounded-2xl border border-primary/20">
+                                        <h3 className="text-2xl font-bold text-primary mb-4">Outcome Focus</h3>
+                                        <ul className="space-y-2 text-slate-300 text-left">
+                                            {service.outcomeFocus.map((outcome, index) => (
+                                                <li key={index} className="flex items-start">
+                                                    <CheckCircle className="h-5 w-5 text-accent mr-3 mt-1 flex-shrink-0" />
+                                                    <span>{outcome}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section className="grid md:grid-cols-2 gap-16 items-center">
+                                <div className='bg-slate-900/50 p-8 rounded-2xl border border-destructive/20'>
+                                    <h2 className="text-3xl font-bold text-destructive mb-4">Problem Statement</h2>
+                                    <p className="text-lg text-slate-300/80 leading-relaxed">{service.problemStatement}</p>
+                                </div>
+                                <div className='bg-slate-900/50 p-8 rounded-2xl border border-accent/20'>
+                                    <h2 className="text-3xl font-bold text-accent mb-4">Solutions We Offer</h2>
+                                    <ul className="space-y-3 text-lg text-slate-300/80">
+                                        {service.solutionsOffered.map((solution, index) => (
+                                            <li key={index} className="flex items-start">
+                                                <CheckCircle className="h-6 w-6 text-accent mr-4 mt-1 flex-shrink-0" />
+                                                <span>{solution}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </section>
+
+                            <section className="text-center">
+                                <h2 className="text-4xl font-bold text-primary mb-12">Tools & Tech Stack</h2>
+                                <div className="flex flex-wrap justify-center gap-8">
+                                    {service.toolsTechStack.map((tool, index) => (
+                                        <div key={index} className="flex flex-col items-center gap-3 text-slate-300 transition-transform hover:-translate-y-2 duration-300">
+                                            {iconMap[tool.icon]}
+                                            <span className="text-sm">{tool.name}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
+
+                            {/* Shared Case Studies & FAQs for Legacy */}
+                            <section>
+                                <h2 className="text-4xl font-bold text-primary mb-12 text-center">Case Studies</h2>
+                                <div className="grid md:grid-cols-2 gap-8">
+                                    {service.caseStudies.map((study, index) => (
+                                        <Card key={index} className="bg-slate-900 border-slate-800 text-slate-100 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20">
+                                            <CardHeader>
+                                                <CardTitle className="text-2xl text-white">{study.title}</CardTitle>
+                                            </CardHeader>
+                                            <CardContent>
+                                                <p className="text-slate-400">{study.description}</p>
+                                            </CardContent>
+                                            <div className="p-6 pt-0">
+                                                <Button asChild variant="secondary" className="bg-slate-800 text-slate-100 hover:bg-slate-700">
+                                                    <Link href={study.link}>
+                                                        Read More <ArrowRight className="ml-2 h-4 w-4" />
+                                                    </Link>
+                                                </Button>
+                                            </div>
+                                        </Card>
+                                    ))}
+                                </div>
+                            </section>
+
+                            <section>
+                                <h2 className="text-4xl font-bold text-primary mb-12 text-center">Frequently Asked Questions</h2>
+                                <Accordion type="single" collapsible className="w-full max-w-4xl mx-auto">
+                                    {service.faqs.map((faq, index) => (
+                                        <AccordionItem key={index} value={`item-${index + 1}`} className="bg-slate-900/80 border-slate-800 rounded-lg mb-4 px-6">
+                                            <AccordionTrigger className="text-lg text-white hover:no-underline">{faq.question}</AccordionTrigger>
+                                            <AccordionContent className="text-base text-slate-300/80">
+                                                {faq.answer}
+                                            </AccordionContent>
+                                        </AccordionItem>
+                                    ))}
+                                </Accordion>
+                            </section>
+                        </>
+                    )
                 }
 
                 {/* Shared Footer CTA */}
